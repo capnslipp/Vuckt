@@ -89,6 +89,38 @@ import Foundation
 	}
 	
 	
+	// MARK: `clamp` Functionality
+	
+	public func clamp(_ range:Range<Int3>) {
+		self.clamp(range.lowerBound, range.upperBound - Int3(1))
+	}
+	public func clamped(_ range:Range<Int3>) -> Int3 {
+		return self.clamped(range.lowerBound, range.upperBound - Int3(1))
+	}
+	
+	public func clamp(_ min:Int3, _ max:Int3) {
+		self.x = Swift.max(min.x, Swift.min(max.x, self.x))
+		self.y = Swift.max(min.y, Swift.min(max.y, self.y))
+		self.z = Swift.max(min.z, Swift.min(max.z, self.z))
+	}
+	public func clamped(_ min:Int3, _ max:Int3) -> Int3 {
+		let value = Int3(self.x, self.y, self.z)
+		value.clamp(min, max)
+		return value
+	}
+	
+	
+	// MARK: `random` Functionality
+	
+	public static func random(min:Int3=Int3(0), max:Int3) -> Int3 {
+		return Int3(
+			min.x + Int(arc4random_uniform(UInt32(max.x - min.x + 1))),
+			min.y + Int(arc4random_uniform(UInt32(max.y - min.y + 1))),
+			min.z + Int(arc4random_uniform(UInt32(max.z - min.z + 1)))
+		)
+	}
+	
+	
 	// MARK: `Equatable` Conformance
 	
 	public static func ==(a:Int3, b:Int3) -> Bool {
