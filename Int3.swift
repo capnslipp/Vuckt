@@ -7,7 +7,7 @@ import Foundation
 
 
 /// A vector of three `Int`s.
-@objc public final class Int3 : NSObject, ExpressibleByArrayLiteral, Comparable, IntegerArithmetic
+@objc public final class Int3 : NSObject, NSCopying, ExpressibleByArrayLiteral, Comparable, IntegerArithmetic
 {
 	public var x:Int, y:Int, z:Int
 	
@@ -48,6 +48,13 @@ import Foundation
 	public required init(arrayLiteral elements:Int...) {
 		precondition(elements.count == 3)
 		(self.x, self.y, self.z) = ( elements[0], elements[1], elements[2] )
+	}
+	
+	
+	// MARK: `NSCopying` Conformance
+	
+	public func copy(with _:NSZone?) -> Any {
+		return Int3(x: self.x, y: self.y, z: self.z)
 	}
 	
 	
