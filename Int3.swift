@@ -256,22 +256,32 @@ extension Int3 : IntegerArithmetic
 
 extension Int3 : _ObjectiveCBridgeable
 {
-	public typealias _ObjectiveCType = Int3_ObjC
-	
-	public func _bridgeToObjectiveC() -> _ObjectiveCType {
-		return _ObjectiveCType(x: self.x, y: self.y, z: self.z)
+	public func _bridgeToObjectiveC() -> NSValue {
+		var myself = self
+		return NSValue(bytes: &myself, objCType: Int3_CStruct_objCTypeEncoding)
 	}
 	
-	public static func _forceBridgeFromObjectiveC(_ source:_ObjectiveCType, result:inout Int3?) {
-		result = Int3(x: source.x, y: source.y, z: source.z)
+	public static func _forceBridgeFromObjectiveC(_ source:NSValue, result:inout Int3?) {
+		precondition(strcmp(source.objCType, Int3_CStruct_objCTypeEncoding) == 0, "NSValue does not contain the right type to bridge to Int3")
+		result = Int3()
+		source.getValue(&result!)
 	}
 	
-	public static func _conditionallyBridgeFromObjectiveC(_ source:_ObjectiveCType, result:inout Int3?) -> Bool {
-		result = Int3(x: source.x, y: source.y, z: source.z)
+	public static func _conditionallyBridgeFromObjectiveC(_ source:NSValue, result:inout Int3?) -> Bool {
+		if strcmp(source.objCType, Int3_CStruct_objCTypeEncoding) != 0 {
+			result = nil
+			return false
+		}
+		result = Int3()
+		source.getValue(&result!)
 		return true
 	}
 	
-	public static func _unconditionallyBridgeFromObjectiveC(_ source:_ObjectiveCType?) -> Int3 {
-		return Int3(x: source!.x, y: source!.y, z: source!.z)
+	public static func _unconditionallyBridgeFromObjectiveC(_ source:NSValue?) -> Int3 {
+		let unwrappedSource = source!
+		precondition(strcmp(unwrappedSource.objCType, Int3_CStruct_objCTypeEncoding) == 0, "NSValue does not contain the right type to bridge to Int3")
+		var result = Int3()
+		unwrappedSource.getValue(&result)
+		return result
 	}
 }

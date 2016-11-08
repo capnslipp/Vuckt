@@ -3,20 +3,23 @@
 // @copyright date: The date(s) of version control check-ins corresponding to this file and this project as a whole; or in lieu of, no earlier than November 2016.
 #pragma once
 
-#import <Foundation/NSObject.h>
+#import <Foundation/NSValue.h>
 
 
 
-NS_ASSUME_NONNULL_BEGIN
+struct Int3_CStruct {
+	NSInteger x, y, z;
+};
+typedef struct Int3_CStruct Int3;
 
-@interface Int3_ObjC : NSObject
+static const char *Int3_CStruct_objCTypeEncoding = @encode(struct Int3_CStruct);
 
-- (instancetype)initWithX:(NSInteger)x y:(NSInteger)y z:(NSInteger)z;
 
-@property(nonatomic, assign) NSInteger x;
-@property(nonatomic, assign) NSInteger y;
-@property(nonatomic, assign) NSInteger z;
+
+@interface NSValue (Int3Additions)
+
++ (NSValue *)valueWithInt3:(Int3)int3Value;
+
+@property(nonatomic, readonly) Int3 int3Value;
 
 @end
-
-NS_ASSUME_NONNULL_END

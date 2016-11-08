@@ -5,22 +5,20 @@
 #import "Int3.h"
 
 
-@implementation Int3_ObjC
 
-@synthesize x=_x, y=_y, z=_z;
+@implementation NSValue (Int3Additions)
 
 
-- (instancetype)initWithX:(NSInteger)x y:(NSInteger)y z:(NSInteger)z
++ (NSValue *)valueWithInt3:(Int3)int3Value
 {
-	self = [super init];
-	if (!self)
-		return nil;
-	
-	_x = x;
-	_y = y;
-	_z = z;
-	
-	return self;
+	return [self valueWithBytes:&int3Value objCType:@encode(Int3)];
+}
+
+- (Int3)int3Value
+{
+	Int3 int3Value;
+	[self getValue:&int3Value];
+	return int3Value;
 }
 
 
