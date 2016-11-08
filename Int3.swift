@@ -7,7 +7,7 @@ import Foundation
 
 
 /// A vector of three `Int`s.
-@objc public final class Int3 : NSObject, NSCopying, ExpressibleByArrayLiteral, Comparable, IntegerArithmetic
+public struct Int3
 {
 	public var x:Int, y:Int, z:Int
 	
@@ -15,17 +15,17 @@ import Foundation
 	// MARK: `init`s
 	
 	/// Initialize to the zero vector.
-	public override init() {
+	public init() {
 		(self.x, self.y, self.z) = ( 0, 0, 0 )
 	}
 	
 	/// Initialize a vector with the specified elements.
-	public convenience init(_ x:Int, _ y:Int, _ z:Int) {
+	public init(_ x:Int, _ y:Int, _ z:Int) {
 		self.init(x: x, y: y, z: z)
 	}
 	
 	/// Initialize a vector with the specified elements.
-	public required init(x:Int, y:Int, z:Int) {
+	public init(x:Int, y:Int, z:Int) {
 		(self.x, self.y, self.z) = ( x, y, z )
 	}
 	
@@ -40,21 +40,6 @@ import Foundation
 	public init(array:[Int]) {
 		precondition(array.count == 3)
 		(self.x, self.y, self.z) = ( array[0], array[1], array[2] )
-	}
-	
-	/// Initialize using `arrayLiteral`.
-	///
-	/// - Precondition: the array literal must exactly three elements.
-	public required init(arrayLiteral elements:Int...) {
-		precondition(elements.count == 3)
-		(self.x, self.y, self.z) = ( elements[0], elements[1], elements[2] )
-	}
-	
-	
-	// MARK: `NSCopying` Conformance
-	
-	public func copy(with _:NSZone?) -> Any {
-		return Int3(x: self.x, y: self.y, z: self.z)
 	}
 	
 	
@@ -75,14 +60,14 @@ import Foundation
 	// MARK: `NSObject` Conformance
 	
 	/// Debug string representation
-	public override var debugDescription:String {
+	public var debugDescription:String {
 		return "(\(self.x), \(self.y), \(self.z))"
 	}
 	
 	
 	// MARK: `replace` Functionality
 	
-	public func replace(x:Int?=nil, y:Int?=nil, z:Int?=nil) {
+	public mutating func replace(x:Int?=nil, y:Int?=nil, z:Int?=nil) {
 		if let xValue = x { self.x = xValue }
 		if let yValue = y { self.y = yValue }
 		if let zValue = z { self.z = zValue }
@@ -98,20 +83,20 @@ import Foundation
 	
 	// MARK: `clamp` Functionality
 	
-	public func clamp(_ range:Range<Int3>) {
+	public mutating func clamp(_ range:Range<Int3>) {
 		self.clamp(range.lowerBound, range.upperBound - Int3(1))
 	}
 	public func clamped(_ range:Range<Int3>) -> Int3 {
 		return self.clamped(range.lowerBound, range.upperBound - Int3(1))
 	}
 	
-	public func clamp(_ min:Int3, _ max:Int3) {
+	public mutating func clamp(_ min:Int3, _ max:Int3) {
 		self.x = Swift.max(min.x, Swift.min(max.x, self.x))
 		self.y = Swift.max(min.y, Swift.min(max.y, self.y))
 		self.z = Swift.max(min.z, Swift.min(max.z, self.z))
 	}
 	public func clamped(_ min:Int3, _ max:Int3) -> Int3 {
-		let value = Int3(self.x, self.y, self.z)
+		var value = Int3(self.x, self.y, self.z)
 		value.clamp(min, max)
 		return value
 	}
@@ -126,17 +111,33 @@ import Foundation
 			min.z + Int(arc4random_uniform(UInt32(max.z - min.z + 1)))
 		)
 	}
+}
+
+
+extension Int3 : ExpressibleByArrayLiteral
+{
+	public typealias Element = Int
 	
-	
-	// MARK: `Equatable` Conformance
-	
+	/// Initialize using `arrayLiteral`.
+	///
+	/// - Precondition: the array literal must exactly three elements.
+	public init(arrayLiteral elements:Int...) {
+		precondition(elements.count == 3)
+		(self.x, self.y, self.z) = ( elements[0], elements[1], elements[2] )
+	}
+}
+
+
+extension Int3 : Equatable
+{
 	public static func ==(a:Int3, b:Int3) -> Bool {
 		return a.x == b.x && a.y == b.y && a.z == b.z
 	}
-	
-	
-	// MARK: `Comparable` Conformance
-	
+}
+
+
+extension Int3 : Comparable
+{
 	public static func < (a:Int3, b:Int3) -> Bool {
 		return a.x < b.x && a.y < b.y && a.z < b.z
 	}
@@ -152,16 +153,17 @@ import Foundation
 	public static func >= (a:Int3, b:Int3) -> Bool {
 		return a.x >= b.x && a.y >= b.y && a.z >= b.z
 	}
-	
-	
-	// MARK: `IntegerArithmetic` Conformance
-	
+}
+
+
+extension Int3 : IntegerArithmetic
+{
 	private static func doComponentCalculationWithOverflow(
 		_ a:Int3, _ b:Int3,
 		componentCalculationMethod:(Int,Int)->(Int,overflow:Bool)
 	) -> (Int3,overflow:Bool)
 	{
-		let result = Int3()
+		var result = Int3()
 		var overflows = ( x: false, y: false, z: false )
 		( result.x, overflows.x ) = componentCalculationMethod(a.x, b.x)
 		( result.y, overflows.y ) = componentCalculationMethod(a.y, b.y)
@@ -173,7 +175,7 @@ import Foundation
 	}
 	
 	
-	public static func + (a:Int3, b:Int3) -> Self {
+	public static func + (a:Int3, b:Int3) -> Int3 {
 		return self.init(x: (a.x + b.x), y: (a.y + b.y), z: (a.z + b.z))
 	}
 	public static func += (v:inout Int3, o:Int3) {
@@ -248,5 +250,28 @@ import Foundation
 		
 		Error.conversionToIntMaxDoesntMakeSenseForVectors.trap()
 		return IntMax(0)
+	}
+}
+
+
+extension Int3 : _ObjectiveCBridgeable
+{
+	public typealias _ObjectiveCType = Int3_ObjC
+	
+	public func _bridgeToObjectiveC() -> _ObjectiveCType {
+		return _ObjectiveCType(x: self.x, y: self.y, z: self.z)
+	}
+	
+	public static func _forceBridgeFromObjectiveC(_ source:_ObjectiveCType, result:inout Int3?) {
+		result = Int3(x: source.x, y: source.y, z: source.z)
+	}
+	
+	public static func _conditionallyBridgeFromObjectiveC(_ source:_ObjectiveCType, result:inout Int3?) -> Bool {
+		result = Int3(x: source.x, y: source.y, z: source.z)
+		return true
+	}
+	
+	public static func _unconditionallyBridgeFromObjectiveC(_ source:_ObjectiveCType?) -> Int3 {
+		return Int3(x: source!.x, y: source!.y, z: source!.z)
 	}
 }
