@@ -90,15 +90,11 @@ public struct Int3
 		return self.clamped(range.lowerBound, range.upperBound - Int3(1))
 	}
 	
-	public mutating func clamp(_ min:Int3, _ max:Int3) {
-		self.x = Swift.max(min.x, Swift.min(max.x, self.x))
-		self.y = Swift.max(min.y, Swift.min(max.y, self.y))
-		self.z = Swift.max(min.z, Swift.min(max.z, self.z))
+	public mutating func clamp(_ minValue:Int3, _ maxValue:Int3) {
+		self = max(minValue, min(maxValue, self))
 	}
-	public func clamped(_ min:Int3, _ max:Int3) -> Int3 {
-		var value = Int3(self.x, self.y, self.z)
-		value.clamp(min, max)
-		return value
+	public func clamped(_ minValue:Int3, _ maxValue:Int3) -> Int3 {
+		return max(minValue, min(maxValue, self))
 	}
 	
 	
@@ -111,6 +107,42 @@ public struct Int3
 			min.z + Int(arc4random_uniform(UInt32(max.z - min.z + 1)))
 		)
 	}
+}
+
+
+// MARK: Element-wise `min`/`max`
+
+public func min(_ a:Int3, _ b:Int3) -> Int3 {
+	return Int3(
+		x: (b.x < a.x) ? b.x : a.x,
+		y: (b.y < a.y) ? b.y : a.y,
+		z: (b.z < a.z) ? b.z : a.z
+	)
+}
+public func min(_ a:Int3, _ b:Int3, _ c:Int3, _ rest:Int3...) -> Int3 {
+	var minValue = min(min(a, b), c)
+	for value in rest {
+		if value.x < minValue.x { minValue.x = value.x }
+		if value.y < minValue.y { minValue.y = value.y }
+		if value.z < minValue.z { minValue.z = value.z }
+	}
+	return minValue
+}
+public func max(_ a:Int3, _ b:Int3) -> Int3 {
+	return Int3(
+		x: (b.x > a.x) ? b.x : a.x,
+		y: (b.y > a.y) ? b.y : a.y,
+		z: (b.z > a.z) ? b.z : a.z
+	)
+}
+public func max(_ a:Int3, _ b:Int3, _ c:Int3, _ rest:Int3...) -> Int3 {
+	var maxValue = max(max(a, b), c)
+	for value in rest {
+		if value.x > maxValue.x { maxValue.x = value.x }
+		if value.y > maxValue.y { maxValue.y = value.y }
+		if value.z > maxValue.z { maxValue.z = value.z }
+	}
+	return maxValue
 }
 
 
