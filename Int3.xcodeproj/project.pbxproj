@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAC5EDCC1E550B1900E116B3 /* Int3.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.m */; };
+		FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC5EDCA1E550B1900E116B3 /* Int3.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		OBJ_18 /* Int3.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Int3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		OBJ_12 /* Int3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Int3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		FAC5EDCA1E550B1900E116B3 /* Int3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Int3.h; sourceTree = "<group>"; };
+		FAC5EDCB1E550B1900E116B3 /* Int3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Int3.m; sourceTree = "<group>"; };
+		OBJ_12 /* Int3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Int3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_9 /* Int3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +48,6 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_10 /* Tests */,
 				OBJ_11 /* Products */,
@@ -64,6 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* Int3.swift */,
+				FAC5EDCA1E550B1900E116B3 /* Int3.h */,
+				FAC5EDCB1E550B1900E116B3 /* Int3.m */,
 			);
 			name = Int3;
 			path = Sources;
@@ -71,11 +75,23 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		FAC5EDD51E550BEA00E116B3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		OBJ_13 /* Int3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_14 /* Build configuration list for PBXNativeTarget "Int3" */;
 			buildPhases = (
+				FAC5EDD51E550BEA00E116B3 /* Headers */,
 				OBJ_17 /* Sources */,
 				OBJ_19 /* Frameworks */,
 			);
@@ -95,6 +111,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					OBJ_13 = {
+						LastSwiftMigration = 0820;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Int3" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -119,6 +140,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_18 /* Int3.swift in Sources */,
+				FAC5EDCC1E550B1900E116B3 /* Int3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +150,8 @@
 		OBJ_15 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -141,6 +165,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Int3;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGET_NAME = Int3;
 			};
 			name = Debug;
@@ -148,6 +173,8 @@
 		OBJ_16 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -181,7 +208,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				USE_HEADERMAP = NO;
@@ -202,7 +229,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 3.0;
 				USE_HEADERMAP = NO;
