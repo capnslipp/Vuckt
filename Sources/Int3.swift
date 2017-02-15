@@ -286,6 +286,7 @@ extension Int3 : IntegerArithmetic
 }
 
 
+#if !SWIFT_PACKAGE
 extension Int3 : _ObjectiveCBridgeable
 {
 	public func _bridgeToObjectiveC() -> NSValue {
@@ -317,3 +318,4 @@ extension Int3 : _ObjectiveCBridgeable
 		return result
 	}
 }
+#endif // !SWIFT_PACKAGE
