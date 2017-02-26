@@ -16,22 +16,22 @@ public struct Int3
 	
 	/// Initialize to the zero vector.
 	public init() {
-		(self.x, self.y, self.z) = ( 0, 0, 0 )
+		self.init(0)
 	}
 	
 	/// Initialize a vector with the specified elements.
 	public init(_ x:Int, _ y:Int, _ z:Int) {
-		self.init(x: x, y: y, z: z)
+		self.init(tuple: ( x, y, z ))
 	}
 	
 	/// Initialize a vector with the specified elements.
 	public init(x:Int, y:Int, z:Int) {
-		(self.x, self.y, self.z) = ( x, y, z )
+		self.init(tuple: ( x, y, z ))
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
 	public init(_ scalar:Int) {
-		(self.x, self.y, self.z) = ( scalar, scalar, scalar )
+		self.init(tuple: ( scalar, scalar, scalar ))
 	}
 	
 	/// Initialize to a vector with elements taken from `array`.
@@ -39,7 +39,12 @@ public struct Int3
 	/// - Precondition: `array` must have exactly three elements.
 	public init(array:[Int]) {
 		precondition(array.count == 3)
-		(self.x, self.y, self.z) = ( array[0], array[1], array[2] )
+		self.init(tuple: ( array[0], array[1], array[2] ))
+	}
+	
+	/// Initialize using the given 3-element tuple.
+	public init(tuple:(x:Int,y:Int,z:Int)) {
+		( self.x, self.y, self.z ) = ( tuple.x, tuple.y, tuple.z )
 	}
 	
 	
@@ -106,6 +111,13 @@ public struct Int3
 			min.y + Int(arc4random_uniform(UInt32(max.y - min.y + 1))),
 			min.z + Int(arc4random_uniform(UInt32(max.z - min.z + 1)))
 		)
+	}
+	
+	
+	// MARK: `asTuple` Functionality
+	
+	public var asTuple:(x:Int,y:Int,z:Int) {
+		return ( self.x, self.y, self.z )
 	}
 }
 
