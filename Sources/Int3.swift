@@ -25,8 +25,8 @@ public struct Int3
 	}
 	
 	/// Initialize a vector with the specified elements.
-	public init(x:Int, y:Int, z:Int) {
-		self.init(tuple: ( x, y, z ))
+	public init(x:Int?=nil, y:Int?=nil, z:Int?=nil) {
+		self.init(x ?? 0, y ?? 0, z ?? 0)
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
