@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA9E2CD31EAD5F2D005C5402 /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD21EAD5F2D005C5402 /* Int2.swift */; };
+		FA9E2CD61EAD608C005C5402 /* Int2.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.m */; };
+		FA9E2CD71EAD6105005C5402 /* Int2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CD41EAD6053005C5402 /* Int2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAC5EDCC1E550B1900E116B3 /* Int3.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.m */; };
 		FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC5EDCA1E550B1900E116B3 /* Int3.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		OBJ_18 /* Int3.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Int3.swift */; };
@@ -14,6 +17,9 @@
 
 /* Begin PBXFileReference section */
 		FA9E2CBA1EAD5D3E005C5402 /* IntN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntN.h; sourceTree = "<group>"; };
+		FA9E2CD21EAD5F2D005C5402 /* Int2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int2.swift; sourceTree = "<group>"; };
+		FA9E2CD41EAD6053005C5402 /* Int2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Int2.h; sourceTree = "<group>"; };
+		FA9E2CD51EAD608C005C5402 /* Int2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Int2.m; sourceTree = "<group>"; };
 		FAC5EDCA1E550B1900E116B3 /* Int3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Int3.h; sourceTree = "<group>"; };
 		FAC5EDCB1E550B1900E116B3 /* Int3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Int3.m; sourceTree = "<group>"; };
 		OBJ_12 /* IntN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IntN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +73,9 @@
 			isa = PBXGroup;
 			children = (
 				FA9E2CBA1EAD5D3E005C5402 /* IntN.h */,
+				FA9E2CD21EAD5F2D005C5402 /* Int2.swift */,
+				FA9E2CD41EAD6053005C5402 /* Int2.h */,
+				FA9E2CD51EAD608C005C5402 /* Int2.m */,
 				OBJ_9 /* Int3.swift */,
 				FAC5EDCA1E550B1900E116B3 /* Int3.h */,
 				FAC5EDCB1E550B1900E116B3 /* Int3.m */,
@@ -83,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */,
+				FA9E2CD71EAD6105005C5402 /* Int2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +153,8 @@
 			files = (
 				OBJ_18 /* Int3.swift in Sources */,
 				FAC5EDCC1E550B1900E116B3 /* Int3.m in Sources */,
+				FA9E2CD61EAD608C005C5402 /* Int2.m in Sources */,
+				FA9E2CD31EAD5F2D005C5402 /* Int2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
