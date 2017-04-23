@@ -48,6 +48,22 @@ public struct Int3
 	}
 	
 	
+	// MARK: commonly-used “presets”
+	
+	public static let zero = Int3(0)
+	
+	public static let unitPositive = Int3(1)
+	public static let unitNegative = Int3(-1)
+	
+	public static let unitXPositive = Int3(x: 1)
+	public static let unitYPositive = Int3(y: 1)
+	public static let unitZPositive = Int3(z: 1)
+	public static let unitXNegative = Int3(x: -1)
+	public static let unitYNegative = Int3(y: -1)
+	public static let unitZNegative = Int3(z: -1)
+	
+	
+	
 	// MARK: `subscript`-Getter
 	
 	/// Access individual elements of the vector via subscript.
