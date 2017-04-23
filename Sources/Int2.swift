@@ -47,6 +47,19 @@ public struct Int2
 		self.init(tuple.x, tuple.y)
 	}
 	
+	/// Initialize using an `Int2`'s `x` & `y` values.
+	public init(xy:Int3) {
+		self.init(xy.x, xy.x)
+	}
+	/// Initialize using an `Int2`'s `x` & `z` values.
+	public init(xz:Int3) {
+		self.init(xz.x, xz.z)
+	}
+	/// Initialize using an `Int3`'s `y` & `z` values.
+	public init(yz:Int3) {
+		self.init(yz.y, yz.z)
+	}
+	
 	
 	// MARK: commonly-used “presets”
 	
