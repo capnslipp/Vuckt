@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_13"
-               BuildableName = "Int3.framework"
-               BlueprintName = "Int3"
-               ReferencedContainer = "container:Int3.xcodeproj">
+               BuildableName = "IntN.framework"
+               BlueprintName = "IntN"
+               ReferencedContainer = "container:IntN.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "OBJ_13"
-            BuildableName = "Int3.framework"
-            BlueprintName = "Int3"
-            ReferencedContainer = "container:Int3.xcodeproj">
+            BuildableName = "IntN.framework"
+            BlueprintName = "IntN"
+            ReferencedContainer = "container:IntN.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
