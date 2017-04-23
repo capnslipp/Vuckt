@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Int3'
-  s.version = '1.2.0'
+  s.version = '1.2.1'
   s.summary = 'A Swift µ-Library Providing a 3-Int Vector Type'
   s.description = "A Swift micro-library that provides an Obj-C-compatible Int3 struct type— which is a 3D vector like SCNVector3/GLKVector3/simd.float3, but with Int x/y/z values."
   s.homepage = 'https://github.com/capnslipp/Int3'
