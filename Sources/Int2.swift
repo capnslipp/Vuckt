@@ -49,7 +49,7 @@ public struct Int2
 	
 	/// Initialize using an `Int2`'s `x` & `y` values.
 	public init(xy:Int3) {
-		self.init(xy.x, xy.x)
+		self.init(xy.x, xy.y)
 	}
 	/// Initialize using an `Int2`'s `x` & `z` values.
 	public init(xz:Int3) {
