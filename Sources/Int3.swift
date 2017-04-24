@@ -153,15 +153,15 @@ public struct Int3
 	// MARK: 2-component (`Int2`) Accessors
 	
 	public var xy:Int2 {
-		get { return Int2(self.x, self.y) }
+		get { return Int2(xy: self) }
 		set { ( self.x, self.y ) = ( newValue[0], newValue[1] ) }
 	}
 	public var xz:Int2 {
-		get { return Int2(self.x, self.z) }
+		get { return Int2(xz: self) }
 		set { ( self.x, self.z ) = ( newValue[0], newValue[1] ) }
 	}
 	public var yz:Int2 {
-		get { return Int2(self.y, self.z) }
+		get { return Int2(yz: self) }
 		set { ( self.y, self.z ) = ( newValue[0], newValue[1] ) }
 	}
 }
