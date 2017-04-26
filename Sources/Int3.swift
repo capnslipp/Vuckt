@@ -91,14 +91,6 @@ public struct Int3
 	}
 	
 	
-	// MARK: `NSObject` Conformance
-	
-	/// Debug string representation
-	public var debugDescription:String {
-		return "(\(self.x), \(self.y), \(self.z))"
-	}
-	
-	
 	// MARK: `replace` Functionality
 	
 	public mutating func replace(x:Int?=nil, y:Int?=nil, z:Int?=nil) {
@@ -163,6 +155,14 @@ public struct Int3
 	public var yz:Int2 {
 		get { return Int2(yz: self) }
 		set { ( self.y, self.z ) = ( newValue[0], newValue[1] ) }
+	}
+}
+
+	
+extension Int3 : CustomStringConvertible
+{
+	public var description:String {
+		return "(\(self.x), \(self.y), \(self.z))"
 	}
 }
 

@@ -88,14 +88,6 @@ public struct Int2
 	}
 	
 	
-	// MARK: `NSObject` Conformance
-	
-	/// Debug string representation
-	public var debugDescription:String {
-		return "(\(self.x), \(self.y))"
-	}
-	
-	
 	// MARK: `replace` Functionality
 	
 	public mutating func replace(x:Int?=nil, y:Int?=nil) {
@@ -141,6 +133,14 @@ public struct Int2
 	
 	public var asTuple:(x:Int,y:Int) {
 		return ( self.x, self.y )
+	}
+}
+
+	
+extension Int2 : CustomStringConvertible
+{
+	public var description:String {
+		return "(\(self.x), \(self.y))"
 	}
 }
 
