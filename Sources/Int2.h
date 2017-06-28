@@ -10,7 +10,7 @@
 struct Int2_CStruct {
 	NSInteger x, y;
 };
-typedef struct Int2_CStruct Int2;
+typedef struct Int2_CStruct Int2_C;
 
 static const char *Int2_CStruct_objCTypeEncoding = @encode(struct Int2_CStruct);
 
@@ -18,8 +18,8 @@ static const char *Int2_CStruct_objCTypeEncoding = @encode(struct Int2_CStruct);
 
 @interface NSValue (Int2Additions)
 
-+ (NSValue *)valueWithInt2:(Int2)int2Value;
++ (NSValue *)valueWithInt2:(Int2_C)int2Value;
 
-@property(nonatomic, readonly) Int2 int2Value;
+@property(nonatomic, readonly) Int2_C int2Value;
 
 @end

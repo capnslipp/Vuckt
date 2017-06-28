@@ -9,14 +9,14 @@
 @implementation NSValue (Int3Additions)
 
 
-+ (NSValue *)valueWithInt3:(Int3)int3Value
++ (NSValue *)valueWithInt3:(Int3_C)int3Value
 {
-	return [self valueWithBytes:&int3Value objCType:@encode(Int3)];
+	return [self valueWithBytes:&int3Value objCType:@encode(Int3_C)];
 }
 
-- (Int3)int3Value
+- (Int3_C)int3Value
 {
-	Int3 int3Value;
+	Int3_C int3Value;
 	[self getValue:&int3Value];
 	return int3Value;
 }

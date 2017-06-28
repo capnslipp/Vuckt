@@ -9,14 +9,14 @@
 @implementation NSValue (Int2Additions)
 
 
-+ (NSValue *)valueWithInt2:(Int2)int2Value
++ (NSValue *)valueWithInt2:(Int2_C)int2Value
 {
-	return [self valueWithBytes:&int2Value objCType:@encode(Int2)];
+	return [self valueWithBytes:&int2Value objCType:@encode(Int2_C)];
 }
 
-- (Int2)int2Value
+- (Int2_C)int2Value
 {
-	Int2 int2Value;
+	Int2_C int2Value;
 	[self getValue:&int2Value];
 	return int2Value;
 }
