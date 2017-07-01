@@ -245,7 +245,7 @@ extension Int3 : Comparable
 }
 
 
-extension Int3 : IntegerArithmetic
+extension Int3 // pseudo-IntegerArithmetic
 {
 	private static func doComponentCalculationWithOverflow(
 		_ a:Int3, _ b:Int3,
@@ -327,18 +327,19 @@ extension Int3 : IntegerArithmetic
 	public static prefix func - (v:Int3) -> Int3 {
 		return Int3(0) - v
 	}
+}
+
+
+extension Int3 : Hashable
+{
+	private static let _hashingLargePrimes:[UInt] = [ 982_917_223, 3_572_352_083, 4_259_235_067 ]
 	
-	
-	public func toIntMax() -> IntMax {
-		enum Error : Swift.Error {
-			case conversionToIntMaxDoesntMakeSenseForVectors
-			public func trap() {
-				try! { throw self }()
-			}
+	public var hashValue:Int {
+		let uintHashValue = [ self.x, self.y, self.z ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Int)) in
+			let elementHash = UInt(bitPattern: element.value) &* Int3._hashingLargePrimes[element.index]
+			return hashValue &+ elementHash
 		}
-		
-		Error.conversionToIntMaxDoesntMakeSenseForVectors.trap()
-		return IntMax(0)
+		return Int(bitPattern: uintHashValue)
 	}
 }
 
