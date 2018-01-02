@@ -1,0 +1,4 @@
+language: swift
+xcode_project: IntN.xcodeproj
+xcode_scheme: IntN
+osx_image: xcode9.2
