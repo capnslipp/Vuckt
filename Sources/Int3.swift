@@ -245,7 +245,7 @@ extension Int3 : Comparable
 }
 
 
-extension Int3 // pseudo-IntegerArithmetic
+extension Int3 // pseudo-IntegerArithmetic/FixedWidthInteger
 {
 	private static func doComponentCalculationWithOverflow(
 		_ a:Int3, _ b:Int3,
@@ -263,6 +263,16 @@ extension Int3 // pseudo-IntegerArithmetic
 		)
 	}
 	
+	private static func doComponentCalculationWithOverflow(
+		_ a:Int3, _ b:Int3,
+		componentCalculationMethod:(Int)->(Int)->(Int,overflow:Bool)
+	) -> (Int3,overflow:Bool)
+	{
+		return doComponentCalculationWithOverflow(a, b,
+			componentCalculationMethod: { (a:Int, b:Int) -> (Int,overflow:Bool) in componentCalculationMethod(a)(b) }
+		)
+	}
+	
 	
 	public static func + (a:Int3, b:Int3) -> Int3 {
 		return self.init(x: (a.x + b.x), y: (a.y + b.y), z: (a.z + b.z))
@@ -271,9 +281,19 @@ extension Int3 // pseudo-IntegerArithmetic
 		v = v + o
 	}
 	
-	public static func addWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
-		return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.addWithOverflow)
-	}
+	#if swift(>=4.0)
+		public func addingReportingOverflow(_ other:Int3) -> (partialValue:Int3,overflow:Bool) {
+			return Int3.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.addingReportingOverflow)
+		}
+		
+		public func unsafeAdding(_ other:Int3) -> Int3 {
+			return self.addingReportingOverflow(other).partialValue
+		}
+	#else
+		public static func addWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.addWithOverflow)
+		}
+	#endif
 	
 	
 	public static func - (a:Int3, b:Int3) -> Int3 {
@@ -283,9 +303,19 @@ extension Int3 // pseudo-IntegerArithmetic
 		v = v - o
 	}
 	
-	public static func subtractWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
-		return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.subtractWithOverflow)
-	}
+	#if swift(>=4.0)
+		public func subtractingReportingOverflow(_ other:Int3) -> (partialValue:Int3,overflow:Bool) {
+			return Int3.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.subtractingReportingOverflow)
+		}
+		
+		public func unsafeSubstracting(_ other:Int3) -> Int3 {
+			return self.subtractingReportingOverflow(other).partialValue
+		}
+	#else
+		public static func subtractWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.subtractWithOverflow)
+		}
+	#endif
 	
 	
 	public static func * (a:Int3, b:Int3) -> Int3 {
@@ -295,9 +325,19 @@ extension Int3 // pseudo-IntegerArithmetic
 		v = v * o
 	}
 	
-	public static func multiplyWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
-		return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.multiplyWithOverflow)
-	}
+	#if swift(>=4.0)
+		public func multipliedReportingOverflow(by other:Int3) -> (partialValue:Int3,overflow:Bool) {
+			return Int3.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.multipliedReportingOverflow(by:))
+		}
+		
+		public func unsafeMultiplied(by other:Int3) -> Int3 {
+			return self.multipliedReportingOverflow(by: other).partialValue
+		}
+	#else
+		public static func multiplyWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.multiplyWithOverflow)
+		}
+	#endif
 	
 	
 	public static func / (a:Int3, b:Int3) -> Int3 {
@@ -307,9 +347,19 @@ extension Int3 // pseudo-IntegerArithmetic
 		v = v / o
 	}
 	
-	public static func divideWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
-		return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.divideWithOverflow)
-	}
+	#if swift(>=4.0)
+		public func dividedReportingOverflow(by other:Int3) -> (partialValue:Int3,overflow:Bool) {
+			return Int3.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.dividedReportingOverflow(by:))
+		}
+		
+		public func unsafeDivided(by other:Int3) -> Int3 {
+			return self.dividedReportingOverflow(by: other).partialValue
+		}
+	#else
+		public static func divideWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.divideWithOverflow)
+		}
+	#endif
 	
 	
 	public static func % (a:Int3, b:Int3) -> Int3 {
@@ -319,9 +369,15 @@ extension Int3 // pseudo-IntegerArithmetic
 		v = v % o
 	}
 	
-	public static func remainderWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
-		return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.remainderWithOverflow)
-	}
+	#if swift(>=4.0)
+		public func remainderReportingOverflow(dividingBy other:Int3) -> (partialValue:Int3,overflow:Bool) {
+			return Int3.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.remainderReportingOverflow(dividingBy:))
+		}
+	#else
+		public static func remainderWithOverflow(_ a:Int3, _ b:Int3) -> (Int3,overflow:Bool) {
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.remainderWithOverflow)
+		}
+	#endif
 	
 	
 	public static prefix func - (v:Int3) -> Int3 {

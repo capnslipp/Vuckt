@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_13"
                BuildableName = "IntN.framework"
-               BlueprintName = "IntN"
+               BlueprintName = "IntN - Swift 3"
                ReferencedContainer = "container:IntN.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "OBJ_13"
             BuildableName = "IntN.framework"
-            BlueprintName = "IntN"
+            BlueprintName = "IntN - Swift 3"
             ReferencedContainer = "container:IntN.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
