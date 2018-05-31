@@ -31,6 +31,8 @@
 		FA9E2CD51EAD608C005C5402 /* Int2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Int2.m; sourceTree = "<group>"; };
 		FAC5EDCA1E550B1900E116B3 /* Int3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Int3.h; sourceTree = "<group>"; };
 		FAC5EDCB1E550B1900E116B3 /* Int3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Int3.m; sourceTree = "<group>"; };
+		FAD0BF0620CFBC2200261EE4 /* Int2.swift.gyb */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Int2.swift.gyb; sourceTree = "<group>"; };
+		FAD0BF0720CFBC2B00261EE4 /* Int3.swift.gyb */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Int3.swift.gyb; sourceTree = "<group>"; };
 		OBJ_12 /* IntN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IntN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_9 /* Int3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FAD0BF0820CFBD0200261EE4 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				FA9E2CD21EAD5F2D005C5402 /* Int2.swift */,
+				OBJ_9 /* Int3.swift */,
+			);
+			name = Generated;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,25 +92,17 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* IntN */,
+				FA9E2CBA1EAD5D3E005C5402 /* IntN.h */,
+				FAD0BF0620CFBC2200261EE4 /* Int2.swift.gyb */,
+				FA9E2CD41EAD6053005C5402 /* Int2.h */,
+				FA9E2CD51EAD608C005C5402 /* Int2.m */,
+				FAD0BF0720CFBC2B00261EE4 /* Int3.swift.gyb */,
+				FAC5EDCA1E550B1900E116B3 /* Int3.h */,
+				FAC5EDCB1E550B1900E116B3 /* Int3.m */,
+				FAD0BF0820CFBD0200261EE4 /* Generated */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
-		};
-		OBJ_8 /* IntN */ = {
-			isa = PBXGroup;
-			children = (
-				FA9E2CBA1EAD5D3E005C5402 /* IntN.h */,
-				FA9E2CD21EAD5F2D005C5402 /* Int2.swift */,
-				FA9E2CD41EAD6053005C5402 /* Int2.h */,
-				FA9E2CD51EAD608C005C5402 /* Int2.m */,
-				OBJ_9 /* Int3.swift */,
-				FAC5EDCA1E550B1900E116B3 /* Int3.h */,
-				FAC5EDCB1E550B1900E116B3 /* Int3.m */,
-			);
-			name = IntN;
-			path = Sources;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 

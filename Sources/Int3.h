@@ -7,19 +7,17 @@
 
 
 
-struct Int3_CStruct {
+struct Int3 {
 	NSInteger x, y, z;
 };
-typedef struct Int3_CStruct Int3_C;
-
-static const char *Int3_CStruct_objCTypeEncoding = @encode(struct Int3_CStruct);
+typedef struct Int3 Int3;
 
 
 
 @interface NSValue (Int3Additions)
 
-+ (NSValue *)valueWithInt3:(Int3_C)int3Value;
++ (NSValue *)valueWithInt3:(Int3)int3Value;
 
-@property(nonatomic, readonly) Int3_C int3Value;
+@property(nonatomic, readonly) Int3 int3Value;
 
 @end
