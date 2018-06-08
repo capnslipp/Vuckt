@@ -13,6 +13,8 @@
 		FA32AEAF20BD1C4C008A2111 /* Int3.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.m */; };
 		FA32AEB020BD1C4C008A2111 /* Int2.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.m */; };
 		FA32AEB120BD1C4C008A2111 /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD21EAD5F2D005C5402 /* Int2.swift */; };
+		FA7C2F8120CA1557001A44CF /* IntN.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* IntN.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA7C2F8220CA1561001A44CF /* IntN.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* IntN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9E2CD31EAD5F2D005C5402 /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD21EAD5F2D005C5402 /* Int2.swift */; };
 		FA9E2CD61EAD608C005C5402 /* Int2.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.m */; };
 		FA9E2CD71EAD6105005C5402 /* Int2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CD41EAD6053005C5402 /* Int2.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -106,6 +108,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7C2F8120CA1557001A44CF /* IntN.h in Headers */,
 				FA32AEAB20BD1C4C008A2111 /* Int3.h in Headers */,
 				FA32AEAC20BD1C4C008A2111 /* Int2.h in Headers */,
 			);
@@ -115,6 +118,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7C2F8220CA1561001A44CF /* IntN.h in Headers */,
 				FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */,
 				FA9E2CD71EAD6105005C5402 /* Int2.h in Headers */,
 			);
@@ -236,7 +240,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Sources/$(PRODUCT_NAME).h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IntN;
@@ -262,7 +265,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Sources/$(PRODUCT_NAME).h";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IntN;
 			};
@@ -287,7 +289,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Sources/$(PRODUCT_NAME).h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGET_NAME = IntN;
@@ -313,7 +314,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Sources/$(PRODUCT_NAME).h";
 				SWIFT_VERSION = 3.0;
 				TARGET_NAME = IntN;
 			};
