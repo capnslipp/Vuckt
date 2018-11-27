@@ -10,16 +10,18 @@
 		FA32AEAB20BD1C4C008A2111 /* Int3.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC5EDCA1E550B1900E116B3 /* Int3.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA32AEAC20BD1C4C008A2111 /* Int2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CD41EAD6053005C5402 /* Int2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA32AEAE20BD1C4C008A2111 /* Int3.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Int3.swift */; };
-		FA32AEAF20BD1C4C008A2111 /* Int3.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.m */; };
-		FA32AEB020BD1C4C008A2111 /* Int2.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.m */; };
+		FA32AEAF20BD1C4C008A2111 /* Int3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.mm */; };
+		FA32AEB020BD1C4C008A2111 /* Int2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.mm */; };
 		FA32AEB120BD1C4C008A2111 /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD21EAD5F2D005C5402 /* Int2.swift */; };
 		FA7C2F8120CA1557001A44CF /* IntN.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* IntN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA7C2F8220CA1561001A44CF /* IntN.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* IntN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9E2CD31EAD5F2D005C5402 /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD21EAD5F2D005C5402 /* Int2.swift */; };
-		FA9E2CD61EAD608C005C5402 /* Int2.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.m */; };
+		FA9E2CD61EAD608C005C5402 /* Int2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.mm */; };
 		FA9E2CD71EAD6105005C5402 /* Int2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CD41EAD6053005C5402 /* Int2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FAC5EDCC1E550B1900E116B3 /* Int3.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.m */; };
+		FAC5EDCC1E550B1900E116B3 /* Int3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.mm */; };
 		FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC5EDCA1E550B1900E116B3 /* Int3.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAF2646021ADE8B00061D666 /* IntN.pch in Headers */ = {isa = PBXBuildFile; fileRef = FAF2645F21ADE8B00061D666 /* IntN.pch */; };
+		FAF2646121ADE8B00061D666 /* IntN.pch in Headers */ = {isa = PBXBuildFile; fileRef = FAF2645F21ADE8B00061D666 /* IntN.pch */; };
 		OBJ_18 /* Int3.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Int3.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,11 +30,12 @@
 		FA9E2CBA1EAD5D3E005C5402 /* IntN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntN.h; sourceTree = "<group>"; };
 		FA9E2CD21EAD5F2D005C5402 /* Int2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int2.swift; sourceTree = "<group>"; };
 		FA9E2CD41EAD6053005C5402 /* Int2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Int2.h; sourceTree = "<group>"; };
-		FA9E2CD51EAD608C005C5402 /* Int2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Int2.m; sourceTree = "<group>"; };
+		FA9E2CD51EAD608C005C5402 /* Int2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Int2.mm; sourceTree = "<group>"; };
 		FAC5EDCA1E550B1900E116B3 /* Int3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Int3.h; sourceTree = "<group>"; };
-		FAC5EDCB1E550B1900E116B3 /* Int3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Int3.m; sourceTree = "<group>"; };
-		FAD0BF0620CFBC2200261EE4 /* Int2.swift.gyb */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Int2.swift.gyb; sourceTree = "<group>"; };
-		FAD0BF0720CFBC2B00261EE4 /* Int3.swift.gyb */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Int3.swift.gyb; sourceTree = "<group>"; };
+		FAC5EDCB1E550B1900E116B3 /* Int3.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Int3.mm; sourceTree = "<group>"; };
+		FAD0BF0620CFBC2200261EE4 /* Int2.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = Int2.swift.gyb; sourceTree = "<group>"; };
+		FAD0BF0720CFBC2B00261EE4 /* Int3.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = Int3.swift.gyb; sourceTree = "<group>"; };
+		FAF2645F21ADE8B00061D666 /* IntN.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntN.pch; sourceTree = "<group>"; };
 		OBJ_12 /* IntN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IntN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_9 /* Int3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,13 +67,6 @@
 			name = Generated;
 			sourceTree = "<group>";
 		};
-		OBJ_10 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
 		OBJ_11 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_7 /* Sources */,
-				OBJ_10 /* Tests */,
 				OBJ_11 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,13 +87,14 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FAF2645F21ADE8B00061D666 /* IntN.pch */,
 				FA9E2CBA1EAD5D3E005C5402 /* IntN.h */,
 				FAD0BF0620CFBC2200261EE4 /* Int2.swift.gyb */,
 				FA9E2CD41EAD6053005C5402 /* Int2.h */,
-				FA9E2CD51EAD608C005C5402 /* Int2.m */,
+				FA9E2CD51EAD608C005C5402 /* Int2.mm */,
 				FAD0BF0720CFBC2B00261EE4 /* Int3.swift.gyb */,
 				FAC5EDCA1E550B1900E116B3 /* Int3.h */,
-				FAC5EDCB1E550B1900E116B3 /* Int3.m */,
+				FAC5EDCB1E550B1900E116B3 /* Int3.mm */,
 				FAD0BF0820CFBD0200261EE4 /* Generated */,
 			);
 			path = Sources;
@@ -113,6 +109,7 @@
 			files = (
 				FA7C2F8120CA1557001A44CF /* IntN.h in Headers */,
 				FA32AEAB20BD1C4C008A2111 /* Int3.h in Headers */,
+				FAF2646121ADE8B00061D666 /* IntN.pch in Headers */,
 				FA32AEAC20BD1C4C008A2111 /* Int2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +120,7 @@
 			files = (
 				FA7C2F8220CA1561001A44CF /* IntN.h in Headers */,
 				FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */,
+				FAF2646021ADE8B00061D666 /* IntN.pch in Headers */,
 				FA9E2CD71EAD6105005C5402 /* Int2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,8 +202,8 @@
 			buildActionMask = 0;
 			files = (
 				FA32AEAE20BD1C4C008A2111 /* Int3.swift in Sources */,
-				FA32AEAF20BD1C4C008A2111 /* Int3.m in Sources */,
-				FA32AEB020BD1C4C008A2111 /* Int2.m in Sources */,
+				FA32AEAF20BD1C4C008A2111 /* Int3.mm in Sources */,
+				FA32AEB020BD1C4C008A2111 /* Int2.mm in Sources */,
 				FA32AEB120BD1C4C008A2111 /* Int2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,8 +213,8 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_18 /* Int3.swift in Sources */,
-				FAC5EDCC1E550B1900E116B3 /* Int3.m in Sources */,
-				FA9E2CD61EAD608C005C5402 /* Int2.m in Sources */,
+				FAC5EDCC1E550B1900E116B3 /* Int3.mm in Sources */,
+				FA9E2CD61EAD608C005C5402 /* Int2.mm in Sources */,
 				FA9E2CD31EAD5F2D005C5402 /* Int2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +323,7 @@
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -350,8 +349,10 @@
 				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = Sources/IntN.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -374,6 +375,7 @@
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -397,8 +399,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREFIX_HEADER = Sources/IntN.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

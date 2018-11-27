@@ -6,6 +6,15 @@
 
 
 
+static_assert(sizeof(Int3) == sizeof(simd_int3),
+	"Int3's size does not match simd_int3's on this platform.");
+static_assert(sizeof_member(Int3, x) == sizeof_member(simd_int3, x),
+	"Int3's first member's size does not match simd_int3's first member's on this platform.");
+static_assert(alignof(Int3) == alignof(simd_int3),
+	"Int3's alignment requirements does not match simd_int3's on this platform.");
+
+
+
 @implementation NSValue (Int3Additions)
 
 
