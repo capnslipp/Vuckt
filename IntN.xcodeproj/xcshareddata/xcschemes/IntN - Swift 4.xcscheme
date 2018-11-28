@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FAED6C2A21B32E370083A2B5"
+               BuildableName = "IntNTests.xctest"
+               BlueprintName = "IntNTests"
+               ReferencedContainer = "container:IntN.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FA32AEA920BD1C4C008A2111"
+            BuildableName = "IntN.framework"
+            BlueprintName = "IntN - Swift 4"
+            ReferencedContainer = "container:IntN.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
