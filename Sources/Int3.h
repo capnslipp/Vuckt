@@ -8,6 +8,10 @@
 
 
 
+NS_ASSUME_NONNULL_BEGIN
+
+
+
 struct Int3 {
 	simd_int1 x, y, z;
 } __attribute__((aligned(__alignof__(simd_int3))));
@@ -35,3 +39,7 @@ NS_INLINE Int3 Int3FromSimd(simd_int3 simdValue) {
 @property(nonatomic, readonly) Int3 int3Value;
 
 @end
+
+
+
+NS_ASSUME_NONNULL_END
