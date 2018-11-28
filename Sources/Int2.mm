@@ -6,6 +6,8 @@
 
 
 
+#pragma mark Struct↔SIMD Data Size/Alignment Sanity Checks
+
 static_assert(sizeof(Int2) == sizeof(simd_int2),
 	"Int2's size does not match simd_int2's on this platform.");
 static_assert(sizeof_member(Int2, x) == sizeof_member(simd_int2, x),
@@ -14,6 +16,8 @@ static_assert(alignof(Int2) == alignof(simd_int2),
 	"Int2's alignment requirements does not match simd_int2's on this platform.");
 
 
+
+#pragma mark `NSValue`-Wrapping
 
 @implementation NSValue (Int2Additions)
 
