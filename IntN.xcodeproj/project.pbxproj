@@ -167,9 +167,9 @@
 			productReference = FA32AEB620BD1C4C008A2111 /* IntN.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FAED6C2A21B32E370083A2B5 /* IntNTests */ = {
+		FAED6C2A21B32E370083A2B5 /* IntNTests - macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "IntNTests" */;
+			buildConfigurationList = FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "IntNTests - macOS" */;
 			buildPhases = (
 				FAED6C2721B32E370083A2B5 /* Sources */,
 				FAED6C2821B32E370083A2B5 /* Frameworks */,
@@ -179,7 +179,7 @@
 			);
 			dependencies = (
 			);
-			name = IntNTests;
+			name = "IntNTests - macOS";
 			productName = Tests;
 			productReference = FAED6C2B21B32E370083A2B5 /* IntNTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -236,7 +236,7 @@
 			targets = (
 				OBJ_13 /* IntN - Swift 3 */,
 				FA32AEA920BD1C4C008A2111 /* IntN - Swift 4 */,
-				FAED6C2A21B32E370083A2B5 /* IntNTests */,
+				FAED6C2A21B32E370083A2B5 /* IntNTests - macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -369,8 +369,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.2;
+				TARGET_NAME = IntNTests;
 			};
 			name = Debug;
 		};
@@ -406,7 +408,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_VERSION = 4.2;
+				TARGET_NAME = IntNTests;
 			};
 			name = Release;
 		};
@@ -572,7 +576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "IntNTests" */ = {
+		FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "IntNTests - macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAED6C3321B32E370083A2B5 /* Debug */,

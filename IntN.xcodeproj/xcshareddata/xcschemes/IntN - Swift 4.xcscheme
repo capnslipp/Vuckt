@@ -34,7 +34,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FAED6C2A21B32E370083A2B5"
                BuildableName = "IntNTests.xctest"
-               BlueprintName = "IntNTests"
+               BlueprintName = "IntNTests - macOS"
                ReferencedContainer = "container:IntN.xcodeproj">
             </BuildableReference>
          </TestableReference>
