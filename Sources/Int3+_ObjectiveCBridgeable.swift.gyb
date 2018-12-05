@@ -1,0 +1,17 @@
+// IntN
+// @author: Slipp Douglas Thompson
+// @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
+
+#if _runtime(_ObjC)
+
+fileprivate let Int3InNSValueObjCType = NSValue(int3: Int3()).objCType
+
+%{ from gyb_foundation_support import ObjectiveCBridgeableImplementationForNSValueWithCategoryMethods }%
+${ ObjectiveCBridgeableImplementationForNSValueWithCategoryMethods(
+  Type="Int3",
+  initializer="{ NSValue(int3: $0) }",
+  getter="{ $0.int3Value }",
+  objCType="{ _ in Int3InNSValueObjCType }",
+) }
+
+#endif // _runtime(_ObjC)
