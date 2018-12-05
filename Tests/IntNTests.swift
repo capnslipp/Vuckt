@@ -64,6 +64,95 @@ class IntNTests : XCTestCase
 		}
 	}
 	
+	func testEquality()
+	{
+		XCTAssertTrue(
+			Int2(1, 2) == Int2(1, 2)
+		)
+		XCTAssertTrue(
+			Int3(1, 2, 3) == Int3(1, 2, 3)
+		)
+		
+		XCTAssertTrue(
+			Int2(1, 2) != Int2(10, 20)
+		)
+		XCTAssertTrue(
+			Int3(1, 2, 3) != Int3(10, 20, 30)
+		)
+	}
+	
+	func testAddMath()
+	{
+		XCTAssertEqual(
+			Int2(1, 2) + Int2(-10, -20),
+			Int2(-9, -18)
+		)
+		XCTAssertEqual(
+			Int3(1, 2, 3) + Int3(-10, -20, -30),
+			Int3(-9, -18, -27)
+		)
+	}
+	
+	func testSubtractMath()
+	{
+		XCTAssertEqual(
+			Int2(1, 2) - Int2(-10, -20),
+			Int2(11, 22)
+		)
+		XCTAssertEqual(
+			Int3(1, 2, 3) - Int3(-10, -20, -30),
+			Int3(11, 22, 33)
+		)
+	}
+	
+	func testMultiplyMath()
+	{
+		XCTAssertEqual(
+			Int2(1, 2) * Int2(-10, -20),
+			Int2(-10, -40)
+		)
+		XCTAssertEqual(
+			Int3(1, 2, 3) * Int3(-10, -20, -30),
+			Int3(-10, -40, -90)
+		)
+	}
+	
+	func testDivideMath()
+	{
+		XCTAssertEqual(
+			Int2(-10, -20) / Int2(2, 3),
+			Int2(-5, -6)
+		)
+		XCTAssertEqual(
+			Int3(-10, -20, -30) / Int3(2, 3, 4),
+			Int3(-5, -6, -7)
+		)
+	}
+	
+	func testModulusMath()
+	{
+		XCTAssertEqual(
+			Int2(-10, -20) % Int2(2, 3),
+			Int2(0, -2)
+		)
+		XCTAssertEqual(
+			Int3(-10, -20, -30) % Int3(2, 3, 4),
+			Int3(0, -2, -2)
+		)
+	}
+	
+	func testNegationMath()
+	{
+		XCTAssertEqual(
+			-Int2(1, 2),
+			Int2(-1, -2)
+		)
+		XCTAssertEqual(
+			-Int3(1, 2, 3),
+			Int3(-1, -2, -3)
+		)
+	}
+	
 	func testPerformanceExample()
 	{
 		// This is an example of a performance test case.

@@ -239,7 +239,7 @@ extension Int3 : ExpressibleByArrayLiteral
 extension Int3 : Equatable
 {
 	public static func ==(a:Int3, b:Int3) -> Bool {
-		return a.x == b.x && a.y == b.y && a.z == b.z
+		return a.simdValue == b.simdValue
 	}
 }
 
@@ -294,7 +294,7 @@ extension Int3 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func + (a:Int3, b:Int3) -> Int3 {
-		return self.init(x: (a.x + b.x), y: (a.y + b.y), z: (a.z + b.z))
+		return Int3(a.simdValue &+ b.simdValue)
 	}
 	public static func += (v:inout Int3, o:Int3) {
 		v = v + o
@@ -316,7 +316,7 @@ extension Int3 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func - (a:Int3, b:Int3) -> Int3 {
-		return Int3(a.x - b.x, a.y - b.y, a.z - b.z)
+		return Int3(a.simdValue &- b.simdValue)
 	}
 	public static func -= (v:inout Int3, o:Int3) {
 		v = v - o
@@ -338,7 +338,7 @@ extension Int3 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func * (a:Int3, b:Int3) -> Int3 {
-		return Int3(a.x * b.x, a.y * b.y, a.z * b.z)
+		return Int3(a.simdValue &* b.simdValue)
 	}
 	public static func *= (v:inout Int3, o:Int3) {
 		v = v * o
@@ -360,7 +360,7 @@ extension Int3 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func / (a:Int3, b:Int3) -> Int3 {
-		return Int3(a.x / b.x, a.y / b.y, a.z / b.z)
+		return Int3(a.simdValue / b.simdValue)
 	}
 	public static func /= (v:inout Int3, o:Int3) {
 		v = v / o
@@ -400,7 +400,7 @@ extension Int3 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static prefix func - (v:Int3) -> Int3 {
-		return Int3(0) - v
+		return Int3(-v.simdValue)
 	}
 }
 
