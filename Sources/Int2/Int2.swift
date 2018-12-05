@@ -47,17 +47,38 @@ extension Int2
 		self.init(tuple.x, tuple.y)
 	}
 	
-	/// Initialize using an `Int2`'s `x` & `y` values.
+	/// Initialize using a different `IntN`'s `x` & `y` values.
 	public init(xy:Int3) {
 		self.init(xy.x, xy.y)
 	}
-	/// Initialize using an `Int2`'s `x` & `z` values.
+	public init(xy:Int4) {
+		self.init(xy.x, xy.y)
+	}
+	/// Initialize using a different `IntN`'s `x` & `z` values.
 	public init(xz:Int3) {
 		self.init(xz.x, xz.z)
 	}
-	/// Initialize using an `Int3`'s `y` & `z` values.
+	public init(xz:Int4) {
+		self.init(xz.x, xz.z)
+	}
+	/// Initialize using a different `IntN`'s `y` & `z` values.
 	public init(yz:Int3) {
 		self.init(yz.y, yz.z)
+	}
+	public init(yz:Int4) {
+		self.init(yz.y, yz.z)
+	}
+	/// Initialize using an `Int4`'s `x` & `w` values.
+	public init(xw:Int4) {
+		self.init(xw.x, xw.w)
+	}
+	/// Initialize using an `Int4`'s `y` & `w` values.
+	public init(yw:Int4) {
+		self.init(yw.y, yw.w)
+	}
+	/// Initialize using an `Int4`'s `z` & `w` values.
+	public init(zw:Int4) {
+		self.init(zw.z, zw.w)
 	}
 	
 	
@@ -209,19 +230,19 @@ extension Int2 : Equatable
 extension Int2 : Comparable
 {
 	public static func < (a:Int2, b:Int2) -> Bool {
-		return a.x < b.x && a.y < b.y
+		return (a.x < b.x) && (a.y < b.y)
 	}
 	
 	public static func <= (a:Int2, b:Int2) -> Bool {
-		return a.x <= b.x && a.y <= b.y
+		return (a.x <= b.x) && (a.y <= b.y)
 	}
 	
 	public static func > (a:Int2, b:Int2) -> Bool {
-		return a.x > b.x && a.y > b.y
+		return (a.x > b.x) && (a.y > b.y)
 	}
 	
 	public static func >= (a:Int2, b:Int2) -> Bool {
-		return a.x >= b.x && a.y >= b.y
+		return (a.x >= b.x) && (a.y >= b.y)
 	}
 }
 

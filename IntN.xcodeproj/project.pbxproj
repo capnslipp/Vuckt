@@ -19,6 +19,14 @@
 		FA3E5E4D21B7C3880073FA6D /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0620CFBC2200261EE4 /* Int2.swift */; };
 		FA3E5E4E21B7C38B0073FA6D /* Int3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0720CFBC2B00261EE4 /* Int3.swift */; };
 		FA3E5E4F21B7C38C0073FA6D /* Int3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0720CFBC2B00261EE4 /* Int3.swift */; };
+		FA3E5E5521B88F990073FA6D /* Int4.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E5421B88F990073FA6D /* Int4.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E5E5621B88F990073FA6D /* Int4.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E5421B88F990073FA6D /* Int4.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E5E5821B88FAC0073FA6D /* Int4.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5721B88FAC0073FA6D /* Int4.mm */; };
+		FA3E5E5921B88FAC0073FA6D /* Int4.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5721B88FAC0073FA6D /* Int4.mm */; };
+		FA3E5E5B21B8900B0073FA6D /* Int4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5A21B8900B0073FA6D /* Int4.swift */; };
+		FA3E5E5C21B8900B0073FA6D /* Int4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5A21B8900B0073FA6D /* Int4.swift */; };
+		FA3E5E5F21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5E21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift */; };
+		FA3E5E6021B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5E21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift */; };
 		FA59C00B21B3529200799899 /* IntN.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* IntN.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA59C00C21B353EA00799899 /* IntN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* IntN.framework */; };
 		FA7C2F8120CA1557001A44CF /* IntN.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* IntN.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +61,11 @@
 		FA3E5E4521B7C2980073FA6D /* Int3+_ObjectiveCBridgeable.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Int3+_ObjectiveCBridgeable.swift.gyb"; sourceTree = "<group>"; };
 		FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int3+_ObjectiveCBridgeable.swift"; path = "Int3/Int3+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
 		FA3E5E4721B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int2+_ObjectiveCBridgeable.swift"; path = "Int2/Int2+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
+		FA3E5E5421B88F990073FA6D /* Int4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Int4.h; sourceTree = "<group>"; };
+		FA3E5E5721B88FAC0073FA6D /* Int4.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Int4.mm; sourceTree = "<group>"; };
+		FA3E5E5A21B8900B0073FA6D /* Int4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int4.swift; sourceTree = "<group>"; };
+		FA3E5E5D21B890200073FA6D /* Int4+_ObjectiveCBridgeable.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Int4+_ObjectiveCBridgeable.swift.gyb"; sourceTree = "<group>"; };
+		FA3E5E5E21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int4+_ObjectiveCBridgeable.swift"; path = "Int4/Int4+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
 		FA9E2CBA1EAD5D3E005C5402 /* IntN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntN.h; sourceTree = "<group>"; };
 		FA9E2CD41EAD6053005C5402 /* Int2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Int2.h; sourceTree = "<group>"; };
 		FA9E2CD51EAD608C005C5402 /* Int2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Int2.mm; sourceTree = "<group>"; };
@@ -123,11 +136,23 @@
 			path = Int3;
 			sourceTree = "<group>";
 		};
+		FA3E5E5321B88F720073FA6D /* Int4 */ = {
+			isa = PBXGroup;
+			children = (
+				FA3E5E5421B88F990073FA6D /* Int4.h */,
+				FA3E5E5721B88FAC0073FA6D /* Int4.mm */,
+				FA3E5E5A21B8900B0073FA6D /* Int4.swift */,
+				FA3E5E5D21B890200073FA6D /* Int4+_ObjectiveCBridgeable.swift.gyb */,
+			);
+			path = Int4;
+			sourceTree = "<group>";
+		};
 		FAD0BF0820CFBD0200261EE4 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
 				FA3E5E4721B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift */,
 				FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */,
+				FA3E5E5E21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift */,
 			);
 			name = Generated;
 			sourceTree = "<group>";
@@ -168,6 +193,7 @@
 				FA9E2CBA1EAD5D3E005C5402 /* IntN.h */,
 				FA3E5E5021B88B550073FA6D /* Int2 */,
 				FA3E5E5121B88B9A0073FA6D /* Int3 */,
+				FA3E5E5321B88F720073FA6D /* Int4 */,
 				FAD0BF0820CFBD0200261EE4 /* Generated */,
 			);
 			path = Sources;
@@ -180,6 +206,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3E5E5621B88F990073FA6D /* Int4.h in Headers */,
 				FA7C2F8120CA1557001A44CF /* IntN.h in Headers */,
 				FA32AEAB20BD1C4C008A2111 /* Int3.h in Headers */,
 				FAF2646121ADE8B00061D666 /* IntN.pch in Headers */,
@@ -191,6 +218,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3E5E5521B88F990073FA6D /* Int4.h in Headers */,
 				FA7C2F8220CA1561001A44CF /* IntN.h in Headers */,
 				FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */,
 				FAF2646021ADE8B00061D666 /* IntN.pch in Headers */,
@@ -340,10 +368,13 @@
 			files = (
 				FA32AEAF20BD1C4C008A2111 /* Int3.mm in Sources */,
 				FA32AEB020BD1C4C008A2111 /* Int2.mm in Sources */,
+				FA3E5E6021B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift in Sources */,
 				FA3E5E4C21B7C3870073FA6D /* Int2.swift in Sources */,
 				FA3E5E4B21B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift in Sources */,
+				FA3E5E5C21B8900B0073FA6D /* Int4.swift in Sources */,
 				FA3E5E4921B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */,
 				FA3E5E4E21B7C38B0073FA6D /* Int3.swift in Sources */,
+				FA3E5E5921B88FAC0073FA6D /* Int4.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,10 +400,13 @@
 			files = (
 				FAC5EDCC1E550B1900E116B3 /* Int3.mm in Sources */,
 				FA9E2CD61EAD608C005C5402 /* Int2.mm in Sources */,
+				FA3E5E5F21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift in Sources */,
 				FA3E5E4D21B7C3880073FA6D /* Int2.swift in Sources */,
 				FA3E5E4A21B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift in Sources */,
+				FA3E5E5B21B8900B0073FA6D /* Int4.swift in Sources */,
 				FA3E5E4821B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */,
 				FA3E5E4F21B7C38C0073FA6D /* Int3.swift in Sources */,
+				FA3E5E5821B88FAC0073FA6D /* Int4.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

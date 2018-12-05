@@ -21,6 +21,12 @@ class IntNTests : XCTestCase
 		Int3(Int32.min, Int32.max, Int32.min),
 		Int3(-179_424_719, 2_038_074_503, -982_450_327),
 	]
+	let _int4TestValues:[Int4] = [
+		Int4(0, 0, 0, 0),
+		Int4(1, 2, 3, 4),
+		Int4(Int32.min, Int32.max, Int32.min, Int32.max),
+		Int4(-179_424_719, 2_038_074_503, -982_450_327, 454_923_701),
+	]
 	
 	
 	override func setUp()
@@ -47,6 +53,12 @@ class IntNTests : XCTestCase
 			let value = nsValue.int3Value
 			XCTAssertEqual($0, value)
 		}
+		
+		_int4TestValues.forEach{
+			let nsValue = NSValue(int4: $0)
+			let value = nsValue.int4Value
+			XCTAssertEqual($0, value)
+		}
 	}
 	
 	func testSIMDRountripping()
@@ -62,6 +74,12 @@ class IntNTests : XCTestCase
 			let value = Int3(simdValue)
 			XCTAssertEqual($0, value)
 		}
+		
+		_int4TestValues.forEach{
+			let simdValue = $0.simdValue
+			let value = Int4(simdValue)
+			XCTAssertEqual($0, value)
+		}
 	}
 	
 	func testEquality()
@@ -72,12 +90,18 @@ class IntNTests : XCTestCase
 		XCTAssertTrue(
 			Int3(1, 2, 3) == Int3(1, 2, 3)
 		)
+		XCTAssertTrue(
+			Int4(1, 2, 3, 4) == Int4(1, 2, 3, 4)
+		)
 		
 		XCTAssertTrue(
 			Int2(1, 2) != Int2(10, 20)
 		)
 		XCTAssertTrue(
 			Int3(1, 2, 3) != Int3(10, 20, 30)
+		)
+		XCTAssertTrue(
+			Int4(1, 2, 3, 4) != Int4(10, 20, 30, 40)
 		)
 	}
 	
@@ -91,6 +115,10 @@ class IntNTests : XCTestCase
 			Int3(1, 2, 3) + Int3(-10, -20, -30),
 			Int3(-9, -18, -27)
 		)
+		XCTAssertEqual(
+			Int4(1, 2, 3, 4) + Int4(-10, -20, -30, -40),
+			Int4(-9, -18, -27, -36)
+		)
 	}
 	
 	func testSubtractMath()
@@ -102,6 +130,10 @@ class IntNTests : XCTestCase
 		XCTAssertEqual(
 			Int3(1, 2, 3) - Int3(-10, -20, -30),
 			Int3(11, 22, 33)
+		)
+		XCTAssertEqual(
+			Int4(1, 2, 3, 4) - Int4(-10, -20, -30, -40),
+			Int4(11, 22, 33, 44)
 		)
 	}
 	
@@ -115,6 +147,10 @@ class IntNTests : XCTestCase
 			Int3(1, 2, 3) * Int3(-10, -20, -30),
 			Int3(-10, -40, -90)
 		)
+		XCTAssertEqual(
+			Int4(1, 2, 3, 4) * Int4(-10, -20, -30, -40),
+			Int4(-10, -40, -90, -160)
+		)
 	}
 	
 	func testDivideMath()
@@ -126,6 +162,10 @@ class IntNTests : XCTestCase
 		XCTAssertEqual(
 			Int3(-10, -20, -30) / Int3(2, 3, 4),
 			Int3(-5, -6, -7)
+		)
+		XCTAssertEqual(
+			Int4(-10, -20, -30, -40) / Int4(2, 3, 4, 5),
+			Int4(-5, -6, -7, -8)
 		)
 	}
 	
@@ -139,6 +179,10 @@ class IntNTests : XCTestCase
 			Int3(-10, -20, -30) % Int3(2, 3, 4),
 			Int3(0, -2, -2)
 		)
+		XCTAssertEqual(
+			Int4(-10, -20, -30, -40) % Int4(2, 3, 4, 5),
+			Int4(0, -2, -2, 0)
+		)
 	}
 	
 	func testNegationMath()
@@ -150,6 +194,10 @@ class IntNTests : XCTestCase
 		XCTAssertEqual(
 			-Int3(1, 2, 3),
 			Int3(-1, -2, -3)
+		)
+		XCTAssertEqual(
+			-Int4(1, 2, 3, 4),
+			Int4(-1, -2, -3, -4)
 		)
 	}
 	

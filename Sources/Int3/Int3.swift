@@ -72,6 +72,23 @@ extension Int3
 		self.init(x ?? 0, yz[0], yz[1])
 	}
 	
+	/// Initialize using an `Int4`'s `x`, `y`, `z` values.
+	public init(xyz:Int4) {
+		self.init(xyz.x, xyz.y, xyz.z)
+	}
+	/// Initialize using an `Int4`'s `x`, `y`, `w` values.
+	public init(xyw:Int4) {
+		self.init(xyw.x, xyw.y, xyw.w)
+	}
+	/// Initialize using an `Int4`'s `x`, `z`, `w` values.
+	public init(xzw:Int4) {
+		self.init(xzw.x, xzw.z, xzw.w)
+	}
+	/// Initialize using an `Int4`'s `y`, `z`, `w` values.
+	public init(yzw:Int4) {
+		self.init(yzw.y, yzw.z, yzw.w)
+	}
+	
 	
 	// MARK: commonly-used “presets”
 	
@@ -247,19 +264,19 @@ extension Int3 : Equatable
 extension Int3 : Comparable
 {
 	public static func < (a:Int3, b:Int3) -> Bool {
-		return a.x < b.x && a.y < b.y && a.z < b.z
+		return (a.x < b.x) && (a.y < b.y) && (a.z < b.z)
 	}
 	
 	public static func <= (a:Int3, b:Int3) -> Bool {
-		return a.x <= b.x && a.y <= b.y && a.z <= b.z
+		return (a.x <= b.x) && (a.y <= b.y) && (a.z <= b.z)
 	}
 	
 	public static func > (a:Int3, b:Int3) -> Bool {
-		return a.x > b.x && a.y > b.y && a.z > b.z
+		return (a.x > b.x) && (a.y > b.y) && (a.z > b.z)
 	}
 	
 	public static func >= (a:Int3, b:Int3) -> Bool {
-		return a.x >= b.x && a.y >= b.y && a.z >= b.z
+		return (a.x >= b.x) && (a.y >= b.y) && (a.z >= b.z)
 	}
 }
 
