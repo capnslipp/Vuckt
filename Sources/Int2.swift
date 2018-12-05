@@ -3,6 +3,7 @@
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
 import Foundation
+import simd
 
 
 
@@ -11,33 +12,38 @@ extension Int2
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
-	public init(_ x:Int, _ y:Int) {
+	public init(_ x:Int32, _ y:Int32) {
 		self.init(x: x, y: y)
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
-	public init(_ scalar:Int) {
+	public init(_ scalar:Int32) {
 		self.init(scalar, scalar)
 	}
 	
 	/// Initialize a vector with the specified elements.
-	public init(x:Int) {
+	public init(x:Int32) {
 		self.init(x, 0)
 	}
-	public init(y:Int) {
+	public init(y:Int32) {
 		self.init(0, y)
+	}
+	
+	/// Initialize to a SIMD vector.
+	public init(_ value:simd.int2) {
+		self = Int2FromSimd(value)
 	}
 	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly two elements.
-	public init(array:[Int]) {
+	public init(array:[Int32]) {
 		precondition(array.count == 2)
 		self.init(array[0], array[1])
 	}
 	
 	/// Initialize using the given 2-element tuple.
-	public init(tuple:(x:Int,y:Int)) {
+	public init(tuple:(x:Int32,y:Int32)) {
 		self.init(tuple.x, tuple.y)
 	}
 	
@@ -72,23 +78,23 @@ extension Int2
 	// MARK: `subscript`-Getter
 	
 	/// Access individual elements of the vector via subscript.
-	public subscript(index:Int) -> Int {
+	public subscript(index:Int32) -> Int32 {
 		switch index {
 			case 0: return self.x
 			case 1: return self.y
 			
-			default: return Int.min // TODO: Instead, do whatever simd.int2 does.
+			default: return Int32.min // TODO: Instead, do whatever simd.int2 does.
 		}
 	}
 	
 	
 	// MARK: `replace` Functionality
 	
-	public mutating func replace(x:Int?=nil, y:Int?=nil) {
+	public mutating func replace(x:Int32?=nil, y:Int32?=nil) {
 		if let xValue = x { self.x = xValue }
 		if let yValue = y { self.y = yValue }
 	}
-	public func replacing(x:Int?=nil, y:Int?=nil) -> Int2 {
+	public func replacing(x:Int32?=nil, y:Int32?=nil) -> Int2 {
 		return Int2(
 			x ?? self.x,
 			y ?? self.y
@@ -117,16 +123,23 @@ extension Int2
 	
 	public static func random(min:Int2=Int2(0), max:Int2) -> Int2 {
 		return Int2(
-			min.x + Int(arc4random_uniform(UInt32(max.x - min.x + 1))),
-			min.y + Int(arc4random_uniform(UInt32(max.y - min.y + 1)))
+			min.x + Int32(arc4random_uniform(UInt32(max.x - min.x + 1))),
+			min.y + Int32(arc4random_uniform(UInt32(max.y - min.y + 1)))
 		)
 	}
 	
 	
 	// MARK: `asTuple` Functionality
 	
-	public var asTuple:(x:Int,y:Int) {
+	public var asTuple:(x:Int32,y:Int32) {
 		return ( self.x, self.y )
+	}
+	
+	
+	// MARK: `simdValue` Functionality
+	
+	public var simdValue:simd.int2 {
+		return Int2ToSimd(self)
 	}
 }
 
@@ -173,12 +186,12 @@ public func max(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
 
 extension Int2 : ExpressibleByArrayLiteral
 {
-	public typealias Element = Int
+	public typealias Element = Int32
 	
 	/// Initialize using `arrayLiteral`.
 	///
 	/// - Precondition: the array literal must exactly two elements.
-	public init(arrayLiteral elements:Int...) {
+	public init(arrayLiteral elements:Int32...) {
 		precondition(elements.count == 2)
 		self.init(elements[0], elements[1])
 	}
@@ -188,7 +201,7 @@ extension Int2 : ExpressibleByArrayLiteral
 extension Int2 : Equatable
 {
 	public static func ==(a:Int2, b:Int2) -> Bool {
-		return a.x == b.x && a.y == b.y
+		return a.simdValue == b.simdValue
 	}
 }
 
@@ -217,7 +230,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 {
 	private static func doComponentCalculationWithOverflow(
 		_ a:Int2, _ b:Int2,
-		componentCalculationMethod:(Int,Int)->(Int,overflow:Bool)
+		componentCalculationMethod:(Int32,Int32)->(Int32,overflow:Bool)
 	) -> (Int2,overflow:Bool)
 	{
 		var result = Int2()
@@ -232,17 +245,17 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	private static func doComponentCalculationWithOverflow(
 		_ a:Int2, _ b:Int2,
-		componentCalculationMethod:(Int)->(Int)->(Int,overflow:Bool)
+		componentCalculationMethod:(Int32)->(Int32)->(Int32,overflow:Bool)
 	) -> (Int2,overflow:Bool)
 	{
 		return doComponentCalculationWithOverflow(a, b,
-			componentCalculationMethod: { (a:Int, b:Int) -> (Int,overflow:Bool) in componentCalculationMethod(a)(b) }
+			componentCalculationMethod: { (a:Int32, b:Int32) -> (Int32,overflow:Bool) in componentCalculationMethod(a)(b) }
 		)
 	}
 	
 	
 	public static func + (a:Int2, b:Int2) -> Int2 {
-		return self.init(x: (a.x + b.x), y: (a.y + b.y))
+		return Int2(a.simdValue &+ b.simdValue)
 	}
 	public static func += (v:inout Int2, o:Int2) {
 		v = v + o
@@ -250,7 +263,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	#if swift(>=4.0)
 		public func addingReportingOverflow(_ other:Int2) -> (partialValue:Int2,overflow:Bool) {
-			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.addingReportingOverflow)
+			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int32.addingReportingOverflow)
 		}
 		
 		public func unsafeAdding(_ other:Int2) -> Int2 {
@@ -258,13 +271,13 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 		}
 	#else
 		public static func addWithOverflow(_ a:Int2, _ b:Int2) -> (Int2,overflow:Bool) {
-			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.addWithOverflow)
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int32.addWithOverflow)
 		}
 	#endif
 	
 	
 	public static func - (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.x - b.x, a.y - b.y)
+		return Int2(a.simdValue &- b.simdValue)
 	}
 	public static func -= (v:inout Int2, o:Int2) {
 		v = v - o
@@ -272,7 +285,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	#if swift(>=4.0)
 		public func subtractingReportingOverflow(_ other:Int2) -> (partialValue:Int2,overflow:Bool) {
-			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.subtractingReportingOverflow)
+			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int32.subtractingReportingOverflow)
 		}
 		
 		public func unsafeSubstracting(_ other:Int2) -> Int2 {
@@ -280,13 +293,13 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 		}
 	#else
 		public static func subtractWithOverflow(_ a:Int2, _ b:Int2) -> (Int2,overflow:Bool) {
-			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.subtractWithOverflow)
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int32.subtractWithOverflow)
 		}
 	#endif
 	
 	
 	public static func * (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.x * b.x, a.y * b.y)
+		return Int2(a.simdValue &* b.simdValue)
 	}
 	public static func *= (v:inout Int2, o:Int2) {
 		v = v * o
@@ -294,7 +307,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	#if swift(>=4.0)
 		public func multipliedReportingOverflow(by other:Int2) -> (partialValue:Int2,overflow:Bool) {
-			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.multipliedReportingOverflow(by:))
+			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int32.multipliedReportingOverflow(by:))
 		}
 		
 		public func unsafeMultiplied(by other:Int2) -> Int2 {
@@ -302,13 +315,13 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 		}
 	#else
 		public static func multiplyWithOverflow(_ a:Int2, _ b:Int2) -> (Int2,overflow:Bool) {
-			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.multiplyWithOverflow)
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int32.multiplyWithOverflow)
 		}
 	#endif
 	
 	
 	public static func / (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.x / b.x, a.y / b.y)
+		return Int2(a.simdValue / b.simdValue)
 	}
 	public static func /= (v:inout Int2, o:Int2) {
 		v = v / o
@@ -316,7 +329,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	#if swift(>=4.0)
 		public func dividedReportingOverflow(by other:Int2) -> (partialValue:Int2,overflow:Bool) {
-			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.dividedReportingOverflow(by:))
+			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int32.dividedReportingOverflow(by:))
 		}
 		
 		public func unsafeDivided(by other:Int2) -> Int2 {
@@ -324,7 +337,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 		}
 	#else
 		public static func divideWithOverflow(_ a:Int2, _ b:Int2) -> (Int2,overflow:Bool) {
-			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.divideWithOverflow)
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int32.divideWithOverflow)
 		}
 	#endif
 	
@@ -338,17 +351,17 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	#if swift(>=4.0)
 		public func remainderReportingOverflow(dividingBy other:Int2) -> (partialValue:Int2,overflow:Bool) {
-			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int.remainderReportingOverflow(dividingBy:))
+			return Int2.doComponentCalculationWithOverflow(self, other, componentCalculationMethod: Int32.remainderReportingOverflow(dividingBy:))
 		}
 	#else
 		public static func remainderWithOverflow(_ a:Int2, _ b:Int2) -> (Int2,overflow:Bool) {
-			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int.remainderWithOverflow)
+			return doComponentCalculationWithOverflow(a, b, componentCalculationMethod: Int32.remainderWithOverflow)
 		}
 	#endif
 	
 	
 	public static prefix func - (v:Int2) -> Int2 {
-		return Int2(0) - v
+		return Int2(-v.simdValue)
 	}
 }
 
@@ -358,8 +371,8 @@ extension Int2 : Hashable
 	private static let _hashingLargePrimes:[UInt] = [ 982_917_223, 3_572_352_083 ]
 	
 	public var hashValue:Int {
-		let uintHashValue = [ self.x, self.y ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Int)) in
-			let elementHash = UInt(bitPattern: element.value) &* Int2._hashingLargePrimes[element.index]
+		let uintHashValue = [ self.x, self.y ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Int32)) in
+			let elementHash = UInt(bitPattern: Int(element.value)) &* Int2._hashingLargePrimes[element.index]
 			return hashValue &+ elementHash
 		}
 		return Int(bitPattern: uintHashValue)
