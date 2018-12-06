@@ -27,6 +27,24 @@ class IntNTests : XCTestCase
 		Int4(Int32.min, Int32.max, Int32.min, Int32.max),
 		Int4(-179_424_719, 2_038_074_503, -982_450_327, 454_923_701),
 	]
+	let _float2TestValues:[Float2] = [
+		Float2(0, 0),
+		Float2(1, 2),
+		Float2(Float.infinity, Float.leastNonzeroMagnitude),
+		Float2(-179_424_719, 2_038_074_503),
+	]
+	let _float3TestValues:[Float3] = [
+		Float3(0, 0, 0),
+		Float3(1, 2, 3),
+		Float3(Float.infinity, Float.leastNonzeroMagnitude, Float.greatestFiniteMagnitude),
+		Float3(-179_424_719, 2_038_074_503, -982_450_327),
+	]
+	let _float4TestValues:[Float4] = [
+		Float4(0, 0, 0, 0),
+		Float4(1, 2, 3, 4),
+		Float4(Float.infinity, Float.leastNonzeroMagnitude, Float.greatestFiniteMagnitude, Float.leastNormalMagnitude),
+		Float4(-179_424_719, 2_038_074_503, -982_450_327, 454_923_701),
+	]
 	
 	
 	override func setUp()
@@ -59,6 +77,24 @@ class IntNTests : XCTestCase
 			let value = nsValue.int4Value
 			XCTAssertEqual($0, value)
 		}
+		
+		_float2TestValues.forEach{
+			let nsValue = NSValue(float2: $0)
+			let value = nsValue.float2Value
+			XCTAssertEqual($0, value)
+		}
+		
+		_float3TestValues.forEach{
+			let nsValue = NSValue(float3: $0)
+			let value = nsValue.float3Value
+			XCTAssertEqual($0, value)
+		}
+		
+		_float4TestValues.forEach{
+			let nsValue = NSValue(float4: $0)
+			let value = nsValue.float4Value
+			XCTAssertEqual($0, value)
+		}
 	}
 	
 	func testSIMDRountripping()
@@ -80,6 +116,24 @@ class IntNTests : XCTestCase
 			let value = Int4(simdValue)
 			XCTAssertEqual($0, value)
 		}
+		
+		_float2TestValues.forEach{
+			let simdValue = $0.simdValue
+			let value = Float2(simdValue)
+			XCTAssertEqual($0, value)
+		}
+		
+		_float3TestValues.forEach{
+			let simdValue = $0.simdValue
+			let value = Float3(simdValue)
+			XCTAssertEqual($0, value)
+		}
+		
+		_float4TestValues.forEach{
+			let simdValue = $0.simdValue
+			let value = Float4(simdValue)
+			XCTAssertEqual($0, value)
+		}
 	}
 	
 	func testEquality()
@@ -93,6 +147,15 @@ class IntNTests : XCTestCase
 		XCTAssertTrue(
 			Int4(1, 2, 3, 4) == Int4(1, 2, 3, 4)
 		)
+		XCTAssertTrue(
+			Float2(1, 2) == Float2(1, 2)
+		)
+		XCTAssertTrue(
+			Float3(1, 2, 3) == Float3(1, 2, 3)
+		)
+		XCTAssertTrue(
+			Float4(1, 2, 3, 4) == Float4(1, 2, 3, 4)
+		)
 		
 		XCTAssertTrue(
 			Int2(1, 2) != Int2(10, 20)
@@ -102,6 +165,15 @@ class IntNTests : XCTestCase
 		)
 		XCTAssertTrue(
 			Int4(1, 2, 3, 4) != Int4(10, 20, 30, 40)
+		)
+		XCTAssertTrue(
+			Float2(1, 2) != Float2(10, 20)
+		)
+		XCTAssertTrue(
+			Float3(1, 2, 3) != Float3(10, 20, 30)
+		)
+		XCTAssertTrue(
+			Float4(1, 2, 3, 4) != Float4(10, 20, 30, 40)
 		)
 	}
 	
@@ -119,6 +191,19 @@ class IntNTests : XCTestCase
 			Int4(1, 2, 3, 4) + Int4(-10, -20, -30, -40),
 			Int4(-9, -18, -27, -36)
 		)
+		
+		XCTAssertEqual(
+			Float2(1, 2) + Float2(-10, -20),
+			Float2(-9, -18)
+		)
+		XCTAssertEqual(
+			Float3(1, 2, 3) + Float3(-10, -20, -30),
+			Float3(-9, -18, -27)
+		)
+		XCTAssertEqual(
+			Float4(1, 2, 3, 4) + Float4(-10, -20, -30, -40),
+			Float4(-9, -18, -27, -36)
+		)
 	}
 	
 	func testSubtractMath()
@@ -134,6 +219,19 @@ class IntNTests : XCTestCase
 		XCTAssertEqual(
 			Int4(1, 2, 3, 4) - Int4(-10, -20, -30, -40),
 			Int4(11, 22, 33, 44)
+		)
+		
+		XCTAssertEqual(
+			Float2(1, 2) - Float2(-10, -20),
+			Float2(11, 22)
+		)
+		XCTAssertEqual(
+			Float3(1, 2, 3) - Float3(-10, -20, -30),
+			Float3(11, 22, 33)
+		)
+		XCTAssertEqual(
+			Float4(1, 2, 3, 4) - Float4(-10, -20, -30, -40),
+			Float4(11, 22, 33, 44)
 		)
 	}
 	
@@ -151,6 +249,19 @@ class IntNTests : XCTestCase
 			Int4(1, 2, 3, 4) * Int4(-10, -20, -30, -40),
 			Int4(-10, -40, -90, -160)
 		)
+		
+		XCTAssertEqual(
+			Float2(1, 2) * Float2(-10, -20),
+			Float2(-10, -40)
+		)
+		XCTAssertEqual(
+			Float3(1, 2, 3) * Float3(-10, -20, -30),
+			Float3(-10, -40, -90)
+		)
+		XCTAssertEqual(
+			Float4(1, 2, 3, 4) * Float4(-10, -20, -30, -40),
+			Float4(-10, -40, -90, -160)
+		)
 	}
 	
 	func testDivideMath()
@@ -166,6 +277,19 @@ class IntNTests : XCTestCase
 		XCTAssertEqual(
 			Int4(-10, -20, -30, -40) / Int4(2, 3, 4, 5),
 			Int4(-5, -6, -7, -8)
+		)
+		
+		XCTAssertEqual(
+			Float2(-10, -20) / Float2(2, 3),
+			Float2(-5, -6.666_666_6)
+		)
+		XCTAssertEqual(
+			Float3(-10, -20, -30) / Float3(2, 3, 4),
+			Float3(-5, -6.666_666_6, -7.5)
+		)
+		XCTAssertEqual(
+			Float4(-10, -20, -30, -40) / Float4(2, 3, 4, 5),
+			Float4(-5, -6.666_666_6, -7.5, -8)
 		)
 	}
 	
@@ -183,6 +307,19 @@ class IntNTests : XCTestCase
 			Int4(-10, -20, -30, -40) % Int4(2, 3, 4, 5),
 			Int4(0, -2, -2, 0)
 		)
+		
+		XCTAssertEqual(
+			Float2(-10, -20) % Float2(2, 3),
+			Float2(0, -2)
+		)
+		XCTAssertEqual(
+			Float3(-10, -20, -30) % Float3(2, 3, 4),
+			Float3(0, -2, -2)
+		)
+		XCTAssertEqual(
+			Float4(-10, -20, -30, -40) % Float4(2, 3, 4, 5),
+			Float4(0, -2, -2, 0)
+		)
 	}
 	
 	func testNegationMath()
@@ -198,6 +335,19 @@ class IntNTests : XCTestCase
 		XCTAssertEqual(
 			-Int4(1, 2, 3, 4),
 			Int4(-1, -2, -3, -4)
+		)
+		
+		XCTAssertEqual(
+			-Float2(1, 2),
+			Float2(-1, -2)
+		)
+		XCTAssertEqual(
+			-Float3(1, 2, 3),
+			Float3(-1, -2, -3)
+		)
+		XCTAssertEqual(
+			-Float4(1, 2, 3, 4),
+			Float4(-1, -2, -3, -4)
 		)
 	}
 	

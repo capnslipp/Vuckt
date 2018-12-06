@@ -18,3 +18,6 @@ FOUNDATION_EXPORT const unsigned char IntNVersionString[];
 #import <IntN/Int2.h>
 #import <IntN/Int3.h>
 #import <IntN/Int4.h>
+#import <IntN/Float2.h>
+#import <IntN/Float3.h>
+#import <IntN/Float4.h>
