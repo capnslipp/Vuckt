@@ -281,40 +281,27 @@ extension Float4 : CustomStringConvertible
 // MARK: Element-wise `min`/`max`
 
 public func min(_ a:Float4, _ b:Float4) -> Float4 {
-	return Float4(
-		x: (b.x < a.x) ? b.x : a.x,
-		y: (b.y < a.y) ? b.y : a.y,
-		z: (b.z < a.z) ? b.z : a.z,
-		w: (b.w < a.w) ? b.w : a.w
-	)
+	return Float4(simd.min(a.simdValue, b.simdValue))
 }
+
 public func min(_ a:Float4, _ b:Float4, _ c:Float4, _ rest:Float4...) -> Float4 {
-	var minValue = min(min(a, b), c)
+	var minSimdValue = simd.min(simd.min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		if value.x < minValue.x { minValue.x = value.x }
-		if value.y < minValue.y { minValue.y = value.y }
-		if value.z < minValue.z { minValue.z = value.z }
-		if value.w < minValue.w { minValue.w = value.w }
+		minSimdValue = simd.min(minSimdValue, value.simdValue)
 	}
-	return minValue
+	return Float4(minSimdValue)
 }
+
 public func max(_ a:Float4, _ b:Float4) -> Float4 {
-	return Float4(
-		x: (b.x > a.x) ? b.x : a.x,
-		y: (b.y > a.y) ? b.y : a.y,
-		z: (b.z > a.z) ? b.z : a.z,
-		w: (b.w > a.w) ? b.w : a.w
-	)
+	return Float4(simd.max(a.simdValue, b.simdValue))
 }
+
 public func max(_ a:Float4, _ b:Float4, _ c:Float4, _ rest:Float4...) -> Float4 {
-	var maxValue = max(max(a, b), c)
+	var maxSimdValue = simd.max(simd.max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		if value.x > maxValue.x { maxValue.x = value.x }
-		if value.y > maxValue.y { maxValue.y = value.y }
-		if value.z > maxValue.z { maxValue.z = value.z }
-		if value.w > maxValue.w { maxValue.w = value.w }
+		maxSimdValue = simd.max(maxSimdValue, value.simdValue)
 	}
-	return maxValue
+	return Float4(maxSimdValue)
 }
 
 

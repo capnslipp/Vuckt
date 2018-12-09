@@ -207,36 +207,27 @@ extension Float3 : CustomStringConvertible
 // MARK: Element-wise `min`/`max`
 
 public func min(_ a:Float3, _ b:Float3) -> Float3 {
-	return Float3(
-		x: (b.x < a.x) ? b.x : a.x,
-		y: (b.y < a.y) ? b.y : a.y,
-		z: (b.z < a.z) ? b.z : a.z
-	)
+	return Float3(simd.min(a.simdValue, b.simdValue))
 }
+
 public func min(_ a:Float3, _ b:Float3, _ c:Float3, _ rest:Float3...) -> Float3 {
-	var minValue = min(min(a, b), c)
+	var minSimdValue = simd.min(simd.min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		if value.x < minValue.x { minValue.x = value.x }
-		if value.y < minValue.y { minValue.y = value.y }
-		if value.z < minValue.z { minValue.z = value.z }
+		minSimdValue = simd.min(minSimdValue, value.simdValue)
 	}
-	return minValue
+	return Float3(minSimdValue)
 }
+
 public func max(_ a:Float3, _ b:Float3) -> Float3 {
-	return Float3(
-		x: (b.x > a.x) ? b.x : a.x,
-		y: (b.y > a.y) ? b.y : a.y,
-		z: (b.z > a.z) ? b.z : a.z
-	)
+	return Float3(simd.max(a.simdValue, b.simdValue))
 }
+
 public func max(_ a:Float3, _ b:Float3, _ c:Float3, _ rest:Float3...) -> Float3 {
-	var maxValue = max(max(a, b), c)
+	var maxSimdValue = simd.max(simd.max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		if value.x > maxValue.x { maxValue.x = value.x }
-		if value.y > maxValue.y { maxValue.y = value.y }
-		if value.z > maxValue.z { maxValue.z = value.z }
+		maxSimdValue = simd.max(maxSimdValue, value.simdValue)
 	}
-	return maxValue
+	return Float3(maxSimdValue)
 }
 
 

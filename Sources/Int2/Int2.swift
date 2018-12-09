@@ -176,32 +176,27 @@ extension Int2 : CustomStringConvertible
 // MARK: Element-wise `min`/`max`
 
 public func min(_ a:Int2, _ b:Int2) -> Int2 {
-	return Int2(
-		x: (b.x < a.x) ? b.x : a.x,
-		y: (b.y < a.y) ? b.y : a.y
-	)
+	return Int2(simd.min(a.simdValue, b.simdValue))
 }
+
 public func min(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
-	var minValue = min(min(a, b), c)
+	var minSimdValue = simd.min(simd.min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		if value.x < minValue.x { minValue.x = value.x }
-		if value.y < minValue.y { minValue.y = value.y }
+		minSimdValue = simd.min(minSimdValue, value.simdValue)
 	}
-	return minValue
+	return Int2(minSimdValue)
 }
+
 public func max(_ a:Int2, _ b:Int2) -> Int2 {
-	return Int2(
-		x: (b.x > a.x) ? b.x : a.x,
-		y: (b.y > a.y) ? b.y : a.y
-	)
+	return Int2(simd.max(a.simdValue, b.simdValue))
 }
+
 public func max(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
-	var maxValue = max(max(a, b), c)
+	var maxSimdValue = simd.max(simd.max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		if value.x > maxValue.x { maxValue.x = value.x }
-		if value.y > maxValue.y { maxValue.y = value.y }
+		maxSimdValue = simd.max(maxSimdValue, value.simdValue)
 	}
-	return maxValue
+	return Int2(maxSimdValue)
 }
 
 
