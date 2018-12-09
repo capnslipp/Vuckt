@@ -195,12 +195,21 @@ extension Int4
 	
 	// MARK: `random` Functionality
 	
-	public static func random(min:Int4=Int4(0), max:Int4) -> Int4 {
+	public static func random(in range:ClosedRange<Int4>) -> Int4 {
 		return Int4(
-			Int32.random(in: min.x...max.x),
-			Int32.random(in: min.y...max.y),
-			Int32.random(in: min.z...max.z),
-			Int32.random(in: min.w...max.w)
+			Int32.random(in: range.lowerBound.x...range.upperBound.x),
+			Int32.random(in: range.lowerBound.y...range.upperBound.y),
+			Int32.random(in: range.lowerBound.z...range.upperBound.z),
+			Int32.random(in: range.lowerBound.w...range.upperBound.w)
+		)
+	}
+	
+	public static func random(in range:Range<Int4>) -> Int4 {
+		return Int4(
+			Int32.random(in: range.lowerBound.x..<range.upperBound.x),
+			Int32.random(in: range.lowerBound.y..<range.upperBound.y),
+			Int32.random(in: range.lowerBound.z..<range.upperBound.z),
+			Int32.random(in: range.lowerBound.w..<range.upperBound.w)
 		)
 	}
 	

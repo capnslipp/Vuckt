@@ -142,10 +142,17 @@ extension Int2
 	
 	// MARK: `random` Functionality
 	
-	public static func random(min:Int2=Int2(0), max:Int2) -> Int2 {
+	public static func random(in range:ClosedRange<Int2>) -> Int2 {
 		return Int2(
-			Int32.random(in: min.x...max.x),
-			Int32.random(in: min.y...max.y)
+			Int32.random(in: range.lowerBound.x...range.upperBound.x),
+			Int32.random(in: range.lowerBound.y...range.upperBound.y)
+		)
+	}
+	
+	public static func random(in range:Range<Int2>) -> Int2 {
+		return Int2(
+			Int32.random(in: range.lowerBound.x..<range.upperBound.x),
+			Int32.random(in: range.lowerBound.y..<range.upperBound.y)
 		)
 	}
 	

@@ -195,12 +195,21 @@ extension Float4
 	
 	// MARK: `random` Functionality
 	
-	public static func random(min:Float4=Float4(0), max:Float4) -> Float4 {
+	public static func random(in range:ClosedRange<Float4>) -> Float4 {
 		return Float4(
-			Float.random(in: min.x...max.x),
-			Float.random(in: min.y...max.y),
-			Float.random(in: min.z...max.z),
-			Float.random(in: min.w...max.w)
+			Float.random(in: range.lowerBound.x...range.upperBound.x),
+			Float.random(in: range.lowerBound.y...range.upperBound.y),
+			Float.random(in: range.lowerBound.z...range.upperBound.z),
+			Float.random(in: range.lowerBound.w...range.upperBound.w)
+		)
+	}
+	
+	public static func random(in range:Range<Float4>) -> Float4 {
+		return Float4(
+			Float.random(in: range.lowerBound.x..<range.upperBound.x),
+			Float.random(in: range.lowerBound.y..<range.upperBound.y),
+			Float.random(in: range.lowerBound.z..<range.upperBound.z),
+			Float.random(in: range.lowerBound.w..<range.upperBound.w)
 		)
 	}
 	

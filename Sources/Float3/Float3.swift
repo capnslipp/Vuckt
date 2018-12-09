@@ -155,11 +155,19 @@ extension Float3
 	
 	// MARK: `random` Functionality
 	
-	public static func random(min:Float3=Float3(0), max:Float3) -> Float3 {
+	public static func random(in range:ClosedRange<Float3>) -> Float3 {
 		return Float3(
-			Float.random(in: min.x...max.x),
-			Float.random(in: min.y...max.y),
-			Float.random(in: min.z...max.z)
+			Float.random(in: range.lowerBound.x...range.upperBound.x),
+			Float.random(in: range.lowerBound.y...range.upperBound.y),
+			Float.random(in: range.lowerBound.z...range.upperBound.z)
+		)
+	}
+	
+	public static func random(in range:Range<Float3>) -> Float3 {
+		return Float3(
+			Float.random(in: range.lowerBound.x..<range.upperBound.x),
+			Float.random(in: range.lowerBound.y..<range.upperBound.y),
+			Float.random(in: range.lowerBound.z..<range.upperBound.z)
 		)
 	}
 	

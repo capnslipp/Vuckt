@@ -142,10 +142,17 @@ extension Float2
 	
 	// MARK: `random` Functionality
 	
-	public static func random(min:Float2=Float2(0), max:Float2) -> Float2 {
+	public static func random(in range:ClosedRange<Float2>) -> Float2 {
 		return Float2(
-			Float.random(in: min.x...max.x),
-			Float.random(in: min.y...max.y)
+			Float.random(in: range.lowerBound.x...range.upperBound.x),
+			Float.random(in: range.lowerBound.y...range.upperBound.y)
+		)
+	}
+	
+	public static func random(in range:Range<Float2>) -> Float2 {
+		return Float2(
+			Float.random(in: range.lowerBound.x..<range.upperBound.x),
+			Float.random(in: range.lowerBound.y..<range.upperBound.y)
 		)
 	}
 	

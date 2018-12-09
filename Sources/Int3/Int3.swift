@@ -155,11 +155,19 @@ extension Int3
 	
 	// MARK: `random` Functionality
 	
-	public static func random(min:Int3=Int3(0), max:Int3) -> Int3 {
+	public static func random(in range:ClosedRange<Int3>) -> Int3 {
 		return Int3(
-			Int32.random(in: min.x...max.x),
-			Int32.random(in: min.y...max.y),
-			Int32.random(in: min.z...max.z)
+			Int32.random(in: range.lowerBound.x...range.upperBound.x),
+			Int32.random(in: range.lowerBound.y...range.upperBound.y),
+			Int32.random(in: range.lowerBound.z...range.upperBound.z)
+		)
+	}
+	
+	public static func random(in range:Range<Int3>) -> Int3 {
+		return Int3(
+			Int32.random(in: range.lowerBound.x..<range.upperBound.x),
+			Int32.random(in: range.lowerBound.y..<range.upperBound.y),
+			Int32.random(in: range.lowerBound.z..<range.upperBound.z)
 		)
 	}
 	
