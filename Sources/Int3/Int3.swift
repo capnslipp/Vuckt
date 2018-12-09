@@ -138,18 +138,11 @@ extension Int3
 	
 	// MARK: `clamp` Functionality
 	
-	public mutating func clamp(_ range:Range<Int3>) {
-		self.clamp(range.lowerBound, range.upperBound - Int3(1))
+	public mutating func clamp(to range:ClosedRange<Int3>) {
+		self = self.clamped(to: range)
 	}
-	public func clamped(_ range:Range<Int3>) -> Int3 {
-		return self.clamped(range.lowerBound, range.upperBound - Int3(1))
-	}
-	
-	public mutating func clamp(_ minValue:Int3, _ maxValue:Int3) {
-		self = max(minValue, min(maxValue, self))
-	}
-	public func clamped(_ minValue:Int3, _ maxValue:Int3) -> Int3 {
-		return max(minValue, min(maxValue, self))
+	public func clamped(to range:ClosedRange<Int3>) -> Int3 {
+		return Int3(simd.clamp(self.simdValue, min: range.lowerBound.simdValue, max: range.upperBound.simdValue))
 	}
 	
 	

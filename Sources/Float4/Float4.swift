@@ -178,18 +178,11 @@ extension Float4
 	
 	// MARK: `clamp` Functionality
 	
-	public mutating func clamp(_ range:Range<Float4>) {
-		self.clamp(range.lowerBound, range.upperBound - Float4(1))
+	public mutating func clamp(to range:ClosedRange<Float4>) {
+		self = self.clamped(to: range)
 	}
-	public func clamped(_ range:Range<Float4>) -> Float4 {
-		return self.clamped(range.lowerBound, range.upperBound - Float4(1))
-	}
-	
-	public mutating func clamp(_ minValue:Float4, _ maxValue:Float4) {
-		self = max(minValue, min(maxValue, self))
-	}
-	public func clamped(_ minValue:Float4, _ maxValue:Float4) -> Float4 {
-		return max(minValue, min(maxValue, self))
+	public func clamped(to range:ClosedRange<Float4>) -> Float4 {
+		return Float4(simd.clamp(self.simdValue, min: range.lowerBound.simdValue, max: range.upperBound.simdValue))
 	}
 	
 	

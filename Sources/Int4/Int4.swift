@@ -178,18 +178,11 @@ extension Int4
 	
 	// MARK: `clamp` Functionality
 	
-	public mutating func clamp(_ range:Range<Int4>) {
-		self.clamp(range.lowerBound, range.upperBound - Int4(1))
+	public mutating func clamp(to range:ClosedRange<Int4>) {
+		self = self.clamped(to: range)
 	}
-	public func clamped(_ range:Range<Int4>) -> Int4 {
-		return self.clamped(range.lowerBound, range.upperBound - Int4(1))
-	}
-	
-	public mutating func clamp(_ minValue:Int4, _ maxValue:Int4) {
-		self = max(minValue, min(maxValue, self))
-	}
-	public func clamped(_ minValue:Int4, _ maxValue:Int4) -> Int4 {
-		return max(minValue, min(maxValue, self))
+	public func clamped(to range:ClosedRange<Int4>) -> Int4 {
+		return Int4(simd.clamp(self.simdValue, min: range.lowerBound.simdValue, max: range.upperBound.simdValue))
 	}
 	
 	
