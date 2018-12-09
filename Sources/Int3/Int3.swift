@@ -157,9 +157,9 @@ extension Int3
 	
 	public static func random(min:Int3=Int3(0), max:Int3) -> Int3 {
 		return Int3(
-			min.x + Int32(arc4random_uniform(UInt32(max.x - min.x + 1))),
-			min.y + Int32(arc4random_uniform(UInt32(max.y - min.y + 1))),
-			min.z + Int32(arc4random_uniform(UInt32(max.z - min.z + 1)))
+			Int32.random(in: min.x...max.x),
+			Int32.random(in: min.y...max.y),
+			Int32.random(in: min.z...max.z)
 		)
 	}
 	

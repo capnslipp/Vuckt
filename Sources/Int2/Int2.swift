@@ -144,8 +144,8 @@ extension Int2
 	
 	public static func random(min:Int2=Int2(0), max:Int2) -> Int2 {
 		return Int2(
-			min.x + Int32(arc4random_uniform(UInt32(max.x - min.x + 1))),
-			min.y + Int32(arc4random_uniform(UInt32(max.y - min.y + 1)))
+			Int32.random(in: min.x...max.x),
+			Int32.random(in: min.y...max.y)
 		)
 	}
 	

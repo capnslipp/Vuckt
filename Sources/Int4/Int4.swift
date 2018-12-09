@@ -197,10 +197,10 @@ extension Int4
 	
 	public static func random(min:Int4=Int4(0), max:Int4) -> Int4 {
 		return Int4(
-			min.x + Int32(arc4random_uniform(UInt32(max.x - min.x + 1))),
-			min.y + Int32(arc4random_uniform(UInt32(max.y - min.y + 1))),
-			min.z + Int32(arc4random_uniform(UInt32(max.z - min.z + 1))),
-			min.w + Int32(arc4random_uniform(UInt32(max.w - min.w + 1)))
+			Int32.random(in: min.x...max.x),
+			Int32.random(in: min.y...max.y),
+			Int32.random(in: min.z...max.z),
+			Int32.random(in: min.w...max.w)
 		)
 	}
 	
