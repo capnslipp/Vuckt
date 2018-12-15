@@ -270,6 +270,43 @@ extension Float4
 }
 
 
+extension Float4 // SceneKit Conversion
+{
+	/// Initialize to a SceneKit vector.
+	public init(scnVector value:SCNVector4) {
+		self = Float4FromSCN(value)
+	}
+	
+	public var toSCNVector:SCNVector4 {
+		return Float4ToSCN(self)
+	}
+}
+
+extension Float4 // GLKit Conversion
+{
+	/// Initialize to a GLKit vector.
+	public init(glkVector value:GLKVector4) {
+		self = Float4FromGLK(value)
+	}
+	
+	public var toGLKVector:GLKVector4 {
+		return Float4ToGLK(self)
+	}
+}
+
+extension Float4 // CoreImage Conversion
+{
+	/// Initialize to a CoreImage vector.
+	public init(ciVector:CIVector) {
+		self = Float4FromCI(ciVector)
+	}
+	
+	public var toCIVector:CIVector {
+		return Float4ToCI(self)
+	}
+}
+
+
 extension Float4 : CustomStringConvertible
 {
 	public var description:String {

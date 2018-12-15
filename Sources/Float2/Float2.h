@@ -5,6 +5,8 @@
 
 #import <Foundation/NSValue.h>
 #import <simd/vector_types.h>
+#import <CoreImage/CIVector.h>
+#import <CoreGraphics/CGGeometry.h>
 
 
 
@@ -32,6 +34,51 @@ NS_INLINE simd_float2 Float2ToSimd(Float2 structValue) {
 /// (Sanity `static_assert`s in the `.mm` file do their best to ensure out struct's layout match the simd vector's.)
 NS_INLINE Float2 Float2FromSimd(simd_float2 simdValue) {
 	return *(Float2 *)&simdValue;
+}
+
+
+
+#pragma mark CoreImage Conversion
+
+/// Converts an `Float2` struct to `CIVector` class using passing-individual-members initialization.
+NS_INLINE CIVector *Float2ToCI(Float2 structValue) {
+	return [CIVector vectorWithX:(CGFloat)structValue.x Y:(CGFloat)structValue.y];
+}
+/// Converts an `Float2` struct from `CIVector` class using passing-individual-members initialization.
+NS_INLINE Float2 Float2FromCI(CIVector *ciVector) {
+	assert(ciVector.count == 2);
+	return (Float2){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y };
+}
+
+
+
+#pragma mark CoreGraphics Conversion
+
+/// Converts an `Float3` struct to `CGVector` struct using passing-individual-members initialization.
+NS_INLINE CGVector Float2ToCGVector(Float2 structValue) {
+	return CGVectorMake((CGFloat)structValue.x, (CGFloat)structValue.y);
+}
+/// Converts an `Float3` struct from `CGVector` struct using passing-individual-members initialization.
+NS_INLINE Float2 Float2FromCGVector(CGVector cgVectorValue) {
+	return (Float2){ (simd_float1)cgVectorValue.dx, (simd_float1)cgVectorValue.dy };
+}
+
+/// Converts an `Float3` struct to `CGPoint` struct using passing-individual-members initialization.
+NS_INLINE CGPoint Float2ToCGPoint(Float2 structValue) {
+	return CGPointMake((CGFloat)structValue.x, (CGFloat)structValue.y);
+}
+/// Converts an `Float3` struct from `CGPoint` struct using passing-individual-members initialization.
+NS_INLINE Float2 Float2FromCGPoint(CGPoint cgPointValue) {
+	return (Float2){ (simd_float1)cgPointValue.x, (simd_float1)cgPointValue.y };
+}
+
+/// Converts an `Float3` struct to `CGSize` struct using passing-individual-members initialization.
+NS_INLINE CGSize Float2ToCGSize(Float2 structValue) {
+	return CGSizeMake((CGFloat)structValue.x, (CGFloat)structValue.y);
+}
+/// Converts an `Float3` struct from `CGSize` struct using passing-individual-members initialization.
+NS_INLINE Float2 Float2FromCGSize(CGSize cgSizeValue) {
+	return (Float2){ (simd_float1)cgSizeValue.width, (simd_float1)cgSizeValue.height };
 }
 
 

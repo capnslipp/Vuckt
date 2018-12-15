@@ -165,6 +165,45 @@ extension Float2
 }
 
 
+extension Float2 // CoreImage Conversion
+{
+	/// Initialize to a CoreImage vector.
+	public init(ciVector:CIVector) {
+		self = Float2FromCI(ciVector)
+	}
+	
+	public var toCIVector:CIVector {
+		return Float2ToCI(self)
+	}
+}
+
+extension Float2 // CoreGraphics Conversion
+{
+	/// Initialize to a CGVector.
+	public init(cgVector value:CGVector) {
+		self = Float2FromCGVector(value)
+	}
+	/// Initialize to a CGPoint.
+	public init(cgPoint value:CGPoint) {
+		self = Float2FromCGPoint(value)
+	}
+	/// Initialize to a CGSize.
+	public init(cgSize value:CGSize) {
+		self = Float2FromCGSize(value)
+	}
+	
+	public var toCGVector:CGVector {
+		return Float2ToCGVector(self)
+	}
+	public var toCGPoint:CGPoint {
+		return Float2ToCGPoint(self)
+	}
+	public var toCGSize:CGSize {
+		return Float2ToCGSize(self)
+	}
+}
+
+
 extension Float2 : CustomStringConvertible
 {
 	public var description:String {

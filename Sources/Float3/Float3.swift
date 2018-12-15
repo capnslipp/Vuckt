@@ -196,6 +196,43 @@ extension Float3
 }
 
 
+extension Float3 // SceneKit Conversion
+{
+	/// Initialize to a SceneKit vector.
+	public init(scnVector value:SCNVector3) {
+		self = Float3FromSCN(value)
+	}
+	
+	public var toSCNVector:SCNVector3 {
+		return Float3ToSCN(self)
+	}
+}
+
+extension Float3 // GLKit Conversion
+{
+	/// Initialize to a GLKit vector.
+	public init(glkVector value:GLKVector3) {
+		self = Float3FromGLK(value)
+	}
+	
+	public var toGLKVector:GLKVector3 {
+		return Float3ToGLK(self)
+	}
+}
+
+extension Float3 // CoreImage Conversion
+{
+	/// Initialize to a CoreImage vector.
+	public init(ciVector:CIVector) {
+		self = Float3FromCI(ciVector)
+	}
+	
+	public var toCIVector:CIVector {
+		return Float3ToCI(self)
+	}
+}
+
+
 extension Float3 : CustomStringConvertible
 {
 	public var description:String {
