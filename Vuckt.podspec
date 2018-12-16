@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Vuckt'
-  s.version = '3.1.0'
+  s.version = '3.2.0'
   s.summary = "A Swift Vector Library That Doesn't Suck"
   s.description = "A Swift library providing Obj-C-compatible integral & floating vector struct types with zero-cost SIMD vector bridging, and convenience methods to bridge to/from other vector-ish types throughout Cocoa."
   s.homepage = 'https://github.com/capnslipp/Vuckt'
