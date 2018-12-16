@@ -1,4 +1,4 @@
-// IntN
+// Vuckt
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 #pragma once

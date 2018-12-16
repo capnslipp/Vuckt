@@ -1,4 +1,4 @@
-// IntN
+// Vuckt
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
@@ -47,21 +47,21 @@ extension Int2
 		self.init(tuple.x, tuple.y)
 	}
 	
-	/// Initialize using a different `IntN`'s `x` & `y` values.
+	/// Initialize using a different `Vuckt`'s `x` & `y` values.
 	public init(xy:Int3) {
 		self.init(xy.x, xy.y)
 	}
 	public init(xy:Int4) {
 		self.init(xy.x, xy.y)
 	}
-	/// Initialize using a different `IntN`'s `x` & `z` values.
+	/// Initialize using a different `Vuckt`'s `x` & `z` values.
 	public init(xz:Int3) {
 		self.init(xz.x, xz.z)
 	}
 	public init(xz:Int4) {
 		self.init(xz.x, xz.z)
 	}
-	/// Initialize using a different `IntN`'s `y` & `z` values.
+	/// Initialize using a different `Vuckt`'s `y` & `z` values.
 	public init(yz:Int3) {
 		self.init(yz.y, yz.z)
 	}

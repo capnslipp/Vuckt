@@ -1,13 +1,13 @@
-// IntN
+// Vuckt
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
 import XCTest
-import IntN
+import Vuckt
 
 
 
-class IntNTests : XCTestCase
+class VucktTests : XCTestCase
 {
 	let _int2TestValues:[Int2] = [
 		Int2(0, 0),
