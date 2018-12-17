@@ -152,6 +152,7 @@ extension Float4
 			case 0: return self.x
 			case 1: return self.y
 			case 2: return self.z
+			case 3: return self.w
 			
 			default: return Float.nan // TODO: Instead, do whatever simd.float4 does.
 		}
@@ -310,7 +311,7 @@ extension Float4 // CoreImage Conversion
 extension Float4 : CustomStringConvertible
 {
 	public var description:String {
-		return "(\(self.x), \(self.y), \(self.z))"
+		return "(\(self.x), \(self.y), \(self.z), \(self.w))"
 	}
 }
 
