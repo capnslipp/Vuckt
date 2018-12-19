@@ -99,7 +99,7 @@ extension Float2
 	// MARK: `subscript`-Getter
 	
 	/// Access individual elements of the vector via subscript.
-	public subscript(index:Float) -> Float {
+	public subscript(index:Int) -> Float {
 		switch index {
 			case 0: return self.x
 			case 1: return self.y

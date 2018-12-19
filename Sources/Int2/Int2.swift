@@ -99,7 +99,7 @@ extension Int2
 	// MARK: `subscript`-Getter
 	
 	/// Access individual elements of the vector via subscript.
-	public subscript(index:Int32) -> Int32 {
+	public subscript(index:Int) -> Int32 {
 		switch index {
 			case 0: return self.x
 			case 1: return self.y
