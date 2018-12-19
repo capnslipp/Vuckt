@@ -1,0 +1,17 @@
+// Vuckt
+// @author: Slipp Douglas Thompson
+// @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
+
+#if _runtime(_ObjC)
+
+fileprivate let FloatQuaternionInNSValueObjCType = NSValue(floatQuaternion: FloatQuaternion()).objCType
+
+%{ from gyb_foundation_support import ObjectiveCBridgeableImplementationForNSValueWithCategoryMethods }%
+${ ObjectiveCBridgeableImplementationForNSValueWithCategoryMethods(
+  Type="FloatQuaternion",
+  initializer="{ NSValue(floatQuaternion: $0) }",
+  getter="{ $0.floatQuaternionValue }",
+  objCType="{ _ in FloatQuaternionInNSValueObjCType }",
+) }
+
+#endif // _runtime(_ObjC)
