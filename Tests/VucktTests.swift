@@ -184,28 +184,28 @@ class VucktTests : XCTestCase
 	{
 		XCTAssertEqual(
 			Int2(1, 2) + Int2(-10, -20),
-			Int2(-9, -18)
+			Int2(simd_int2(1, 2) &+ simd_int2(-10, -20))
 		)
 		XCTAssertEqual(
 			Int3(1, 2, 3) + Int3(-10, -20, -30),
-			Int3(-9, -18, -27)
+			Int3(simd_int3(1, 2, 3) &+ simd_int3(-10, -20, -30))
 		)
 		XCTAssertEqual(
 			Int4(1, 2, 3, 4) + Int4(-10, -20, -30, -40),
-			Int4(-9, -18, -27, -36)
+			Int4(simd_int4(1, 2, 3, 4) &+ simd_int4(-10, -20, -30, -40))
 		)
 		
 		XCTAssertEqual(
 			Float2(1, 2) + Float2(-10, -20),
-			Float2(-9, -18)
+			Float2(simd_float2(1, 2) + simd_float2(-10, -20))
 		)
 		XCTAssertEqual(
 			Float3(1, 2, 3) + Float3(-10, -20, -30),
-			Float3(-9, -18, -27)
+			Float3(simd_float3(1, 2, 3) + simd_float3(-10, -20, -30))
 		)
 		XCTAssertEqual(
 			Float4(1, 2, 3, 4) + Float4(-10, -20, -30, -40),
-			Float4(-9, -18, -27, -36)
+			Float4(simd_float4(1, 2, 3, 4) + simd_float4(-10, -20, -30, -40))
 		)
 	}
 	
@@ -213,28 +213,28 @@ class VucktTests : XCTestCase
 	{
 		XCTAssertEqual(
 			Int2(1, 2) - Int2(-10, -20),
-			Int2(11, 22)
+			Int2(simd_int2(1, 2) &- simd_int2(-10, -20))
 		)
 		XCTAssertEqual(
 			Int3(1, 2, 3) - Int3(-10, -20, -30),
-			Int3(11, 22, 33)
+			Int3(simd_int3(1, 2, 3) &- simd_int3(-10, -20, -30))
 		)
 		XCTAssertEqual(
 			Int4(1, 2, 3, 4) - Int4(-10, -20, -30, -40),
-			Int4(11, 22, 33, 44)
+			Int4(simd_int4(1, 2, 3, 4) &- simd_int4(-10, -20, -30, -40))
 		)
 		
 		XCTAssertEqual(
 			Float2(1, 2) - Float2(-10, -20),
-			Float2(11, 22)
+			Float2(simd_float2(1, 2) - simd_float2(-10, -20))
 		)
 		XCTAssertEqual(
 			Float3(1, 2, 3) - Float3(-10, -20, -30),
-			Float3(11, 22, 33)
+			Float3(simd_float3(1, 2, 3) - simd_float3(-10, -20, -30))
 		)
 		XCTAssertEqual(
 			Float4(1, 2, 3, 4) - Float4(-10, -20, -30, -40),
-			Float4(11, 22, 33, 44)
+			Float4(simd_float4(1, 2, 3, 4) - simd_float4(-10, -20, -30, -40))
 		)
 	}
 	
@@ -242,28 +242,28 @@ class VucktTests : XCTestCase
 	{
 		XCTAssertEqual(
 			Int2(1, 2) * Int2(-10, -20),
-			Int2(-10, -40)
+			Int2(simd_int2(1, 2) &* simd_int2(-10, -20))
 		)
 		XCTAssertEqual(
 			Int3(1, 2, 3) * Int3(-10, -20, -30),
-			Int3(-10, -40, -90)
+			Int3(simd_int3(1, 2, 3) &* simd_int3(-10, -20, -30))
 		)
 		XCTAssertEqual(
 			Int4(1, 2, 3, 4) * Int4(-10, -20, -30, -40),
-			Int4(-10, -40, -90, -160)
+			Int4(simd_int4(1, 2, 3, 4) &* simd_int4(-10, -20, -30, -40))
 		)
 		
 		XCTAssertEqual(
 			Float2(1, 2) * Float2(-10, -20),
-			Float2(-10, -40)
+			Float2(simd_float2(1, 2) * simd_float2(-10, -20))
 		)
 		XCTAssertEqual(
 			Float3(1, 2, 3) * Float3(-10, -20, -30),
-			Float3(-10, -40, -90)
+			Float3(simd_float3(1, 2, 3) * simd_float3(-10, -20, -30))
 		)
 		XCTAssertEqual(
 			Float4(1, 2, 3, 4) * Float4(-10, -20, -30, -40),
-			Float4(-10, -40, -90, -160)
+			Float4(simd_float4(1, 2, 3, 4) * simd_float4(-10, -20, -30, -40))
 		)
 	}
 	
@@ -271,28 +271,28 @@ class VucktTests : XCTestCase
 	{
 		XCTAssertEqual(
 			Int2(-10, -20) / Int2(2, 3),
-			Int2(-5, -6)
+			Int2(simd_int2(-10, -20) / simd_int2(2, 3))
 		)
 		XCTAssertEqual(
 			Int3(-10, -20, -30) / Int3(2, 3, 4),
-			Int3(-5, -6, -7)
+			Int3(simd_int3(-10, -20, -30) / simd_int3(2, 3, 4))
 		)
 		XCTAssertEqual(
 			Int4(-10, -20, -30, -40) / Int4(2, 3, 4, 5),
-			Int4(-5, -6, -7, -8)
+			Int4(simd_int4(-10, -20, -30, -40) / simd_int4(2, 3, 4, 5))
 		)
 		
 		XCTAssertEqual(
 			Float2(-10, -20) / Float2(2, 3),
-			Float2(-5, -6.666_666_6)
+			Float2(simd_float2(-10, -20) / simd_float2(2, 3))
 		)
 		XCTAssertEqual(
 			Float3(-10, -20, -30) / Float3(2, 3, 4),
-			Float3(-5, -6.666_666_6, -7.5)
+			Float3(simd_float3(-10, -20, -30) / simd_float3(2, 3, 4))
 		)
 		XCTAssertEqual(
 			Float4(-10, -20, -30, -40) / Float4(2, 3, 4, 5),
-			Float4(-5, -6.666_666_6, -7.5, -8)
+			Float4(simd_float4(-10, -20, -30, -40) / simd_float4(2, 3, 4, 5))
 		)
 	}
 	
@@ -300,15 +300,15 @@ class VucktTests : XCTestCase
 	{
 		XCTAssertEqual(
 			Int2(-10, -20) % Int2(2, 3),
-			Int2(0, -2)
+			Int2(simd_int2(-10, -20) % simd_int2(2, 3))
 		)
 		XCTAssertEqual(
 			Int3(-10, -20, -30) % Int3(2, 3, 4),
-			Int3(0, -2, -2)
+			Int3(simd_int3(-10, -20, -30) % simd_int3(2, 3, 4))
 		)
 		XCTAssertEqual(
 			Int4(-10, -20, -30, -40) % Int4(2, 3, 4, 5),
-			Int4(0, -2, -2, 0)
+			Int4(simd_int4(-10, -20, -30, -40) % simd_int4(2, 3, 4, 5))
 		)
 		
 		XCTAssertEqual(
@@ -329,28 +329,28 @@ class VucktTests : XCTestCase
 	{
 		XCTAssertEqual(
 			-Int2(1, 2),
-			Int2(-1, -2)
+			Int2(0 &- simd_int2(1, 2))
 		)
 		XCTAssertEqual(
 			-Int3(1, 2, 3),
-			Int3(-1, -2, -3)
+			Int3(0 &- simd_int3(1, 2, 3))
 		)
 		XCTAssertEqual(
 			-Int4(1, 2, 3, 4),
-			Int4(-1, -2, -3, -4)
+			Int4(0 &- simd_int4(1, 2, 3, 4))
 		)
 		
 		XCTAssertEqual(
 			-Float2(1, 2),
-			Float2(-1, -2)
+			Float2(-simd_float2(1, 2))
 		)
 		XCTAssertEqual(
 			-Float3(1, 2, 3),
-			Float3(-1, -2, -3)
+			Float3(-simd_float3(1, 2, 3))
 		)
 		XCTAssertEqual(
 			-Float4(1, 2, 3, 4),
-			Float4(-1, -2, -3, -4)
+			Float4(-simd_float4(1, 2, 3, 4))
 		)
 	}
 	
