@@ -10,41 +10,41 @@ import simd.vector_types
 
 class VucktTests : XCTestCase
 {
-	let _int2TestValues:[Int2] = [
-		Int2(0, 0),
-		Int2(1, 2),
-		Int2(Int32.min, Int32.max),
-		Int2(-179_424_719, 2_038_074_503),
+	let _int2TestValues:[[Int32]] = [
+		[ 0, 0 ],
+		[ 1, 2 ],
+		[ Int32.min, Int32.max ],
+		[ -179_424_719, 2_038_074_503 ],
 	]
-	let _int3TestValues:[Int3] = [
-		Int3(0, 0, 0),
-		Int3(1, 2, 3),
-		Int3(Int32.min, Int32.max, Int32.min),
-		Int3(-179_424_719, 2_038_074_503, -982_450_327),
+	let _int3TestValues:[[Int32]] = [
+		[ 0, 0, 0 ],
+		[ 1, 2, 3 ],
+		[ Int32.min, Int32.max, Int32.min ],
+		[ -179_424_719, 2_038_074_503, -982_450_327 ],
 	]
-	let _int4TestValues:[Int4] = [
-		Int4(0, 0, 0, 0),
-		Int4(1, 2, 3, 4),
-		Int4(Int32.min, Int32.max, Int32.min, Int32.max),
-		Int4(-179_424_719, 2_038_074_503, -982_450_327, 454_923_701),
+	let _int4TestValues:[[Int32]] = [
+		[ 0, 0, 0, 0 ],
+		[ 1, 2, 3, 4 ],
+		[ Int32.min, Int32.max, Int32.min, Int32.max ],
+		[ -179_424_719, 2_038_074_503, -982_450_327, 454_923_701 ],
 	]
-	let _float2TestValues:[Float2] = [
-		Float2(0, 0),
-		Float2(1, 2),
-		Float2(Float.infinity, Float.leastNonzeroMagnitude),
-		Float2(-179_424_719, 2_038_074_503),
+	let _float2TestValues:[[Float]] = [
+		[ 0, 0 ],
+		[ 1, 2 ],
+		[ Float.infinity, Float.leastNonzeroMagnitude ],
+		[ -179_424_719, 2_038_074_503 ],
 	]
-	let _float3TestValues:[Float3] = [
-		Float3(0, 0, 0),
-		Float3(1, 2, 3),
-		Float3(Float.infinity, Float.leastNonzeroMagnitude, Float.greatestFiniteMagnitude),
-		Float3(-179_424_719, 2_038_074_503, -982_450_327),
+	let _float3TestValues:[[Float]] = [
+		[ 0, 0, 0 ],
+		[ 1, 2, 3 ],
+		[ Float.infinity, Float.leastNonzeroMagnitude, Float.greatestFiniteMagnitude ],
+		[ -179_424_719, 2_038_074_503, -982_450_327 ],
 	]
-	let _float4TestValues:[Float4] = [
-		Float4(0, 0, 0, 0),
-		Float4(1, 2, 3, 4),
-		Float4(Float.infinity, Float.leastNonzeroMagnitude, Float.greatestFiniteMagnitude, Float.leastNormalMagnitude),
-		Float4(-179_424_719, 2_038_074_503, -982_450_327, 454_923_701),
+	let _float4TestValues:[[Float]] = [
+		[ 0, 0, 0, 0 ],
+		[ 1, 2, 3, 4 ],
+		[ Float.infinity, Float.leastNonzeroMagnitude, Float.greatestFiniteMagnitude, Float.leastNormalMagnitude ],
+		[ -179_424_719, 2_038_074_503, -982_450_327, 454_923_701 ],
 	]
 	
 	
@@ -58,81 +58,81 @@ class VucktTests : XCTestCase
 		// Put teardown code here. This method is called after the invocation of each test method in the class.
 	}
 	
-
+	
 	#if !NO_OBJC_BRIDGE
-		func testNSValueRoundtripping()
-		{
-			_int2TestValues.forEach{
-				let nsValue = NSValue(int2: $0)
-				let value = nsValue.int2Value
-				XCTAssertEqual($0, value)
-			}
-			
-			_int3TestValues.forEach{
-				let nsValue = NSValue(int3: $0)
-				let value = nsValue.int3Value
-				XCTAssertEqual($0, value)
-			}
-			
-			_int4TestValues.forEach{
-				let nsValue = NSValue(int4: $0)
-				let value = nsValue.int4Value
-				XCTAssertEqual($0, value)
-			}
-			
-			_float2TestValues.forEach{
-				let nsValue = NSValue(float2: $0)
-				let value = nsValue.float2Value
-				XCTAssertEqual($0, value)
-			}
-			
-			_float3TestValues.forEach{
-				let nsValue = NSValue(float3: $0)
-				let value = nsValue.float3Value
-				XCTAssertEqual($0, value)
-			}
-			
-			_float4TestValues.forEach{
-				let nsValue = NSValue(float4: $0)
-				let value = nsValue.float4Value
-				XCTAssertEqual($0, value)
-			}
+	func testNSValueRoundtripping()
+	{
+		_int2TestValues.map(Int2.init).forEach{
+			let nsValue = NSValue(int2: $0)
+			let value = nsValue.int2Value
+			XCTAssertEqual($0, value)
 		}
+		
+		_int3TestValues.map(Int3.init).forEach{
+			let nsValue = NSValue(int3: $0)
+			let value = nsValue.int3Value
+			XCTAssertEqual($0, value)
+		}
+		
+		_int4TestValues.map(Int4.init).forEach{
+			let nsValue = NSValue(int4: $0)
+			let value = nsValue.int4Value
+			XCTAssertEqual($0, value)
+		}
+		
+		_float2TestValues.map(Float2.init).forEach{
+			let nsValue = NSValue(float2: $0)
+			let value = nsValue.float2Value
+			XCTAssertEqual($0, value)
+		}
+		
+		_float3TestValues.map(Float3.init).forEach{
+			let nsValue = NSValue(float3: $0)
+			let value = nsValue.float3Value
+			XCTAssertEqual($0, value)
+		}
+		
+		_float4TestValues.map(Float4.init).forEach{
+			let nsValue = NSValue(float4: $0)
+			let value = nsValue.float4Value
+			XCTAssertEqual($0, value)
+		}
+	}
 	#endif
 	
 	func testSIMDRoundtripping()
 	{
-		_int2TestValues.forEach{
+		_int2TestValues.map(Int2.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Int2(simdValue)
 			XCTAssertEqual($0, value)
 		}
 		
-		_int3TestValues.forEach{
+		_int3TestValues.map(Int3.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Int3(simdValue)
 			XCTAssertEqual($0, value)
 		}
 		
-		_int4TestValues.forEach{
+		_int4TestValues.map(Int4.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Int4(simdValue)
 			XCTAssertEqual($0, value)
 		}
 		
-		_float2TestValues.forEach{
+		_float2TestValues.map(Float2.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Float2(simdValue)
 			XCTAssertEqual($0, value)
 		}
 		
-		_float3TestValues.forEach{
+		_float3TestValues.map(Float3.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Float3(simdValue)
 			XCTAssertEqual($0, value)
 		}
 		
-		_float4TestValues.forEach{
+		_float4TestValues.map(Float4.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Float4(simdValue)
 			XCTAssertEqual($0, value)
