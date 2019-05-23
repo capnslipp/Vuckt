@@ -1,4 +1,4 @@
 language: swift
 xcode_project: Vuckt.xcodeproj
 xcode_scheme: Vuckt
-osx_image: xcode9.2
+osx_image: xcode10.2
