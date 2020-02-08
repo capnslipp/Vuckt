@@ -11,56 +11,30 @@
 		FA32AEAC20BD1C4C008A2111 /* Int2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CD41EAD6053005C5402 /* Int2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA32AEAF20BD1C4C008A2111 /* Int3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.mm */; };
 		FA32AEB020BD1C4C008A2111 /* Int2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.mm */; };
-		FA3E5E4821B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4921B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */; };
-		FA3E5E4A21B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4721B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4B21B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4721B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4C21B7C3870073FA6D /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0620CFBC2200261EE4 /* Int2.swift */; };
-		FA3E5E4D21B7C3880073FA6D /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0620CFBC2200261EE4 /* Int2.swift */; };
 		FA3E5E4E21B7C38B0073FA6D /* Int3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0720CFBC2B00261EE4 /* Int3.swift */; };
-		FA3E5E4F21B7C38C0073FA6D /* Int3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0720CFBC2B00261EE4 /* Int3.swift */; };
-		FA3E5E5521B88F990073FA6D /* Int4.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E5421B88F990073FA6D /* Int4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3E5E5621B88F990073FA6D /* Int4.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E5421B88F990073FA6D /* Int4.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3E5E5821B88FAC0073FA6D /* Int4.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5721B88FAC0073FA6D /* Int4.mm */; };
 		FA3E5E5921B88FAC0073FA6D /* Int4.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5721B88FAC0073FA6D /* Int4.mm */; };
-		FA3E5E5B21B8900B0073FA6D /* Int4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5A21B8900B0073FA6D /* Int4.swift */; };
 		FA3E5E5C21B8900B0073FA6D /* Int4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5A21B8900B0073FA6D /* Int4.swift */; };
-		FA3E5E5F21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5E21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift */; };
 		FA3E5E6021B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E5E21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift */; };
-		FA3E5E6521B89EBB0073FA6D /* Float2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E6421B89EBB0073FA6D /* Float2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3E5E6621B89EBB0073FA6D /* Float2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E6421B89EBB0073FA6D /* Float2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3E5E6821B89EC80073FA6D /* Float3.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E6721B89EC80073FA6D /* Float3.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3E5E6921B89EC80073FA6D /* Float3.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E6721B89EC80073FA6D /* Float3.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3E5E6B21B89EDF0073FA6D /* Float4.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E6A21B89EDF0073FA6D /* Float4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3E5E6C21B89EDF0073FA6D /* Float4.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E5E6A21B89EDF0073FA6D /* Float4.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3E5E6E21B89F030073FA6D /* Float2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E6D21B89F030073FA6D /* Float2.mm */; };
 		FA3E5E6F21B89F030073FA6D /* Float2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E6D21B89F030073FA6D /* Float2.mm */; };
-		FA3E5E7121B89F1C0073FA6D /* Float3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7021B89F1C0073FA6D /* Float3.mm */; };
 		FA3E5E7221B89F1C0073FA6D /* Float3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7021B89F1C0073FA6D /* Float3.mm */; };
-		FA3E5E7421B89F270073FA6D /* Float4.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7321B89F270073FA6D /* Float4.mm */; };
 		FA3E5E7521B89F270073FA6D /* Float4.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7321B89F270073FA6D /* Float4.mm */; };
-		FA3E5E7721B89F3B0073FA6D /* Float2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7621B89F3B0073FA6D /* Float2.swift */; };
 		FA3E5E7821B89F3B0073FA6D /* Float2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7621B89F3B0073FA6D /* Float2.swift */; };
-		FA3E5E7A21B89F460073FA6D /* Float3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7921B89F460073FA6D /* Float3.swift */; };
 		FA3E5E7B21B89F460073FA6D /* Float3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7921B89F460073FA6D /* Float3.swift */; };
-		FA3E5E7D21B89F4F0073FA6D /* Float4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7C21B89F4F0073FA6D /* Float4.swift */; };
 		FA3E5E7E21B89F4F0073FA6D /* Float4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E7C21B89F4F0073FA6D /* Float4.swift */; };
-		FA3E5E8521B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8221B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift */; };
 		FA3E5E8621B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8221B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift */; };
-		FA3E5E8721B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8321B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift */; };
 		FA3E5E8821B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8321B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift */; };
-		FA3E5E8921B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8421B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift */; };
 		FA3E5E8A21B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8421B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift */; };
 		FA59C00B21B3529200799899 /* Vuckt.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA59C00C21B353EA00799899 /* Vuckt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; };
 		FA7C2F8120CA1557001A44CF /* Vuckt.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* Vuckt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA7C2F8220CA1561001A44CF /* Vuckt.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* Vuckt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA9E2CD61EAD608C005C5402 /* Int2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.mm */; };
-		FA9E2CD71EAD6105005C5402 /* Int2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CD41EAD6053005C5402 /* Int2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FAC5EDCC1E550B1900E116B3 /* Int3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.mm */; };
-		FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC5EDCA1E550B1900E116B3 /* Int3.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAED6C2E21B32E370083A2B5 /* VucktTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED6C2D21B32E370083A2B5 /* VucktTests.swift */; };
-		FAF2646021ADE8B00061D666 /* Vuckt.pch in Headers */ = {isa = PBXBuildFile; fileRef = FAF2645F21ADE8B00061D666 /* Vuckt.pch */; };
 		FAF2646121ADE8B00061D666 /* Vuckt.pch in Headers */ = {isa = PBXBuildFile; fileRef = FAF2645F21ADE8B00061D666 /* Vuckt.pch */; };
 		FAFB401F21B34F4A00D4A8B5 /* VucktTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED6C2D21B32E370083A2B5 /* VucktTests.swift */; };
 /* End PBXBuildFile section */
@@ -117,7 +91,6 @@
 		FAED6C2F21B32E370083A2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAF2645F21ADE8B00061D666 /* Vuckt.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vuckt.pch; sourceTree = "<group>"; };
 		FAFB401721B34F2700D4A8B5 /* VucktTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VucktTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_12 /* Vuckt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Vuckt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,13 +113,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA59C00C21B353EA00799899 /* Vuckt.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_19 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +210,6 @@
 		OBJ_11 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_12 /* Vuckt.framework */,
 				FA32AEB620BD1C4C008A2111 /* Vuckt.framework */,
 				FAED6C2B21B32E370083A2B5 /* VucktTests.xctest */,
 				FAFB401721B34F2700D4A8B5 /* VucktTests.xctest */,
@@ -295,27 +260,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FAC5EDD51E550BEA00E116B3 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA3E5E6B21B89EDF0073FA6D /* Float4.h in Headers */,
-				FA3E5E5521B88F990073FA6D /* Int4.h in Headers */,
-				FA7C2F8220CA1561001A44CF /* Vuckt.h in Headers */,
-				FAC5EDD61E550BEE00E116B3 /* Int3.h in Headers */,
-				FA3E5E6821B89EC80073FA6D /* Float3.h in Headers */,
-				FAF2646021ADE8B00061D666 /* Vuckt.pch in Headers */,
-				FA3E5E6521B89EBB0073FA6D /* Float2.h in Headers */,
-				FA9E2CD71EAD6105005C5402 /* Int2.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		FA32AEA920BD1C4C008A2111 /* Vuckt - Swift 4 */ = {
+		FA32AEA920BD1C4C008A2111 /* Vuckt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA32AEB320BD1C4C008A2111 /* Build configuration list for PBXNativeTarget "Vuckt - Swift 4" */;
+			buildConfigurationList = FA32AEB320BD1C4C008A2111 /* Build configuration list for PBXNativeTarget "Vuckt" */;
 			buildPhases = (
 				FA32AEAA20BD1C4C008A2111 /* Headers */,
 				FA32AEAD20BD1C4C008A2111 /* Sources */,
@@ -325,7 +275,7 @@
 			);
 			dependencies = (
 			);
-			name = "Vuckt - Swift 4";
+			name = Vuckt;
 			productName = Int3;
 			productReference = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */;
 			productType = "com.apple.product-type.framework";
@@ -365,23 +315,6 @@
 			productReference = FAFB401721B34F2700D4A8B5 /* VucktTests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		OBJ_13 /* Vuckt - Swift 3 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_14 /* Build configuration list for PBXNativeTarget "Vuckt - Swift 3" */;
-			buildPhases = (
-				FAC5EDD51E550BEA00E116B3 /* Headers */,
-				OBJ_17 /* Sources */,
-				OBJ_19 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Vuckt - Swift 3";
-			productName = Int3;
-			productReference = OBJ_12 /* Vuckt.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -392,7 +325,7 @@
 				LastUpgradeCheck = 0940;
 				TargetAttributes = {
 					FA32AEA920BD1C4C008A2111 = {
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1130;
 					};
 					FAED6C2A21B32E370083A2B5 = {
 						CreatedOnToolsVersion = 10.1;
@@ -403,9 +336,6 @@
 						DevelopmentTeam = UQQE2H6P34;
 						ProvisioningStyle = Automatic;
 					};
-					OBJ_13 = {
-						LastSwiftMigration = 1010;
-					};
 				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Vuckt" */;
@@ -413,6 +343,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = OBJ_5;
@@ -420,8 +351,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_13 /* Vuckt - Swift 3 */,
-				FA32AEA920BD1C4C008A2111 /* Vuckt - Swift 4 */,
+				FA32AEA920BD1C4C008A2111 /* Vuckt */,
 				FAED6C2A21B32E370083A2B5 /* VucktTests - macOS */,
 				FAFB401621B34F2700D4A8B5 /* VucktTests - iOS */,
 			);
@@ -487,31 +417,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_17 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				FA3E5E8521B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift in Sources */,
-				FA3E5E8721B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift in Sources */,
-				FAC5EDCC1E550B1900E116B3 /* Int3.mm in Sources */,
-				FA3E5E8921B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift in Sources */,
-				FA3E5E7721B89F3B0073FA6D /* Float2.swift in Sources */,
-				FA9E2CD61EAD608C005C5402 /* Int2.mm in Sources */,
-				FA3E5E7121B89F1C0073FA6D /* Float3.mm in Sources */,
-				FA3E5E5F21B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift in Sources */,
-				FA3E5E4D21B7C3880073FA6D /* Int2.swift in Sources */,
-				FA3E5E7D21B89F4F0073FA6D /* Float4.swift in Sources */,
-				FA3E5E7A21B89F460073FA6D /* Float3.swift in Sources */,
-				FA3E5E4A21B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift in Sources */,
-				FA3E5E5B21B8900B0073FA6D /* Int4.swift in Sources */,
-				FA3E5E4821B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */,
-				FA3E5E6E21B89F030073FA6D /* Float2.mm in Sources */,
-				FA3E5E7421B89F270073FA6D /* Float4.mm in Sources */,
-				FA3E5E4F21B7C38C0073FA6D /* Int3.swift in Sources */,
-				FA3E5E5821B88FAC0073FA6D /* Int4.mm in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -535,7 +440,6 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 				TARGET_NAME = Vuckt;
 			};
 			name = Debug;
@@ -559,7 +463,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 				TARGET_NAME = Vuckt;
 			};
 			name = Release;
@@ -601,7 +504,6 @@
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.2;
 				TARGET_NAME = VucktTests;
 			};
 			name = Debug;
@@ -639,7 +541,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_VERSION = 4.2;
 				TARGET_NAME = VucktTests;
 			};
 			name = Release;
@@ -681,7 +582,6 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TARGET_NAME = VucktTests;
 			};
@@ -720,59 +620,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TARGET_NAME = VucktTests;
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		OBJ_15 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				DEFINES_MODULE = YES;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Vuckt.xcodeproj/Vuckt_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGET_NAME = Vuckt;
-			};
-			name = Debug;
-		};
-		OBJ_16 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				DEFINES_MODULE = YES;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Vuckt.xcodeproj/Vuckt_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_VERSION = 3.0;
-				TARGET_NAME = Vuckt;
 			};
 			name = Release;
 		};
@@ -824,6 +674,7 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -873,6 +724,7 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -880,7 +732,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA32AEB320BD1C4C008A2111 /* Build configuration list for PBXNativeTarget "Vuckt - Swift 4" */ = {
+		FA32AEB320BD1C4C008A2111 /* Build configuration list for PBXNativeTarget "Vuckt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA32AEB420BD1C4C008A2111 /* Debug */,
@@ -903,15 +755,6 @@
 			buildConfigurations = (
 				FAFB401C21B34F2700D4A8B5 /* Debug */,
 				FAFB401D21B34F2700D4A8B5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		OBJ_14 /* Build configuration list for PBXNativeTarget "Vuckt - Swift 3" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_15 /* Debug */,
-				OBJ_16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

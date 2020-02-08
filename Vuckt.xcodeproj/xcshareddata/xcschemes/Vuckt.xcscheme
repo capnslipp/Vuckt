@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_13"
+               BlueprintIdentifier = "FA32AEA920BD1C4C008A2111"
                BuildableName = "Vuckt.framework"
-               BlueprintName = "Vuckt - Swift 3"
+               BlueprintName = "Vuckt"
                ReferencedContainer = "container:Vuckt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,19 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_13"
+            BlueprintIdentifier = "FA32AEA920BD1C4C008A2111"
             BuildableName = "IntN.framework"
-            BlueprintName = "IntN - Swift 3"
+            BlueprintName = "IntN - Swift 4"
             ReferencedContainer = "container:IntN.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -51,8 +49,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
