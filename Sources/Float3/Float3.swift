@@ -4,6 +4,9 @@
 
 import Foundation
 import simd
+import SceneKit.SceneKitTypes
+import GLKit.GLKVector3
+import CoreImage.CIVector
 
 
 

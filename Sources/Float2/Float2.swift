@@ -4,6 +4,8 @@
 
 import Foundation
 import simd
+import CoreImage.CIVector
+import CoreGraphics.CGGeometry
 
 
 

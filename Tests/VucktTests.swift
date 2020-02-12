@@ -57,45 +57,47 @@ class VucktTests : XCTestCase
 		// Put teardown code here. This method is called after the invocation of each test method in the class.
 	}
 	
-	
-	func testNSValueRountripping()
-	{
-		_int2TestValues.forEach{
-			let nsValue = NSValue(int2: $0)
-			let value = nsValue.int2Value
-			XCTAssertEqual($0, value)
+
+	#if !NO_OBJC_BRIDGE
+		func testNSValueRountripping()
+		{
+			_int2TestValues.forEach{
+				let nsValue = NSValue(int2: $0)
+				let value = nsValue.int2Value
+				XCTAssertEqual($0, value)
+			}
+			
+			_int3TestValues.forEach{
+				let nsValue = NSValue(int3: $0)
+				let value = nsValue.int3Value
+				XCTAssertEqual($0, value)
+			}
+			
+			_int4TestValues.forEach{
+				let nsValue = NSValue(int4: $0)
+				let value = nsValue.int4Value
+				XCTAssertEqual($0, value)
+			}
+			
+			_float2TestValues.forEach{
+				let nsValue = NSValue(float2: $0)
+				let value = nsValue.float2Value
+				XCTAssertEqual($0, value)
+			}
+			
+			_float3TestValues.forEach{
+				let nsValue = NSValue(float3: $0)
+				let value = nsValue.float3Value
+				XCTAssertEqual($0, value)
+			}
+			
+			_float4TestValues.forEach{
+				let nsValue = NSValue(float4: $0)
+				let value = nsValue.float4Value
+				XCTAssertEqual($0, value)
+			}
 		}
-		
-		_int3TestValues.forEach{
-			let nsValue = NSValue(int3: $0)
-			let value = nsValue.int3Value
-			XCTAssertEqual($0, value)
-		}
-		
-		_int4TestValues.forEach{
-			let nsValue = NSValue(int4: $0)
-			let value = nsValue.int4Value
-			XCTAssertEqual($0, value)
-		}
-		
-		_float2TestValues.forEach{
-			let nsValue = NSValue(float2: $0)
-			let value = nsValue.float2Value
-			XCTAssertEqual($0, value)
-		}
-		
-		_float3TestValues.forEach{
-			let nsValue = NSValue(float3: $0)
-			let value = nsValue.float3Value
-			XCTAssertEqual($0, value)
-		}
-		
-		_float4TestValues.forEach{
-			let nsValue = NSValue(float4: $0)
-			let value = nsValue.float4Value
-			XCTAssertEqual($0, value)
-		}
-	}
+	#endif
 	
 	func testSIMDRountripping()
 	{
