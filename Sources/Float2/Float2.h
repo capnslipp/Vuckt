@@ -54,29 +54,29 @@ NS_INLINE Float2 Float2FromCI(CIVector *ciVector) {
 
 #pragma mark CoreGraphics Conversion
 
-/// Converts an `Float3` struct to `CGVector` struct using passing-individual-members initialization.
+/// Converts an `Float2` struct to `CGVector` struct using passing-individual-members initialization.
 NS_INLINE CGVector Float2ToCGVector(Float2 structValue) {
 	return CGVectorMake((CGFloat)structValue.x, (CGFloat)structValue.y);
 }
-/// Converts an `Float3` struct from `CGVector` struct using passing-individual-members initialization.
+/// Converts an `Float2` struct from `CGVector` struct using passing-individual-members initialization.
 NS_INLINE Float2 Float2FromCGVector(CGVector cgVectorValue) {
 	return (Float2){ (simd_float1)cgVectorValue.dx, (simd_float1)cgVectorValue.dy };
 }
 
-/// Converts an `Float3` struct to `CGPoint` struct using passing-individual-members initialization.
+/// Converts an `Float2` struct to `CGPoint` struct using passing-individual-members initialization.
 NS_INLINE CGPoint Float2ToCGPoint(Float2 structValue) {
 	return CGPointMake((CGFloat)structValue.x, (CGFloat)structValue.y);
 }
-/// Converts an `Float3` struct from `CGPoint` struct using passing-individual-members initialization.
+/// Converts an `Float2` struct from `CGPoint` struct using passing-individual-members initialization.
 NS_INLINE Float2 Float2FromCGPoint(CGPoint cgPointValue) {
 	return (Float2){ (simd_float1)cgPointValue.x, (simd_float1)cgPointValue.y };
 }
 
-/// Converts an `Float3` struct to `CGSize` struct using passing-individual-members initialization.
+/// Converts an `Float2` struct to `CGSize` struct using passing-individual-members initialization.
 NS_INLINE CGSize Float2ToCGSize(Float2 structValue) {
 	return CGSizeMake((CGFloat)structValue.x, (CGFloat)structValue.y);
 }
-/// Converts an `Float3` struct from `CGSize` struct using passing-individual-members initialization.
+/// Converts an `Float2` struct from `CGSize` struct using passing-individual-members initialization.
 NS_INLINE Float2 Float2FromCGSize(CGSize cgSizeValue) {
 	return (Float2){ (simd_float1)cgSizeValue.width, (simd_float1)cgSizeValue.height };
 }
