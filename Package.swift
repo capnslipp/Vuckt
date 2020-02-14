@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:4.2
 import PackageDescription
 
 let package = Package(
@@ -23,11 +23,9 @@ let package = Package(
 				"Int3/Int3.swift",
 				"Int4/Int4_NoObjCBridge.swift",
 				"Int4/Int4.swift",
-			],
-			swiftSettings: [ .define("NO_OBJC_BRIDGE") ]
+			]
 		),
-		.testTarget(name: "VucktTests", dependencies: ["Vuckt"], path: "Tests/",
-			swiftSettings: [ .define("NO_OBJC_BRIDGE") ]
+		.testTarget(name: "VucktTests", dependencies: ["Vuckt"], path: "Tests/"
 		),
 	],
 	swiftLanguageVersions: [
