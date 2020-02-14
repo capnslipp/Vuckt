@@ -335,11 +335,17 @@ extension Float2 : Hashable
 {
 	private static let _hashingLargePrimes:[UInt] = [ 982_917_223, 3_572_352_083 ]
 	
-	public var hashValue:Int {
-		let uintHashValue = [ self.x, self.y ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Float)) in
-			let elementHash = UInt(element.value.bitPattern) &* Float2._hashingLargePrimes[element.index]
-			return hashValue &+ elementHash
+	#if swift(>=4.2)
+		public func hash(into hasher:inout Hasher) {
+			[ self.x, self.y ].forEach{ hasher.combine($0) }
 		}
-		return Int(bitPattern: uintHashValue)
-	}
+	#else
+		public var hashValue:Int {
+			let uintHashValue = [ self.x, self.y ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Float)) in
+				let elementHash = UInt(element.value.bitPattern) &* Float2._hashingLargePrimes[element.index]
+				return hashValue &+ elementHash
+			}
+			return Int(bitPattern: uintHashValue)
+		}
+	#endif
 }

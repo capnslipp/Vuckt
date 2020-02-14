@@ -377,7 +377,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static prefix func - (v:Int2) -> Int2 {
-		return Int2(-v.simdValue)
+		return Int2(0 &- v.simdValue)
 	}
 }
 
@@ -386,11 +386,17 @@ extension Int2 : Hashable
 {
 	private static let _hashingLargePrimes:[UInt] = [ 982_917_223, 3_572_352_083 ]
 	
-	public var hashValue:Int {
-		let uintHashValue = [ self.x, self.y ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Int32)) in
-			let elementHash = UInt(bitPattern: Int(element.value)) &* Int2._hashingLargePrimes[element.index]
-			return hashValue &+ elementHash
+	#if swift(>=4.2)
+		public func hash(into hasher:inout Hasher) {
+			[ self.x, self.y ].forEach{ hasher.combine($0) }
 		}
-		return Int(bitPattern: uintHashValue)
-	}
+	#else
+		public var hashValue:Int {
+			let uintHashValue = [ self.x, self.y ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Int32)) in
+				let elementHash = UInt(bitPattern: Int(element.value)) &* Int2._hashingLargePrimes[element.index]
+				return hashValue &+ elementHash
+			}
+			return Int(bitPattern: uintHashValue)
+		}
+	#endif
 }
