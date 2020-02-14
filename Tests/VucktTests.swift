@@ -59,7 +59,7 @@ class VucktTests : XCTestCase
 	
 
 	#if !NO_OBJC_BRIDGE
-		func testNSValueRountripping()
+		func testNSValueRoundtripping()
 		{
 			_int2TestValues.forEach{
 				let nsValue = NSValue(int2: $0)
@@ -99,7 +99,7 @@ class VucktTests : XCTestCase
 		}
 	#endif
 	
-	func testSIMDRountripping()
+	func testSIMDRoundtripping()
 	{
 		_int2TestValues.forEach{
 			let simdValue = $0.simdValue
