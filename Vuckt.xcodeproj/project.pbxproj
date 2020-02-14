@@ -34,6 +34,7 @@
 		FA59C00B21B3529200799899 /* Vuckt.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA59C00C21B353EA00799899 /* Vuckt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; };
 		FA7C2F8120CA1557001A44CF /* Vuckt.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* Vuckt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA7F35C623F682F100D89025 /* Vuckt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F35C523F682F100D89025 /* Vuckt.swift */; };
 		FAED6C2E21B32E370083A2B5 /* VucktTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED6C2D21B32E370083A2B5 /* VucktTests.swift */; };
 		FAF2646121ADE8B00061D666 /* Vuckt.pch in Headers */ = {isa = PBXBuildFile; fileRef = FAF2645F21ADE8B00061D666 /* Vuckt.pch */; };
 		FAFB401F21B34F4A00D4A8B5 /* VucktTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED6C2D21B32E370083A2B5 /* VucktTests.swift */; };
@@ -85,6 +86,7 @@
 		FA3E5E8221B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float4+_ObjectiveCBridgeable.swift"; path = "Float4/Float4+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
 		FA3E5E8321B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float2+_ObjectiveCBridgeable.swift"; path = "Float2/Float2+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
 		FA3E5E8421B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float3+_ObjectiveCBridgeable.swift"; path = "Float3/Float3+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
+		FA7F35C523F682F100D89025 /* Vuckt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vuckt.swift; sourceTree = "<group>"; };
 		FA9E2CBA1EAD5D3E005C5402 /* Vuckt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vuckt.h; sourceTree = "<group>"; };
 		FA9E2CD41EAD6053005C5402 /* Int2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Int2.h; sourceTree = "<group>"; };
 		FA9E2CD51EAD608C005C5402 /* Int2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Int2.mm; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				FAF2645F21ADE8B00061D666 /* Vuckt.pch */,
 				FA9E2CBA1EAD5D3E005C5402 /* Vuckt.h */,
+				FA7F35C523F682F100D89025 /* Vuckt.swift */,
 				FA3E5E5021B88B550073FA6D /* Int2 */,
 				FA3E5E5121B88B9A0073FA6D /* Int3 */,
 				FA3E5E5321B88F720073FA6D /* Int4 */,
@@ -399,6 +402,7 @@
 				FA3E5E7821B89F3B0073FA6D /* Float2.swift in Sources */,
 				FA32AEB020BD1C4C008A2111 /* Int2.mm in Sources */,
 				FA3E5E7221B89F1C0073FA6D /* Float3.mm in Sources */,
+				FA7F35C623F682F100D89025 /* Vuckt.swift in Sources */,
 				FA3E5E6021B892EC0073FA6D /* Int4+_ObjectiveCBridgeable.swift in Sources */,
 				FA3E5E4C21B7C3870073FA6D /* Int2.swift in Sources */,
 				FA3E5E7E21B89F4F0073FA6D /* Float4.swift in Sources */,

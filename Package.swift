@@ -10,6 +10,7 @@ let package = Package(
 	targets: [
 		.target(name: "Vuckt", dependencies: [], path: "Sources/",
 			sources: [
+				"Vuckt.swift",
 				"Float2/Float2_NoObjCBridge.swift",
 				"Float2/Float2.swift",
 				"Float3/Float3_NoObjCBridge.swift",
