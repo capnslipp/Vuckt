@@ -45,6 +45,48 @@ public func Float3FromSimd(_ simdValue:simd_float3) -> Float3 {
 
 
 
+// MARK: SIMD-Accelerated Operator Access
+
+public func Float3Add(_ a:Float3, _ b:Float3) -> Float3 {
+	return Float3(Float3ToSimd(a) + Float3ToSimd(b))
+}
+public func Float3Subtract(_ a:Float3, _ b:Float3) -> Float3 {
+	return Float3FromSimd(Float3ToSimd(a) - Float3ToSimd(b))
+}
+public func Float3Negate(_ v:Float3) -> Float3 {
+	return Float3FromSimd(-Float3ToSimd(v))
+}
+public func Float3Multiply(_ a:Float3, _ b:Float3) -> Float3 {
+	return Float3FromSimd(Float3ToSimd(a) * Float3ToSimd(b))
+}
+public func Float3Divide(_ a:Float3, _ b:Float3) -> Float3 {
+	return Float3FromSimd(Float3ToSimd(a) / Float3ToSimd(b))
+}
+public func Float3Modulus(_ a:Float3, _ b:Float3) -> Float3 {
+	return Float3(array: a.simdValue.indices.map{ a[$0].truncatingRemainder(dividingBy: b[$0]) })
+}
+
+public func Float3Equal(_ a:Float3, _ b:Float3) -> Bool {
+	return Float3ToSimd(a) == Float3ToSimd(b)
+}
+public func Float3Inequal(_ a:Float3, _ b:Float3) -> Bool {
+	return Float3ToSimd(a) != Float3ToSimd(b)
+}
+public func Float3LessThan(_ a:Float3, _ b:Float3) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
+}
+public func Float3LessThanOrEqual(_ a:Float3, _ b:Float3) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] <= b[$1]) }
+}
+public func Float3GreaterThan(_ a:Float3, _ b:Float3) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] > b[$1]) }
+}
+public func Float3GreaterThanOrEqual(_ a:Float3, _ b:Float3) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] >= b[$1]) }
+}
+
+
+
 // MARK: SceneKit Conversion
 
 /// Converts an `Float3` struct to `SCNVector3` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
