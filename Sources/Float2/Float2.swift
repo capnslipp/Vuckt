@@ -32,7 +32,7 @@ extension Float2
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd.float2) {
+	public init(_ value:simd_float2) {
 		self = Float2FromSimd(value)
 	}
 	
@@ -106,7 +106,7 @@ extension Float2
 			case 0: return self.x
 			case 1: return self.y
 			
-			default: return Float.nan // TODO: Instead, do whatever simd.float2 does.
+			default: return Float.nan // TODO: Instead, do whatever simd_float2 does.
 		}
 	}
 	
@@ -131,7 +131,7 @@ extension Float2
 		self = self.clamped(to: range)
 	}
 	public func clamped(to range:ClosedRange<Float2>) -> Float2 {
-		return Float2(simd.clamp(self.simdValue, min: range.lowerBound.simdValue, max: range.upperBound.simdValue))
+		return Float2(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
@@ -161,7 +161,7 @@ extension Float2
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd.float2 {
+	public var simdValue:simd_float2 {
 		return Float2ToSimd(self)
 	}
 }
@@ -217,25 +217,25 @@ extension Float2 : CustomStringConvertible
 // MARK: Element-wise `min`/`max`
 
 public func min(_ a:Float2, _ b:Float2) -> Float2 {
-	return Float2(simd.min(a.simdValue, b.simdValue))
+	return Float2(simd_min(a.simdValue, b.simdValue))
 }
 
 public func min(_ a:Float2, _ b:Float2, _ c:Float2, _ rest:Float2...) -> Float2 {
-	var minSimdValue = simd.min(simd.min(a.simdValue, b.simdValue), c.simdValue)
+	var minSimdValue = simd_min(simd_min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		minSimdValue = simd.min(minSimdValue, value.simdValue)
+		minSimdValue = simd_min(minSimdValue, value.simdValue)
 	}
 	return Float2(minSimdValue)
 }
 
 public func max(_ a:Float2, _ b:Float2) -> Float2 {
-	return Float2(simd.max(a.simdValue, b.simdValue))
+	return Float2(simd_max(a.simdValue, b.simdValue))
 }
 
 public func max(_ a:Float2, _ b:Float2, _ c:Float2, _ rest:Float2...) -> Float2 {
-	var maxSimdValue = simd.max(simd.max(a.simdValue, b.simdValue), c.simdValue)
+	var maxSimdValue = simd_max(simd_max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		maxSimdValue = simd.max(maxSimdValue, value.simdValue)
+		maxSimdValue = simd_max(maxSimdValue, value.simdValue)
 	}
 	return Float2(maxSimdValue)
 }
@@ -258,7 +258,11 @@ extension Float2 : ExpressibleByArrayLiteral
 extension Float2 : Equatable
 {
 	public static func ==(a:Float2, b:Float2) -> Bool {
-		return a.simdValue == b.simdValue
+		return Float2Equal(a, b)
+	}
+	
+	public static func !=(a:Float2, b:Float2) -> Bool {
+		return Float2Inequal(a, b)
 	}
 }
 
@@ -266,19 +270,19 @@ extension Float2 : Equatable
 extension Float2 : Comparable
 {
 	public static func < (a:Float2, b:Float2) -> Bool {
-		return (a.x < b.x) && (a.y < b.y)
+		return Float2LessThan(a, b)
 	}
 	
 	public static func <= (a:Float2, b:Float2) -> Bool {
-		return (a.x <= b.x) && (a.y <= b.y)
+		return Float2LessThanOrEqual(a, b)
 	}
 	
 	public static func > (a:Float2, b:Float2) -> Bool {
-		return (a.x > b.x) && (a.y > b.y)
+		return Float2GreaterThan(a, b)
 	}
 	
 	public static func >= (a:Float2, b:Float2) -> Bool {
-		return (a.x >= b.x) && (a.y >= b.y)
+		return Float2GreaterThanOrEqual(a, b)
 	}
 }
 
@@ -286,7 +290,7 @@ extension Float2 : Comparable
 extension Float2 // Basic Math Operations
 {
 	public static func + (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.simdValue + b.simdValue)
+		return Float2Add(a, b)
 	}
 	public static func += (v:inout Float2, o:Float2) {
 		v = v + o
@@ -294,7 +298,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static func - (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.simdValue - b.simdValue)
+		return Float2Subtract(a, b)
 	}
 	public static func -= (v:inout Float2, o:Float2) {
 		v = v - o
@@ -302,7 +306,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static func * (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.simdValue * b.simdValue)
+		return Float2Multiply(a, b)
 	}
 	public static func *= (v:inout Float2, o:Float2) {
 		v = v * o
@@ -310,7 +314,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static func / (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.simdValue / b.simdValue)
+		return Float2Divide(a, b)
 	}
 	public static func /= (v:inout Float2, o:Float2) {
 		v = v / o
@@ -318,7 +322,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static func % (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.x.truncatingRemainder(dividingBy: b.x), a.y.truncatingRemainder(dividingBy: b.y))
+		return Float2Modulus(a, b)
 	}
 	public static func %= (v:inout Float2, o:Float2) {
 		v = v % o
@@ -326,7 +330,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static prefix func - (v:Float2) -> Float2 {
-		return Float2(-v.simdValue)
+		return Float2Negate(v)
 	}
 }
 

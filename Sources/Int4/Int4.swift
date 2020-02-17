@@ -66,7 +66,7 @@ extension Int4
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd.int4) {
+	public init(_ value:simd_int4) {
 		self = Int4FromSimd(value)
 	}
 	
@@ -154,7 +154,7 @@ extension Int4
 			case 2: return self.z
 			case 3: return self.w
 			
-			default: return Int32.min // TODO: Instead, do whatever simd.int4 does.
+			default: return Int32.min // TODO: Instead, do whatever simd_int4 does.
 		}
 	}
 	
@@ -183,7 +183,7 @@ extension Int4
 		self = self.clamped(to: range)
 	}
 	public func clamped(to range:ClosedRange<Int4>) -> Int4 {
-		return Int4(simd.clamp(self.simdValue, min: range.lowerBound.simdValue, max: range.upperBound.simdValue))
+		return Int4(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
@@ -265,7 +265,7 @@ extension Int4
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd.int4 {
+	public var simdValue:simd_int4 {
 		return Int4ToSimd(self)
 	}
 }
@@ -282,25 +282,25 @@ extension Int4 : CustomStringConvertible
 // MARK: Element-wise `min`/`max`
 
 public func min(_ a:Int4, _ b:Int4) -> Int4 {
-	return Int4(simd.min(a.simdValue, b.simdValue))
+	return Int4(simd_min(a.simdValue, b.simdValue))
 }
 
 public func min(_ a:Int4, _ b:Int4, _ c:Int4, _ rest:Int4...) -> Int4 {
-	var minSimdValue = simd.min(simd.min(a.simdValue, b.simdValue), c.simdValue)
+	var minSimdValue = simd_min(simd_min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		minSimdValue = simd.min(minSimdValue, value.simdValue)
+		minSimdValue = simd_min(minSimdValue, value.simdValue)
 	}
 	return Int4(minSimdValue)
 }
 
 public func max(_ a:Int4, _ b:Int4) -> Int4 {
-	return Int4(simd.max(a.simdValue, b.simdValue))
+	return Int4(simd_max(a.simdValue, b.simdValue))
 }
 
 public func max(_ a:Int4, _ b:Int4, _ c:Int4, _ rest:Int4...) -> Int4 {
-	var maxSimdValue = simd.max(simd.max(a.simdValue, b.simdValue), c.simdValue)
+	var maxSimdValue = simd_max(simd_max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		maxSimdValue = simd.max(maxSimdValue, value.simdValue)
+		maxSimdValue = simd_max(maxSimdValue, value.simdValue)
 	}
 	return Int4(maxSimdValue)
 }
@@ -323,7 +323,11 @@ extension Int4 : ExpressibleByArrayLiteral
 extension Int4 : Equatable
 {
 	public static func ==(a:Int4, b:Int4) -> Bool {
-		return a.simdValue == b.simdValue
+		return Int4Equal(a, b)
+	}
+	
+	public static func !=(a:Int4, b:Int4) -> Bool {
+		return Int4Inequal(a, b)
 	}
 }
 
@@ -331,19 +335,19 @@ extension Int4 : Equatable
 extension Int4 : Comparable
 {
 	public static func < (a:Int4, b:Int4) -> Bool {
-		return (a.x < b.x) && (a.y < b.y) && (a.z < b.z) && (a.w < b.w)
+		return Int4LessThan(a, b)
 	}
 	
 	public static func <= (a:Int4, b:Int4) -> Bool {
-		return (a.x <= b.x) && (a.y <= b.y) && (a.z <= b.z) && (a.w <= b.w)
+		return Int4LessThanOrEqual(a, b)
 	}
 	
 	public static func > (a:Int4, b:Int4) -> Bool {
-		return (a.x > b.x) && (a.y > b.y) && (a.z > b.z) && (a.w > b.w)
+		return Int4GreaterThan(a, b)
 	}
 	
 	public static func >= (a:Int4, b:Int4) -> Bool {
-		return (a.x >= b.x) && (a.y >= b.y) && (a.z >= b.z) && (a.w >= b.w)
+		return Int4GreaterThanOrEqual(a, b)
 	}
 }
 
@@ -379,7 +383,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func + (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.simdValue &+ b.simdValue)
+		return Int4Add(a, b)
 	}
 	public static func += (v:inout Int4, o:Int4) {
 		v = v + o
@@ -401,7 +405,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func - (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.simdValue &- b.simdValue)
+		return Int4Subtract(a, b)
 	}
 	public static func -= (v:inout Int4, o:Int4) {
 		v = v - o
@@ -423,7 +427,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func * (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.simdValue &* b.simdValue)
+		return Int4Multiply(a, b)
 	}
 	public static func *= (v:inout Int4, o:Int4) {
 		v = v * o
@@ -445,7 +449,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func / (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.simdValue / b.simdValue)
+		return Int4Divide(a, b)
 	}
 	public static func /= (v:inout Int4, o:Int4) {
 		v = v / o
@@ -467,7 +471,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func % (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.x % b.x, a.y % b.y, a.z % b.z, a.w % b.w)
+		return Int4Modulus(a, b)
 	}
 	public static func %= (v:inout Int4, o:Int4) {
 		v = v % o
@@ -485,7 +489,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static prefix func - (v:Int4) -> Int4 {
-		return Int4(0 &- v.simdValue)
+		return Int4Negate(v)
 	}
 }
 
