@@ -47,6 +47,48 @@ public func Float4FromSimd(_ simdValue:simd_float4) -> Float4 {
 
 
 
+// MARK: SIMD-Accelerated Operator Access
+
+public func Float4Add(_ a:Float4, _ b:Float4) -> Float4 {
+	return Float4(Float4ToSimd(a) + Float4ToSimd(b))
+}
+public func Float4Subtract(_ a:Float4, _ b:Float4) -> Float4 {
+	return Float4FromSimd(Float4ToSimd(a) - Float4ToSimd(b))
+}
+public func Float4Negate(_ v:Float4) -> Float4 {
+	return Float4FromSimd(-Float4ToSimd(v))
+}
+public func Float4Multiply(_ a:Float4, _ b:Float4) -> Float4 {
+	return Float4FromSimd(Float4ToSimd(a) * Float4ToSimd(b))
+}
+public func Float4Divide(_ a:Float4, _ b:Float4) -> Float4 {
+	return Float4FromSimd(Float4ToSimd(a) / Float4ToSimd(b))
+}
+public func Float4Modulus(_ a:Float4, _ b:Float4) -> Float4 {
+	return Float4(array: a.simdValue.indices.map{ a[$0].truncatingRemainder(dividingBy: b[$0]) })
+}
+
+public func Float4Equal(_ a:Float4, _ b:Float4) -> Bool {
+	return Float4ToSimd(a) == Float4ToSimd(b)
+}
+public func Float4Inequal(_ a:Float4, _ b:Float4) -> Bool {
+	return Float4ToSimd(a) != Float4ToSimd(b)
+}
+public func Float4LessThan(_ a:Float4, _ b:Float4) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
+}
+public func Float4LessThanOrEqual(_ a:Float4, _ b:Float4) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] <= b[$1]) }
+}
+public func Float4GreaterThan(_ a:Float4, _ b:Float4) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] > b[$1]) }
+}
+public func Float4GreaterThanOrEqual(_ a:Float4, _ b:Float4) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] >= b[$1]) }
+}
+
+
+
 // MARK: SceneKit Conversion
 
 /// Converts an `Float4` struct to `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
