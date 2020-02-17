@@ -11,5 +11,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.9'
   s.source_files = 'Sources/**/*'
+  s.exclude_files = 'Sources/**/*.gyb', 'Sources/**/*_NoObjCBridge.swift'
   s.prefix_header_file = 'Sources/Vuckt.pch'
 end
