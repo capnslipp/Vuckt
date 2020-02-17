@@ -186,7 +186,7 @@ extension Float4
 		self = self.clamped(to: range)
 	}
 	public func clamped(to range:ClosedRange<Float4>) -> Float4 {
-		return Float4(simd.clamp(self.simdValue, min: range.lowerBound.simdValue, max: range.upperBound.simdValue))
+		return Float4(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
@@ -322,25 +322,25 @@ extension Float4 : CustomStringConvertible
 // MARK: Element-wise `min`/`max`
 
 public func min(_ a:Float4, _ b:Float4) -> Float4 {
-	return Float4(simd.min(a.simdValue, b.simdValue))
+	return Float4(simd_min(a.simdValue, b.simdValue))
 }
 
 public func min(_ a:Float4, _ b:Float4, _ c:Float4, _ rest:Float4...) -> Float4 {
-	var minSimdValue = simd.min(simd.min(a.simdValue, b.simdValue), c.simdValue)
+	var minSimdValue = simd_min(simd_min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		minSimdValue = simd.min(minSimdValue, value.simdValue)
+		minSimdValue = simd_min(minSimdValue, value.simdValue)
 	}
 	return Float4(minSimdValue)
 }
 
 public func max(_ a:Float4, _ b:Float4) -> Float4 {
-	return Float4(simd.max(a.simdValue, b.simdValue))
+	return Float4(simd_max(a.simdValue, b.simdValue))
 }
 
 public func max(_ a:Float4, _ b:Float4, _ c:Float4, _ rest:Float4...) -> Float4 {
-	var maxSimdValue = simd.max(simd.max(a.simdValue, b.simdValue), c.simdValue)
+	var maxSimdValue = simd_max(simd_max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		maxSimdValue = simd.max(maxSimdValue, value.simdValue)
+		maxSimdValue = simd_max(maxSimdValue, value.simdValue)
 	}
 	return Float4(maxSimdValue)
 }
