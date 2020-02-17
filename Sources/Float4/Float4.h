@@ -4,7 +4,7 @@
 #pragma once
 
 #import <Foundation/NSValue.h>
-#import <simd/vector_types.h>
+#import <simd/simd.h>
 #import <SceneKit/SceneKitTypes.h>
 #import <GLKit/GLKVector4.h>
 #import <CoreImage/CIVector.h>
@@ -35,6 +35,48 @@ NS_INLINE simd_float4 Float4ToSimd(Float4 structValue) {
 /// (Sanity `static_assert`s in the `.mm` file do their best to ensure out struct's layout match the simd vector's.)
 NS_INLINE Float4 Float4FromSimd(simd_float4 simdValue) {
 	return *(Float4 *)&simdValue;
+}
+
+
+
+#pragma mark SIMD-Accelerated Operator Access
+
+NS_INLINE Float4 Float4Add(Float4 a, Float4 b) {
+	return Float4FromSimd(Float4ToSimd(a) + Float4ToSimd(b));
+}
+NS_INLINE Float4 Float4Subtract(Float4 a, Float4 b) {
+	return Float4FromSimd(Float4ToSimd(a) - Float4ToSimd(b));
+}
+NS_INLINE Float4 Float4Negate(Float4 v) {
+	return Float4FromSimd(-Float4ToSimd(v));
+}
+NS_INLINE Float4 Float4Multiply(Float4 a, Float4 b) {
+	return Float4FromSimd(Float4ToSimd(a) * Float4ToSimd(b));
+}
+NS_INLINE Float4 Float4Divide(Float4 a, Float4 b) {
+	return Float4FromSimd(Float4ToSimd(a) / Float4ToSimd(b));
+}
+NS_INLINE Float4 Float4Modulus(Float4 a, Float4 b) {
+	return Float4FromSimd(__tg_fmod(Float4ToSimd(a), Float4ToSimd(b)));
+}
+
+NS_INLINE BOOL Float4Equal(Float4 a, Float4 b) {
+	return simd_all(Float4ToSimd(a) == Float4ToSimd(b));
+}
+NS_INLINE BOOL Float4Inequal(Float4 a, Float4 b) {
+	return simd_any(Float4ToSimd(a) != Float4ToSimd(b));
+}
+NS_INLINE BOOL Float4LessThan(Float4 a, Float4 b) {
+	return simd_all(Float4ToSimd(a) < Float4ToSimd(b));
+}
+NS_INLINE BOOL Float4LessThanOrEqual(Float4 a, Float4 b) {
+	return simd_all(Float4ToSimd(a) <= Float4ToSimd(b));
+}
+NS_INLINE BOOL Float4GreaterThan(Float4 a, Float4 b) {
+	return simd_all(Float4ToSimd(a) > Float4ToSimd(b));
+}
+NS_INLINE BOOL Float4GreaterThanOrEqual(Float4 a, Float4 b) {
+	return simd_all(Float4ToSimd(a) >= Float4ToSimd(b));
 }
 
 

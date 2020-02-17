@@ -4,7 +4,7 @@
 #pragma once
 
 #import <Foundation/NSValue.h>
-#import <simd/vector_types.h>
+#import <simd/simd.h>
 #import <CoreImage/CIVector.h>
 #import <CoreGraphics/CGGeometry.h>
 
@@ -34,6 +34,48 @@ NS_INLINE simd_float2 Float2ToSimd(Float2 structValue) {
 /// (Sanity `static_assert`s in the `.mm` file do their best to ensure out struct's layout match the simd vector's.)
 NS_INLINE Float2 Float2FromSimd(simd_float2 simdValue) {
 	return *(Float2 *)&simdValue;
+}
+
+
+
+#pragma mark SIMD-Accelerated Operator Access
+
+NS_INLINE Float2 Float2Add(Float2 a, Float2 b) {
+	return Float2FromSimd(Float2ToSimd(a) + Float2ToSimd(b));
+}
+NS_INLINE Float2 Float2Subtract(Float2 a, Float2 b) {
+	return Float2FromSimd(Float2ToSimd(a) - Float2ToSimd(b));
+}
+NS_INLINE Float2 Float2Negate(Float2 v) {
+	return Float2FromSimd(-Float2ToSimd(v));
+}
+NS_INLINE Float2 Float2Multiply(Float2 a, Float2 b) {
+	return Float2FromSimd(Float2ToSimd(a) * Float2ToSimd(b));
+}
+NS_INLINE Float2 Float2Divide(Float2 a, Float2 b) {
+	return Float2FromSimd(Float2ToSimd(a) / Float2ToSimd(b));
+}
+NS_INLINE Float2 Float2Modulus(Float2 a, Float2 b) {
+	return Float2FromSimd(__tg_fmod(Float2ToSimd(a), Float2ToSimd(b)));
+}
+
+NS_INLINE BOOL Float2Equal(Float2 a, Float2 b) {
+	return simd_all(Float2ToSimd(a) == Float2ToSimd(b));
+}
+NS_INLINE BOOL Float2Inequal(Float2 a, Float2 b) {
+	return simd_any(Float2ToSimd(a) != Float2ToSimd(b));
+}
+NS_INLINE BOOL Float2LessThan(Float2 a, Float2 b) {
+	return simd_all(Float2ToSimd(a) < Float2ToSimd(b));
+}
+NS_INLINE BOOL Float2LessThanOrEqual(Float2 a, Float2 b) {
+	return simd_all(Float2ToSimd(a) <= Float2ToSimd(b));
+}
+NS_INLINE BOOL Float2GreaterThan(Float2 a, Float2 b) {
+	return simd_all(Float2ToSimd(a) > Float2ToSimd(b));
+}
+NS_INLINE BOOL Float2GreaterThanOrEqual(Float2 a, Float2 b) {
+	return simd_all(Float2ToSimd(a) >= Float2ToSimd(b));
 }
 
 

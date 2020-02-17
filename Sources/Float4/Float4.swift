@@ -69,7 +69,7 @@ extension Float4
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd.float4) {
+	public init(_ value:simd_float4) {
 		self = Float4FromSimd(value)
 	}
 	
@@ -157,7 +157,7 @@ extension Float4
 			case 2: return self.z
 			case 3: return self.w
 			
-			default: return Float.nan // TODO: Instead, do whatever simd.float4 does.
+			default: return Float.nan // TODO: Instead, do whatever simd_float4 does.
 		}
 	}
 	
@@ -186,7 +186,7 @@ extension Float4
 		self = self.clamped(to: range)
 	}
 	public func clamped(to range:ClosedRange<Float4>) -> Float4 {
-		return Float4(simd.clamp(self.simdValue, min: range.lowerBound.simdValue, max: range.upperBound.simdValue))
+		return Float4(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
@@ -268,7 +268,7 @@ extension Float4
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd.float4 {
+	public var simdValue:simd_float4 {
 		return Float4ToSimd(self)
 	}
 }
@@ -322,25 +322,25 @@ extension Float4 : CustomStringConvertible
 // MARK: Element-wise `min`/`max`
 
 public func min(_ a:Float4, _ b:Float4) -> Float4 {
-	return Float4(simd.min(a.simdValue, b.simdValue))
+	return Float4(simd_min(a.simdValue, b.simdValue))
 }
 
 public func min(_ a:Float4, _ b:Float4, _ c:Float4, _ rest:Float4...) -> Float4 {
-	var minSimdValue = simd.min(simd.min(a.simdValue, b.simdValue), c.simdValue)
+	var minSimdValue = simd_min(simd_min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		minSimdValue = simd.min(minSimdValue, value.simdValue)
+		minSimdValue = simd_min(minSimdValue, value.simdValue)
 	}
 	return Float4(minSimdValue)
 }
 
 public func max(_ a:Float4, _ b:Float4) -> Float4 {
-	return Float4(simd.max(a.simdValue, b.simdValue))
+	return Float4(simd_max(a.simdValue, b.simdValue))
 }
 
 public func max(_ a:Float4, _ b:Float4, _ c:Float4, _ rest:Float4...) -> Float4 {
-	var maxSimdValue = simd.max(simd.max(a.simdValue, b.simdValue), c.simdValue)
+	var maxSimdValue = simd_max(simd_max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		maxSimdValue = simd.max(maxSimdValue, value.simdValue)
+		maxSimdValue = simd_max(maxSimdValue, value.simdValue)
 	}
 	return Float4(maxSimdValue)
 }
@@ -363,7 +363,11 @@ extension Float4 : ExpressibleByArrayLiteral
 extension Float4 : Equatable
 {
 	public static func ==(a:Float4, b:Float4) -> Bool {
-		return a.simdValue == b.simdValue
+		return Float4Equal(a, b)
+	}
+	
+	public static func !=(a:Float4, b:Float4) -> Bool {
+		return Float4Inequal(a, b)
 	}
 }
 
@@ -371,19 +375,19 @@ extension Float4 : Equatable
 extension Float4 : Comparable
 {
 	public static func < (a:Float4, b:Float4) -> Bool {
-		return (a.x < b.x) && (a.y < b.y) && (a.z < b.z) && (a.w < b.w)
+		return Float4LessThan(a, b)
 	}
 	
 	public static func <= (a:Float4, b:Float4) -> Bool {
-		return (a.x <= b.x) && (a.y <= b.y) && (a.z <= b.z) && (a.w <= b.w)
+		return Float4LessThanOrEqual(a, b)
 	}
 	
 	public static func > (a:Float4, b:Float4) -> Bool {
-		return (a.x > b.x) && (a.y > b.y) && (a.z > b.z) && (a.w > b.w)
+		return Float4GreaterThan(a, b)
 	}
 	
 	public static func >= (a:Float4, b:Float4) -> Bool {
-		return (a.x >= b.x) && (a.y >= b.y) && (a.z >= b.z) && (a.w >= b.w)
+		return Float4GreaterThanOrEqual(a, b)
 	}
 }
 
@@ -391,7 +395,7 @@ extension Float4 : Comparable
 extension Float4 // Basic Math Operations
 {
 	public static func + (a:Float4, b:Float4) -> Float4 {
-		return Float4(a.simdValue + b.simdValue)
+		return Float4Add(a, b)
 	}
 	public static func += (v:inout Float4, o:Float4) {
 		v = v + o
@@ -399,7 +403,7 @@ extension Float4 // Basic Math Operations
 	
 	
 	public static func - (a:Float4, b:Float4) -> Float4 {
-		return Float4(a.simdValue - b.simdValue)
+		return Float4Subtract(a, b)
 	}
 	public static func -= (v:inout Float4, o:Float4) {
 		v = v - o
@@ -407,7 +411,7 @@ extension Float4 // Basic Math Operations
 	
 	
 	public static func * (a:Float4, b:Float4) -> Float4 {
-		return Float4(a.simdValue * b.simdValue)
+		return Float4Multiply(a, b)
 	}
 	public static func *= (v:inout Float4, o:Float4) {
 		v = v * o
@@ -415,7 +419,7 @@ extension Float4 // Basic Math Operations
 	
 	
 	public static func / (a:Float4, b:Float4) -> Float4 {
-		return Float4(a.simdValue / b.simdValue)
+		return Float4Divide(a, b)
 	}
 	public static func /= (v:inout Float4, o:Float4) {
 		v = v / o
@@ -423,7 +427,7 @@ extension Float4 // Basic Math Operations
 	
 	
 	public static func % (a:Float4, b:Float4) -> Float4 {
-		return Float4(a.x.truncatingRemainder(dividingBy: b.x), a.y.truncatingRemainder(dividingBy: b.y), a.z.truncatingRemainder(dividingBy: b.z), a.w.truncatingRemainder(dividingBy: b.w))
+		return Float4Modulus(a, b)
 	}
 	public static func %= (v:inout Float4, o:Float4) {
 		v = v % o
@@ -431,7 +435,7 @@ extension Float4 // Basic Math Operations
 	
 	
 	public static prefix func - (v:Float4) -> Float4 {
-		return Float4(-v.simdValue)
+		return Float4Negate(v)
 	}
 }
 

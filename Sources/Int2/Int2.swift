@@ -30,7 +30,7 @@ extension Int2
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd.int2) {
+	public init(_ value:simd_int2) {
 		self = Int2FromSimd(value)
 	}
 	
@@ -104,7 +104,7 @@ extension Int2
 			case 0: return self.x
 			case 1: return self.y
 			
-			default: return Int32.min // TODO: Instead, do whatever simd.int2 does.
+			default: return Int32.min // TODO: Instead, do whatever simd_int2 does.
 		}
 	}
 	
@@ -129,7 +129,7 @@ extension Int2
 		self = self.clamped(to: range)
 	}
 	public func clamped(to range:ClosedRange<Int2>) -> Int2 {
-		return Int2(simd.clamp(self.simdValue, min: range.lowerBound.simdValue, max: range.upperBound.simdValue))
+		return Int2(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
@@ -159,7 +159,7 @@ extension Int2
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd.int2 {
+	public var simdValue:simd_int2 {
 		return Int2ToSimd(self)
 	}
 }
@@ -176,25 +176,25 @@ extension Int2 : CustomStringConvertible
 // MARK: Element-wise `min`/`max`
 
 public func min(_ a:Int2, _ b:Int2) -> Int2 {
-	return Int2(simd.min(a.simdValue, b.simdValue))
+	return Int2(simd_min(a.simdValue, b.simdValue))
 }
 
 public func min(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
-	var minSimdValue = simd.min(simd.min(a.simdValue, b.simdValue), c.simdValue)
+	var minSimdValue = simd_min(simd_min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		minSimdValue = simd.min(minSimdValue, value.simdValue)
+		minSimdValue = simd_min(minSimdValue, value.simdValue)
 	}
 	return Int2(minSimdValue)
 }
 
 public func max(_ a:Int2, _ b:Int2) -> Int2 {
-	return Int2(simd.max(a.simdValue, b.simdValue))
+	return Int2(simd_max(a.simdValue, b.simdValue))
 }
 
 public func max(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
-	var maxSimdValue = simd.max(simd.max(a.simdValue, b.simdValue), c.simdValue)
+	var maxSimdValue = simd_max(simd_max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
-		maxSimdValue = simd.max(maxSimdValue, value.simdValue)
+		maxSimdValue = simd_max(maxSimdValue, value.simdValue)
 	}
 	return Int2(maxSimdValue)
 }
@@ -217,7 +217,11 @@ extension Int2 : ExpressibleByArrayLiteral
 extension Int2 : Equatable
 {
 	public static func ==(a:Int2, b:Int2) -> Bool {
-		return a.simdValue == b.simdValue
+		return Int2Equal(a, b)
+	}
+	
+	public static func !=(a:Int2, b:Int2) -> Bool {
+		return Int2Inequal(a, b)
 	}
 }
 
@@ -225,19 +229,19 @@ extension Int2 : Equatable
 extension Int2 : Comparable
 {
 	public static func < (a:Int2, b:Int2) -> Bool {
-		return (a.x < b.x) && (a.y < b.y)
+		return Int2LessThan(a, b)
 	}
 	
 	public static func <= (a:Int2, b:Int2) -> Bool {
-		return (a.x <= b.x) && (a.y <= b.y)
+		return Int2LessThanOrEqual(a, b)
 	}
 	
 	public static func > (a:Int2, b:Int2) -> Bool {
-		return (a.x > b.x) && (a.y > b.y)
+		return Int2GreaterThan(a, b)
 	}
 	
 	public static func >= (a:Int2, b:Int2) -> Bool {
-		return (a.x >= b.x) && (a.y >= b.y)
+		return Int2GreaterThanOrEqual(a, b)
 	}
 }
 
@@ -271,7 +275,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func + (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.simdValue &+ b.simdValue)
+		return Int2Add(a, b)
 	}
 	public static func += (v:inout Int2, o:Int2) {
 		v = v + o
@@ -293,7 +297,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func - (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.simdValue &- b.simdValue)
+		return Int2Subtract(a, b)
 	}
 	public static func -= (v:inout Int2, o:Int2) {
 		v = v - o
@@ -315,7 +319,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func * (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.simdValue &* b.simdValue)
+		return Int2Multiply(a, b)
 	}
 	public static func *= (v:inout Int2, o:Int2) {
 		v = v * o
@@ -337,7 +341,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func / (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.simdValue / b.simdValue)
+		return Int2Divide(a, b)
 	}
 	public static func /= (v:inout Int2, o:Int2) {
 		v = v / o
@@ -359,7 +363,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func % (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.x % b.x, a.y % b.y)
+		return Int2Modulus(a, b)
 	}
 	public static func %= (v:inout Int2, o:Int2) {
 		v = v % o
@@ -377,7 +381,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static prefix func - (v:Int2) -> Int2 {
-		return Int2(0 &- v.simdValue)
+		return Int2Negate(v)
 	}
 }
 
