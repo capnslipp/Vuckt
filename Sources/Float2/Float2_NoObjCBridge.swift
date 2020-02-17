@@ -41,6 +41,49 @@ public func Float2FromSimd(_ simdValue:simd_float2) -> Float2 {
 
 
 
+// MARK: SIMD-Accelerated Operator Access
+
+public func Float2Add(_ a:Float2, _ b:Float2) -> Float2 {
+	return Float2(Float2ToSimd(a) + Float2ToSimd(b))
+}
+public func Float2Subtract(_ a:Float2, _ b:Float2) -> Float2 {
+	return Float2FromSimd(Float2ToSimd(a) - Float2ToSimd(b))
+}
+public func Float2Negate(_ v:Float2) -> Float2 {
+	return Float2FromSimd(-Float2ToSimd(v))
+}
+public func Float2Multiply(_ a:Float2, _ b:Float2) -> Float2 {
+	return Float2FromSimd(Float2ToSimd(a) * Float2ToSimd(b))
+}
+public func Float2Divide(_ a:Float2, _ b:Float2) -> Float2 {
+	return Float2FromSimd(Float2ToSimd(a) / Float2ToSimd(b))
+}
+public func Float2Modulus(_ a:Float2, _ b:Float2) -> Float2 {
+	return Float2(array: a.simdValue.indices.map{ a[$0].truncatingRemainder(dividingBy: b[$0]) })
+}
+
+public func Float2Equal(_ a:Float2, _ b:Float2) -> Bool {
+	return Float2ToSimd(a) == Float2ToSimd(b)
+}
+public func Float2Inequal(_ a:Float2, _ b:Float2) -> Bool {
+	return Float2ToSimd(a) != Float2ToSimd(b)
+}
+public func Float2LessThan(_ a:Float2, _ b:Float2) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
+}
+public func Float2LessThanOrEqual(_ a:Float2, _ b:Float2) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] <= b[$1]) }
+}
+public func Float2GreaterThan(_ a:Float2, _ b:Float2) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] > b[$1]) }
+}
+public func Float2GreaterThanOrEqual(_ a:Float2, _ b:Float2) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] >= b[$1]) }
+}
+
+
+
+
 // MARK: CoreImage Conversion
 
 /// Converts an `Float2` struct to `CIVector` class using passing-individual-members initialization.

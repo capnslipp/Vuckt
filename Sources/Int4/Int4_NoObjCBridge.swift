@@ -42,3 +42,46 @@ public func Int4ToSimd(_ structValue:Int4) -> simd_int4 {
 public func Int4FromSimd(_ simdValue:simd_int4) -> Int4 {
 	return Int4(x: simdValue.x, y: simdValue.y, z: simdValue.z, w: simdValue.w)
 }
+
+
+
+// MARK: SIMD-Accelerated Operator Access
+
+public func Int4Add(_ a:Int4, _ b:Int4) -> Int4 {
+	return Int4(Int4ToSimd(a) &+ Int4ToSimd(b))
+}
+public func Int4Subtract(_ a:Int4, _ b:Int4) -> Int4 {
+	return Int4FromSimd(Int4ToSimd(a) &- Int4ToSimd(b))
+}
+public func Int4Negate(_ v:Int4) -> Int4 {
+	return Int4FromSimd(0 &- Int4ToSimd(v))
+}
+public func Int4Multiply(_ a:Int4, _ b:Int4) -> Int4 {
+	return Int4FromSimd(Int4ToSimd(a) &* Int4ToSimd(b))
+}
+public func Int4Divide(_ a:Int4, _ b:Int4) -> Int4 {
+	return Int4FromSimd(Int4ToSimd(a) / Int4ToSimd(b))
+}
+public func Int4Modulus(_ a:Int4, _ b:Int4) -> Int4 {
+	return Int4FromSimd(Int4ToSimd(a) % Int4ToSimd(b))
+}
+
+public func Int4Equal(_ a:Int4, _ b:Int4) -> Bool {
+	return Int4ToSimd(a) == Int4ToSimd(b)
+}
+public func Int4Inequal(_ a:Int4, _ b:Int4) -> Bool {
+	return Int4ToSimd(a) != Int4ToSimd(b)
+}
+public func Int4LessThan(_ a:Int4, _ b:Int4) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
+}
+public func Int4LessThanOrEqual(_ a:Int4, _ b:Int4) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] <= b[$1]) }
+}
+public func Int4GreaterThan(_ a:Int4, _ b:Int4) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] > b[$1]) }
+}
+public func Int4GreaterThanOrEqual(_ a:Int4, _ b:Int4) -> Bool {
+	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] >= b[$1]) }
+}
+
