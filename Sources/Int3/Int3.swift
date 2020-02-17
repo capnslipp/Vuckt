@@ -42,7 +42,7 @@ extension Int3
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd.int3) {
+	public init(_ value:simd_int3) {
 		self = Int3FromSimd(value)
 	}
 	
@@ -115,7 +115,7 @@ extension Int3
 			case 1: return self.y
 			case 2: return self.z
 			
-			default: return Int32.min // TODO: Instead, do whatever simd.int3 does.
+			default: return Int32.min // TODO: Instead, do whatever simd_int3 does.
 		}
 	}
 	
@@ -190,7 +190,7 @@ extension Int3
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd.int3 {
+	public var simdValue:simd_int3 {
 		return Int3ToSimd(self)
 	}
 }

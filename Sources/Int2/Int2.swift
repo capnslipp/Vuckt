@@ -30,7 +30,7 @@ extension Int2
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd.int2) {
+	public init(_ value:simd_int2) {
 		self = Int2FromSimd(value)
 	}
 	
@@ -104,7 +104,7 @@ extension Int2
 			case 0: return self.x
 			case 1: return self.y
 			
-			default: return Int32.min // TODO: Instead, do whatever simd.int2 does.
+			default: return Int32.min // TODO: Instead, do whatever simd_int2 does.
 		}
 	}
 	
@@ -159,7 +159,7 @@ extension Int2
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd.int2 {
+	public var simdValue:simd_int2 {
 		return Int2ToSimd(self)
 	}
 }

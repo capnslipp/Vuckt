@@ -32,7 +32,7 @@ extension Float2
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd.float2) {
+	public init(_ value:simd_float2) {
 		self = Float2FromSimd(value)
 	}
 	
@@ -106,7 +106,7 @@ extension Float2
 			case 0: return self.x
 			case 1: return self.y
 			
-			default: return Float.nan // TODO: Instead, do whatever simd.float2 does.
+			default: return Float.nan // TODO: Instead, do whatever simd_float2 does.
 		}
 	}
 	
@@ -161,7 +161,7 @@ extension Float2
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd.float2 {
+	public var simdValue:simd_float2 {
 		return Float2ToSimd(self)
 	}
 }

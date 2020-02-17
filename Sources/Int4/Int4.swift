@@ -66,7 +66,7 @@ extension Int4
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd.int4) {
+	public init(_ value:simd_int4) {
 		self = Int4FromSimd(value)
 	}
 	
@@ -154,7 +154,7 @@ extension Int4
 			case 2: return self.z
 			case 3: return self.w
 			
-			default: return Int32.min // TODO: Instead, do whatever simd.int4 does.
+			default: return Int32.min // TODO: Instead, do whatever simd_int4 does.
 		}
 	}
 	
@@ -265,7 +265,7 @@ extension Int4
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd.int4 {
+	public var simdValue:simd_int4 {
 		return Int4ToSimd(self)
 	}
 }
