@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/capnslipp/Vuckt'
   s.license = { :type => 'Public Domain', :file => 'LICENSE' }
   s.author = { 'capnslipp' => 'Vuckt@capnslipp.com' }
-  s.source = { :git => 'https://github.com/capnslipp/Vuckt.git', :tag => s.version.to_s }
+  s.source = { :git => 'https://github.com/capnslipp/Vuckt.git', :tag => "podspec/#{s.version}" }
   s.social_media_url = 'https://twitter.com/capnslipp'
   s.swift_versions = ['4.0', '4.2', '5.0']
   s.ios.deployment_target = '8.0'
