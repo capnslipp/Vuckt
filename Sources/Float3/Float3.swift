@@ -288,7 +288,11 @@ extension Float3 : ExpressibleByArrayLiteral
 extension Float3 : Equatable
 {
 	public static func ==(a:Float3, b:Float3) -> Bool {
-		return a.simdValue == b.simdValue
+		return Float3Equal(a, b)
+	}
+	
+	public static func !=(a:Float3, b:Float3) -> Bool {
+		return Float3Inequal(a, b)
 	}
 }
 
@@ -296,19 +300,19 @@ extension Float3 : Equatable
 extension Float3 : Comparable
 {
 	public static func < (a:Float3, b:Float3) -> Bool {
-		return (a.x < b.x) && (a.y < b.y) && (a.z < b.z)
+		return Float3LessThan(a, b)
 	}
 	
 	public static func <= (a:Float3, b:Float3) -> Bool {
-		return (a.x <= b.x) && (a.y <= b.y) && (a.z <= b.z)
+		return Float3LessThanOrEqual(a, b)
 	}
 	
 	public static func > (a:Float3, b:Float3) -> Bool {
-		return (a.x > b.x) && (a.y > b.y) && (a.z > b.z)
+		return Float3GreaterThan(a, b)
 	}
 	
 	public static func >= (a:Float3, b:Float3) -> Bool {
-		return (a.x >= b.x) && (a.y >= b.y) && (a.z >= b.z)
+		return Float3GreaterThanOrEqual(a, b)
 	}
 }
 
@@ -316,7 +320,7 @@ extension Float3 : Comparable
 extension Float3 // Basic Math Operations
 {
 	public static func + (a:Float3, b:Float3) -> Float3 {
-		return Float3(a.simdValue + b.simdValue)
+		return Float3Add(a, b)
 	}
 	public static func += (v:inout Float3, o:Float3) {
 		v = v + o
@@ -324,7 +328,7 @@ extension Float3 // Basic Math Operations
 	
 	
 	public static func - (a:Float3, b:Float3) -> Float3 {
-		return Float3(a.simdValue - b.simdValue)
+		return Float3Subtract(a, b)
 	}
 	public static func -= (v:inout Float3, o:Float3) {
 		v = v - o
@@ -332,7 +336,7 @@ extension Float3 // Basic Math Operations
 	
 	
 	public static func * (a:Float3, b:Float3) -> Float3 {
-		return Float3(a.simdValue * b.simdValue)
+		return Float3Multiply(a, b)
 	}
 	public static func *= (v:inout Float3, o:Float3) {
 		v = v * o
@@ -340,7 +344,7 @@ extension Float3 // Basic Math Operations
 	
 	
 	public static func / (a:Float3, b:Float3) -> Float3 {
-		return Float3(a.simdValue / b.simdValue)
+		return Float3Divide(a, b)
 	}
 	public static func /= (v:inout Float3, o:Float3) {
 		v = v / o
@@ -348,7 +352,7 @@ extension Float3 // Basic Math Operations
 	
 	
 	public static func % (a:Float3, b:Float3) -> Float3 {
-		return Float3(a.x.truncatingRemainder(dividingBy: b.x), a.y.truncatingRemainder(dividingBy: b.y), a.z.truncatingRemainder(dividingBy: b.z))
+		return Float3Modulus(a, b)
 	}
 	public static func %= (v:inout Float3, o:Float3) {
 		v = v % o
@@ -356,7 +360,7 @@ extension Float3 // Basic Math Operations
 	
 	
 	public static prefix func - (v:Float3) -> Float3 {
-		return Float3(-v.simdValue)
+		return Float3Negate(v)
 	}
 }
 

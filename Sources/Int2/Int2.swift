@@ -217,7 +217,11 @@ extension Int2 : ExpressibleByArrayLiteral
 extension Int2 : Equatable
 {
 	public static func ==(a:Int2, b:Int2) -> Bool {
-		return a.simdValue == b.simdValue
+		return Int2Equal(a, b)
+	}
+	
+	public static func !=(a:Int2, b:Int2) -> Bool {
+		return Int2Inequal(a, b)
 	}
 }
 
@@ -225,19 +229,19 @@ extension Int2 : Equatable
 extension Int2 : Comparable
 {
 	public static func < (a:Int2, b:Int2) -> Bool {
-		return (a.x < b.x) && (a.y < b.y)
+		return Int2LessThan(a, b)
 	}
 	
 	public static func <= (a:Int2, b:Int2) -> Bool {
-		return (a.x <= b.x) && (a.y <= b.y)
+		return Int2LessThanOrEqual(a, b)
 	}
 	
 	public static func > (a:Int2, b:Int2) -> Bool {
-		return (a.x > b.x) && (a.y > b.y)
+		return Int2GreaterThan(a, b)
 	}
 	
 	public static func >= (a:Int2, b:Int2) -> Bool {
-		return (a.x >= b.x) && (a.y >= b.y)
+		return Int2GreaterThanOrEqual(a, b)
 	}
 }
 
@@ -271,7 +275,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func + (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.simdValue &+ b.simdValue)
+		return Int2Add(a, b)
 	}
 	public static func += (v:inout Int2, o:Int2) {
 		v = v + o
@@ -293,7 +297,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func - (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.simdValue &- b.simdValue)
+		return Int2Subtract(a, b)
 	}
 	public static func -= (v:inout Int2, o:Int2) {
 		v = v - o
@@ -315,7 +319,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func * (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.simdValue &* b.simdValue)
+		return Int2Multiply(a, b)
 	}
 	public static func *= (v:inout Int2, o:Int2) {
 		v = v * o
@@ -337,7 +341,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func / (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.simdValue / b.simdValue)
+		return Int2Divide(a, b)
 	}
 	public static func /= (v:inout Int2, o:Int2) {
 		v = v / o
@@ -359,7 +363,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func % (a:Int2, b:Int2) -> Int2 {
-		return Int2(a.x % b.x, a.y % b.y)
+		return Int2Modulus(a, b)
 	}
 	public static func %= (v:inout Int2, o:Int2) {
 		v = v % o
@@ -377,7 +381,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static prefix func - (v:Int2) -> Int2 {
-		return Int2(0 &- v.simdValue)
+		return Int2Negate(v)
 	}
 }
 

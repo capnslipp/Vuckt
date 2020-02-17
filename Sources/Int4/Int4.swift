@@ -323,7 +323,11 @@ extension Int4 : ExpressibleByArrayLiteral
 extension Int4 : Equatable
 {
 	public static func ==(a:Int4, b:Int4) -> Bool {
-		return a.simdValue == b.simdValue
+		return Int4Equal(a, b)
+	}
+	
+	public static func !=(a:Int4, b:Int4) -> Bool {
+		return Int4Inequal(a, b)
 	}
 }
 
@@ -331,19 +335,19 @@ extension Int4 : Equatable
 extension Int4 : Comparable
 {
 	public static func < (a:Int4, b:Int4) -> Bool {
-		return (a.x < b.x) && (a.y < b.y) && (a.z < b.z) && (a.w < b.w)
+		return Int4LessThan(a, b)
 	}
 	
 	public static func <= (a:Int4, b:Int4) -> Bool {
-		return (a.x <= b.x) && (a.y <= b.y) && (a.z <= b.z) && (a.w <= b.w)
+		return Int4LessThanOrEqual(a, b)
 	}
 	
 	public static func > (a:Int4, b:Int4) -> Bool {
-		return (a.x > b.x) && (a.y > b.y) && (a.z > b.z) && (a.w > b.w)
+		return Int4GreaterThan(a, b)
 	}
 	
 	public static func >= (a:Int4, b:Int4) -> Bool {
-		return (a.x >= b.x) && (a.y >= b.y) && (a.z >= b.z) && (a.w >= b.w)
+		return Int4GreaterThanOrEqual(a, b)
 	}
 }
 
@@ -379,7 +383,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func + (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.simdValue &+ b.simdValue)
+		return Int4Add(a, b)
 	}
 	public static func += (v:inout Int4, o:Int4) {
 		v = v + o
@@ -401,7 +405,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func - (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.simdValue &- b.simdValue)
+		return Int4Subtract(a, b)
 	}
 	public static func -= (v:inout Int4, o:Int4) {
 		v = v - o
@@ -423,7 +427,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func * (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.simdValue &* b.simdValue)
+		return Int4Multiply(a, b)
 	}
 	public static func *= (v:inout Int4, o:Int4) {
 		v = v * o
@@ -445,7 +449,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func / (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.simdValue / b.simdValue)
+		return Int4Divide(a, b)
 	}
 	public static func /= (v:inout Int4, o:Int4) {
 		v = v / o
@@ -467,7 +471,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static func % (a:Int4, b:Int4) -> Int4 {
-		return Int4(a.x % b.x, a.y % b.y, a.z % b.z, a.w % b.w)
+		return Int4Modulus(a, b)
 	}
 	public static func %= (v:inout Int4, o:Int4) {
 		v = v % o
@@ -485,7 +489,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	
 	
 	public static prefix func - (v:Int4) -> Int4 {
-		return Int4(0 &- v.simdValue)
+		return Int4Negate(v)
 	}
 }
 

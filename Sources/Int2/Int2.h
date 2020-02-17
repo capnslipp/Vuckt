@@ -4,7 +4,7 @@
 #pragma once
 
 #import <Foundation/NSValue.h>
-#import <simd/vector_types.h>
+#import <simd/simd.h>
 
 
 
@@ -32,6 +32,48 @@ NS_INLINE simd_int2 Int2ToSimd(Int2 structValue) {
 /// (Sanity `static_assert`s in the `.mm` file do their best to ensure out struct's layout match the simd vector's.)
 NS_INLINE Int2 Int2FromSimd(simd_int2 simdValue) {
 	return *(Int2 *)&simdValue;
+}
+
+
+
+#pragma mark SIMD-Accelerated Operator Access
+
+NS_INLINE Int2 Int2Add(Int2 a, Int2 b) {
+	return Int2FromSimd(Int2ToSimd(a) + Int2ToSimd(b));
+}
+NS_INLINE Int2 Int2Subtract(Int2 a, Int2 b) {
+	return Int2FromSimd(Int2ToSimd(a) - Int2ToSimd(b));
+}
+NS_INLINE Int2 Int2Negate(Int2 v) {
+	return Int2FromSimd(-Int2ToSimd(v));
+}
+NS_INLINE Int2 Int2Multiply(Int2 a, Int2 b) {
+	return Int2FromSimd(Int2ToSimd(a) * Int2ToSimd(b));
+}
+NS_INLINE Int2 Int2Divide(Int2 a, Int2 b) {
+	return Int2FromSimd(Int2ToSimd(a) / Int2ToSimd(b));
+}
+NS_INLINE Int2 Int2Modulus(Int2 a, Int2 b) {
+	return Int2FromSimd(Int2ToSimd(a) % Int2ToSimd(b));
+}
+
+NS_INLINE BOOL Int2Equal(Int2 a, Int2 b) {
+	return simd_all(Int2ToSimd(a) == Int2ToSimd(b));
+}
+NS_INLINE BOOL Int2Inequal(Int2 a, Int2 b) {
+	return simd_any(Int2ToSimd(a) != Int2ToSimd(b));
+}
+NS_INLINE BOOL Int2LessThan(Int2 a, Int2 b) {
+	return simd_all(Int2ToSimd(a) < Int2ToSimd(b));
+}
+NS_INLINE BOOL Int2LessThanOrEqual(Int2 a, Int2 b) {
+	return simd_all(Int2ToSimd(a) <= Int2ToSimd(b));
+}
+NS_INLINE BOOL Int2GreaterThan(Int2 a, Int2 b) {
+	return simd_all(Int2ToSimd(a) > Int2ToSimd(b));
+}
+NS_INLINE BOOL Int2GreaterThanOrEqual(Int2 a, Int2 b) {
+	return simd_all(Int2ToSimd(a) >= Int2ToSimd(b));
 }
 
 

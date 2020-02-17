@@ -4,7 +4,7 @@
 #pragma once
 
 #import <Foundation/NSValue.h>
-#import <simd/vector_types.h>
+#import <simd/simd.h>
 #import <SceneKit/SceneKitTypes.h>
 #import <GLKit/GLKVector3.h>
 #import <CoreImage/CIVector.h>
@@ -35,6 +35,48 @@ NS_INLINE simd_float3 Float3ToSimd(Float3 structValue) {
 /// (Sanity `static_assert`s in the `.mm` file do their best to ensure out struct's layout match the simd vector's.)
 NS_INLINE Float3 Float3FromSimd(simd_float3 simdValue) {
 	return *(Float3 *)&simdValue;
+}
+
+
+
+#pragma mark SIMD-Accelerated Operator Access
+
+NS_INLINE Float3 Float3Add(Float3 a, Float3 b) {
+	return Float3FromSimd(Float3ToSimd(a) + Float3ToSimd(b));
+}
+NS_INLINE Float3 Float3Subtract(Float3 a, Float3 b) {
+	return Float3FromSimd(Float3ToSimd(a) - Float3ToSimd(b));
+}
+NS_INLINE Float3 Float3Negate(Float3 v) {
+	return Float3FromSimd(-Float3ToSimd(v));
+}
+NS_INLINE Float3 Float3Multiply(Float3 a, Float3 b) {
+	return Float3FromSimd(Float3ToSimd(a) * Float3ToSimd(b));
+}
+NS_INLINE Float3 Float3Divide(Float3 a, Float3 b) {
+	return Float3FromSimd(Float3ToSimd(a) / Float3ToSimd(b));
+}
+NS_INLINE Float3 Float3Modulus(Float3 a, Float3 b) {
+	return Float3FromSimd(__tg_fmod(Float3ToSimd(a), Float3ToSimd(b)));
+}
+
+NS_INLINE BOOL Float3Equal(Float3 a, Float3 b) {
+	return simd_all(Float3ToSimd(a) == Float3ToSimd(b));
+}
+NS_INLINE BOOL Float3Inequal(Float3 a, Float3 b) {
+	return simd_any(Float3ToSimd(a) != Float3ToSimd(b));
+}
+NS_INLINE BOOL Float3LessThan(Float3 a, Float3 b) {
+	return simd_all(Float3ToSimd(a) < Float3ToSimd(b));
+}
+NS_INLINE BOOL Float3LessThanOrEqual(Float3 a, Float3 b) {
+	return simd_all(Float3ToSimd(a) <= Float3ToSimd(b));
+}
+NS_INLINE BOOL Float3GreaterThan(Float3 a, Float3 b) {
+	return simd_all(Float3ToSimd(a) > Float3ToSimd(b));
+}
+NS_INLINE BOOL Float3GreaterThanOrEqual(Float3 a, Float3 b) {
+	return simd_all(Float3ToSimd(a) >= Float3ToSimd(b));
 }
 
 

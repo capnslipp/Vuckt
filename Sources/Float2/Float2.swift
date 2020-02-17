@@ -258,7 +258,11 @@ extension Float2 : ExpressibleByArrayLiteral
 extension Float2 : Equatable
 {
 	public static func ==(a:Float2, b:Float2) -> Bool {
-		return a.simdValue == b.simdValue
+		return Float2Equal(a, b)
+	}
+	
+	public static func !=(a:Float2, b:Float2) -> Bool {
+		return Float2Inequal(a, b)
 	}
 }
 
@@ -266,19 +270,19 @@ extension Float2 : Equatable
 extension Float2 : Comparable
 {
 	public static func < (a:Float2, b:Float2) -> Bool {
-		return (a.x < b.x) && (a.y < b.y)
+		return Float2LessThan(a, b)
 	}
 	
 	public static func <= (a:Float2, b:Float2) -> Bool {
-		return (a.x <= b.x) && (a.y <= b.y)
+		return Float2LessThanOrEqual(a, b)
 	}
 	
 	public static func > (a:Float2, b:Float2) -> Bool {
-		return (a.x > b.x) && (a.y > b.y)
+		return Float2GreaterThan(a, b)
 	}
 	
 	public static func >= (a:Float2, b:Float2) -> Bool {
-		return (a.x >= b.x) && (a.y >= b.y)
+		return Float2GreaterThanOrEqual(a, b)
 	}
 }
 
@@ -286,7 +290,7 @@ extension Float2 : Comparable
 extension Float2 // Basic Math Operations
 {
 	public static func + (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.simdValue + b.simdValue)
+		return Float2Add(a, b)
 	}
 	public static func += (v:inout Float2, o:Float2) {
 		v = v + o
@@ -294,7 +298,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static func - (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.simdValue - b.simdValue)
+		return Float2Subtract(a, b)
 	}
 	public static func -= (v:inout Float2, o:Float2) {
 		v = v - o
@@ -302,7 +306,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static func * (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.simdValue * b.simdValue)
+		return Float2Multiply(a, b)
 	}
 	public static func *= (v:inout Float2, o:Float2) {
 		v = v * o
@@ -310,7 +314,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static func / (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.simdValue / b.simdValue)
+		return Float2Divide(a, b)
 	}
 	public static func /= (v:inout Float2, o:Float2) {
 		v = v / o
@@ -318,7 +322,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static func % (a:Float2, b:Float2) -> Float2 {
-		return Float2(a.x.truncatingRemainder(dividingBy: b.x), a.y.truncatingRemainder(dividingBy: b.y))
+		return Float2Modulus(a, b)
 	}
 	public static func %= (v:inout Float2, o:Float2) {
 		v = v % o
@@ -326,7 +330,7 @@ extension Float2 // Basic Math Operations
 	
 	
 	public static prefix func - (v:Float2) -> Float2 {
-		return Float2(-v.simdValue)
+		return Float2Negate(v)
 	}
 }
 
