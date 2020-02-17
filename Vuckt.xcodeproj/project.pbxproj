@@ -40,6 +40,23 @@
 		FAFB401F21B34F4A00D4A8B5 /* VucktTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED6C2D21B32E370083A2B5 /* VucktTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FA18D92D23FA5EBB00F5CF37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA32AEA920BD1C4C008A2111;
+			remoteInfo = Vuckt;
+		};
+		FA18D92F23FA5EC900F5CF37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA32AEA920BD1C4C008A2111;
+			remoteInfo = Vuckt;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		FA59C00A21B3527200799899 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -306,6 +323,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FA18D92E23FA5EBB00F5CF37 /* PBXTargetDependency */,
 			);
 			name = "VucktTests - macOS";
 			productName = Tests;
@@ -324,6 +342,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FA18D93023FA5EC900F5CF37 /* PBXTargetDependency */,
 			);
 			name = "VucktTests - iOS";
 			productName = IntNTests;
@@ -434,6 +453,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA18D92E23FA5EBB00F5CF37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA32AEA920BD1C4C008A2111 /* Vuckt */;
+			targetProxy = FA18D92D23FA5EBB00F5CF37 /* PBXContainerItemProxy */;
+		};
+		FA18D93023FA5EC900F5CF37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA32AEA920BD1C4C008A2111 /* Vuckt */;
+			targetProxy = FA18D92F23FA5EC900F5CF37 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FA32AEB420BD1C4C008A2111 /* Debug */ = {
