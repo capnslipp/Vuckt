@@ -46,6 +46,11 @@ extension Int3
 		self = Int3FromSimd(value)
 	}
 	
+	/// Initialize from an `Float3` value, clamping to the representable range of the int type.
+	public init(saturating float3Value:Float3) {
+		self.init(simd_int_sat(float3Value.simdValue))
+	}
+	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly three elements.

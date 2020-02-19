@@ -34,6 +34,11 @@ extension Int2
 		self = Int2FromSimd(value)
 	}
 	
+	/// Initialize from an `Float2` value, clamping to the representable range of the int type.
+	public init(saturating float2Value:Float2) {
+		self.init(simd_int_sat(float2Value.simdValue))
+	}
+	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly two elements.

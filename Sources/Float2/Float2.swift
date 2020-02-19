@@ -36,6 +36,11 @@ extension Float2
 		self = Float2FromSimd(value)
 	}
 	
+	/// Initialize from an `Int2` value.  May be inexact if the int values are large (due to float precision).
+	public init(_ int2Value:Int2) {
+		self.init(simd_float(int2Value.simdValue))
+	}
+	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly two elements.

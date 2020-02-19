@@ -73,6 +73,11 @@ extension Float4
 		self = Float4FromSimd(value)
 	}
 	
+	/// Initialize from an `Int4` value.  May be inexact if the int values are large (due to float precision).
+	public init(_ int4Value:Int4) {
+		self.init(simd_float(int4Value.simdValue))
+	}
+	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly three elements.
