@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Struct Definition
 
 struct Float3 {
-	simd_float1 x, y, z;
+	float x, y, z;
 } __attribute__((aligned(__alignof__(simd_float3))));
 typedef struct Float3 Float3;
 
