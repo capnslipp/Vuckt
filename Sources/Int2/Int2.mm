@@ -8,6 +8,8 @@
 
 #pragma mark Struct↔SIMD Data Size/Alignment Sanity Checks
 
+static_assert(sizeof_member(Int2, x) == sizeof(simd_int1),
+	"Int2's first member's size does not match simd_int1's on this platform.");
 static_assert(sizeof(Int2) == sizeof(simd_int2),
 	"Int2's size does not match simd_int2's on this platform.");
 static_assert(sizeof_member(Int2, x) == sizeof_member(simd_int2, x),
