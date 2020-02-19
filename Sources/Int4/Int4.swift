@@ -70,6 +70,11 @@ extension Int4
 		self = Int4FromSimd(value)
 	}
 	
+	/// Initialize from an `Float4` value, clamping to the representable range of the int type.
+	public init(saturating float4Value:Float4) {
+		self.init(simd_int_sat(float4Value.simdValue))
+	}
+	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly three elements.
