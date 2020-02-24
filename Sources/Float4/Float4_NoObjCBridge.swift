@@ -13,18 +13,18 @@ import CoreImage.CIVector
 
 public struct Float4
 {
-	public var x:simd_float1, y:simd_float1
-	public var z:simd_float1
-	public var w:simd_float1
+	public var x:Float, y:Float
+	public var z:Float
+	public var w:Float
 	
 	public init() {
-		self.x = simd_float1()
-		self.y = simd_float1()
-		self.z = simd_float1()
-		self.w = simd_float1()
+		self.x = Float()
+		self.y = Float()
+		self.z = Float()
+		self.w = Float()
 	}
 	
-	public init(x:simd_float1, y:simd_float1, z:simd_float1, w:simd_float1) {
+	public init(x:Float, y:Float, z:Float, w:Float) {
 		self.x = x
 		self.y = y
 		self.z = z
@@ -123,5 +123,5 @@ public func Float4ToCI(_ structValue:Float4) -> CIVector {
 }
 /// Converts an `Float4` struct from `CIVector` class using passing-individual-members initialization.
 public func Float4FromCI(_ ciVector:CIVector) -> Float4 {
-	return Float4(x: simd_float1(ciVector.x), y: simd_float1(ciVector.y), z: simd_float1(ciVector.z), w: simd_float1(ciVector.w))
+	return Float4(x: Float(ciVector.x), y: Float(ciVector.y), z: Float(ciVector.z), w: Float(ciVector.w))
 }

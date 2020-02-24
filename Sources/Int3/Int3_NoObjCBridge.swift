@@ -10,17 +10,17 @@ import simd.vector_types
 
 public struct Int3
 {
-	public var x:simd_int1
-	public var y:simd_int1
-	public var z:simd_int1
+	public var x:Int32
+	public var y:Int32
+	public var z:Int32
 	
 	public init() {
-		self.x = simd_int1()
-		self.y = simd_int1()
-		self.z = simd_int1()
+		self.x = Int32()
+		self.y = Int32()
+		self.z = Int32()
 	}
 	
-	public init(x:simd_int1, y:simd_int1, z:simd_int1) {
+	public init(x:Int32, y:Int32, z:Int32) {
 		self.x = x
 		self.y = y
 		self.z = z

@@ -12,15 +12,15 @@ import CoreGraphics.CGGeometry
 
 public struct Float2
 {
-	public var x:simd_float1
-	public var y:simd_float1
+	public var x:Float
+	public var y:Float
 	
 	public init() {
-		self.x = simd_float1()
-		self.y = simd_float1()
+		self.x = Float()
+		self.y = Float()
 	}
 	
-	public init(x:simd_float1, y:simd_float1) {
+	public init(x:Float, y:Float) {
 		self.x = x
 		self.y = y
 	}
@@ -93,7 +93,7 @@ public func Float2ToCI(_ structValue:Float2) -> CIVector {
 /// Converts an `Float2` struct from `CIVector` class using passing-individual-members initialization.
 public func Float2FromCI(_ ciVector:CIVector) -> Float2 {
 	assert(ciVector.count == 2)
-	return Float2(x: simd_float1(ciVector.x), y: simd_float1(ciVector.y))
+	return Float2(x: Float(ciVector.x), y: Float(ciVector.y))
 }
 
 
@@ -106,7 +106,7 @@ public func Float2ToCGVector(_ structValue:Float2) -> CGVector {
 }
 /// Converts an `Float2` struct from `CGVector` struct using passing-individual-members initialization.
 public func Float2FromCGVector(_ cgVectorValue:CGVector) -> Float2 {
-	return Float2(x: simd_float1(cgVectorValue.dx), y: simd_float1(cgVectorValue.dy))
+	return Float2(x: Float(cgVectorValue.dx), y: Float(cgVectorValue.dy))
 }
 
 /// Converts an `Float2` struct to `CGPoint` struct using passing-individual-members initialization.
@@ -115,7 +115,7 @@ public func Float2ToCGPoint(_ structValue:Float2) -> CGPoint {
 }
 /// Converts an `Float2` struct from `CGPoint` struct using passing-individual-members initialization.
 public func Float2FromCGPoint(_ cgPointValue:CGPoint) -> Float2 {
-	return Float2(x: simd_float1(cgPointValue.x), y: simd_float1(cgPointValue.y))
+	return Float2(x: Float(cgPointValue.x), y: Float(cgPointValue.y))
 }
 
 /// Converts an `Float2` struct to `CGSize` struct using passing-individual-members initialization.
@@ -124,5 +124,5 @@ public func Float2ToCGSize(_ structValue:Float2) -> CGSize {
 }
 /// Converts an `Float2` struct from `CGSize` struct using passing-individual-members initialization.
 public func Float2FromCGSize(_ cgSizeValue:CGSize) -> Float2 {
-	return Float2(x: simd_float1(cgSizeValue.width), y: simd_float1(cgSizeValue.height))
+	return Float2(x: Float(cgSizeValue.width), y: Float(cgSizeValue.height))
 }
