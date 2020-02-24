@@ -15,85 +15,85 @@ extension Float3
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
-	public init(_ x:Float, _ y:Float, _ z:Float) {
+	@_transparent public init(_ x:Float, _ y:Float, _ z:Float) {
 		self.init(x: x, y: y, z: z)
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
-	public init(_ scalar:Float) {
+	@_transparent public init(_ scalar:Float) {
 		self.init(scalar, scalar, scalar)
 	}
 	
 	/// Initialize a vector with the specified elements.
-	public init(x:Float) {
+	@_transparent public init(x:Float) {
 		self.init(x, 0, 0)
 	}
-	public init(y:Float) {
+	@_transparent public init(y:Float) {
 		self.init(0, y, 0)
 	}
-	public init(z:Float) {
+	@_transparent public init(z:Float) {
 		self.init(0, 0, z)
 	}
-	public init(x:Float, y:Float) {
+	@_transparent public init(x:Float, y:Float) {
 		self.init(x, y, 0)
 	}
-	public init(x:Float, z:Float) {
+	@_transparent public init(x:Float, z:Float) {
 		self.init(x, 0, z)
 	}
-	public init(y:Float, z:Float) {
+	@_transparent public init(y:Float, z:Float) {
 		self.init(0, y, z)
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd_float3) {
+	@_transparent public init(_ value:simd_float3) {
 		self = Float3FromSimd(value)
 	}
 	
 	/// Initialize from an `Int3` value.  May be inexact if the int values are large (due to float precision).
-	public init(_ int3Value:Int3) {
+	@_transparent public init(_ int3Value:Int3) {
 		self.init(simd_float(int3Value.simdValue))
 	}
 	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly three elements.
-	public init(array:[Float]) {
+	@_transparent public init(array:[Float]) {
 		precondition(array.count == 3)
 		self.init(array[0], array[1], array[2])
 	}
 	
 	/// Initialize using the given 3-element tuple.
-	public init(tuple:(x:Float,y:Float,z:Float)) {
+	@_transparent public init(tuple:(x:Float,y:Float,z:Float)) {
 		self.init(tuple.x, tuple.y, tuple.z)
 	}
 	
 	/// Initialize using an `Float2` as the `x` & `y` values.
-	public init(xy:Float2, z:Float?=nil) {
+	@_transparent public init(xy:Float2, z:Float?=nil) {
 		self.init(xy[0], xy[1], z ?? 0)
 	}
 	/// Initialize using an `Float2` as the `x` & `z` values.
-	public init(xz:Float2, y:Float?=nil) {
+	@_transparent public init(xz:Float2, y:Float?=nil) {
 		self.init(xz[0], y ?? 0, xz[1])
 	}
 	/// Initialize using an `Float2` as the `y` & `z` values.
-	public init(yz:Float2, x:Float?=nil) {
+	@_transparent public init(yz:Float2, x:Float?=nil) {
 		self.init(x ?? 0, yz[0], yz[1])
 	}
 	
 	/// Initialize using an `Float4`'s `x`, `y`, `z` values.
-	public init(xyz:Float4) {
+	@_transparent public init(xyz:Float4) {
 		self.init(xyz.x, xyz.y, xyz.z)
 	}
 	/// Initialize using an `Float4`'s `x`, `y`, `w` values.
-	public init(xyw:Float4) {
+	@_transparent public init(xyw:Float4) {
 		self.init(xyw.x, xyw.y, xyw.w)
 	}
 	/// Initialize using an `Float4`'s `x`, `z`, `w` values.
-	public init(xzw:Float4) {
+	@_transparent public init(xzw:Float4) {
 		self.init(xzw.x, xzw.z, xzw.w)
 	}
 	/// Initialize using an `Float4`'s `y`, `z`, `w` values.
-	public init(yzw:Float4) {
+	@_transparent public init(yzw:Float4) {
 		self.init(yzw.y, yzw.z, yzw.w)
 	}
 	
@@ -117,7 +117,7 @@ extension Float3
 	// MARK: `subscript`-Getter
 	
 	/// Access individual elements of the vector via subscript.
-	public subscript(index:Int) -> Float {
+	@inlinable public subscript(index:Int) -> Float {
 		switch index {
 			case 0: return self.x
 			case 1: return self.y
@@ -130,12 +130,12 @@ extension Float3
 	
 	// MARK: `replace` Functionality
 	
-	public mutating func replace(x:Float?=nil, y:Float?=nil, z:Float?=nil) {
+	@inlinable public mutating func replace(x:Float?=nil, y:Float?=nil, z:Float?=nil) {
 		if let xValue = x { self.x = xValue }
 		if let yValue = y { self.y = yValue }
 		if let zValue = z { self.z = zValue }
 	}
-	public func replacing(x:Float?=nil, y:Float?=nil, z:Float?=nil) -> Float3 {
+	@inlinable public func replacing(x:Float?=nil, y:Float?=nil, z:Float?=nil) -> Float3 {
 		return Float3(
 			x ?? self.x,
 			y ?? self.y,
@@ -146,17 +146,17 @@ extension Float3
 	
 	// MARK: `clamp` Functionality
 	
-	public mutating func clamp(to range:ClosedRange<Float3>) {
+	@_transparent public mutating func clamp(to range:ClosedRange<Float3>) {
 		self = self.clamped(to: range)
 	}
-	public func clamped(to range:ClosedRange<Float3>) -> Float3 {
+	@_transparent public func clamped(to range:ClosedRange<Float3>) -> Float3 {
 		return Float3(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
 	// MARK: `random` Functionality
 	
-	public static func random(in range:ClosedRange<Float3>) -> Float3 {
+	@inlinable public static func random(in range:ClosedRange<Float3>) -> Float3 {
 		return Float3(
 			Float.random(in: range.lowerBound.x...range.upperBound.x),
 			Float.random(in: range.lowerBound.y...range.upperBound.y),
@@ -164,7 +164,7 @@ extension Float3
 		)
 	}
 	
-	public static func random(in range:Range<Float3>) -> Float3 {
+	@inlinable public static func random(in range:Range<Float3>) -> Float3 {
 		return Float3(
 			Float.random(in: range.lowerBound.x..<range.upperBound.x),
 			Float.random(in: range.lowerBound.y..<range.upperBound.y),
@@ -175,22 +175,22 @@ extension Float3
 	
 	// MARK: `asTuple` Functionality
 	
-	public var asTuple:(x:Float,y:Float,z:Float) {
+	@_transparent public var asTuple:(x:Float,y:Float,z:Float) {
 		return ( self.x, self.y, self.z )
 	}
 	
 	
 	// MARK: 2-component (`Float2`) Accessors
 	
-	public var xy:Float2 {
+	@_transparent public var xy:Float2 {
 		get { return Float2(xy: self) }
 		set { ( self.x, self.y ) = ( newValue[0], newValue[1] ) }
 	}
-	public var xz:Float2 {
+	@_transparent public var xz:Float2 {
 		get { return Float2(xz: self) }
 		set { ( self.x, self.z ) = ( newValue[0], newValue[1] ) }
 	}
-	public var yz:Float2 {
+	@_transparent public var yz:Float2 {
 		get { return Float2(yz: self) }
 		set { ( self.y, self.z ) = ( newValue[0], newValue[1] ) }
 	}
@@ -198,7 +198,7 @@ extension Float3
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd_float3 {
+	@_transparent public var simdValue:simd_float3 {
 		return Float3ToSimd(self)
 	}
 }
@@ -207,7 +207,7 @@ extension Float3
 extension Float3 // SceneKit Conversion
 {
 	/// Initialize to a SceneKit vector.
-	public init(scnVector value:SCNVector3) {
+	@_transparent public init(scnVector value:SCNVector3) {
 		self = Float3FromSCN(value)
 	}
 	
@@ -219,11 +219,11 @@ extension Float3 // SceneKit Conversion
 extension Float3 // GLKit Conversion
 {
 	/// Initialize to a GLKit vector.
-	public init(glkVector value:GLKVector3) {
+	@_transparent public init(glkVector value:GLKVector3) {
 		self = Float3FromGLK(value)
 	}
 	
-	public var toGLKVector:GLKVector3 {
+	@_transparent public var toGLKVector:GLKVector3 {
 		return Float3ToGLK(self)
 	}
 }
@@ -231,11 +231,11 @@ extension Float3 // GLKit Conversion
 extension Float3 // CoreImage Conversion
 {
 	/// Initialize to a CoreImage vector.
-	public init(ciVector:CIVector) {
+	@_transparent public init(ciVector:CIVector) {
 		self = Float3FromCI(ciVector)
 	}
 	
-	public var toCIVector:CIVector {
+	@_transparent public var toCIVector:CIVector {
 		return Float3ToCI(self)
 	}
 }
@@ -251,11 +251,11 @@ extension Float3 : CustomStringConvertible
 
 // MARK: Element-wise `min`/`max`
 
-public func min(_ a:Float3, _ b:Float3) -> Float3 {
+@_transparent public func min(_ a:Float3, _ b:Float3) -> Float3 {
 	return Float3(simd_min(a.simdValue, b.simdValue))
 }
 
-public func min(_ a:Float3, _ b:Float3, _ c:Float3, _ rest:Float3...) -> Float3 {
+@inlinable public func min(_ a:Float3, _ b:Float3, _ c:Float3, _ rest:Float3...) -> Float3 {
 	var minSimdValue = simd_min(simd_min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
 		minSimdValue = simd_min(minSimdValue, value.simdValue)
@@ -263,11 +263,11 @@ public func min(_ a:Float3, _ b:Float3, _ c:Float3, _ rest:Float3...) -> Float3 
 	return Float3(minSimdValue)
 }
 
-public func max(_ a:Float3, _ b:Float3) -> Float3 {
+@_transparent public func max(_ a:Float3, _ b:Float3) -> Float3 {
 	return Float3(simd_max(a.simdValue, b.simdValue))
 }
 
-public func max(_ a:Float3, _ b:Float3, _ c:Float3, _ rest:Float3...) -> Float3 {
+@inlinable public func max(_ a:Float3, _ b:Float3, _ c:Float3, _ rest:Float3...) -> Float3 {
 	var maxSimdValue = simd_max(simd_max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
 		maxSimdValue = simd_max(maxSimdValue, value.simdValue)
@@ -283,7 +283,7 @@ extension Float3 : ExpressibleByArrayLiteral
 	/// Initialize using `arrayLiteral`.
 	///
 	/// - Precondition: the array literal must exactly three elements.
-	public init(arrayLiteral elements:Float...) {
+	@_transparent public init(arrayLiteral elements:Float...) {
 		precondition(elements.count == 3)
 		self.init(elements[0], elements[1], elements[2])
 	}
@@ -292,11 +292,11 @@ extension Float3 : ExpressibleByArrayLiteral
 
 extension Float3 : Equatable
 {
-	public static func ==(a:Float3, b:Float3) -> Bool {
+	@_transparent public static func ==(a:Float3, b:Float3) -> Bool {
 		return Float3Equal(a, b)
 	}
 	
-	public static func !=(a:Float3, b:Float3) -> Bool {
+	@_transparent public static func !=(a:Float3, b:Float3) -> Bool {
 		return Float3Inequal(a, b)
 	}
 }
@@ -304,19 +304,19 @@ extension Float3 : Equatable
 
 extension Float3 : Comparable
 {
-	public static func < (a:Float3, b:Float3) -> Bool {
+	@_transparent public static func < (a:Float3, b:Float3) -> Bool {
 		return Float3LessThan(a, b)
 	}
 	
-	public static func <= (a:Float3, b:Float3) -> Bool {
+	@_transparent public static func <= (a:Float3, b:Float3) -> Bool {
 		return Float3LessThanOrEqual(a, b)
 	}
 	
-	public static func > (a:Float3, b:Float3) -> Bool {
+	@_transparent public static func > (a:Float3, b:Float3) -> Bool {
 		return Float3GreaterThan(a, b)
 	}
 	
-	public static func >= (a:Float3, b:Float3) -> Bool {
+	@_transparent public static func >= (a:Float3, b:Float3) -> Bool {
 		return Float3GreaterThanOrEqual(a, b)
 	}
 }
@@ -324,42 +324,42 @@ extension Float3 : Comparable
 
 extension Float3 // Basic Math Operations
 {
-	public static func + (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func + (a:Float3, b:Float3) -> Float3 {
 		return Float3Add(a, b)
 	}
-	public static func += (v:inout Float3, o:Float3) {
+	@_transparent public static func += (v:inout Float3, o:Float3) {
 		v = v + o
 	}
 	
 	
-	public static func - (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func - (a:Float3, b:Float3) -> Float3 {
 		return Float3Subtract(a, b)
 	}
-	public static func -= (v:inout Float3, o:Float3) {
+	@_transparent public static func -= (v:inout Float3, o:Float3) {
 		v = v - o
 	}
 	
 	
-	public static func * (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func * (a:Float3, b:Float3) -> Float3 {
 		return Float3Multiply(a, b)
 	}
-	public static func *= (v:inout Float3, o:Float3) {
+	@_transparent public static func *= (v:inout Float3, o:Float3) {
 		v = v * o
 	}
 	
 	
-	public static func / (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func / (a:Float3, b:Float3) -> Float3 {
 		return Float3Divide(a, b)
 	}
-	public static func /= (v:inout Float3, o:Float3) {
+	@_transparent public static func /= (v:inout Float3, o:Float3) {
 		v = v / o
 	}
 	
 	
-	public static func % (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func % (a:Float3, b:Float3) -> Float3 {
 		return Float3Modulus(a, b)
 	}
-	public static func %= (v:inout Float3, o:Float3) {
+	@_transparent public static func %= (v:inout Float3, o:Float3) {
 		v = v % o
 	}
 	

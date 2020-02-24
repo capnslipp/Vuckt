@@ -12,77 +12,77 @@ extension Int2
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
-	public init(_ x:Int32, _ y:Int32) {
+	@_transparent public init(_ x:Int32, _ y:Int32) {
 		self.init(x: x, y: y)
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
-	public init(_ scalar:Int32) {
+	@_transparent public init(_ scalar:Int32) {
 		self.init(scalar, scalar)
 	}
 	
 	/// Initialize a vector with the specified elements.
-	public init(x:Int32) {
+	@_transparent public init(x:Int32) {
 		self.init(x, 0)
 	}
-	public init(y:Int32) {
+	@_transparent public init(y:Int32) {
 		self.init(0, y)
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd_int2) {
+	@_transparent public init(_ value:simd_int2) {
 		self = Int2FromSimd(value)
 	}
 	
 	/// Initialize from an `Float2` value, clamping to the representable range of the int type.
-	public init(saturating float2Value:Float2) {
+	@_transparent public init(saturating float2Value:Float2) {
 		self.init(simd_int_sat(float2Value.simdValue))
 	}
 	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly two elements.
-	public init(array:[Int32]) {
+	@_transparent public init(array:[Int32]) {
 		precondition(array.count == 2)
 		self.init(array[0], array[1])
 	}
 	
 	/// Initialize using the given 2-element tuple.
-	public init(tuple:(x:Int32,y:Int32)) {
+	@_transparent public init(tuple:(x:Int32,y:Int32)) {
 		self.init(tuple.x, tuple.y)
 	}
 	
 	/// Initialize using a different `Vuckt`'s `x` & `y` values.
-	public init(xy:Int3) {
+	@_transparent public init(xy:Int3) {
 		self.init(xy.x, xy.y)
 	}
-	public init(xy:Int4) {
+	@_transparent public init(xy:Int4) {
 		self.init(xy.x, xy.y)
 	}
 	/// Initialize using a different `Vuckt`'s `x` & `z` values.
-	public init(xz:Int3) {
+	@_transparent public init(xz:Int3) {
 		self.init(xz.x, xz.z)
 	}
-	public init(xz:Int4) {
+	@_transparent public init(xz:Int4) {
 		self.init(xz.x, xz.z)
 	}
 	/// Initialize using a different `Vuckt`'s `y` & `z` values.
-	public init(yz:Int3) {
+	@_transparent public init(yz:Int3) {
 		self.init(yz.y, yz.z)
 	}
-	public init(yz:Int4) {
+	@_transparent public init(yz:Int4) {
 		self.init(yz.y, yz.z)
 	}
 	/// Initialize using an `Int4`'s `x` & `w` values.
-	public init(xw:Int4) {
+	@_transparent public init(xw:Int4) {
 		self.init(xw.x, xw.w)
 	}
 	/// Initialize using an `Int4`'s `y` & `w` values.
-	public init(yw:Int4) {
+	@_transparent public init(yw:Int4) {
 		self.init(yw.y, yw.w)
 	}
 	/// Initialize using an `Int4`'s `z` & `w` values.
-	public init(zw:Int4) {
+	@_transparent public init(zw:Int4) {
 		self.init(zw.z, zw.w)
 	}
 	
@@ -104,7 +104,7 @@ extension Int2
 	// MARK: `subscript`-Getter
 	
 	/// Access individual elements of the vector via subscript.
-	public subscript(index:Int) -> Int32 {
+	@inlinable public subscript(index:Int) -> Int32 {
 		switch index {
 			case 0: return self.x
 			case 1: return self.y
@@ -116,11 +116,11 @@ extension Int2
 	
 	// MARK: `replace` Functionality
 	
-	public mutating func replace(x:Int32?=nil, y:Int32?=nil) {
+	@inlinable public mutating func replace(x:Int32?=nil, y:Int32?=nil) {
 		if let xValue = x { self.x = xValue }
 		if let yValue = y { self.y = yValue }
 	}
-	public func replacing(x:Int32?=nil, y:Int32?=nil) -> Int2 {
+	@inlinable public func replacing(x:Int32?=nil, y:Int32?=nil) -> Int2 {
 		return Int2(
 			x ?? self.x,
 			y ?? self.y
@@ -130,24 +130,24 @@ extension Int2
 	
 	// MARK: `clamp` Functionality
 	
-	public mutating func clamp(to range:ClosedRange<Int2>) {
+	@_transparent public mutating func clamp(to range:ClosedRange<Int2>) {
 		self = self.clamped(to: range)
 	}
-	public func clamped(to range:ClosedRange<Int2>) -> Int2 {
+	@_transparent public func clamped(to range:ClosedRange<Int2>) -> Int2 {
 		return Int2(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
 	// MARK: `random` Functionality
 	
-	public static func random(in range:ClosedRange<Int2>) -> Int2 {
+	@inlinable public static func random(in range:ClosedRange<Int2>) -> Int2 {
 		return Int2(
 			Int32.random(in: range.lowerBound.x...range.upperBound.x),
 			Int32.random(in: range.lowerBound.y...range.upperBound.y)
 		)
 	}
 	
-	public static func random(in range:Range<Int2>) -> Int2 {
+	@inlinable public static func random(in range:Range<Int2>) -> Int2 {
 		return Int2(
 			Int32.random(in: range.lowerBound.x..<range.upperBound.x),
 			Int32.random(in: range.lowerBound.y..<range.upperBound.y)
@@ -157,14 +157,14 @@ extension Int2
 	
 	// MARK: `asTuple` Functionality
 	
-	public var asTuple:(x:Int32,y:Int32) {
+	@_transparent public var asTuple:(x:Int32,y:Int32) {
 		return ( self.x, self.y )
 	}
 	
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd_int2 {
+	@_transparent public var simdValue:simd_int2 {
 		return Int2ToSimd(self)
 	}
 }
@@ -180,11 +180,11 @@ extension Int2 : CustomStringConvertible
 
 // MARK: Element-wise `min`/`max`
 
-public func min(_ a:Int2, _ b:Int2) -> Int2 {
+@_transparent public func min(_ a:Int2, _ b:Int2) -> Int2 {
 	return Int2(simd_min(a.simdValue, b.simdValue))
 }
 
-public func min(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
+@inlinable public func min(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
 	var minSimdValue = simd_min(simd_min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
 		minSimdValue = simd_min(minSimdValue, value.simdValue)
@@ -192,11 +192,11 @@ public func min(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
 	return Int2(minSimdValue)
 }
 
-public func max(_ a:Int2, _ b:Int2) -> Int2 {
+@_transparent public func max(_ a:Int2, _ b:Int2) -> Int2 {
 	return Int2(simd_max(a.simdValue, b.simdValue))
 }
 
-public func max(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
+@inlinable public func max(_ a:Int2, _ b:Int2, _ c:Int2, _ rest:Int2...) -> Int2 {
 	var maxSimdValue = simd_max(simd_max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
 		maxSimdValue = simd_max(maxSimdValue, value.simdValue)
@@ -212,7 +212,7 @@ extension Int2 : ExpressibleByArrayLiteral
 	/// Initialize using `arrayLiteral`.
 	///
 	/// - Precondition: the array literal must exactly two elements.
-	public init(arrayLiteral elements:Int32...) {
+	@_transparent public init(arrayLiteral elements:Int32...) {
 		precondition(elements.count == 2)
 		self.init(elements[0], elements[1])
 	}
@@ -221,11 +221,11 @@ extension Int2 : ExpressibleByArrayLiteral
 
 extension Int2 : Equatable
 {
-	public static func ==(a:Int2, b:Int2) -> Bool {
+	@_transparent public static func ==(a:Int2, b:Int2) -> Bool {
 		return Int2Equal(a, b)
 	}
 	
-	public static func !=(a:Int2, b:Int2) -> Bool {
+	@_transparent public static func !=(a:Int2, b:Int2) -> Bool {
 		return Int2Inequal(a, b)
 	}
 }
@@ -233,19 +233,19 @@ extension Int2 : Equatable
 
 extension Int2 : Comparable
 {
-	public static func < (a:Int2, b:Int2) -> Bool {
+	@_transparent public static func < (a:Int2, b:Int2) -> Bool {
 		return Int2LessThan(a, b)
 	}
 	
-	public static func <= (a:Int2, b:Int2) -> Bool {
+	@_transparent public static func <= (a:Int2, b:Int2) -> Bool {
 		return Int2LessThanOrEqual(a, b)
 	}
 	
-	public static func > (a:Int2, b:Int2) -> Bool {
+	@_transparent public static func > (a:Int2, b:Int2) -> Bool {
 		return Int2GreaterThan(a, b)
 	}
 	
-	public static func >= (a:Int2, b:Int2) -> Bool {
+	@_transparent public static func >= (a:Int2, b:Int2) -> Bool {
 		return Int2GreaterThanOrEqual(a, b)
 	}
 }
@@ -279,10 +279,10 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	}
 	
 	
-	public static func + (a:Int2, b:Int2) -> Int2 {
+	@_transparent public static func + (a:Int2, b:Int2) -> Int2 {
 		return Int2Add(a, b)
 	}
-	public static func += (v:inout Int2, o:Int2) {
+	@_transparent public static func += (v:inout Int2, o:Int2) {
 		v = v + o
 	}
 	
@@ -301,10 +301,10 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static func - (a:Int2, b:Int2) -> Int2 {
+	@_transparent public static func - (a:Int2, b:Int2) -> Int2 {
 		return Int2Subtract(a, b)
 	}
-	public static func -= (v:inout Int2, o:Int2) {
+	@_transparent public static func -= (v:inout Int2, o:Int2) {
 		v = v - o
 	}
 	
@@ -323,10 +323,10 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static func * (a:Int2, b:Int2) -> Int2 {
+	@_transparent public static func * (a:Int2, b:Int2) -> Int2 {
 		return Int2Multiply(a, b)
 	}
-	public static func *= (v:inout Int2, o:Int2) {
+	@_transparent public static func *= (v:inout Int2, o:Int2) {
 		v = v * o
 	}
 	
@@ -345,10 +345,10 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static func / (a:Int2, b:Int2) -> Int2 {
+	@_transparent public static func / (a:Int2, b:Int2) -> Int2 {
 		return Int2Divide(a, b)
 	}
-	public static func /= (v:inout Int2, o:Int2) {
+	@_transparent public static func /= (v:inout Int2, o:Int2) {
 		v = v / o
 	}
 	
@@ -367,10 +367,10 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static func % (a:Int2, b:Int2) -> Int2 {
+	@_transparent public static func % (a:Int2, b:Int2) -> Int2 {
 		return Int2Modulus(a, b)
 	}
-	public static func %= (v:inout Int2, o:Int2) {
+	@_transparent public static func %= (v:inout Int2, o:Int2) {
 		v = v % o
 	}
 	
@@ -385,7 +385,7 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static prefix func - (v:Int2) -> Int2 {
+	@_transparent public static prefix func - (v:Int2) -> Int2 {
 		return Int2Negate(v)
 	}
 }

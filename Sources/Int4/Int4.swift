@@ -12,121 +12,121 @@ extension Int4
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
-	public init(_ x:Int32, _ y:Int32, _ z:Int32, _ w:Int32) {
+	@_transparent public init(_ x:Int32, _ y:Int32, _ z:Int32, _ w:Int32) {
 		self.init(x: x, y: y, z: z, w: w)
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
-	public init(_ scalar:Int32) {
+	@_transparent public init(_ scalar:Int32) {
 		self.init(scalar, scalar, scalar, scalar)
 	}
 	
 	/// Initialize a vector with the specified elements.
-	public init(x:Int32) {
+	@_transparent public init(x:Int32) {
 		self.init(x, 0, 0, 0)
 	}
-	public init(y:Int32) {
+	@_transparent public init(y:Int32) {
 		self.init(0, y, 0, 0)
 	}
-	public init(z:Int32) {
+	@_transparent public init(z:Int32) {
 		self.init(0, 0, z, 0)
 	}
-	public init(w:Int32) {
+	@_transparent public init(w:Int32) {
 		self.init(0, 0, 0, w)
 	}
-	public init(x:Int32, y:Int32) {
+	@_transparent public init(x:Int32, y:Int32) {
 		self.init(x, y, 0, 0)
 	}
-	public init(x:Int32, z:Int32) {
+	@_transparent public init(x:Int32, z:Int32) {
 		self.init(x, 0, z, 0)
 	}
-	public init(x:Int32, w:Int32) {
+	@_transparent public init(x:Int32, w:Int32) {
 		self.init(x, 0, 0, w)
 	}
-	public init(y:Int32, z:Int32) {
+	@_transparent public init(y:Int32, z:Int32) {
 		self.init(0, y, z, 0)
 	}
-	public init(y:Int32, w:Int32) {
+	@_transparent public init(y:Int32, w:Int32) {
 		self.init(0, y, 0, w)
 	}
-	public init(z:Int32, w:Int32) {
+	@_transparent public init(z:Int32, w:Int32) {
 		self.init(0, 0, z, w)
 	}
-	public init(x:Int32, y:Int32, z:Int32) {
+	@_transparent public init(x:Int32, y:Int32, z:Int32) {
 		self.init(x, y, z, 0)
 	}
-	public init(x:Int32, y:Int32, w:Int32) {
+	@_transparent public init(x:Int32, y:Int32, w:Int32) {
 		self.init(x, y, 0, w)
 	}
-	public init(x:Int32, z:Int32, w:Int32) {
+	@_transparent public init(x:Int32, z:Int32, w:Int32) {
 		self.init(x, 0, z, w)
 	}
-	public init(y:Int32, z:Int32, w:Int32) {
+	@_transparent public init(y:Int32, z:Int32, w:Int32) {
 		self.init(0, y, z, w)
 	}
 	
 	/// Initialize to a SIMD vector.
-	public init(_ value:simd_int4) {
+	@_transparent public init(_ value:simd_int4) {
 		self = Int4FromSimd(value)
 	}
 	
 	/// Initialize from an `Float4` value, clamping to the representable range of the int type.
-	public init(saturating float4Value:Float4) {
+	@_transparent public init(saturating float4Value:Float4) {
 		self.init(simd_int_sat(float4Value.simdValue))
 	}
 	
 	/// Initialize to a vector with elements taken from `array`.
 	///
 	/// - Precondition: `array` must have exactly three elements.
-	public init(array:[Int32]) {
+	@_transparent public init(array:[Int32]) {
 		precondition(array.count == 4)
 		self.init(array[0], array[1], array[2], array[3])
 	}
 	
 	/// Initialize using the given 4-element tuple.
-	public init(tuple:(x:Int32,y:Int32,z:Int32,w:Int32)) {
+	@_transparent public init(tuple:(x:Int32,y:Int32,z:Int32,w:Int32)) {
 		self.init(tuple.x, tuple.y, tuple.z, tuple.w)
 	}
 	
 	/// Initialize using an `Int2` as the `x` & `y` values.
-	public init(xy:Int2, z:Int32?=nil, w:Int32?=nil) {
+	@_transparent public init(xy:Int2, z:Int32?=nil, w:Int32?=nil) {
 		self.init(xy[0], xy[1], z ?? 0, w ?? 0)
 	}
 	/// Initialize using an `Int2` as the `x` & `z` values.
-	public init(xz:Int2, y:Int32?=nil, w:Int32?=nil) {
+	@_transparent public init(xz:Int2, y:Int32?=nil, w:Int32?=nil) {
 		self.init(xz[0], y ?? 0, xz[1], w ?? 0)
 	}
 	/// Initialize using an `Int2` as the `x` & `w` values.
-	public init(xw:Int2, y:Int32?=nil, z:Int32?=nil) {
+	@_transparent public init(xw:Int2, y:Int32?=nil, z:Int32?=nil) {
 		self.init(xw[0], y ?? 0, z ?? 0, xw[1])
 	}
 	/// Initialize using an `Int2` as the `y` & `z` values.
-	public init(yz:Int2, x:Int32?=nil, w:Int32?=nil) {
+	@_transparent public init(yz:Int2, x:Int32?=nil, w:Int32?=nil) {
 		self.init(x ?? 0, yz[0], yz[1], w ?? 0)
 	}
 	/// Initialize using an `Int2` as the `y` & `w` values.
-	public init(yw:Int2, x:Int32?=nil, z:Int32?=nil) {
+	@_transparent public init(yw:Int2, x:Int32?=nil, z:Int32?=nil) {
 		self.init(x ?? 0, yw[0], z ?? 0, yw[1])
 	}
 	/// Initialize using an `Int2` as the `z` & `w` values.
-	public init(zw:Int2, x:Int32?=nil, y:Int32?=nil) {
+	@_transparent public init(zw:Int2, x:Int32?=nil, y:Int32?=nil) {
 		self.init(x ?? 0, y ?? 0, zw[0], zw[1])
 	}
 	
 	/// Initialize using an `Int3` as the `x`, `y`, `z` values.
-	public init(xyz:Int3, w:Int32?=nil) {
+	@_transparent public init(xyz:Int3, w:Int32?=nil) {
 		self.init(xyz[0], xyz[1], xyz[2], w ?? 0)
 	}
 	/// Initialize using an `Int3` as the `x`, `y`, `w` values.
-	public init(xyw:Int3, z:Int32?=nil) {
+	@_transparent public init(xyw:Int3, z:Int32?=nil) {
 		self.init(xyw[0], xyw[1], z ?? 0, xyw[2])
 	}
 	/// Initialize using an `Int3` as the `x`, `z`, `w` values.
-	public init(xzw:Int3, y:Int32?=nil) {
+	@_transparent public init(xzw:Int3, y:Int32?=nil) {
 		self.init(xzw[0], y ?? 0, xzw[1], xzw[2])
 	}
 	/// Initialize using an `Int3` as the `y`, `z`, `w` values.
-	public init(yzw:Int3, x:Int32?=nil) {
+	@_transparent public init(yzw:Int3, x:Int32?=nil) {
 		self.init(x ?? 0, yzw[0], yzw[1], yzw[2])
 	}
 	
@@ -152,7 +152,7 @@ extension Int4
 	// MARK: `subscript`-Getter
 	
 	/// Access individual elements of the vector via subscript.
-	public subscript(index:Int) -> Int32 {
+	@inlinable public subscript(index:Int) -> Int32 {
 		switch index {
 			case 0: return self.x
 			case 1: return self.y
@@ -166,13 +166,13 @@ extension Int4
 	
 	// MARK: `replace` Functionality
 	
-	public mutating func replace(x:Int32?=nil, y:Int32?=nil, z:Int32?=nil, w:Int32?=nil) {
+	@inlinable public mutating func replace(x:Int32?=nil, y:Int32?=nil, z:Int32?=nil, w:Int32?=nil) {
 		if let xValue = x { self.x = xValue }
 		if let yValue = y { self.y = yValue }
 		if let zValue = z { self.z = zValue }
 		if let wValue = w { self.w = wValue }
 	}
-	public func replacing(x:Int32?=nil, y:Int32?=nil, z:Int32?=nil, w:Int32?=nil) -> Int4 {
+	@inlinable public func replacing(x:Int32?=nil, y:Int32?=nil, z:Int32?=nil, w:Int32?=nil) -> Int4 {
 		return Int4(
 			x ?? self.x,
 			y ?? self.y,
@@ -184,17 +184,17 @@ extension Int4
 	
 	// MARK: `clamp` Functionality
 	
-	public mutating func clamp(to range:ClosedRange<Int4>) {
+	@_transparent public mutating func clamp(to range:ClosedRange<Int4>) {
 		self = self.clamped(to: range)
 	}
-	public func clamped(to range:ClosedRange<Int4>) -> Int4 {
+	@_transparent public func clamped(to range:ClosedRange<Int4>) -> Int4 {
 		return Int4(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
 	// MARK: `random` Functionality
 	
-	public static func random(in range:ClosedRange<Int4>) -> Int4 {
+	@inlinable public static func random(in range:ClosedRange<Int4>) -> Int4 {
 		return Int4(
 			Int32.random(in: range.lowerBound.x...range.upperBound.x),
 			Int32.random(in: range.lowerBound.y...range.upperBound.y),
@@ -203,7 +203,7 @@ extension Int4
 		)
 	}
 	
-	public static func random(in range:Range<Int4>) -> Int4 {
+	@inlinable public static func random(in range:Range<Int4>) -> Int4 {
 		return Int4(
 			Int32.random(in: range.lowerBound.x..<range.upperBound.x),
 			Int32.random(in: range.lowerBound.y..<range.upperBound.y),
@@ -215,34 +215,34 @@ extension Int4
 	
 	// MARK: `asTuple` Functionality
 	
-	public var asTuple:(x:Int32,y:Int32,z:Int32,w:Int32) {
+	@_transparent public var asTuple:(x:Int32,y:Int32,z:Int32,w:Int32) {
 		return ( self.x, self.y, self.z, self.w )
 	}
 	
 	
 	// MARK: 2-component (`Int2`) Accessors
 	
-	public var xy:Int2 {
+	@_transparent public var xy:Int2 {
 		get { return Int2(xy: self) }
 		set { ( self.x, self.y ) = ( newValue[0], newValue[1] ) }
 	}
-	public var xz:Int2 {
+	@_transparent public var xz:Int2 {
 		get { return Int2(xz: self) }
 		set { ( self.x, self.z ) = ( newValue[0], newValue[1] ) }
 	}
-	public var xw:Int2 {
+	@_transparent public var xw:Int2 {
 		get { return Int2(xw: self) }
 		set { ( self.x, self.w ) = ( newValue[0], newValue[1] ) }
 	}
-	public var yz:Int2 {
+	@_transparent public var yz:Int2 {
 		get { return Int2(yz: self) }
 		set { ( self.y, self.z ) = ( newValue[0], newValue[1] ) }
 	}
-	public var yw:Int2 {
+	@_transparent public var yw:Int2 {
 		get { return Int2(yw: self) }
 		set { ( self.y, self.w ) = ( newValue[0], newValue[1] ) }
 	}
-	public var zw:Int2 {
+	@_transparent public var zw:Int2 {
 		get { return Int2(zw: self) }
 		set { ( self.z, self.w ) = ( newValue[0], newValue[1] ) }
 	}
@@ -250,19 +250,19 @@ extension Int4
 	
 	// MARK: 3-component (`Int3`) Accessors
 	
-	public var xyz:Int3 {
+	@_transparent public var xyz:Int3 {
 		get { return Int3(xyz: self) }
 		set { ( self.x, self.y, self.z ) = ( newValue[0], newValue[1], newValue[2] ) }
 	}
-	public var xyw:Int3 {
+	@_transparent public var xyw:Int3 {
 		get { return Int3(xyw: self) }
 		set { ( self.x, self.y, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
 	}
-	public var xzw:Int3 {
+	@_transparent public var xzw:Int3 {
 		get { return Int3(xzw: self) }
 		set { ( self.x, self.z, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
 	}
-	public var yzw:Int3 {
+	@_transparent public var yzw:Int3 {
 		get { return Int3(yzw: self) }
 		set { ( self.y, self.z, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
 	}
@@ -270,7 +270,7 @@ extension Int4
 	
 	// MARK: `simdValue` Functionality
 	
-	public var simdValue:simd_int4 {
+	@_transparent public var simdValue:simd_int4 {
 		return Int4ToSimd(self)
 	}
 }
@@ -286,11 +286,11 @@ extension Int4 : CustomStringConvertible
 
 // MARK: Element-wise `min`/`max`
 
-public func min(_ a:Int4, _ b:Int4) -> Int4 {
+@_transparent public func min(_ a:Int4, _ b:Int4) -> Int4 {
 	return Int4(simd_min(a.simdValue, b.simdValue))
 }
 
-public func min(_ a:Int4, _ b:Int4, _ c:Int4, _ rest:Int4...) -> Int4 {
+@inlinable public func min(_ a:Int4, _ b:Int4, _ c:Int4, _ rest:Int4...) -> Int4 {
 	var minSimdValue = simd_min(simd_min(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
 		minSimdValue = simd_min(minSimdValue, value.simdValue)
@@ -298,11 +298,11 @@ public func min(_ a:Int4, _ b:Int4, _ c:Int4, _ rest:Int4...) -> Int4 {
 	return Int4(minSimdValue)
 }
 
-public func max(_ a:Int4, _ b:Int4) -> Int4 {
+@_transparent public func max(_ a:Int4, _ b:Int4) -> Int4 {
 	return Int4(simd_max(a.simdValue, b.simdValue))
 }
 
-public func max(_ a:Int4, _ b:Int4, _ c:Int4, _ rest:Int4...) -> Int4 {
+@inlinable public func max(_ a:Int4, _ b:Int4, _ c:Int4, _ rest:Int4...) -> Int4 {
 	var maxSimdValue = simd_max(simd_max(a.simdValue, b.simdValue), c.simdValue)
 	for value in rest {
 		maxSimdValue = simd_max(maxSimdValue, value.simdValue)
@@ -318,7 +318,7 @@ extension Int4 : ExpressibleByArrayLiteral
 	/// Initialize using `arrayLiteral`.
 	///
 	/// - Precondition: the array literal must exactly three elements.
-	public init(arrayLiteral elements:Int32...) {
+	@_transparent public init(arrayLiteral elements:Int32...) {
 		precondition(elements.count == 4)
 		self.init(elements[0], elements[1], elements[2], elements[3])
 	}
@@ -327,11 +327,11 @@ extension Int4 : ExpressibleByArrayLiteral
 
 extension Int4 : Equatable
 {
-	public static func ==(a:Int4, b:Int4) -> Bool {
+	@_transparent public static func ==(a:Int4, b:Int4) -> Bool {
 		return Int4Equal(a, b)
 	}
 	
-	public static func !=(a:Int4, b:Int4) -> Bool {
+	@_transparent public static func !=(a:Int4, b:Int4) -> Bool {
 		return Int4Inequal(a, b)
 	}
 }
@@ -339,19 +339,19 @@ extension Int4 : Equatable
 
 extension Int4 : Comparable
 {
-	public static func < (a:Int4, b:Int4) -> Bool {
+	@_transparent public static func < (a:Int4, b:Int4) -> Bool {
 		return Int4LessThan(a, b)
 	}
 	
-	public static func <= (a:Int4, b:Int4) -> Bool {
+	@_transparent public static func <= (a:Int4, b:Int4) -> Bool {
 		return Int4LessThanOrEqual(a, b)
 	}
 	
-	public static func > (a:Int4, b:Int4) -> Bool {
+	@_transparent public static func > (a:Int4, b:Int4) -> Bool {
 		return Int4GreaterThan(a, b)
 	}
 	
-	public static func >= (a:Int4, b:Int4) -> Bool {
+	@_transparent public static func >= (a:Int4, b:Int4) -> Bool {
 		return Int4GreaterThanOrEqual(a, b)
 	}
 }
@@ -387,10 +387,10 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	}
 	
 	
-	public static func + (a:Int4, b:Int4) -> Int4 {
+	@_transparent public static func + (a:Int4, b:Int4) -> Int4 {
 		return Int4Add(a, b)
 	}
-	public static func += (v:inout Int4, o:Int4) {
+	@_transparent public static func += (v:inout Int4, o:Int4) {
 		v = v + o
 	}
 	
@@ -409,10 +409,10 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static func - (a:Int4, b:Int4) -> Int4 {
+	@_transparent public static func - (a:Int4, b:Int4) -> Int4 {
 		return Int4Subtract(a, b)
 	}
-	public static func -= (v:inout Int4, o:Int4) {
+	@_transparent public static func -= (v:inout Int4, o:Int4) {
 		v = v - o
 	}
 	
@@ -431,10 +431,10 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static func * (a:Int4, b:Int4) -> Int4 {
+	@_transparent public static func * (a:Int4, b:Int4) -> Int4 {
 		return Int4Multiply(a, b)
 	}
-	public static func *= (v:inout Int4, o:Int4) {
+	@_transparent public static func *= (v:inout Int4, o:Int4) {
 		v = v * o
 	}
 	
@@ -453,10 +453,10 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static func / (a:Int4, b:Int4) -> Int4 {
+	@_transparent public static func / (a:Int4, b:Int4) -> Int4 {
 		return Int4Divide(a, b)
 	}
-	public static func /= (v:inout Int4, o:Int4) {
+	@_transparent public static func /= (v:inout Int4, o:Int4) {
 		v = v / o
 	}
 	
@@ -475,10 +475,10 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static func % (a:Int4, b:Int4) -> Int4 {
+	@_transparent public static func % (a:Int4, b:Int4) -> Int4 {
 		return Int4Modulus(a, b)
 	}
-	public static func %= (v:inout Int4, o:Int4) {
+	@_transparent public static func %= (v:inout Int4, o:Int4) {
 		v = v % o
 	}
 	
@@ -493,7 +493,7 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
-	public static prefix func - (v:Int4) -> Int4 {
+	@_transparent public static prefix func - (v:Int4) -> Int4 {
 		return Int4Negate(v)
 	}
 }
