@@ -4,6 +4,7 @@
 
 import XCTest
 import Vuckt
+import simd.vector_types
 
 
 
