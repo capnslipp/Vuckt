@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Vuckt'
-  s.version = '3.4.1'
+  s.version = '3.4.2'
   s.swift_versions = ['4.0', '4.2', '5.0']
   s.authors = { 'capnslipp' => 'Vuckt@capnslipp.com' }
   s.social_media_url = 'https://twitter.com/capnslipp'
