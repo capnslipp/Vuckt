@@ -155,6 +155,19 @@ extension FloatQuaternion
 		self = FloatQuaternion(simd_quaternion(fromVector.simdValue, toVector.simdValue))
 	}
 	
+	public init(from fromVector:Float3, to toVector:Float3, axisWhenVectorsAreOpposed:Float3)
+	{
+		// Based on http://lolengine.net/blog/2014/02/24/quaternion-from-two-vectors-final
+		// TODO: Make this more efficient— normalizing on the spot isn't the fasted way to check if they're opposed, but I know it works.
+		// TODO: Check that the `normalsDot` vs. `-1` works in practice with float accuracy.  Check against the LOLEngine implementation (also used by Unreal Engine).
+		let normalsDot = dotProductOf(fromVector.normalized(), toVector.normalized())
+		if normalsDot < (-1.0 + Float.leastNormalMagnitude) {
+			self = FloatQuaternion(angle: Float.pi, axis: axisWhenVectorsAreOpposed)
+		} else {
+			self = FloatQuaternion(from: fromVector, to: toVector)
+		}
+	}
+	
 	
 	// MARK: Real- & Imaginary-Part Accessors
 	
