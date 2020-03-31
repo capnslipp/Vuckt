@@ -372,6 +372,24 @@ extension Float3 // Basic Math Operations
 
 extension Float3 // Geometric Math Operations
 {
+	@_transparent public func normalized() -> Float3 {
+		return Float3(simd_normalize(self.simdValue))
+	}
+	@_transparent public mutating func normalize() {
+		self = self.normalized()
+	}
+	
+	
+	@_transparent public func length() -> Float {
+		return simd_length(self.simdValue)
+	}
+	
+	
+	@_transparent public func dotProduct(_ other:Float3) -> Float {
+		return dotProductOf(self, other)
+	}
+	
+	
 	@_transparent public func rotated(by quaternion:FloatQuaternion) -> Float3 {
 		return quaternion.rotate(self)
 	}
@@ -386,6 +404,10 @@ extension Float3 // Geometric Math Operations
 	@_transparent public mutating func unrotate(by quaternion:FloatQuaternion) {
 		self = self.unrotated(by: quaternion)
 	}
+}
+
+@_transparent public func dotProductOf(_ a:Float3, _ b:Float3) -> Float {
+	return simd_dot(a.simdValue, b.simdValue)
 }
 
 

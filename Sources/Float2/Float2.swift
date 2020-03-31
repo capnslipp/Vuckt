@@ -340,6 +340,31 @@ extension Float2 // Basic Math Operations
 }
 
 
+extension Float2 // Geometric Math Operations
+{
+	@_transparent public func normalized() -> Float2 {
+		return Float2(simd_normalize(self.simdValue))
+	}
+	@_transparent public mutating func normalize() {
+		self = self.normalized()
+	}
+	
+	
+	@_transparent public func length() -> Float {
+		return simd_length(self.simdValue)
+	}
+	
+	
+	@_transparent public func dotProduct(_ other:Float2) -> Float {
+		return dotProductOf(self, other)
+	}
+}
+
+@_transparent public func dotProductOf(_ a:Float2, _ b:Float2) -> Float {
+	return simd_dot(a.simdValue, b.simdValue)
+}
+
+
 extension Float2 : Hashable
 {
 	private static let _hashingLargePrimes:[UInt] = [ 982_917_223, 3_572_352_083 ]
