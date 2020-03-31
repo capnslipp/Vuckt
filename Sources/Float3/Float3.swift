@@ -370,6 +370,25 @@ extension Float3 // Basic Math Operations
 }
 
 
+extension Float3 // Geometric Math Operations
+{
+	@_transparent public func rotated(by quaternion:FloatQuaternion) -> Float3 {
+		return quaternion.rotate(self)
+	}
+	@_transparent public mutating func rotate(by quaternion:FloatQuaternion) {
+		self = self.rotated(by: quaternion)
+	}
+	
+	
+	@_transparent public func unrotated(by quaternion:FloatQuaternion) -> Float3 {
+		return quaternion.unrotate(self)
+	}
+	@_transparent public mutating func unrotate(by quaternion:FloatQuaternion) {
+		self = self.unrotated(by: quaternion)
+	}
+}
+
+
 extension Float3 : Hashable
 {
 	private static let _hashingLargePrimes:[UInt] = [ 982_917_223, 3_572_352_083, 4_259_235_067 ]
