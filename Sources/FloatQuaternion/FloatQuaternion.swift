@@ -377,6 +377,28 @@ extension FloatQuaternion // Quaternion Math Operations
 	@_transparent public func length() -> Float {
 		return simd_length(self.simdValue)
 	}
+	
+	
+	public enum SphericalLinearInterpolationMethod {
+		case shortest
+		case longest
+	}
+	public enum SphericalCubicInterpolationMethod {
+		case bezier
+		case spline
+	}
+	@_transparent public func interpolated(to other:FloatQuaternion, ratio:Float, method:FloatQuaternion.SphericalLinearInterpolationMethod = .shortest) -> FloatQuaternion {
+		return interpolateBetween(self, other, ratio: ratio, method: method)
+	}
+	@_transparent public mutating func interpolate(to other:FloatQuaternion, ratio:Float, method:FloatQuaternion.SphericalLinearInterpolationMethod = .shortest) {
+		self = interpolateBetween(self, other, ratio: ratio, method: method)
+	}
+	@_transparent public func interpolated(to other:FloatQuaternion, control1:FloatQuaternion, control2:FloatQuaternion, ratio:Float, method:FloatQuaternion.SphericalCubicInterpolationMethod) -> FloatQuaternion {
+		return interpolateBetween(self, control1, control2, other, ratio: ratio, method: method)
+	}
+	@_transparent public mutating func interpolate(to other:FloatQuaternion, control1:FloatQuaternion, control2:FloatQuaternion, ratio:Float, method:FloatQuaternion.SphericalCubicInterpolationMethod) {
+		self = interpolateBetween(self, control1, control2, other, ratio: ratio, method: method)
+	}
 }
 
 @_transparent public func hamiltonProductOf(_ a:FloatQuaternion, _ b:FloatQuaternion) -> FloatQuaternion {
@@ -385,6 +407,26 @@ extension FloatQuaternion // Quaternion Math Operations
 
 @_transparent public func dotProductOf(_ a:FloatQuaternion, _ b:FloatQuaternion) -> Float {
 	return simd_dot(a.simdValue, b.simdValue)
+}
+
+@_transparent public func interpolateBetween(_ a:FloatQuaternion, _ b:FloatQuaternion, ratio:Float, method:FloatQuaternion.SphericalLinearInterpolationMethod = .shortest) -> FloatQuaternion
+{
+	switch method {
+		case .shortest:
+			return FloatQuaternion(simd_slerp(a.simdValue, b.simdValue, ratio))
+		case .longest:
+			return FloatQuaternion(simd_slerp_longest(a.simdValue, b.simdValue, ratio))
+	}
+}
+
+@_transparent public func interpolateBetween(_ a:FloatQuaternion, _ control1:FloatQuaternion, _ control2:FloatQuaternion, _ b:FloatQuaternion, ratio:Float, method:FloatQuaternion.SphericalCubicInterpolationMethod) -> FloatQuaternion
+{
+	switch method {
+		case .bezier:
+			return FloatQuaternion(simd_bezier(a.simdValue, control1.simdValue, control2.simdValue, b.simdValue, ratio))
+		case .spline:
+			return FloatQuaternion(simd_spline(a.simdValue, control1.simdValue, control2.simdValue, b.simdValue, ratio)) // TODO: Verify that the `a`/`b` start/end points and control point args are in the right order.
+	}
 }
 
 
