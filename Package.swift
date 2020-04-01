@@ -17,6 +17,7 @@ let package = Package(
 				"Float3/Float3.swift",
 				"Float4/Float4_NoObjCBridge.swift",
 				"Float4/Float4.swift",
+				"FloatQuaternion/FloatQuaternion_NoObjCBridge.swift",
 				"FloatQuaternion/FloatQuaternion.swift",
 				"Int2/Int2_NoObjCBridge.swift",
 				"Int2/Int2.swift",

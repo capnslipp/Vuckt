@@ -76,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA0ED7E3243438DF00BADA04 /* FloatQuaternion_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatQuaternion_NoObjCBridge.swift; sourceTree = "<group>"; };
 		FA18D93823FA82E200F5CF37 /* FloatQuaternion+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatQuaternion+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
 		FA18D93923FA82E200F5CF37 /* FloatQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatQuaternion.h; sourceTree = "<group>"; };
 		FA18D93A23FA82E200F5CF37 /* FloatQuaternion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FloatQuaternion.mm; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 				FA18D93A23FA82E200F5CF37 /* FloatQuaternion.mm */,
 				FA18D93C23FA82E200F5CF37 /* FloatQuaternion.swift */,
 				FA18D93B23FA82E200F5CF37 /* FloatQuaternion+_ObjectiveCBridgeable.swift.gyb */,
+				FA0ED7E3243438DF00BADA04 /* FloatQuaternion_NoObjCBridge.swift */,
 			);
 			path = FloatQuaternion;
 			sourceTree = "<group>";
