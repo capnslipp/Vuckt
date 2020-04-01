@@ -6,6 +6,8 @@ import Foundation
 import simd
 import SceneKit.SceneKitTypes
 import GLKit.GLKQuaternion
+import CoreMotion.CMAttitude
+import GameController.GCMotion
 
 
 
@@ -204,6 +206,30 @@ extension FloatQuaternion // GLKit Conversion
 	
 	public var toGLKQuaternion:GLKQuaternion {
 		return FloatQuaternionToGLK(self)
+	}
+}
+
+extension FloatQuaternion // CoreMotion Conversion
+{
+	/// Initialize to a CoreMotion quaternion.
+	public init(cmQuaternion value:CMQuaternion) {
+		self = FloatQuaternionFromCM(value)
+	}
+	
+	public var toCMQuaternion:CMQuaternion {
+		return FloatQuaternionToCM(self)
+	}
+}
+
+extension FloatQuaternion // GameController Conversion
+{
+	/// Initialize to a GameController quaternion.
+	public init(gcQuaternion value:GCQuaternion) {
+		self = FloatQuaternionFromGC(value)
+	}
+	
+	public var toGCQuaternion:GCQuaternion {
+		return FloatQuaternionToGC(self)
 	}
 }
 

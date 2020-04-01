@@ -7,6 +7,8 @@
 #import <simd/vector_types.h>
 #import <SceneKit/SceneKitTypes.h>
 #import <GLKit/GLKQuaternion.h>
+#import <CoreMotion/CMAttitude.h>
+#import <GameController/GCMotion.h>
 
 
 
@@ -25,12 +27,12 @@ typedef struct FloatQuaternion FloatQuaternion;
 
 #pragma mark SIMD Conversion
 
-/// Converts an `FloatQuaternion` struct to `simd_quatf` vector using zero-op/(dangerous?) C-casts.
+/// Converts a `FloatQuaternion` struct to `simd_quatf` vector using zero-op/(dangerous?) C-casts.
 /// (Sanity `static_assert`s in the `.mm` file do their best to ensure out struct's layout match the simd vector's.)
 NS_INLINE simd_quatf FloatQuaternionToSimd(FloatQuaternion structValue) {
 	return *(simd_quatf *)&structValue;
 }
-/// Converts an `FloatQuaternion` struct from `simd_quatf` vector using zero-op/(dangerous?) C-casts.
+/// Converts a `FloatQuaternion` struct from `simd_quatf` vector using zero-op/(dangerous?) C-casts.
 /// (Sanity `static_assert`s in the `.mm` file do their best to ensure out struct's layout match the simd vector's.)
 NS_INLINE FloatQuaternion FloatQuaternionFromSimd(simd_quatf simdValue) {
 	return *(FloatQuaternion *)&simdValue;
@@ -40,11 +42,11 @@ NS_INLINE FloatQuaternion FloatQuaternionFromSimd(simd_quatf simdValue) {
 
 #pragma mark SceneKit Conversion
 
-/// Converts an `FloatQuaternion` struct to `SCNQuaternion` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+/// Converts a `FloatQuaternion` struct to `SCNQuaternion` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
 NS_INLINE SCNQuaternion FloatQuaternionToSCN(FloatQuaternion structValue) {
 	return SCNVector4FromFloat4(FloatQuaternionToSimd(structValue).vector);
 }
-/// Converts an `FloatQuaternion` struct from `SCNQuaternion` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+/// Converts a `FloatQuaternion` struct from `SCNQuaternion` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
 NS_INLINE FloatQuaternion FloatQuaternionFromSCN(SCNQuaternion scnValue) {
 	return FloatQuaternionFromSimd(simd_quaternion(SCNVector4ToFloat4(scnValue)));
 }
@@ -53,13 +55,39 @@ NS_INLINE FloatQuaternion FloatQuaternionFromSCN(SCNQuaternion scnValue) {
 
 #pragma mark GLKit Conversion
 
-/// Converts an `FloatQuaternion` struct to `GLKQuaternion` struct using passing-individual-members initialization.
+/// Converts a `FloatQuaternion` struct to `GLKQuaternion` struct using passing-individual-members initialization.
 NS_INLINE GLKQuaternion FloatQuaternionToGLK(FloatQuaternion structValue) {
 	return GLKQuaternionMake(structValue.ix, structValue.iy, structValue.iz, structValue.r);
 }
-/// Converts an `FloatQuaternion` struct from `GLKQuaternion` struct using passing-individual-members initialization.
+/// Converts a `FloatQuaternion` struct from `GLKQuaternion` struct using passing-individual-members initialization.
 NS_INLINE FloatQuaternion FloatQuaternionFromGLK(GLKQuaternion glkValue) {
 	return (FloatQuaternion){ glkValue.q[0], glkValue.q[1], glkValue.q[2], glkValue.q[3] };
+}
+
+
+
+#pragma mark CoreMotion Conversion
+
+/// Converts a `FloatQuaternion` struct to `CMQuaternion` struct using passing-individual-members initialization.
+NS_INLINE CMQuaternion FloatQuaternionToCM(FloatQuaternion structValue) {
+	return (CMQuaternion){ structValue.ix, structValue.iy, structValue.iz, structValue.r };
+}
+/// Converts a `FloatQuaternion` struct from `CMQuaternion` struct using passing-individual-members initialization.
+NS_INLINE FloatQuaternion FloatQuaternionFromCM(CMQuaternion cmValue) {
+	return (FloatQuaternion){ (float)cmValue.x, (float)cmValue.y, (float)cmValue.z, (float)cmValue.w };
+}
+
+
+
+#pragma mark GameController Conversion
+
+/// Converts a `FloatQuaternion` struct to `GCQuaternion` struct using passing-individual-members initialization.
+NS_INLINE GCQuaternion FloatQuaternionToGC(FloatQuaternion structValue) {
+	return (GCQuaternion){ structValue.ix, structValue.iy, structValue.iz, structValue.r };
+}
+/// Converts a `FloatQuaternion` struct from `GCQuaternion` struct using passing-individual-members initialization.
+NS_INLINE FloatQuaternion FloatQuaternionFromGC(GCQuaternion gcValue) {
+	return (FloatQuaternion){ (float)gcValue.x, (float)gcValue.y, (float)gcValue.z, (float)gcValue.w };
 }
 
 
