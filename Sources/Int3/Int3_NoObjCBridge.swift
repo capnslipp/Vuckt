@@ -64,15 +64,15 @@ public struct Int3
 }
 
 @_alwaysEmitIntoClient public func Int3LessThan(_ a:Int3, _ b:Int3) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
+	return all(a.simdValue .< b.simdValue)
 }
 @_alwaysEmitIntoClient public func Int3LessThanOrEqual(_ a:Int3, _ b:Int3) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] <= b[$1]) }
+	return all(a.simdValue .<= b.simdValue)
 }
 @_alwaysEmitIntoClient public func Int3GreaterThan(_ a:Int3, _ b:Int3) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] > b[$1]) }
+	return all(a.simdValue .> b.simdValue)
 }
 @_alwaysEmitIntoClient public func Int3GreaterThanOrEqual(_ a:Int3, _ b:Int3) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] >= b[$1]) }
+	return all(a.simdValue .>= b.simdValue)
 }
 

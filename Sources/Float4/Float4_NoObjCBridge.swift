@@ -69,16 +69,16 @@ public struct Float4
 }
 
 @_alwaysEmitIntoClient public func Float4LessThan(_ a:Float4, _ b:Float4) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
+	return all(a.simdValue .< b.simdValue)
 }
 @_alwaysEmitIntoClient public func Float4LessThanOrEqual(_ a:Float4, _ b:Float4) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] <= b[$1]) }
+	return all(a.simdValue .<= b.simdValue)
 }
 @_alwaysEmitIntoClient public func Float4GreaterThan(_ a:Float4, _ b:Float4) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] > b[$1]) }
+	return all(a.simdValue .> b.simdValue)
 }
 @_alwaysEmitIntoClient public func Float4GreaterThanOrEqual(_ a:Float4, _ b:Float4) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] >= b[$1]) }
+	return all(a.simdValue .>= b.simdValue)
 }
 
 

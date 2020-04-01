@@ -67,15 +67,15 @@ public struct Int4
 }
 
 @_alwaysEmitIntoClient public func Int4LessThan(_ a:Int4, _ b:Int4) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
+	return all(a.simdValue .< b.simdValue)
 }
 @_alwaysEmitIntoClient public func Int4LessThanOrEqual(_ a:Int4, _ b:Int4) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] <= b[$1]) }
+	return all(a.simdValue .<= b.simdValue)
 }
 @_alwaysEmitIntoClient public func Int4GreaterThan(_ a:Int4, _ b:Int4) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] > b[$1]) }
+	return all(a.simdValue .> b.simdValue)
 }
 @_alwaysEmitIntoClient public func Int4GreaterThanOrEqual(_ a:Int4, _ b:Int4) -> Bool {
-	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] >= b[$1]) }
+	return all(a.simdValue .>= b.simdValue)
 }
 
