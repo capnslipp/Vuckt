@@ -57,12 +57,6 @@ NS_INLINE Int2 Int2Modulus(Int2 a, Int2 b) {
 	return Int2FromSimd(Int2ToSimd(a) % Int2ToSimd(b));
 }
 
-NS_INLINE BOOL Int2Equal(Int2 a, Int2 b) {
-	return simd_all(Int2ToSimd(a) == Int2ToSimd(b));
-}
-NS_INLINE BOOL Int2Inequal(Int2 a, Int2 b) {
-	return simd_any(Int2ToSimd(a) != Int2ToSimd(b));
-}
 NS_INLINE BOOL Int2LessThan(Int2 a, Int2 b) {
 	return simd_all(Int2ToSimd(a) < Int2ToSimd(b));
 }

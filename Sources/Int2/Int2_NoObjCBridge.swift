@@ -60,12 +60,6 @@ public struct Int2
 	return Int2FromSimd(Int2ToSimd(a) % Int2ToSimd(b))
 }
 
-@_transparent public func Int2Equal(_ a:Int2, _ b:Int2) -> Bool {
-	return Int2ToSimd(a) == Int2ToSimd(b)
-}
-@_transparent public func Int2Inequal(_ a:Int2, _ b:Int2) -> Bool {
-	return Int2ToSimd(a) != Int2ToSimd(b)
-}
 @_alwaysEmitIntoClient public func Int2LessThan(_ a:Int2, _ b:Int2) -> Bool {
 	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
 }

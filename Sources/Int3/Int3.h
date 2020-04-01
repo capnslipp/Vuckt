@@ -57,12 +57,6 @@ NS_INLINE Int3 Int3Modulus(Int3 a, Int3 b) {
 	return Int3FromSimd(Int3ToSimd(a) % Int3ToSimd(b));
 }
 
-NS_INLINE BOOL Int3Equal(Int3 a, Int3 b) {
-	return simd_all(Int3ToSimd(a) == Int3ToSimd(b));
-}
-NS_INLINE BOOL Int3Inequal(Int3 a, Int3 b) {
-	return simd_any(Int3ToSimd(a) != Int3ToSimd(b));
-}
 NS_INLINE BOOL Int3LessThan(Int3 a, Int3 b) {
 	return simd_all(Int3ToSimd(a) < Int3ToSimd(b));
 }

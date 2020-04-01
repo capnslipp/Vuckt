@@ -328,11 +328,7 @@ extension Int4 : ExpressibleByArrayLiteral
 extension Int4 : Equatable
 {
 	@_transparent public static func ==(a:Int4, b:Int4) -> Bool {
-		return Int4Equal(a, b)
-	}
-	
-	@_transparent public static func !=(a:Int4, b:Int4) -> Bool {
-		return Int4Inequal(a, b)
+		return simd_equal(a.simdValue, b.simdValue)
 	}
 }
 

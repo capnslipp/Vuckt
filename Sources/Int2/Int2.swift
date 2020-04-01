@@ -222,11 +222,7 @@ extension Int2 : ExpressibleByArrayLiteral
 extension Int2 : Equatable
 {
 	@_transparent public static func ==(a:Int2, b:Int2) -> Bool {
-		return Int2Equal(a, b)
-	}
-	
-	@_transparent public static func !=(a:Int2, b:Int2) -> Bool {
-		return Int2Inequal(a, b)
+		return simd_equal(a.simdValue, b.simdValue)
 	}
 }
 

@@ -62,12 +62,6 @@ public struct Float2
 	return Float2(array: a.simdValue.indices.map{ a[$0].truncatingRemainder(dividingBy: b[$0]) })
 }
 
-@_transparent public func Float2Equal(_ a:Float2, _ b:Float2) -> Bool {
-	return Float2ToSimd(a) == Float2ToSimd(b)
-}
-@_transparent public func Float2Inequal(_ a:Float2, _ b:Float2) -> Bool {
-	return Float2ToSimd(a) != Float2ToSimd(b)
-}
 @_alwaysEmitIntoClient public func Float2LessThan(_ a:Float2, _ b:Float2) -> Bool {
 	return a.simdValue.indices.reduce(into: true) { $0 = $0 || (a[$1] < b[$1]) }
 }

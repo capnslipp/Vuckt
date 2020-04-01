@@ -368,11 +368,7 @@ extension Float4 : ExpressibleByArrayLiteral
 extension Float4 : Equatable
 {
 	@_transparent public static func ==(a:Float4, b:Float4) -> Bool {
-		return Float4Equal(a, b)
-	}
-	
-	@_transparent public static func !=(a:Float4, b:Float4) -> Bool {
-		return Float4Inequal(a, b)
+		return simd_equal(a.simdValue, b.simdValue)
 	}
 }
 

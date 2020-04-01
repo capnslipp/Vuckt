@@ -60,12 +60,6 @@ NS_INLINE Float4 Float4Modulus(Float4 a, Float4 b) {
 	return Float4FromSimd(__tg_fmod(Float4ToSimd(a), Float4ToSimd(b)));
 }
 
-NS_INLINE BOOL Float4Equal(Float4 a, Float4 b) {
-	return simd_all(Float4ToSimd(a) == Float4ToSimd(b));
-}
-NS_INLINE BOOL Float4Inequal(Float4 a, Float4 b) {
-	return simd_any(Float4ToSimd(a) != Float4ToSimd(b));
-}
 NS_INLINE BOOL Float4LessThan(Float4 a, Float4 b) {
 	return simd_all(Float4ToSimd(a) < Float4ToSimd(b));
 }

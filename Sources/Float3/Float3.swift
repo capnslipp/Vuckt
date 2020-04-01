@@ -293,11 +293,7 @@ extension Float3 : ExpressibleByArrayLiteral
 extension Float3 : Equatable
 {
 	@_transparent public static func ==(a:Float3, b:Float3) -> Bool {
-		return Float3Equal(a, b)
-	}
-	
-	@_transparent public static func !=(a:Float3, b:Float3) -> Bool {
-		return Float3Inequal(a, b)
+		return simd_equal(a.simdValue, b.simdValue)
 	}
 }
 

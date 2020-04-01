@@ -57,12 +57,6 @@ NS_INLINE Int4 Int4Modulus(Int4 a, Int4 b) {
 	return Int4FromSimd(Int4ToSimd(a) % Int4ToSimd(b));
 }
 
-NS_INLINE BOOL Int4Equal(Int4 a, Int4 b) {
-	return simd_all(Int4ToSimd(a) == Int4ToSimd(b));
-}
-NS_INLINE BOOL Int4Inequal(Int4 a, Int4 b) {
-	return simd_any(Int4ToSimd(a) != Int4ToSimd(b));
-}
 NS_INLINE BOOL Int4LessThan(Int4 a, Int4 b) {
 	return simd_all(Int4ToSimd(a) < Int4ToSimd(b));
 }

@@ -253,11 +253,7 @@ extension Int3 : ExpressibleByArrayLiteral
 extension Int3 : Equatable
 {
 	@_transparent public static func ==(a:Int3, b:Int3) -> Bool {
-		return Int3Equal(a, b)
-	}
-	
-	@_transparent public static func !=(a:Int3, b:Int3) -> Bool {
-		return Int3Inequal(a, b)
+		return simd_equal(a.simdValue, b.simdValue)
 	}
 }
 

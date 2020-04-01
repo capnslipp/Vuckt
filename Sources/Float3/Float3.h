@@ -60,12 +60,6 @@ NS_INLINE Float3 Float3Modulus(Float3 a, Float3 b) {
 	return Float3FromSimd(__tg_fmod(Float3ToSimd(a), Float3ToSimd(b)));
 }
 
-NS_INLINE BOOL Float3Equal(Float3 a, Float3 b) {
-	return simd_all(Float3ToSimd(a) == Float3ToSimd(b));
-}
-NS_INLINE BOOL Float3Inequal(Float3 a, Float3 b) {
-	return simd_any(Float3ToSimd(a) != Float3ToSimd(b));
-}
 NS_INLINE BOOL Float3LessThan(Float3 a, Float3 b) {
 	return simd_all(Float3ToSimd(a) < Float3ToSimd(b));
 }

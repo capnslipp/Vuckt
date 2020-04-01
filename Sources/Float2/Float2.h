@@ -59,12 +59,6 @@ NS_INLINE Float2 Float2Modulus(Float2 a, Float2 b) {
 	return Float2FromSimd(__tg_fmod(Float2ToSimd(a), Float2ToSimd(b)));
 }
 
-NS_INLINE BOOL Float2Equal(Float2 a, Float2 b) {
-	return simd_all(Float2ToSimd(a) == Float2ToSimd(b));
-}
-NS_INLINE BOOL Float2Inequal(Float2 a, Float2 b) {
-	return simd_any(Float2ToSimd(a) != Float2ToSimd(b));
-}
 NS_INLINE BOOL Float2LessThan(Float2 a, Float2 b) {
 	return simd_all(Float2ToSimd(a) < Float2ToSimd(b));
 }
