@@ -65,6 +65,24 @@ public struct Int4
 @_transparent public func Int4Modulus(_ a:Int4, _ b:Int4) -> Int4 {
 	return Int4FromSimd(Int4ToSimd(a) % Int4ToSimd(b))
 }
+@_transparent public func Int4MultiplyByScalar(_ v:Int4, _ s:Int32) -> Int4 {
+	return Int4FromSimd(Int4ToSimd(v) &* s)
+}
+@_transparent public func Int4MultiplyingScalar(_ s:Int32, _ v:Int4) -> Int4 {
+	return Int4FromSimd(Int4ToSimd(v) &* s)
+}
+@_transparent public func Int4DivideByScalar(_ v:Int4, _ s:Int32) -> Int4 {
+	return Int4FromSimd(Int4ToSimd(v) / s)
+}
+@_transparent public func Int4DividingScalar(_ s:Int32, _ v:Int4) -> Int4 {
+	return Int4FromSimd(s / Int4ToSimd(v))
+}
+@_transparent public func Int4ModulusByScalar(_ v:Int4, _ s:Int32) -> Int4 {
+	return Int4FromSimd(Int4ToSimd(v) % s)
+}
+@_transparent public func Int4ModulusingScalar(_ s:Int32, _ v:Int4) -> Int4 {
+	return Int4FromSimd(s % Int4ToSimd(v))
+}
 
 @_alwaysEmitIntoClient public func Int4LessThan(_ a:Int4, _ b:Int4) -> Bool {
 	return all(a.simdValue .< b.simdValue)

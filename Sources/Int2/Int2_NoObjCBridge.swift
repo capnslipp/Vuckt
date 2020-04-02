@@ -59,6 +59,24 @@ public struct Int2
 @_transparent public func Int2Modulus(_ a:Int2, _ b:Int2) -> Int2 {
 	return Int2FromSimd(Int2ToSimd(a) % Int2ToSimd(b))
 }
+@_transparent public func Int2MultiplyByScalar(_ v:Int2, _ s:Int32) -> Int2 {
+	return Int2FromSimd(Int2ToSimd(v) &* s);
+}
+@_transparent public func Int2MultiplyingScalar(_ s:Int32, _ v:Int2) -> Int2 {
+	return Int2FromSimd(Int2ToSimd(v) &* s);
+}
+@_transparent public func Int2DivideByScalar(_ v:Int2, _ s:Int32) -> Int2 {
+	return Int2FromSimd(Int2ToSimd(v) / s);
+}
+@_transparent public func Int2DividingScalar(_ s:Int32, _ v:Int2) -> Int2 {
+	return Int2FromSimd(s / Int2ToSimd(v));
+}
+@_transparent public func Int2ModulusByScalar(_ v:Int2, _ s:Int32) -> Int2 {
+	return Int2FromSimd(Int2ToSimd(v) % s)
+}
+@_transparent public func Int2ModulusingScalar(_ s:Int32, _ v:Int2) -> Int2 {
+	return Int2FromSimd(s % Int2ToSimd(v))
+}
 
 @_alwaysEmitIntoClient public func Int2LessThan(_ a:Int2, _ b:Int2) -> Bool {
 	return all(a.simdValue .< b.simdValue)

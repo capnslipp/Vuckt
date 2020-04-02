@@ -56,6 +56,24 @@ NS_INLINE Int2 Int2Divide(Int2 a, Int2 b) {
 NS_INLINE Int2 Int2Modulus(Int2 a, Int2 b) {
 	return Int2FromSimd(Int2ToSimd(a) % Int2ToSimd(b));
 }
+NS_INLINE Int2 Int2MultiplyByScalar(Int2 v, int s) {
+	return Int2FromSimd(Int2ToSimd(v) * s);
+}
+NS_INLINE Int2 Int2MultiplyingScalar(int s, Int2 v) {
+	return Int2FromSimd(Int2ToSimd(v) * s);
+}
+NS_INLINE Int2 Int2DivideByScalar(Int2 v, int s) {
+	return Int2FromSimd(Int2ToSimd(v) / s);
+}
+NS_INLINE Int2 Int2DividingScalar(int s, Int2 v) {
+	return Int2FromSimd(s / Int2ToSimd(v));
+}
+NS_INLINE Int2 Int2ModulusByScalar(Int2 v, int s) {
+	return Int2FromSimd(Int2ToSimd(v) % s);
+}
+NS_INLINE Int2 Int2ModulusingScalar(int s, Int2 v) {
+	return Int2FromSimd(s % Int2ToSimd(v));
+}
 
 NS_INLINE BOOL Int2LessThan(Int2 a, Int2 b) {
 	return simd_all(Int2ToSimd(a) < Int2ToSimd(b));

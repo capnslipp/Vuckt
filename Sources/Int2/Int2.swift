@@ -381,6 +381,39 @@ extension Int2 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
+	@_transparent public static func * (v:Int2, scale:Int32) -> Int2 {
+		return Int2MultiplyByScalar(v, scale)
+	}
+	@_transparent public static func *= (v:inout Int2, scale:Int32) {
+		v = v * scale
+	}
+	@_transparent public static func * (scale:Int32, v:Int2) -> Int2 {
+		return Int2MultiplyingScalar(scale, v)
+	}
+	
+	
+	@_transparent public static func / (v:Int2, inverseScale:Int32) -> Int2 {
+		return Int2DivideByScalar(v, inverseScale)
+	}
+	@_transparent public static func /= (v:inout Int2, inverseScale:Int32) {
+		v = v / inverseScale
+	}
+	@_transparent public static func / (inverseScale:Int32, v:Int2) -> Int2 {
+		return Int2DividingScalar(inverseScale, v)
+	}
+	
+	
+	@_transparent public static func % (v:Int2, inverseScale:Int32) -> Int2 {
+		return Int2ModulusByScalar(v, inverseScale)
+	}
+	@_transparent public static func %= (v:inout Int2, inverseScale:Int32) {
+		v = v % inverseScale
+	}
+	@_transparent public static func % (inverseScale:Int32, v:Int2) -> Int2 {
+		return Int2ModulusingScalar(inverseScale, v)
+	}
+	
+	
 	@_transparent public static prefix func - (v:Int2) -> Int2 {
 		return Int2Negate(v)
 	}

@@ -366,6 +366,39 @@ extension Float3 // Basic Math Operations
 	}
 	
 	
+	@_transparent public static func * (v:Float3, scale:Float) -> Float3 {
+		return Float3MultiplyByScalar(v, scale)
+	}
+	@_transparent public static func *= (v:inout Float3, scale:Float) {
+		v = v * scale
+	}
+	@_transparent public static func * (scale:Float, v:Float3) -> Float3 {
+		return Float3MultiplyingScalar(scale, v)
+	}
+	
+	
+	@_transparent public static func / (v:Float3, inverseScale:Float) -> Float3 {
+		return Float3DivideByScalar(v, inverseScale)
+	}
+	@_transparent public static func /= (v:inout Float3, inverseScale:Float) {
+		v = v / inverseScale
+	}
+	@_transparent public static func / (inverseScale:Float, v:Float3) -> Float3 {
+		return Float3DividingScalar(inverseScale, v)
+	}
+	
+	
+	@_transparent public static func % (v:Float3, inverseScale:Float) -> Float3 {
+		return Float3ModulusByScalar(v, inverseScale)
+	}
+	@_transparent public static func %= (v:inout Float3, inverseScale:Float) {
+		v = v % inverseScale
+	}
+	@_transparent public static func % (inverseScale:Float, v:Float3) -> Float3 {
+		return Float3ModulusingScalar(inverseScale, v)
+	}
+	
+	
 	public static prefix func - (v:Float3) -> Float3 {
 		return Float3Negate(v)
 	}

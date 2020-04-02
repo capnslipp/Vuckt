@@ -59,7 +59,29 @@ NS_INLINE Float3 Float3Divide(Float3 a, Float3 b) {
 	return Float3FromSimd(Float3ToSimd(a) / Float3ToSimd(b));
 }
 NS_INLINE Float3 Float3Modulus(Float3 a, Float3 b) {
-	return Float3FromSimd(__tg_fmod(Float3ToSimd(a), Float3ToSimd(b)));
+	#ifdef __cplusplus
+		return Float3FromSimd(simd::fmod(Float3ToSimd(a), Float3ToSimd(b)));
+	#else
+		return Float3FromSimd(fmod(Float3ToSimd(a), Float3ToSimd(b)));
+	#endif
+}
+NS_INLINE Float3 Float3MultiplyByScalar(Float3 v, float s) {
+	return Float3FromSimd(Float3ToSimd(v) * s);
+}
+NS_INLINE Float3 Float3MultiplyingScalar(float s, Float3 v) {
+	return Float3FromSimd(Float3ToSimd(v) * s);
+}
+NS_INLINE Float3 Float3DivideByScalar(Float3 v, float s) {
+	return Float3FromSimd(Float3ToSimd(v) / s);
+}
+NS_INLINE Float3 Float3DividingScalar(float s, Float3 v) {
+	return Float3FromSimd(s / Float3ToSimd(v));
+}
+NS_INLINE Float3 Float3ModulusByScalar(Float3 v, float s) {
+	return Float3Modulus(v, (Float3){ s, s, s });
+}
+NS_INLINE Float3 Float3ModulusingScalar(float s, Float3 v) {
+	return Float3Modulus((Float3){ s, s, s }, v);
 }
 
 NS_INLINE BOOL Float3LessThan(Float3 a, Float3 b) {

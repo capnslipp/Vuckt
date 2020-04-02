@@ -413,6 +413,39 @@ extension Int3 // pseudo-IntegerArithmetic/FixedWidthInteger
 	#endif
 	
 	
+	@_transparent public static func * (v:Int3, scale:Int32) -> Int3 {
+		return Int3MultiplyByScalar(v, scale)
+	}
+	@_transparent public static func *= (v:inout Int3, scale:Int32) {
+		v = v * scale
+	}
+	@_transparent public static func * (scale:Int32, v:Int3) -> Int3 {
+		return Int3MultiplyingScalar(scale, v)
+	}
+	
+	
+	@_transparent public static func / (v:Int3, inverseScale:Int32) -> Int3 {
+		return Int3DivideByScalar(v, inverseScale)
+	}
+	@_transparent public static func /= (v:inout Int3, inverseScale:Int32) {
+		v = v / inverseScale
+	}
+	@_transparent public static func / (inverseScale:Int32, v:Int3) -> Int3 {
+		return Int3DividingScalar(inverseScale, v)
+	}
+	
+	
+	@_transparent public static func % (v:Int3, inverseScale:Int32) -> Int3 {
+		return Int3ModulusByScalar(v, inverseScale)
+	}
+	@_transparent public static func %= (v:inout Int3, inverseScale:Int32) {
+		v = v % inverseScale
+	}
+	@_transparent public static func % (inverseScale:Int32, v:Int3) -> Int3 {
+		return Int3ModulusingScalar(inverseScale, v)
+	}
+	
+	
 	@_transparent public static prefix func - (v:Int3) -> Int3 {
 		return Int3Negate(v)
 	}

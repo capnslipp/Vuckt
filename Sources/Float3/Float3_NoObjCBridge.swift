@@ -65,6 +65,24 @@ public struct Float3
 @_transparent public func Float3Modulus(_ a:Float3, _ b:Float3) -> Float3 {
 	return Float3(array: a.simdValue.indices.map{ a[$0].truncatingRemainder(dividingBy: b[$0]) })
 }
+@_transparent public func Float3MultiplyByScalar(_ v:Float3, _ s:Float) -> Float3 {
+	return Float3FromSimd(Float3ToSimd(v) * s);
+}
+@_transparent public func Float3MultiplyingScalar(_ s:Float, _ v:Float3) -> Float3 {
+	return Float3FromSimd(Float3ToSimd(v) * s);
+}
+@_transparent public func Float3DivideByScalar(_ v:Float3, _ s:Float) -> Float3 {
+	return Float3FromSimd(Float3ToSimd(v) / s);
+}
+@_transparent public func Float3DividingScalar(_ s:Float, _ v:Float3) -> Float3 {
+	return Float3FromSimd(s / Float3ToSimd(v));
+}
+@_transparent public func Float3ModulusByScalar(_ v:Float3, _ s:Float) -> Float3 {
+	return Float3Modulus(v, Float3(s, s, s));
+}
+@_transparent public func Float3ModulusingScalar(_ s:Float, _ v:Float3) -> Float3 {
+	return Float3Modulus(Float3(s, s, s), v);
+}
 
 @_alwaysEmitIntoClient public func Float3LessThan(_ a:Float3, _ b:Float3) -> Bool {
 	return all(a.simdValue .< b.simdValue)

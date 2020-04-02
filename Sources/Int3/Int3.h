@@ -56,6 +56,24 @@ NS_INLINE Int3 Int3Divide(Int3 a, Int3 b) {
 NS_INLINE Int3 Int3Modulus(Int3 a, Int3 b) {
 	return Int3FromSimd(Int3ToSimd(a) % Int3ToSimd(b));
 }
+NS_INLINE Int3 Int3MultiplyByScalar(Int3 v, int s) {
+	return Int3FromSimd(Int3ToSimd(v) * s);
+}
+NS_INLINE Int3 Int3MultiplyingScalar(int s, Int3 v) {
+	return Int3FromSimd(Int3ToSimd(v) * s);
+}
+NS_INLINE Int3 Int3DivideByScalar(Int3 v, int s) {
+	return Int3FromSimd(Int3ToSimd(v) / s);
+}
+NS_INLINE Int3 Int3DividingScalar(int s, Int3 v) {
+	return Int3FromSimd(s / Int3ToSimd(v));
+}
+NS_INLINE Int3 Int3ModulusByScalar(Int3 v, int s) {
+	return Int3FromSimd(Int3ToSimd(v) % s);
+}
+NS_INLINE Int3 Int3ModulusingScalar(int s, Int3 v) {
+	return Int3FromSimd(s % Int3ToSimd(v));
+}
 
 NS_INLINE BOOL Int3LessThan(Int3 a, Int3 b) {
 	return simd_all(Int3ToSimd(a) < Int3ToSimd(b));

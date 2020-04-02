@@ -441,6 +441,39 @@ extension Float4 // Basic Math Operations
 	}
 	
 	
+	@_transparent public static func * (v:Float4, scale:Float) -> Float4 {
+		return Float4MultiplyByScalar(v, scale)
+	}
+	@_transparent public static func *= (v:inout Float4, scale:Float) {
+		v = v * scale
+	}
+	@_transparent public static func * (scale:Float, v:Float4) -> Float4 {
+		return Float4MultiplyingScalar(scale, v)
+	}
+	
+	
+	@_transparent public static func / (v:Float4, inverseScale:Float) -> Float4 {
+		return Float4DivideByScalar(v, inverseScale)
+	}
+	@_transparent public static func /= (v:inout Float4, inverseScale:Float) {
+		v = v / inverseScale
+	}
+	@_transparent public static func / (inverseScale:Float, v:Float4) -> Float4 {
+		return Float4DividingScalar(inverseScale, v)
+	}
+	
+	
+	@_transparent public static func % (v:Float4, inverseScale:Float) -> Float4 {
+		return Float4ModulusByScalar(v, inverseScale)
+	}
+	@_transparent public static func %= (v:inout Float4, inverseScale:Float) {
+		v = v % inverseScale
+	}
+	@_transparent public static func % (inverseScale:Float, v:Float4) -> Float4 {
+		return Float4ModulusingScalar(inverseScale, v)
+	}
+	
+	
 	@_transparent public static prefix func - (v:Float4) -> Float4 {
 		return Float4Negate(v)
 	}

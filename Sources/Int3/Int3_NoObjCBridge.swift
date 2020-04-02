@@ -62,6 +62,24 @@ public struct Int3
 @_transparent public func Int3Modulus(_ a:Int3, _ b:Int3) -> Int3 {
 	return Int3FromSimd(Int3ToSimd(a) % Int3ToSimd(b))
 }
+@_transparent public func Int3MultiplyByScalar(_ v:Int3, _ s:Int32) -> Int3 {
+	return Int3FromSimd(Int3ToSimd(v) &* s);
+}
+@_transparent public func Int3MultiplyingScalar(_ s:Int32, _ v:Int3) -> Int3 {
+	return Int3FromSimd(Int3ToSimd(v) &* s);
+}
+@_transparent public func Int3DivideByScalar(_ v:Int3, _ s:Int32) -> Int3 {
+	return Int3FromSimd(Int3ToSimd(v) / s);
+}
+@_transparent public func Int3DividingScalar(_ s:Int32, _ v:Int3) -> Int3 {
+	return Int3FromSimd(s / Int3ToSimd(v));
+}
+@_transparent public func Int3ModulusByScalar(_ v:Int3, _ s:Int32) -> Int3 {
+	return Int3FromSimd(Int3ToSimd(v) % s)
+}
+@_transparent public func Int3ModulusingScalar(_ s:Int32, _ v:Int3) -> Int3 {
+	return Int3FromSimd(s % Int3ToSimd(v))
+}
 
 @_alwaysEmitIntoClient public func Int3LessThan(_ a:Int3, _ b:Int3) -> Bool {
 	return all(a.simdValue .< b.simdValue)

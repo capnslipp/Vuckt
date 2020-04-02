@@ -56,6 +56,24 @@ NS_INLINE Int4 Int4Divide(Int4 a, Int4 b) {
 NS_INLINE Int4 Int4Modulus(Int4 a, Int4 b) {
 	return Int4FromSimd(Int4ToSimd(a) % Int4ToSimd(b));
 }
+NS_INLINE Int4 Int4MultiplyByScalar(Int4 v, int s) {
+	return Int4FromSimd(Int4ToSimd(v) * s);
+}
+NS_INLINE Int4 Int4MultiplyingScalar(int s, Int4 v) {
+	return Int4FromSimd(Int4ToSimd(v) * s);
+}
+NS_INLINE Int4 Int4DivideByScalar(Int4 v, int s) {
+	return Int4FromSimd(Int4ToSimd(v) / s);
+}
+NS_INLINE Int4 Int4DividingScalar(int s, Int4 v) {
+	return Int4FromSimd(s / Int4ToSimd(v));
+}
+NS_INLINE Int4 Int4ModulusByScalar(Int4 v, int s) {
+	return Int4FromSimd(Int4ToSimd(v) % s);
+}
+NS_INLINE Int4 Int4ModulusingScalar(int s, Int4 v) {
+	return Int4FromSimd(s % Int4ToSimd(v));
+}
 
 NS_INLINE BOOL Int4LessThan(Int4 a, Int4 b) {
 	return simd_all(Int4ToSimd(a) < Int4ToSimd(b));

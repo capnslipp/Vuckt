@@ -58,7 +58,29 @@ NS_INLINE Float2 Float2Divide(Float2 a, Float2 b) {
 	return Float2FromSimd(Float2ToSimd(a) / Float2ToSimd(b));
 }
 NS_INLINE Float2 Float2Modulus(Float2 a, Float2 b) {
-	return Float2FromSimd(__tg_fmod(Float2ToSimd(a), Float2ToSimd(b)));
+	#ifdef __cplusplus
+		return Float2FromSimd(simd::fmod(Float2ToSimd(a), Float2ToSimd(b)));
+	#else
+		return Float2FromSimd(fmod(Float2ToSimd(a), Float2ToSimd(b)));
+	#endif
+}
+NS_INLINE Float2 Float2MultiplyByScalar(Float2 v, float s) {
+	return Float2FromSimd(Float2ToSimd(v) * s);
+}
+NS_INLINE Float2 Float2MultiplyingScalar(float s, Float2 v) {
+	return Float2FromSimd(Float2ToSimd(v) * s);
+}
+NS_INLINE Float2 Float2DivideByScalar(Float2 v, float s) {
+	return Float2FromSimd(Float2ToSimd(v) / s);
+}
+NS_INLINE Float2 Float2DividingScalar(float s, Float2 v) {
+	return Float2FromSimd(s / Float2ToSimd(v));
+}
+NS_INLINE Float2 Float2ModulusByScalar(Float2 v, float s) {
+	return Float2Modulus(v, (Float2){ s, s });
+}
+NS_INLINE Float2 Float2ModulusingScalar(float s, Float2 v) {
+	return Float2Modulus((Float2){ s, s }, v);
 }
 
 NS_INLINE BOOL Float2LessThan(Float2 a, Float2 b) {

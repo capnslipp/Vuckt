@@ -334,6 +334,33 @@ extension Float2 // Basic Math Operations
 	}
 	
 	
+	@_transparent public static func * (v:Float2, scale:Float) -> Float2 {
+		return Float2MultiplyByScalar(v, scale)
+	}
+	@_transparent public static func *= (v:inout Float2, scale:Float) {
+		v = v * scale
+	}
+	
+	
+	@_transparent public static func / (v:Float2, inverseScale:Float) -> Float2 {
+		return Float2DivideByScalar(v, inverseScale)
+	}
+	@_transparent public static func /= (v:inout Float2, inverseScale:Float) {
+		v = v / inverseScale
+	}
+	
+	
+	@_transparent public static func % (v:Float2, inverseScale:Float) -> Float2 {
+		return Float2ModulusByScalar(v, inverseScale)
+	}
+	@_transparent public static func %= (v:inout Float2, inverseScale:Float) {
+		v = v % inverseScale
+	}
+	@_transparent public static func % (inverseScale:Float, v:Float2) -> Float2 {
+		return Float2ModulusingScalar(inverseScale, v)
+	}
+	
+	
 	@_transparent public static prefix func - (v:Float2) -> Float2 {
 		return Float2Negate(v)
 	}
