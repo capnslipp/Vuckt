@@ -13,6 +13,9 @@ import CoreGraphics.CGGeometry
 
 extension Float2
 {
+	public typealias Scalar = Float
+	
+	
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
@@ -252,7 +255,7 @@ extension Float2 : CustomStringConvertible
 
 extension Float2 : ExpressibleByArrayLiteral
 {
-	public typealias Element = Float
+	public typealias Element = Scalar
 	
 	/// Initialize using `arrayLiteral`.
 	///

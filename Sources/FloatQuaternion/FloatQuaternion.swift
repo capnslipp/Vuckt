@@ -23,6 +23,9 @@ typealias Quaternion = FloatQuaternion
 
 extension FloatQuaternion
 {
+	public typealias Scalar = Float
+	
+	
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
@@ -267,7 +270,7 @@ extension FloatQuaternion : CustomStringConvertible
 
 extension FloatQuaternion : ExpressibleByArrayLiteral
 {
-	public typealias Element = Float
+	public typealias Element = Scalar
 	
 	/// Initialize using `arrayLiteral`.
 	///

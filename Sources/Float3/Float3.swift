@@ -14,6 +14,9 @@ import SceneKit.SceneKitTypes
 
 extension Float3
 {
+	public typealias Scalar = Float
+	
+	
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
@@ -284,7 +287,7 @@ extension Float3 : CustomStringConvertible
 
 extension Float3 : ExpressibleByArrayLiteral
 {
-	public typealias Element = Float
+	public typealias Element = Scalar
 	
 	/// Initialize using `arrayLiteral`.
 	///
@@ -326,80 +329,80 @@ extension Float3 : Comparable
 
 extension Float3 // Basic Math Operations
 {
-	@_transparent public static func + (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func + (a:Self, b:Self) -> Self {
 		return Float3Add(a, b)
 	}
-	@_transparent public static func += (v:inout Float3, o:Float3) {
+	@_transparent public static func += (v:inout Self, o:Self) {
 		v = v + o
 	}
 	
 	
-	@_transparent public static func - (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func - (a:Self, b:Self) -> Self {
 		return Float3Subtract(a, b)
 	}
-	@_transparent public static func -= (v:inout Float3, o:Float3) {
+	@_transparent public static func -= (v:inout Self, o:Self) {
 		v = v - o
 	}
 	
 	
-	@_transparent public static func * (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func * (a:Self, b:Self) -> Self {
 		return Float3Multiply(a, b)
 	}
-	@_transparent public static func *= (v:inout Float3, o:Float3) {
+	@_transparent public static func *= (v:inout Self, o:Self) {
 		v = v * o
 	}
 	
 	
-	@_transparent public static func / (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func / (a:Self, b:Self) -> Self {
 		return Float3Divide(a, b)
 	}
-	@_transparent public static func /= (v:inout Float3, o:Float3) {
+	@_transparent public static func /= (v:inout Self, o:Self) {
 		v = v / o
 	}
 	
 	
-	@_transparent public static func % (a:Float3, b:Float3) -> Float3 {
+	@_transparent public static func % (a:Self, b:Self) -> Self {
 		return Float3Modulus(a, b)
 	}
-	@_transparent public static func %= (v:inout Float3, o:Float3) {
+	@_transparent public static func %= (v:inout Self, o:Self) {
 		v = v % o
 	}
 	
 	
-	@_transparent public static func * (v:Float3, scale:Float) -> Float3 {
+	@_transparent public static func * (v:Self, scale:Float) -> Self {
 		return Float3MultiplyByScalar(v, scale)
 	}
-	@_transparent public static func *= (v:inout Float3, scale:Float) {
+	@_transparent public static func *= (v:inout Self, scale:Float) {
 		v = v * scale
 	}
-	@_transparent public static func * (scale:Float, v:Float3) -> Float3 {
+	@_transparent public static func * (scale:Float, v:Self) -> Self {
 		return Float3MultiplyingScalar(scale, v)
 	}
 	
 	
-	@_transparent public static func / (v:Float3, inverseScale:Float) -> Float3 {
+	@_transparent public static func / (v:Self, inverseScale:Float) -> Self {
 		return Float3DivideByScalar(v, inverseScale)
 	}
-	@_transparent public static func /= (v:inout Float3, inverseScale:Float) {
+	@_transparent public static func /= (v:inout Self, inverseScale:Float) {
 		v = v / inverseScale
 	}
-	@_transparent public static func / (inverseScale:Float, v:Float3) -> Float3 {
+	@_transparent public static func / (inverseScale:Float, v:Self) -> Self {
 		return Float3DividingScalar(inverseScale, v)
 	}
 	
 	
-	@_transparent public static func % (v:Float3, inverseScale:Float) -> Float3 {
+	@_transparent public static func % (v:Self, inverseScale:Float) -> Self {
 		return Float3ModulusByScalar(v, inverseScale)
 	}
-	@_transparent public static func %= (v:inout Float3, inverseScale:Float) {
+	@_transparent public static func %= (v:inout Self, inverseScale:Float) {
 		v = v % inverseScale
 	}
-	@_transparent public static func % (inverseScale:Float, v:Float3) -> Float3 {
+	@_transparent public static func % (inverseScale:Float, v:Self) -> Self {
 		return Float3ModulusingScalar(inverseScale, v)
 	}
 	
 	
-	public static prefix func - (v:Float3) -> Float3 {
+	public static prefix func - (v:Self) -> Self {
 		return Float3Negate(v)
 	}
 }

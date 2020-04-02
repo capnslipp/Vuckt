@@ -9,6 +9,9 @@ import simd
 
 extension Int2
 {
+	public typealias Scalar = Int32
+	
+	
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
@@ -207,7 +210,7 @@ extension Int2 : CustomStringConvertible
 
 extension Int2 : ExpressibleByArrayLiteral
 {
-	public typealias Element = Int32
+	public typealias Element = Scalar
 	
 	/// Initialize using `arrayLiteral`.
 	///

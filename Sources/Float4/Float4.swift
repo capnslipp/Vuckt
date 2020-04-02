@@ -14,6 +14,9 @@ import SceneKit.SceneKitTypes
 
 extension Float4
 {
+	public typealias Scalar = Float
+	
+	
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
@@ -138,19 +141,19 @@ extension Float4
 	
 	// MARK: commonly-used “presets”
 	
-	public static let zero = Float4(0)
+	public static let zero = Self(0)
 	
-	public static let unitPositive = Float4(1)
-	public static let unitNegative = Float4(-1)
+	public static let unitPositive = Self(1)
+	public static let unitNegative = Self(-1)
 	
-	public static let unitXPositive = Float4(x: 1)
-	public static let unitYPositive = Float4(y: 1)
-	public static let unitZPositive = Float4(z: 1)
-	public static let unitWPositive = Float4(w: 1)
-	public static let unitXNegative = Float4(x: -1)
-	public static let unitYNegative = Float4(y: -1)
-	public static let unitZNegative = Float4(z: -1)
-	public static let unitWNegative = Float4(w: -1)
+	public static let unitXPositive = Self(x: 1)
+	public static let unitYPositive = Self(y: 1)
+	public static let unitZPositive = Self(z: 1)
+	public static let unitWPositive = Self(w: 1)
+	public static let unitXNegative = Self(x: -1)
+	public static let unitYNegative = Self(y: -1)
+	public static let unitZNegative = Self(z: -1)
+	public static let unitWNegative = Self(w: -1)
 	
 	
 	
@@ -177,8 +180,8 @@ extension Float4
 		if let zValue = z { self.z = zValue }
 		if let wValue = w { self.w = wValue }
 	}
-	@inlinable public func replacing(x:Float?=nil, y:Float?=nil, z:Float?=nil, w:Float?=nil) -> Float4 {
-		return Float4(
+	@inlinable public func replacing(x:Float?=nil, y:Float?=nil, z:Float?=nil, w:Float?=nil) -> Self {
+		return Self(
 			x ?? self.x,
 			y ?? self.y,
 			z ?? self.z,
@@ -189,18 +192,18 @@ extension Float4
 	
 	// MARK: `clamp` Functionality
 	
-	@_transparent public mutating func clamp(to range:ClosedRange<Float4>) {
+	@_transparent public mutating func clamp(to range:ClosedRange<Self>) {
 		self = self.clamped(to: range)
 	}
-	@_transparent public func clamped(to range:ClosedRange<Float4>) -> Float4 {
-		return Float4(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
+	@_transparent public func clamped(to range:ClosedRange<Self>) -> Self {
+		return Self(simd_clamp(self.simdValue, range.lowerBound.simdValue, range.upperBound.simdValue))
 	}
 	
 	
 	// MARK: `random` Functionality
 	
-	@inlinable public static func random(in range:ClosedRange<Float4>) -> Float4 {
-		return Float4(
+	@inlinable public static func random(in range:ClosedRange<Self>) -> Self {
+		return Self(
 			Float.random(in: range.lowerBound.x...range.upperBound.x),
 			Float.random(in: range.lowerBound.y...range.upperBound.y),
 			Float.random(in: range.lowerBound.z...range.upperBound.z),
@@ -208,8 +211,8 @@ extension Float4
 		)
 	}
 	
-	@inlinable public static func random(in range:Range<Float4>) -> Float4 {
-		return Float4(
+	@inlinable public static func random(in range:Range<Self>) -> Self {
+		return Self(
 			Float.random(in: range.lowerBound.x..<range.upperBound.x),
 			Float.random(in: range.lowerBound.y..<range.upperBound.y),
 			Float.random(in: range.lowerBound.z..<range.upperBound.z),
@@ -359,7 +362,7 @@ extension Float4 : CustomStringConvertible
 
 extension Float4 : ExpressibleByArrayLiteral
 {
-	public typealias Element = Float
+	public typealias Element = Scalar
 	
 	/// Initialize using `arrayLiteral`.
 	///
@@ -373,7 +376,7 @@ extension Float4 : ExpressibleByArrayLiteral
 
 extension Float4 : Equatable
 {
-	@_transparent public static func ==(a:Float4, b:Float4) -> Bool {
+	@_transparent public static func ==(a:Self, b:Self) -> Bool {
 		return simd_equal(a.simdValue, b.simdValue)
 	}
 }
@@ -381,19 +384,19 @@ extension Float4 : Equatable
 
 extension Float4 : Comparable
 {
-	@_transparent public static func < (a:Float4, b:Float4) -> Bool {
+	@_transparent public static func < (a:Self, b:Self) -> Bool {
 		return Float4LessThan(a, b)
 	}
 	
-	@_transparent public static func <= (a:Float4, b:Float4) -> Bool {
+	@_transparent public static func <= (a:Self, b:Self) -> Bool {
 		return Float4LessThanOrEqual(a, b)
 	}
 	
-	@_transparent public static func > (a:Float4, b:Float4) -> Bool {
+	@_transparent public static func > (a:Self, b:Self) -> Bool {
 		return Float4GreaterThan(a, b)
 	}
 	
-	@_transparent public static func >= (a:Float4, b:Float4) -> Bool {
+	@_transparent public static func >= (a:Self, b:Self) -> Bool {
 		return Float4GreaterThanOrEqual(a, b)
 	}
 }
@@ -401,80 +404,80 @@ extension Float4 : Comparable
 
 extension Float4 // Basic Math Operations
 {
-	@_transparent public static func + (a:Float4, b:Float4) -> Float4 {
+	@_transparent public static func + (a:Self, b:Self) -> Self {
 		return Float4Add(a, b)
 	}
-	@_transparent public static func += (v:inout Float4, o:Float4) {
+	@_transparent public static func += (v:inout Self, o:Self) {
 		v = v + o
 	}
 	
 	
-	@_transparent public static func - (a:Float4, b:Float4) -> Float4 {
+	@_transparent public static func - (a:Self, b:Self) -> Self {
 		return Float4Subtract(a, b)
 	}
-	@_transparent public static func -= (v:inout Float4, o:Float4) {
+	@_transparent public static func -= (v:inout Self, o:Self) {
 		v = v - o
 	}
 	
 	
-	@_transparent public static func * (a:Float4, b:Float4) -> Float4 {
+	@_transparent public static func * (a:Self, b:Self) -> Self {
 		return Float4Multiply(a, b)
 	}
-	@_transparent public static func *= (v:inout Float4, o:Float4) {
+	@_transparent public static func *= (v:inout Self, o:Self) {
 		v = v * o
 	}
 	
 	
-	@_transparent public static func / (a:Float4, b:Float4) -> Float4 {
+	@_transparent public static func / (a:Self, b:Self) -> Self {
 		return Float4Divide(a, b)
 	}
-	@_transparent public static func /= (v:inout Float4, o:Float4) {
+	@_transparent public static func /= (v:inout Self, o:Self) {
 		v = v / o
 	}
 	
 	
-	@_transparent public static func % (a:Float4, b:Float4) -> Float4 {
+	@_transparent public static func % (a:Self, b:Self) -> Self {
 		return Float4Modulus(a, b)
 	}
-	@_transparent public static func %= (v:inout Float4, o:Float4) {
+	@_transparent public static func %= (v:inout Self, o:Self) {
 		v = v % o
 	}
 	
 	
-	@_transparent public static func * (v:Float4, scale:Float) -> Float4 {
+	@_transparent public static func * (v:Self, scale:Float) -> Self {
 		return Float4MultiplyByScalar(v, scale)
 	}
-	@_transparent public static func *= (v:inout Float4, scale:Float) {
+	@_transparent public static func *= (v:inout Self, scale:Float) {
 		v = v * scale
 	}
-	@_transparent public static func * (scale:Float, v:Float4) -> Float4 {
+	@_transparent public static func * (scale:Float, v:Self) -> Self {
 		return Float4MultiplyingScalar(scale, v)
 	}
 	
 	
-	@_transparent public static func / (v:Float4, inverseScale:Float) -> Float4 {
+	@_transparent public static func / (v:Self, inverseScale:Float) -> Self {
 		return Float4DivideByScalar(v, inverseScale)
 	}
-	@_transparent public static func /= (v:inout Float4, inverseScale:Float) {
+	@_transparent public static func /= (v:inout Self, inverseScale:Float) {
 		v = v / inverseScale
 	}
-	@_transparent public static func / (inverseScale:Float, v:Float4) -> Float4 {
+	@_transparent public static func / (inverseScale:Float, v:Self) -> Self {
 		return Float4DividingScalar(inverseScale, v)
 	}
 	
 	
-	@_transparent public static func % (v:Float4, inverseScale:Float) -> Float4 {
+	@_transparent public static func % (v:Self, inverseScale:Float) -> Self {
 		return Float4ModulusByScalar(v, inverseScale)
 	}
-	@_transparent public static func %= (v:inout Float4, inverseScale:Float) {
+	@_transparent public static func %= (v:inout Self, inverseScale:Float) {
 		v = v % inverseScale
 	}
-	@_transparent public static func % (inverseScale:Float, v:Float4) -> Float4 {
+	@_transparent public static func % (inverseScale:Float, v:Self) -> Self {
 		return Float4ModulusingScalar(inverseScale, v)
 	}
 	
 	
-	@_transparent public static prefix func - (v:Float4) -> Float4 {
+	@_transparent public static prefix func - (v:Self) -> Self {
 		return Float4Negate(v)
 	}
 }
@@ -482,8 +485,8 @@ extension Float4 // Basic Math Operations
 
 extension Float4 // Geometric Math Operations
 {
-	@_transparent public func normalized() -> Float4 {
-		return Float4(simd_normalize(self.simdValue))
+	@_transparent public func normalized() -> Self {
+		return Self(simd_normalize(self.simdValue))
 	}
 	@_transparent public mutating func normalize() {
 		self = self.normalized()
@@ -495,7 +498,7 @@ extension Float4 // Geometric Math Operations
 	}
 	
 	
-	@_transparent public func dotProduct(_ other:Float4) -> Float {
+	@_transparent public func dotProduct(_ other:Self) -> Float {
 		return dotProductOf(self, other)
 	}
 }
@@ -516,7 +519,7 @@ extension Float4 : Hashable
 	#else
 		public var hashValue:Int {
 			let uintHashValue = [ self.x, self.y, self.z, self.w ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Float)) in
-				let elementHash = UInt(element.value.bitPattern) &* Float4._hashingLargePrimes[element.index]
+				let elementHash = UInt(element.value.bitPattern) &* Self._hashingLargePrimes[element.index]
 				return hashValue &+ elementHash
 			}
 			return Int(bitPattern: uintHashValue)
