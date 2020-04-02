@@ -387,6 +387,7 @@ extension FloatQuaternion // Quaternion Math Operations
 	@_transparent public func length() -> Float {
 		return simd_length(self.simdValue)
 	}
+	@_transparent public func magnitude() -> Float { return self.length() }
 	
 	
 	public enum SphericalLinearInterpolationMethod {

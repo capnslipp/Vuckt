@@ -377,8 +377,26 @@ extension Float2 // Basic Math Operations
 	}
 	
 	
-	@_transparent public static prefix func - (v:Float2) -> Float2 {
-		return Float2Negate(v)
+	@_transparent public static prefix func - (v:Float2) -> Float2 { return v.negated() }
+	@_transparent public func negated() -> Float2 {
+		return Float2Negate(self)
+	}
+	@_transparent public mutating func negate() {
+		self = self.negated()
+	}
+	
+	
+	@_transparent public func reciprocal() -> Float2 {
+		return Float2(simd_recip(self.simdValue))
+	}
+	@_transparent public mutating func formReciprocal() {
+		self = self.reciprocal()
+	}
+	@_transparent public func inversed() -> Float2 {
+		return self.reciprocal()
+	}
+	@_transparent public mutating func inverse() {
+		self.formReciprocal()
 	}
 }
 
@@ -396,15 +414,126 @@ extension Float2 // Geometric Math Operations
 	@_transparent public func length() -> Float {
 		return simd_length(self.simdValue)
 	}
+	@_transparent public func magnitude() -> Float { return self.length() }
+	@_transparent public func lengthSquared() -> Float {
+		return simd_length_squared(self.simdValue)
+	}
+	@_transparent public func magnitudeSquared() -> Float { return self.lengthSquared() }
+	
+	
+	@_transparent public func lOneNorm() -> Float {
+		return simd_norm_one(self.simdValue)
+	}
+	@_transparent public func taxicabLength() -> Float { return self.lOneNorm() }
+	@_transparent public func lInfinityNorm() -> Float {
+		return simd_norm_inf(self.simdValue)
+	}
+	@_transparent public func uniformNorm() -> Float { return self.lInfinityNorm() }
 	
 	
 	@_transparent public func dotProduct(_ other:Float2) -> Float {
 		return dotProductOf(self, other)
 	}
+	
+	
+	@_transparent public func crossProduct(_ other:Float2) -> Float3 {
+		return crossProductOf(self, other)
+	}
+	
+	
+	@_transparent public func projected(onto other:Float2) -> Float2 {
+		return Float2(simd_project(self.simdValue, other.simdValue))
+	}
+	@_transparent public mutating func project(onto other:Float2) {
+		self = self.projected(onto: other)
+	}
+	
+	
+	@_transparent public func reflected(across planeNormal:Float2) -> Float2 {
+		return Float2(simd_reflect(self.simdValue, planeNormal.simdValue))
+	}
+	@_transparent public mutating func reflect(across planeNormal:Float2) {
+		self = self.reflected(across: planeNormal)
+	}
+	
+	
+	@_transparent public func refracted(through surfaceNormal:Float2, index refractiveIndex:Float) -> Float2 {
+		return Float2(simd_refract(self.simdValue, surfaceNormal.simdValue, refractiveIndex))
+	}
+	@_transparent public mutating func refract(through surfaceNormal:Float2, index refractionIndex:Float) {
+		self = self.refracted(through: surfaceNormal, index: refractionIndex)
+	}
+	
+	
+	public enum InterpolationMethod {
+		case linear
+		case hermite
+	}
+	@_transparent public func interpolated(to other:Float2, ratio:Float, method:Float2.InterpolationMethod = .linear) -> Float2 {
+		return interpolateBetween(self, other, ratio: ratio)
+	}
+	@_transparent public mutating func interpolate(to other:Float2, ratio:Float, method:Float2.InterpolationMethod = .linear) {
+		self = interpolateBetween(self, other, ratio: ratio)
+	}
+	@_transparent public func interpolated(to other:Float2, ratio:Float2, method:Float2.InterpolationMethod = .linear) -> Float2 {
+		return interpolateBetween(self, other, ratio: ratio)
+	}
+	@_transparent public mutating func interpolate(to other:Float2, ratio:Float2, method:Float2.InterpolationMethod = .linear) {
+		self = interpolateBetween(self, other, ratio: ratio)
+	}
+	
+	
+	@_transparent public func mixed(with other:Float2, ratio:Float) -> Float2 {
+		return mixOf(self, other, ratio: ratio)
+	}
+	@_transparent public mutating func mix(with other:Float2, ratio:Float) {
+		self = mixOf(self, other, ratio: ratio)
+	}
+	@_transparent public func mixed(with other:Float2, ratio:Float2) -> Float2 {
+		return mixOf(self, other, ratio: ratio)
+	}
+	@_transparent public mutating func mix(with other:Float2, ratio:Float2) {
+		self = mixOf(self, other, ratio: ratio)
+	}
 }
 
 @_transparent public func dotProductOf(_ a:Float2, _ b:Float2) -> Float {
 	return simd_dot(a.simdValue, b.simdValue)
+}
+
+@_transparent public func crossProductOf(_ a:Float2, _ b:Float2) -> Float3 {
+	return Float3(simd_cross(a.simdValue, b.simdValue))
+}
+
+@_transparent public func distanceBetween(_ a:Float2, _ b:Float2) -> Float {
+	return simd_distance(a.simdValue, b.simdValue)
+}
+@_transparent public func distanceSquaredBetween(_ a:Float2, _ b:Float2) -> Float {
+	return simd_distance_squared(a.simdValue, b.simdValue)
+}
+
+@_transparent public func taxicabDistanceBetween(_ a:Float2, _ b:Float2) -> Float {
+	return (b - a).taxicabLength()
+}
+
+@_transparent public func interpolateBetween(_ a:Float2, _ b:Float2, ratio:Float, method:Float2.InterpolationMethod = .linear) -> Float2 {
+	return interpolateBetween(a, b, ratio: Float2(ratio), method: method)
+}
+@_transparent public func interpolateBetween(_ a:Float2, _ b:Float2, ratio:Float2, method:Float2.InterpolationMethod = .linear) -> Float2 {
+	switch method {
+		case .linear:
+			return Float2(simd_mix(a.simdValue, b.simdValue, ratio.simdValue))
+		case .hermite:
+			return Float2(simd_smoothstep(a.simdValue, b.simdValue, ratio.simdValue))
+	}
+}
+
+@_transparent public func mixOf(_ a:Float2, _ b:Float2, ratio:Float) -> Float2 {
+	return mixOf(a, b, ratio: Float2(ratio))
+}
+@_transparent public func mixOf(_ a:Float2, _ b:Float2, ratio:Float2) -> Float2
+{
+	return Float2(simd_mix(a.simdValue, b.simdValue, ratio.simdValue))
 }
 
 

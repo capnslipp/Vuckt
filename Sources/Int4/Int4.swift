@@ -535,6 +535,23 @@ extension Int4 // pseudo-IntegerArithmetic/FixedWidthInteger
 }
 
 
+extension Int4 // Geometric Math Operations
+{
+	@_transparent public func lOneNorm() -> Int32 {
+		return simd_reduce_add(simd_abs(self.simdValue))
+	}
+	@_transparent public func taxicabLength() -> Int32 { return self.lOneNorm() }
+	@_transparent public func lInfinityNorm() -> Int32 {
+		return simd_reduce_max(simd_abs(self.simdValue))
+	}
+	@_transparent public func uniformNorm() -> Int32 { return self.lInfinityNorm() }
+}
+
+@_transparent public func taxicabDistanceBetween(_ a:Int4, _ b:Int4) -> Int32 {
+	return (b - a).taxicabLength()
+}
+
+
 extension Int4 : Hashable
 {
 	private static let _hashingLargePrimes:[UInt] = [ 982_917_223, 3_572_352_083, 4_259_235_067, 454_923_701 ]
