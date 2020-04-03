@@ -1,0 +1,17 @@
+// Vuckt
+// @author: Slipp Douglas Thompson
+// @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
+
+#if _runtime(_ObjC)
+
+fileprivate let Float3x3InNSValueObjCType = NSValue(float3x3: Float3x3()).objCType
+
+%{ from gyb_foundation_support import ObjectiveCBridgeableImplementationForNSValueWithCategoryMethods }%
+${ ObjectiveCBridgeableImplementationForNSValueWithCategoryMethods(
+  Type="Float3x3",
+  initializer="{ NSValue(float3x3: $0) }",
+  getter="{ $0.float3x3Value }",
+  objCType="{ _ in Float3x3InNSValueObjCType }",
+) }
+
+#endif // _runtime(_ObjC)

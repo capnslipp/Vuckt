@@ -124,6 +124,18 @@ extension FloatQuaternion
 	}
 	
 	
+	// MARK: Matrix Conversion
+	
+	@_transparent public init(rotation rotationMatrix:Float3x3) {
+		self.init(simd_quaternion(rotationMatrix.simdValue))
+	}
+	
+	@_transparent public var toRotationMatrix:Float3x3 {
+		return Float3x3(rotation: self)
+	}
+	
+	
+	
 	// MARK: Angle/Axis Initializer & Accessors
 	
 	public init(angle angle_radians:Float, axis:Float3) {
