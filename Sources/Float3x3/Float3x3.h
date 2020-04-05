@@ -28,14 +28,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Struct Definition
 
-struct Float3x3 {
+struct Float3x3 { // @expected: Padding size of 'Float3x3' with 4 bytes to alignment boundary
 	float m00 __attribute__((aligned(__alignof__(simd_float3))));
 	float m01;
 	float m02;
-	float m10 __attribute__((aligned(__alignof__(simd_float3))));
+	float m10 __attribute__((aligned(__alignof__(simd_float3)))); // @expected: Padding struct 'Float3x3' with 4 bytes to align 'm10'
 	float m11;
 	float m12;
-	float m20 __attribute__((aligned(__alignof__(simd_float3))));
+	float m20 __attribute__((aligned(__alignof__(simd_float3)))); // @expected: Padding struct 'Float3x3' with 4 bytes to align 'm20'
 	float m21;
 	float m22;
 } __attribute__((aligned(__alignof__(simd_float3x3))));

@@ -561,6 +561,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGET_NAME = Vuckt;
+				WARNING_CFLAGS = (
+					"-Wpadded",
+					"-Wpacked",
+				);
 			};
 			name = Debug;
 		};
@@ -584,6 +588,10 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGET_NAME = Vuckt;
+				WARNING_CFLAGS = (
+					"-Wpadded",
+					"-Wpacked",
+				);
 			};
 			name = Release;
 		};

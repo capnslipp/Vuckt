@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Struct Definition
 
-struct Float3 {
+struct Float3 { // @expected: Padding size of 'Float3' with 4 bytes to alignment boundary
 	float x, y, z;
 } __attribute__((aligned(__alignof__(simd_float3))));
 typedef struct Float3 Float3;

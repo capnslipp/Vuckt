@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Struct Definition
 
-struct Int3 {
+struct Int3 { // @expected: Padding size of 'Int3' with 4 bytes to alignment boundary
 	int x, y, z;
 } __attribute__((aligned(__alignof__(simd_int3))));
 typedef struct Int3 Int3;
