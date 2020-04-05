@@ -17,7 +17,7 @@ extension Int4
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
-	@_transparent public init(_ scalar:Int32) {
+	@_transparent public init(scalar:Int32) {
 		self.init(scalar, scalar, scalar, scalar)
 	}
 	
@@ -133,10 +133,10 @@ extension Int4
 	
 	// MARK: commonly-used “presets”
 	
-	public static let zero = Int4(0)
+	public static let zero = Int4(scalar: 0)
 	
-	public static let unitPositive = Int4(1)
-	public static let unitNegative = Int4(-1)
+	public static let unitPositive = Int4(scalar: 1)
+	public static let unitNegative = Int4(scalar: -1)
 	
 	public static let unitXPositive = Int4(x: 1)
 	public static let unitYPositive = Int4(y: 1)

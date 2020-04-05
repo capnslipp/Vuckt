@@ -17,7 +17,7 @@ extension Int3
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
-	@_transparent public init(_ scalar:Int32) {
+	@_transparent public init(scalar:Int32) {
 		self.init(scalar, scalar, scalar)
 	}
 	
@@ -97,10 +97,10 @@ extension Int3
 	
 	// MARK: commonly-used “presets”
 	
-	public static let zero = Int3(0)
+	public static let zero = Int3(scalar: 0)
 	
-	public static let unitPositive = Int3(1)
-	public static let unitNegative = Int3(-1)
+	public static let unitPositive = Int3(scalar: 1)
+	public static let unitNegative = Int3(scalar: -1)
 	
 	public static let unitXPositive = Int3(x: 1)
 	public static let unitYPositive = Int3(y: 1)

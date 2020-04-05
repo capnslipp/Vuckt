@@ -22,7 +22,7 @@ extension Float3
 	}
 	
 	/// Initialize to a vector with all elements equal to `scalar`.
-	@_transparent public init(_ scalar:Float) {
+	@_transparent public init(scalar:Float) {
 		self.init(scalar, scalar, scalar)
 	}
 	
@@ -102,10 +102,10 @@ extension Float3
 	
 	// MARK: commonly-used “presets”
 	
-	public static let zero = Float3(0)
+	public static let zero = Float3(scalar: 0)
 	
-	public static let unitPositive = Float3(1)
-	public static let unitNegative = Float3(-1)
+	public static let unitPositive = Float3(scalar: 1)
+	public static let unitNegative = Float3(scalar: -1)
 	
 	public static let unitXPositive = Float3(x: 1)
 	public static let unitYPositive = Float3(y: 1)
@@ -571,7 +571,7 @@ extension Float3 // Geometric Math Operations
 }
 
 @_transparent public func interpolateBetween(_ a:Float3, _ b:Float3, ratio:Float, method:Float3.InterpolationMethod = .linear) -> Float3 {
-	return interpolateBetween(a, b, ratio: Float3(ratio), method: method)
+	return interpolateBetween(a, b, ratio: Float3(scalar: ratio), method: method)
 }
 @_transparent public func interpolateBetween(_ a:Float3, _ b:Float3, ratio:Float3, method:Float3.InterpolationMethod = .linear) -> Float3 {
 	switch method {
@@ -583,7 +583,7 @@ extension Float3 // Geometric Math Operations
 }
 
 @_transparent public func mixOf(_ a:Float3, _ b:Float3, ratio:Float) -> Float3 {
-	return mixOf(a, b, ratio: Float3(ratio))
+	return mixOf(a, b, ratio: Float3(scalar: ratio))
 }
 @_transparent public func mixOf(_ a:Float3, _ b:Float3, ratio:Float3) -> Float3
 {
