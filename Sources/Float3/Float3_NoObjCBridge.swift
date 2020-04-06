@@ -97,6 +97,11 @@ public struct Float3
 	return all(a.simdValue .>= b.simdValue)
 }
 
+@_alwaysEmitIntoClient public func Float3WedgeProduct(_ a:Float3, _ b:Float3) -> Float3 {
+	let exteriorProduct_simd = simd_float3(a.x, a.x, a.y) * simd_float3(b.y, b.z, b.z) - simd_float3(a.y, a.z, a.z) * simd_float3(b.x, b.x, b.y)
+	return Float3FromSimd(exteriorProduct_simd);
+}
+
 
 
 // MARK: SceneKit Conversion

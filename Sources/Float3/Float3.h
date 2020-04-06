@@ -97,6 +97,11 @@ NS_INLINE BOOL Float3GreaterThanOrEqual(Float3 a, Float3 b) {
 	return simd_all(Float3ToSimd(a) >= Float3ToSimd(b));
 }
 
+NS_INLINE Float3 Float3WedgeProduct(Float3 a, Float3 b) {
+	simd_float3 exteriorProduct_simd = (simd_float3){ a.x, a.x, a.y } * (simd_float3){ b.y, b.z, b.z } - (simd_float3){ a.y, a.z, a.z } * (simd_float3){ b.x, b.x, b.y };
+	return Float3FromSimd(exteriorProduct_simd);
+}
+
 
 
 #pragma mark SceneKit Conversion

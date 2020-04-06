@@ -469,6 +469,7 @@ extension Float3 // Geometric Math Operations
 	@_transparent public func uniformNorm() -> Float { return self.lInfinityNorm() }
 	
 	
+	/// Also known as the Interior Product.
 	@_transparent public func dotProduct(_ other:Float3) -> Float {
 		return dotProductOf(self, other)
 	}
@@ -476,6 +477,12 @@ extension Float3 // Geometric Math Operations
 	
 	@_transparent public func crossProduct(_ other:Float3) -> Float3 {
 		return crossProductOf(self, other)
+	}
+	
+	
+	/// Also known as the Exterior Product.  Produces a bivector result (as a `Float3`).
+	@_transparent public func wedgeProduct(_ other:Float3) -> Float3 {
+		return wedgeProductOf(self, other)
 	}
 	
 	
@@ -551,12 +558,18 @@ extension Float3 // Geometric Math Operations
 	}
 }
 
+/// Also known as the Interior Product.
 @_transparent public func dotProductOf(_ a:Float3, _ b:Float3) -> Float {
 	return simd_dot(a.simdValue, b.simdValue)
 }
 
 @_transparent public func crossProductOf(_ a:Float3, _ b:Float3) -> Float3 {
 	return Float3(simd_cross(a.simdValue, b.simdValue))
+}
+
+/// Also known as the Exterior Product.  Produces a bivector result (as a `Float3`).
+@_transparent public func wedgeProductOf(_ a:Float3, _ b:Float3) -> Float3 {
+	return Float3WedgeProduct(a, b)
 }
 
 @_transparent public func distanceBetween(_ a:Float3, _ b:Float3) -> Float {
