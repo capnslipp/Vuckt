@@ -129,12 +129,25 @@ extension FloatQuaternion
 	public init(angle angle_radians:Float, axis:Float3) {
 		self = FloatQuaternion(simd_quaternion(angle_radians, axis.simdValue))
 	}
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	public init(angle angleMeasurement:Measurement<UnitAngle>, axis:Float3) {
+		let angleRadiansMeasurement = angleMeasurement.converted(to: .radians)
+		self.init(angle: Float(angleRadiansMeasurement.value), axis: axis)
+	}
 	
 	public var angle:Float {
 		get { return simd_angle(self.simdValue) }
 		set {
 			let existingAxis = Float3(simd_axis(self.simdValue))
 			self = FloatQuaternion(angle: newValue, axis: existingAxis)
+		}
+	}
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	public var angleMeasurement:Measurement<UnitAngle> {
+		get { return Measurement<UnitAngle>(value: Double(self.angle), unit: .radians) }
+		set {
+			let angleRadiansMeasurement = newValue.converted(to: .radians)
+			self.angle = Float(angleRadiansMeasurement.value)
 		}
 	}
 	
@@ -148,6 +161,11 @@ extension FloatQuaternion
 	
 	public var angleAxis:(Float, Float3) {
 		get { return ( self.angle, self.axis ) }
+		set { self = FloatQuaternion(angle: newValue.0, axis: newValue.1) }
+	}
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	public var angleMeasurementAxis:(Measurement<UnitAngle>, Float3) {
+		get { return ( self.angleMeasurement, self.axis ) }
 		set { self = FloatQuaternion(angle: newValue.0, axis: newValue.1) }
 	}
 	
