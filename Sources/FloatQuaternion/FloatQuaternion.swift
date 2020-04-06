@@ -19,7 +19,7 @@ fileprivate let SquareRootOfOneHalf = Float(0.5).squareRoot()
 
 
 
-typealias Quaternion = FloatQuaternion
+public typealias Quaternion = FloatQuaternion
 
 extension FloatQuaternion
 {
