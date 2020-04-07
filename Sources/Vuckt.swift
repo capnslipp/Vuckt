@@ -31,3 +31,14 @@ import Foundation
 		}
 	}
 #endif
+
+
+
+public enum RotationOrder : UInt {
+	case xyz = 1
+	case xzy = 2
+	case yxz = 3
+	case yzx = 4
+	case zxy = 5
+	case zyx = 6
+}

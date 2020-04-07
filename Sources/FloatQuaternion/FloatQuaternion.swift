@@ -169,6 +169,43 @@ extension FloatQuaternion
 		set { self = FloatQuaternion(angle: newValue.0, axis: newValue.1) }
 	}
 	
+	public init(eulerAngles eulerAngles_radians:Float3, order:RotationOrder = .zxy) {
+		let sinOfHalfAngles = __tg_sin(eulerAngles_radians.simdValue * 0.5)
+		let cosOfHalfAngles = __tg_cos(eulerAngles_radians.simdValue * 0.5)
+		
+		let xRotation = Self(sinOfHalfAngles.x, 0, 0, cosOfHalfAngles.x)
+		let yRotation = Self(0, sinOfHalfAngles.y, 0, cosOfHalfAngles.y)
+		let zRotation = Self(0, 0, sinOfHalfAngles.z, cosOfHalfAngles.z)
+		let rotationsInOrder:[Self] = {
+			switch order {
+				case .xyz: return [ xRotation, yRotation, zRotation ]
+				case .xzy: return [ xRotation, zRotation, yRotation ]
+				case .yxz: return [ yRotation, xRotation, zRotation ]
+				case .yzx: return [ yRotation, zRotation, xRotation ]
+				case .zxy: return [ zRotation, xRotation, yRotation ]
+				case .zyx: return [ zRotation, yRotation, xRotation ]
+			}
+		}()
+		
+		self = rotationsInOrder[2] * rotationsInOrder[1] * rotationsInOrder[0]
+	}
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	@_transparent public init(eulerAngles eulerAnglesMeasurements:(x:Measurement<UnitAngle>,y:Measurement<UnitAngle>,z:Measurement<UnitAngle>), order:RotationOrder = .zxy) {
+		let eulerAnglesMeasurements_radians = (
+			x: eulerAnglesMeasurements.x.converted(to: .radians),
+			y: eulerAnglesMeasurements.y.converted(to: .radians),
+			z: eulerAnglesMeasurements.z.converted(to: .radians)
+		)
+		self.init(
+			eulerAngles: Float3(
+				Float(eulerAnglesMeasurements_radians.x.value),
+				Float(eulerAnglesMeasurements_radians.y.value),
+				Float(eulerAnglesMeasurements_radians.z.value)
+			),
+			order: order
+		)
+	}
+	
 	
 	// MARK: From-To Initializer
 	
