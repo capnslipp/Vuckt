@@ -95,11 +95,15 @@ extension Float2
 	
 	public static let zero = Float2(scalar: 0)
 	
-	public static let unitPositive = Float2(scalar: 1)
-	public static let unitNegative = Float2(scalar: -1)
+	public static let one = Self.positiveOne
+	public static let positiveOne = Float2(scalar: 1)
+	public static let negativeOne = Float2(scalar: -1)
 	
+	public static let unitX = Self.unitXPositive
 	public static let unitXPositive = Float2(x: 1)
+	public static let unitY = Self.unitYPositive
 	public static let unitYPositive = Float2(y: 1)
+	
 	public static let unitXNegative = Float2(x: -1)
 	public static let unitYNegative = Float2(y: -1)
 	
@@ -403,9 +407,13 @@ extension Float2 // Basic Math Operations
 
 extension Float2 // Geometric Math Operations
 {
+	/// Produces a unit-length vector.  (Not to be confused with a “normal”/“normal vector”.)
+	/// See: https://mathworld.wolfram.com/NormalVector.html
 	@_transparent public func normalized() -> Float2 {
 		return Float2(simd_normalize(self.simdValue))
 	}
+	/// Modifies the vector to be unit-length.  (Not to be confused with a “normal”/“normal vector”.)
+	/// See: https://mathworld.wolfram.com/NormalVector.html
 	@_transparent public mutating func normalize() {
 		self = self.normalized()
 	}

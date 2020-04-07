@@ -99,12 +99,17 @@ extension Int3
 	
 	public static let zero = Int3(scalar: 0)
 	
-	public static let unitPositive = Int3(scalar: 1)
-	public static let unitNegative = Int3(scalar: -1)
+	public static let one = Self.positiveOne
+	public static let positiveOne = Int3(scalar: 1)
+	public static let negativeOne = Int3(scalar: -1)
 	
+	public static let unitX = Self.unitXPositive
 	public static let unitXPositive = Int3(x: 1)
+	public static let unitY = Self.unitYPositive
 	public static let unitYPositive = Int3(y: 1)
+	public static let unitZ = Self.unitZPositive
 	public static let unitZPositive = Int3(z: 1)
+	
 	public static let unitXNegative = Int3(x: -1)
 	public static let unitYNegative = Int3(y: -1)
 	public static let unitZNegative = Int3(z: -1)

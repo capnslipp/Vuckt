@@ -209,9 +209,9 @@ extension FloatQuaternion
 	
 	// MARK: From-To Initializer
 	
-	/// It is necessary to normalize the `fromVector` and `toVector` provided in order to result in a normal rotation Quaternion.
-	public init(from fromVector:Float3, to toVector:Float3) {
-		self = FloatQuaternion(simd_quaternion(fromVector.simdValue, toVector.simdValue))
+	/// It is necessary to normalize the `fromUnitVector` and `toUnitVector` to be unit-length in order to result in a normal rotation Quaternion.
+	public init(from fromUnitVector:Float3, to toUnitVector:Float3) {
+		self = FloatQuaternion(simd_quaternion(fromUnitVector.simdValue, toUnitVector.simdValue))
 	}
 	
 	public init(from fromVector:Float3, to toVector:Float3, axisWhenVectorsAreOpposed:Float3)

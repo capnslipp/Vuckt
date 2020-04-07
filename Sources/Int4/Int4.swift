@@ -135,13 +135,19 @@ extension Int4
 	
 	public static let zero = Int4(scalar: 0)
 	
-	public static let unitPositive = Int4(scalar: 1)
-	public static let unitNegative = Int4(scalar: -1)
+	public static let one = Self.positiveOne
+	public static let positiveOne = Int4(scalar: 1)
+	public static let negativeOne = Int4(scalar: -1)
 	
+	public static let unitX = Self.unitXPositive
 	public static let unitXPositive = Int4(x: 1)
+	public static let unitY = Self.unitYPositive
 	public static let unitYPositive = Int4(y: 1)
+	public static let unitZ = Self.unitZPositive
 	public static let unitZPositive = Int4(z: 1)
+	public static let unitW = Self.unitWPositive
 	public static let unitWPositive = Int4(w: 1)
+	
 	public static let unitXNegative = Int4(x: -1)
 	public static let unitYNegative = Int4(y: -1)
 	public static let unitZNegative = Int4(z: -1)

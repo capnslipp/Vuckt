@@ -91,11 +91,15 @@ extension Int2
 	
 	public static let zero = Int2(scalar: 0)
 	
-	public static let unitPositive = Int2(scalar: 1)
-	public static let unitNegative = Int2(scalar: -1)
+	public static let one = Self.positiveOne
+	public static let positiveOne = Int2(scalar: 1)
+	public static let negativeOne = Int2(scalar: -1)
 	
+	public static let unitX = Self.unitXPositive
 	public static let unitXPositive = Int2(x: 1)
+	public static let unitY = Self.unitYPositive
 	public static let unitYPositive = Int2(y: 1)
+	
 	public static let unitXNegative = Int2(x: -1)
 	public static let unitYNegative = Int2(y: -1)
 	

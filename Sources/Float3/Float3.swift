@@ -104,12 +104,17 @@ extension Float3
 	
 	public static let zero = Float3(scalar: 0)
 	
-	public static let unitPositive = Float3(scalar: 1)
-	public static let unitNegative = Float3(scalar: -1)
+	public static let one = Self.positiveOne
+	public static let positiveOne = Float3(scalar: 1)
+	public static let negativeOne = Float3(scalar: -1) // TODO: Rename; not a unit vector
 	
+	public static let unitX = Self.unitXPositive
 	public static let unitXPositive = Float3(x: 1)
+	public static let unitY = Self.unitYPositive
 	public static let unitYPositive = Float3(y: 1)
+	public static let unitZ = Self.unitZPositive
 	public static let unitZPositive = Float3(z: 1)
+	
 	public static let unitXNegative = Float3(x: -1)
 	public static let unitYNegative = Float3(y: -1)
 	public static let unitZNegative = Float3(z: -1)
@@ -441,9 +446,13 @@ extension Float3 // Basic Math Operations
 
 extension Float3 // Geometric Math Operations
 {
+	/// Produces a unit-length vector.  (Not to be confused with a “normal”/“normal vector”.)
+	/// See: https://mathworld.wolfram.com/NormalVector.html
 	@_transparent public func normalized() -> Float3 {
 		return Float3(simd_normalize(self.simdValue))
 	}
+	/// Modifies the vector to be unit-length.  (Not to be confused with a “normal”/“normal vector”.)
+	/// See: https://mathworld.wolfram.com/NormalVector.html
 	@_transparent public mutating func normalize() {
 		self = self.normalized()
 	}
