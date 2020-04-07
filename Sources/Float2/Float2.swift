@@ -422,23 +422,31 @@ extension Float2 // Geometric Math Operations
 	@_transparent public func length() -> Float {
 		return simd_length(self.simdValue)
 	}
+	/// Alias of: `length()`
 	@_transparent public func magnitude() -> Float { return self.length() }
+	/// Alias of: `length()`
+	@_transparent public func lTwoNorm() -> Float { return self.length() }
+	
 	@_transparent public func lengthSquared() -> Float {
 		return simd_length_squared(self.simdValue)
 	}
+	/// Alias of: `lengthSquared()`
 	@_transparent public func magnitudeSquared() -> Float { return self.lengthSquared() }
 	
 	
 	@_transparent public func lOneNorm() -> Float {
 		return simd_norm_one(self.simdValue)
 	}
+	/// Alias of: `lOneNorm()`
 	@_transparent public func taxicabLength() -> Float { return self.lOneNorm() }
 	@_transparent public func lInfinityNorm() -> Float {
 		return simd_norm_inf(self.simdValue)
 	}
+	/// Alias of: `lInfinityNorm()`
 	@_transparent public func uniformNorm() -> Float { return self.lInfinityNorm() }
 	
 	
+	/// Also known as the Interior Product.
 	@_transparent public func dotProduct(_ other:Float2) -> Float {
 		return dotProductOf(self, other)
 	}
@@ -505,6 +513,7 @@ extension Float2 // Geometric Math Operations
 	}
 }
 
+/// Also known as the Interior Product.
 @_transparent public func dotProductOf(_ a:Float2, _ b:Float2) -> Float {
 	return simd_dot(a.simdValue, b.simdValue)
 }

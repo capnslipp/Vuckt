@@ -469,10 +469,13 @@ extension Int3 // Geometric Math Operations
 	@_transparent public func lOneNorm() -> Int32 {
 		return simd_reduce_add(simd_abs(self.simdValue))
 	}
+	/// Alias of: `lOneNorm()`
 	@_transparent public func taxicabLength() -> Int32 { return self.lOneNorm() }
+	
 	@_transparent public func lInfinityNorm() -> Int32 {
 		return simd_reduce_max(simd_abs(self.simdValue))
 	}
+	/// Alias of: `lInfinityNorm()`
 	@_transparent public func uniformNorm() -> Int32 { return self.lInfinityNorm() }
 }
 
