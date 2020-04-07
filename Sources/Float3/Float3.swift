@@ -487,6 +487,9 @@ extension Float3 // Geometric Math Operations
 	@_transparent public func crossProduct(_ other:Float3) -> Float3 {
 		return crossProductOf(self, other)
 	}
+	@_transparent public mutating func formCrossProduct(_ other:Float3) {
+		self = self.crossProduct(other)
+	}
 	
 	
 	/// Also known as the Exterior Product.  Produces a bivector result (as a `Float3`).
