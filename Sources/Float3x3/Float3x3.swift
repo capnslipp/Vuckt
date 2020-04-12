@@ -94,6 +94,81 @@ extension Float3x3
 	}
 	
 	
+	// MARK: 3D Transform Initializers
+	
+	/// `axis` is expected to be a unit-length (“normalized”) vector.
+	public init(rotationAngle angle_radians:Float, axis:Float3) {
+		let (sinOfAngle, cosOfAngle) = ( sin(angle_radians), cos(angle_radians) )
+
+		/* Based on https://en.wikipedia.org/wiki/Rotation_matrix#Rotation_matrix_from_axis_and_angle and https://github.com/g-truc/glm/blob/master/glm/ext/matrix_transform.inl */
+		self.init(columns:
+			Float3(cosOfAngle, 0, 0) + ((1 - cosOfAngle) * axis.x * axis) + (sinOfAngle * Float3(0, axis.z, -axis.y)),
+			Float3(0, cosOfAngle, 0) + ((1 - cosOfAngle) * axis.y * axis) + (sinOfAngle * Float3(-axis.z, 0, axis.x)),
+			Float3(0, 0, cosOfAngle) + ((1 - cosOfAngle) * axis.z * axis) + (sinOfAngle * Float3(axis.y, -axis.x, 0))
+		)
+	}
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	@_transparent public init(rotationAngle angleMeasurement:Measurement<UnitAngle>, axis:Float3) {
+		let angleMeasurement_radians = angleMeasurement.converted(to: .radians)
+		self.init(rotationAngle: Float(angleMeasurement_radians.value), axis: axis)
+	}
+	
+	public init(rotationEulerAngles eulerAngles_radians:Float3, order:RotationOrder = .zxy) {
+		let sinOfAngles = __tg_sin(eulerAngles_radians.simdValue)
+		let cosOfAngles = __tg_cos(eulerAngles_radians.simdValue)
+		
+		let xRotation = Self(columns:
+			Float3(1, 0, 0),
+			Float3(0, cosOfAngles.x, sinOfAngles.x),
+			Float3(0, -sinOfAngles.x, cosOfAngles.x)
+		)
+		let yRotation = Self(columns:
+			Float3(cosOfAngles.y, 0, -sinOfAngles.y),
+			Float3(0, 1, 0),
+			Float3(sinOfAngles.y, 0, cosOfAngles.y)
+		)
+		let zRotation = Self(columns:
+			Float3(cosOfAngles.z, sinOfAngles.z, 0),
+			Float3(-sinOfAngles.z, cosOfAngles.z, 0),
+			Float3(0, 0, 1)
+		)
+		let rotationsInOrder:[Self] = {
+			switch order {
+				case .xyz: return [ xRotation, yRotation, zRotation ]
+				case .xzy: return [ xRotation, zRotation, yRotation ]
+				case .yxz: return [ yRotation, xRotation, zRotation ]
+				case .yzx: return [ yRotation, zRotation, xRotation ]
+				case .zxy: return [ zRotation, xRotation, yRotation ]
+				case .zyx: return [ zRotation, yRotation, xRotation ]
+			}
+		}()
+		
+		self = rotationsInOrder[2] * rotationsInOrder[1] * rotationsInOrder[0]
+	}
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	@_transparent public init(rotationEulerAngles eulerAnglesMeasurements:(x:Measurement<UnitAngle>,y:Measurement<UnitAngle>,z:Measurement<UnitAngle>), order:RotationOrder = .zxy) {
+		let eulerAnglesMeasurements_radians = (
+			x: eulerAnglesMeasurements.x.converted(to: .radians),
+			y: eulerAnglesMeasurements.y.converted(to: .radians),
+			z: eulerAnglesMeasurements.z.converted(to: .radians)
+		)
+		self.init(
+			rotationEulerAngles: Float3(
+				Float(eulerAnglesMeasurements_radians.x.value),
+				Float(eulerAnglesMeasurements_radians.y.value),
+				Float(eulerAnglesMeasurements_radians.z.value)
+			),
+			order: order
+		)
+	}
+	
+	public init(scale:Float3) {
+		self.init(diagonal: scale)
+	}
+	
+	
+	// MARK: commonly-used “presets”
+	
 	public static let zero = Float3x3()
 	public static let identity = Float3x3(matrix_identity_float3x3);
 	
