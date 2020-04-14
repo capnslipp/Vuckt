@@ -145,6 +145,14 @@ extension Float4x4
 		)
 	}
 	
+	public init(scale:Float3, rotation quaternion:FloatQuaternion, translation:Float3) {
+		self = Self(scale: scale) * Self(rotation: quaternion) * Self(translation: translation) // TODO: verify & optimize
+	}
+	
+	public init(scaleAndRotation matrix3x3:Float3x3, translation:Float3) {
+		self = Self(matrix3x3) * Self(translation: translation) // TODO: verify & optimize
+	}
+	
 	
 	// MARK: commonly-used “presets”
 	
@@ -563,6 +571,50 @@ extension Float4x4 // Geometric Math Operations
 	}
 	@_transparent public mutating func unrotate(by quaternion:FloatQuaternion) {
 		self = self.unrotated(by: quaternion)
+	}
+	
+	
+	// 3D Geometric scale
+	@_transparent public func scaled(by scale:Float3) -> Float4x4 {
+		return Float4x4(columns:
+			self.c0 * Float4(scale.x, 1, 1, 1),
+			self.c1 * Float4(1, scale.y, 1, 1),
+			self.c2 * Float4(1, 1, scale.z, 1),
+			self.c3
+		)
+	}
+	// 3D Geometric scale
+	@_transparent public mutating func scale(by scale:Float3) {
+		self = self.scaled(by: scale)
+	}
+	
+	// 3D Geometric scale
+	@_transparent public func unscaled(by scale:Float3) -> Float4x4 {
+		return self.scaled(by: 1.0 / scale)
+	}
+	// 3D Geometric scale
+	@_transparent public mutating func unscale(by scale:Float3) {
+		self = self.scaled(by: 1.0 / scale)
+	}
+	
+	
+	@_transparent public func translated(by translation:Float3) -> Float4x4 {
+		return Float4x4(columns:
+			self.c0,
+			self.c1,
+			self.c2,
+			self.c3 + Float4(xyz: translation, w: 0)
+		)
+	}
+	@_transparent public mutating func translate(by translation:Float3) {
+		self = self.translated(by: translation)
+	}
+	
+	@_transparent public func untranslated(by translation:Float3) -> Float4x4 {
+		return self.translated(by: -translation)
+	}
+	@_transparent public mutating func untranslate(by translation:Float3) {
+		self.translate(by: -translation)
 	}
 }
 

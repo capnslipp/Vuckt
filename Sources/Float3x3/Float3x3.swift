@@ -166,6 +166,10 @@ extension Float3x3
 		self.init(diagonal: scale)
 	}
 	
+	public init(scale:Float3, rotation quaternion:FloatQuaternion) {
+		self = Self(scale: scale) * Self(rotation: quaternion) // TODO: verify & optimize
+	}
+	
 	
 	// MARK: commonly-used “presets”
 	
@@ -535,6 +539,29 @@ extension Float3x3 // Geometric Math Operations
 	}
 	@_transparent public mutating func unrotate(by quaternion:FloatQuaternion) {
 		self = self.unrotated(by: quaternion)
+	}
+	
+	
+	// 3D Geometric scale
+	@_transparent public func scaled(by scale:Float3) -> Float3x3 {
+		return Float3x3(columns:
+			self.c0 * Float3(scale.x, 1, 1),
+			self.c1 * Float3(1, scale.y, 1),
+			self.c2 * Float3(1, 1, scale.z)
+		)
+	}
+	// 3D Geometric scale
+	@_transparent public mutating func scale(by scale:Float3) {
+		self = self.scaled(by: scale)
+	}
+	
+	// 3D Geometric scale
+	@_transparent public func unscaled(by scale:Float3) -> Float3x3 {
+		return self.scaled(by: 1.0 / scale)
+	}
+	// 3D Geometric scale
+	@_transparent public mutating func unscale(by scale:Float3) {
+		self = self.scaled(by: 1.0 / scale)
 	}
 }
 
