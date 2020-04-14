@@ -493,7 +493,7 @@ extension Float3x3 // Geometric Math Operations
 	
 	
 	@_transparent public func trace() -> Float {
-		return self.m00 + self.m11 + self.m22
+		return simd_reduce_add(simd_float3(self.m00, self.m11, self.m22))
 	}
 	
 	

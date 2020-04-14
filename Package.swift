@@ -27,6 +27,8 @@ let package = Package(
 				"Int4/Int4.swift",
 				"Float3x3/Float3x3_NoObjCBridge.swift",
 				"Float3x3/Float3x3.swift",
+				"Float4x4/Float4x4_NoObjCBridge.swift",
+				"Float4x4/Float4x4.swift",
 			],
 			swiftSettings: [ .define("NO_OBJC_BRIDGE") ]
 		),
