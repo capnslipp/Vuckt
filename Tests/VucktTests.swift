@@ -14,37 +14,37 @@ class VucktTests : XCTestCase
 		[ 0, 0 ],
 		[ 1, 2 ],
 		[ Int32.min, Int32.max ],
-		[ -179_424_719, 2_038_074_503 ],
+		[ -179_424_720, 2_038_074_496 ],
 	]
 	let _int3TestValues:[[Int32]] = [
 		[ 0, 0, 0 ],
 		[ 1, 2, 3 ],
 		[ Int32.min, Int32.max, Int32.min ],
-		[ -179_424_719, 2_038_074_503, -982_450_327 ],
+		[ -179_424_720, 2_038_074_496, -982_450_304 ],
 	]
 	let _int4TestValues:[[Int32]] = [
 		[ 0, 0, 0, 0 ],
 		[ 1, 2, 3, 4 ],
 		[ Int32.min, Int32.max, Int32.min, Int32.max ],
-		[ -179_424_719, 2_038_074_503, -982_450_327, 454_923_701 ],
+		[ -179_424_720, 2_038_074_496, -982_450_304, 454_923_712 ],
 	]
 	let _float2TestValues:[[Float]] = [
 		[ 0, 0 ],
 		[ 1, 2 ],
 		[ Float.infinity, Float.leastNonzeroMagnitude ],
-		[ -179_424_719, 2_038_074_503 ],
+		[ -179_424_720, 2_038_074_496 ],
 	]
 	let _float3TestValues:[[Float]] = [
 		[ 0, 0, 0 ],
 		[ 1, 2, 3 ],
 		[ Float.infinity, Float.leastNonzeroMagnitude, Float.greatestFiniteMagnitude ],
-		[ -179_424_719, 2_038_074_503, -982_450_327 ],
+		[ -179_424_720, 2_038_074_496, -982_450_304 ],
 	]
 	let _float4TestValues:[[Float]] = [
 		[ 0, 0, 0, 0 ],
 		[ 1, 2, 3, 4 ],
 		[ Float.infinity, Float.leastNonzeroMagnitude, Float.greatestFiniteMagnitude, Float.leastNormalMagnitude ],
-		[ -179_424_719, 2_038_074_503, -982_450_327, 454_923_701 ],
+		[ -179_424_720, 2_038_074_496, -982_450_304, 454_923_712 ],
 	]
 	
 	
