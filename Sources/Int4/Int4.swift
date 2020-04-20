@@ -273,6 +273,13 @@ extension Int4
 	@_transparent public var simdValue:simd_int4 {
 		return Int4ToSimd(self)
 	}
+	
+	
+	// MARK: Is… Flags
+	
+	@_transparent public var isZero:Bool {
+		return self == Self.zero
+	}
 }
 
 	

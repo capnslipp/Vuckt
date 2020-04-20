@@ -203,6 +203,22 @@ extension Float3
 	@_transparent public var simdValue:simd_float3 {
 		return Float3ToSimd(self)
 	}
+	
+	
+	// MARK: Is… Flags
+	
+	@_transparent public var isFinite:Bool {
+		return self.x.isFinite && self.y.isFinite && self.z.isFinite
+	}
+	@_transparent public var isInfinite:Bool {
+		return self.x.isInfinite || self.y.isInfinite || self.z.isInfinite
+	}
+	@_transparent public var isNaN:Bool {
+		return self.x.isNaN || self.y.isNaN || self.z.isNaN
+	}
+	@_transparent public var isZero:Bool {
+		return self == Self.zero
+	}
 }
 
 

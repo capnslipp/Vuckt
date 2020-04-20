@@ -167,6 +167,13 @@ extension Int2
 	@_transparent public var simdValue:simd_int2 {
 		return Int2ToSimd(self)
 	}
+	
+	
+	// MARK: Is… Flags
+	
+	@_transparent public var isZero:Bool {
+		return self == Self.zero
+	}
 }
 
 	

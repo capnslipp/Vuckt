@@ -171,6 +171,22 @@ extension Float2
 	@_transparent public var simdValue:simd_float2 {
 		return Float2ToSimd(self)
 	}
+	
+	
+	// MARK: Is… Flags
+	
+	@_transparent public var isFinite:Bool {
+		return self.x.isFinite && self.y.isFinite
+	}
+	@_transparent public var isInfinite:Bool {
+		return self.x.isInfinite || self.y.isInfinite
+	}
+	@_transparent public var isNaN:Bool {
+		return self.x.isNaN || self.y.isNaN
+	}
+	@_transparent public var isZero:Bool {
+		return self == Self.zero
+	}
 }
 
 

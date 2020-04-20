@@ -198,6 +198,13 @@ extension Int3
 	@_transparent public var simdValue:simd_int3 {
 		return Int3ToSimd(self)
 	}
+	
+	
+	// MARK: Is… Flags
+	
+	@_transparent public var isZero:Bool {
+		return self == Self.zero
+	}
 }
 
 	
