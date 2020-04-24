@@ -5,12 +5,12 @@
 import Foundation
 import simd
 import SceneKit.SceneKitTypes
-#if !os(tvOS)
-	import CoreMotion.CMAttitude
-#endif
 #if !os(watchOS)
 	import GLKit.GLKQuaternion
 	import GameController.GCMotion
+#endif
+#if !os(tvOS)
+	import CoreMotion.CMAttitude
 #endif
 
 
