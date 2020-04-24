@@ -4,7 +4,9 @@
 
 import Foundation
 import simd
-import CoreImage.CIVector
+#if !os(watchOS)
+	import CoreImage.CIVector
+#endif
 import CoreGraphics.CGGeometry
 
 
@@ -172,17 +174,19 @@ extension Float2
 }
 
 
-extension Float2 // CoreImage Conversion
-{
-	/// Initialize to a CoreImage vector.
-	@_transparent public init(ciVector:CIVector) {
-		self = Float2FromCI(ciVector)
+#if !os(watchOS)
+	extension Float2 // CoreImage Conversion
+	{
+		/// Initialize to a CoreImage vector.
+		@_transparent public init(ciVector:CIVector) {
+			self = Float2FromCI(ciVector)
+		}
+		
+		@_transparent public var toCIVector:CIVector {
+			return Float2ToCI(self)
+		}
 	}
-	
-	@_transparent public var toCIVector:CIVector {
-		return Float2ToCI(self)
-	}
-}
+#endif // #if !watchOS
 
 extension Float2 // CoreGraphics Conversion
 {

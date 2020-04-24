@@ -5,8 +5,10 @@
 import Foundation
 import simd
 import SceneKit.SceneKitTypes
-import GLKit.GLKVector3
-import CoreImage.CIVector
+#if !os(watchOS)
+	import GLKit.GLKVector3
+	import CoreImage.CIVector
+#endif
 
 
 
@@ -216,29 +218,33 @@ extension Float3 // SceneKit Conversion
 	}
 }
 
-extension Float3 // GLKit Conversion
-{
-	/// Initialize to a GLKit vector.
-	@_transparent public init(glkVector value:GLKVector3) {
-		self = Float3FromGLK(value)
+#if !os(watchOS)
+	extension Float3 // GLKit Conversion
+	{
+		/// Initialize to a GLKit vector.
+		@_transparent public init(glkVector value:GLKVector3) {
+			self = Float3FromGLK(value)
+		}
+		
+		@_transparent public var toGLKVector:GLKVector3 {
+			return Float3ToGLK(self)
+		}
 	}
-	
-	@_transparent public var toGLKVector:GLKVector3 {
-		return Float3ToGLK(self)
-	}
-}
+#endif // !watchOS
 
-extension Float3 // CoreImage Conversion
-{
-	/// Initialize to a CoreImage vector.
-	@_transparent public init(ciVector:CIVector) {
-		self = Float3FromCI(ciVector)
+#if !os(watchOS)
+	extension Float3 // CoreImage Conversion
+	{
+		/// Initialize to a CoreImage vector.
+		@_transparent public init(ciVector:CIVector) {
+			self = Float3FromCI(ciVector)
+		}
+		
+		@_transparent public var toCIVector:CIVector {
+			return Float3ToCI(self)
+		}
 	}
-	
-	@_transparent public var toCIVector:CIVector {
-		return Float3ToCI(self)
-	}
-}
+#endif // !watchOS
 
 
 extension Float3 : CustomStringConvertible

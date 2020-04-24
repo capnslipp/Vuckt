@@ -5,7 +5,9 @@
 
 #import <Foundation/NSValue.h>
 #import <simd/simd.h>
-#import <CoreImage/CIVector.h>
+#if !TARGET_OS_WATCH
+	#import <CoreImage/CIVector.h>
+#endif
 #import <CoreGraphics/CGGeometry.h>
 
 
@@ -74,17 +76,19 @@ NS_INLINE BOOL Float2GreaterThanOrEqual(Float2 a, Float2 b) {
 
 
 
-#pragma mark CoreImage Conversion
+#if !TARGET_OS_WATCH
+	#pragma mark CoreImage Conversion
 
-/// Converts an `Float2` struct to `CIVector` class using passing-individual-members initialization.
-NS_INLINE CIVector *Float2ToCI(Float2 structValue) {
-	return [CIVector vectorWithX:(CGFloat)structValue.x Y:(CGFloat)structValue.y];
-}
-/// Converts an `Float2` struct from `CIVector` class using passing-individual-members initialization.
-NS_INLINE Float2 Float2FromCI(CIVector *ciVector) {
-	assert(ciVector.count == 2);
-	return (Float2){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y };
-}
+	/// Converts an `Float2` struct to `CIVector` class using passing-individual-members initialization.
+	NS_INLINE CIVector *Float2ToCI(Float2 structValue) {
+		return [CIVector vectorWithX:(CGFloat)structValue.x Y:(CGFloat)structValue.y];
+	}
+	/// Converts an `Float2` struct from `CIVector` class using passing-individual-members initialization.
+	NS_INLINE Float2 Float2FromCI(CIVector *ciVector) {
+		assert(ciVector.count == 2);
+		return (Float2){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y };
+	}
+#endif // !TARGET_OS_WATCH
 
 
 

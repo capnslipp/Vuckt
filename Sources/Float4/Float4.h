@@ -6,8 +6,10 @@
 #import <Foundation/NSValue.h>
 #import <simd/simd.h>
 #import <SceneKit/SceneKitTypes.h>
-#import <GLKit/GLKVector4.h>
-#import <CoreImage/CIVector.h>
+#if !TARGET_OS_WATCH
+	#import <GLKit/GLKVector4.h>
+	#import <CoreImage/CIVector.h>
+#endif
 
 
 
@@ -88,30 +90,34 @@ NS_INLINE Float4 Float4FromSCN(SCNVector4 scnValue) {
 
 
 
-#pragma mark GLKit Conversion
+#if !TARGET_OS_WATCH
+	#pragma mark GLKit Conversion
 
-/// Converts an `Float4` struct to `GLKVector4` struct using passing-individual-members initialization.
-NS_INLINE GLKVector4 Float4ToGLK(Float4 structValue) {
-	return GLKVector4Make(structValue.x, structValue.y, structValue.z, structValue.w);
-}
-/// Converts an `Float4` struct from `GLKVector4` struct using passing-individual-members initialization.
-NS_INLINE Float4 Float4FromGLK(GLKVector4 glkValue) {
-	return (Float4){ glkValue.v[0], glkValue.v[1], glkValue.v[2], glkValue.v[3] };
-}
+	/// Converts an `Float4` struct to `GLKVector4` struct using passing-individual-members initialization.
+	NS_INLINE GLKVector4 Float4ToGLK(Float4 structValue) {
+		return GLKVector4Make(structValue.x, structValue.y, structValue.z, structValue.w);
+	}
+	/// Converts an `Float4` struct from `GLKVector4` struct using passing-individual-members initialization.
+	NS_INLINE Float4 Float4FromGLK(GLKVector4 glkValue) {
+		return (Float4){ glkValue.v[0], glkValue.v[1], glkValue.v[2], glkValue.v[3] };
+	}
+#endif // !TARGET_OS_WATCH
 
 
 
-#pragma mark CoreImage Conversion
+#if !TARGET_OS_WATCH
+	#pragma mark CoreImage Conversion
 
-/// Converts an `Float4` struct to `CIVector` class using passing-individual-members initialization.
-NS_INLINE CIVector *Float4ToCI(Float4 structValue) {
-	return [CIVector vectorWithX:(CGFloat)structValue.x Y:(CGFloat)structValue.y Z:(CGFloat)structValue.z W:(CGFloat)structValue.w];
-}
-/// Converts an `Float4` struct from `CIVector` class using passing-individual-members initialization.
-NS_INLINE Float4 Float4FromCI(CIVector *ciVector) {
-	assert(ciVector.count == 4);
-	return (Float4){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y, (simd_float1)ciVector.Z, (simd_float1)ciVector.W };
-}
+	/// Converts an `Float4` struct to `CIVector` class using passing-individual-members initialization.
+	NS_INLINE CIVector *Float4ToCI(Float4 structValue) {
+		return [CIVector vectorWithX:(CGFloat)structValue.x Y:(CGFloat)structValue.y Z:(CGFloat)structValue.z W:(CGFloat)structValue.w];
+	}
+	/// Converts an `Float4` struct from `CIVector` class using passing-individual-members initialization.
+	NS_INLINE Float4 Float4FromCI(CIVector *ciVector) {
+		assert(ciVector.count == 4);
+		return (Float4){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y, (simd_float1)ciVector.Z, (simd_float1)ciVector.W };
+	}
+#endif // !TARGET_OS_WATCH
 
 
 

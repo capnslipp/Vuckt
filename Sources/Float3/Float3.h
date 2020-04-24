@@ -6,8 +6,10 @@
 #import <Foundation/NSValue.h>
 #import <simd/simd.h>
 #import <SceneKit/SceneKitTypes.h>
-#import <GLKit/GLKVector3.h>
-#import <CoreImage/CIVector.h>
+#if !TARGET_OS_WATCH
+	#import <GLKit/GLKVector3.h>
+	#import <CoreImage/CIVector.h>
+#endif
 
 
 
@@ -88,30 +90,34 @@ NS_INLINE Float3 Float3FromSCN(SCNVector3 scnValue) {
 
 
 
-#pragma mark GLKit Conversion
+#if !TARGET_OS_WATCH
+	#pragma mark GLKit Conversion
 
-/// Converts an `Float3` struct to `GLKVector3` struct using passing-individual-members initialization.
-NS_INLINE GLKVector3 Float3ToGLK(Float3 structValue) {
-	return GLKVector3Make(structValue.x, structValue.y, structValue.z);
-}
-/// Converts an `Float3` struct from `GLKVector3` struct using passing-individual-members initialization.
-NS_INLINE Float3 Float3FromGLK(GLKVector3 glkValue) {
-	return (Float3){ glkValue.v[0], glkValue.v[1], glkValue.v[2] };
-}
+	/// Converts an `Float3` struct to `GLKVector3` struct using passing-individual-members initialization.
+	NS_INLINE GLKVector3 Float3ToGLK(Float3 structValue) {
+		return GLKVector3Make(structValue.x, structValue.y, structValue.z);
+	}
+	/// Converts an `Float3` struct from `GLKVector3` struct using passing-individual-members initialization.
+	NS_INLINE Float3 Float3FromGLK(GLKVector3 glkValue) {
+		return (Float3){ glkValue.v[0], glkValue.v[1], glkValue.v[2] };
+	}
+#endif // !TARGET_OS_WATCH
 
 
 
-#pragma mark CoreImage Conversion
+#if !TARGET_OS_WATCH
+	#pragma mark CoreImage Conversion
 
-/// Converts an `Float3` struct to `CIVector` class using passing-individual-members initialization.
-NS_INLINE CIVector *Float3ToCI(Float3 structValue) {
-	return [CIVector vectorWithX:(CGFloat)structValue.x Y:(CGFloat)structValue.y Z:(CGFloat)structValue.z];
-}
-/// Converts an `Float3` struct from `CIVector` class using passing-individual-members initialization.
-NS_INLINE Float3 Float3FromCI(CIVector *ciVector) {
-	assert(ciVector.count == 3);
-	return (Float3){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y, (simd_float1)ciVector.Z };
-}
+	/// Converts an `Float3` struct to `CIVector` class using passing-individual-members initialization.
+	NS_INLINE CIVector *Float3ToCI(Float3 structValue) {
+		return [CIVector vectorWithX:(CGFloat)structValue.x Y:(CGFloat)structValue.y Z:(CGFloat)structValue.z];
+	}
+	/// Converts an `Float3` struct from `CIVector` class using passing-individual-members initialization.
+	NS_INLINE Float3 Float3FromCI(CIVector *ciVector) {
+		assert(ciVector.count == 3);
+		return (Float3){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y, (simd_float1)ciVector.Z };
+	}
+#endif // !TARGET_OS_WATCH
 
 
 

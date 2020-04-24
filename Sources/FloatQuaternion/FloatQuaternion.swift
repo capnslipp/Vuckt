@@ -5,9 +5,13 @@
 import Foundation
 import simd
 import SceneKit.SceneKitTypes
-import GLKit.GLKQuaternion
-import CoreMotion.CMAttitude
-import GameController.GCMotion
+#if !os(tvOS)
+	import CoreMotion.CMAttitude
+#endif
+#if !os(watchOS)
+	import GLKit.GLKQuaternion
+	import GameController.GCMotion
+#endif
 
 
 
@@ -210,41 +214,47 @@ extension FloatQuaternion // SceneKit Conversion
 	}
 }
 
-extension FloatQuaternion // GLKit Conversion
-{
-	/// Initialize to a GLKit quaternion.
-	public init(glkQuaternion value:GLKQuaternion) {
-		self = FloatQuaternionFromGLK(value)
+#if !os(watchOS)
+	extension FloatQuaternion // GLKit Conversion
+	{
+		/// Initialize to a GLKit quaternion.
+		public init(glkQuaternion value:GLKQuaternion) {
+			self = FloatQuaternionFromGLK(value)
+		}
+		
+		public var toGLKQuaternion:GLKQuaternion {
+			return FloatQuaternionToGLK(self)
+		}
 	}
-	
-	public var toGLKQuaternion:GLKQuaternion {
-		return FloatQuaternionToGLK(self)
-	}
-}
+#endif // !watchOS
 
-extension FloatQuaternion // CoreMotion Conversion
-{
-	/// Initialize to a CoreMotion quaternion.
-	public init(cmQuaternion value:CMQuaternion) {
-		self = FloatQuaternionFromCM(value)
+#if !os(tvOS)
+	extension FloatQuaternion // CoreMotion Conversion
+	{
+		/// Initialize to a CoreMotion quaternion.
+		public init(cmQuaternion value:CMQuaternion) {
+			self = FloatQuaternionFromCM(value)
+		}
+		
+		public var toCMQuaternion:CMQuaternion {
+			return FloatQuaternionToCM(self)
+		}
 	}
-	
-	public var toCMQuaternion:CMQuaternion {
-		return FloatQuaternionToCM(self)
-	}
-}
+#endif // !tvOS
 
-extension FloatQuaternion // GameController Conversion
-{
-	/// Initialize to a GameController quaternion.
-	public init(gcQuaternion value:GCQuaternion) {
-		self = FloatQuaternionFromGC(value)
+#if !os(watchOS)
+	extension FloatQuaternion // GameController Conversion
+	{
+		/// Initialize to a GameController quaternion.
+		public init(gcQuaternion value:GCQuaternion) {
+			self = FloatQuaternionFromGC(value)
+		}
+		
+		public var toGCQuaternion:GCQuaternion {
+			return FloatQuaternionToGC(self)
+		}
 	}
-	
-	public var toGCQuaternion:GCQuaternion {
-		return FloatQuaternionToGC(self)
-	}
-}
+#endif // !watchOS
 
 
 extension FloatQuaternion : CustomStringConvertible
