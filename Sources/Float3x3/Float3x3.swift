@@ -465,10 +465,10 @@ extension Float3x3 // Geometric Math Operations
 
 extension Float3x3 : Hashable
 {
-	private static let _hashingLargePrimes:[UInt] = [ // FIXME: Not 32-bit compat
-		1_430_140_993, 3_530_278_013, 26_710_176_633_433,
-		2_768_553_721, 21_490_279_899_853, 3_694_958_161,
-		748_180_487_401, 3_348_168_251, 1_346_902_097
+	private static let _hashingLargePrimes:[UInt] = [
+		1_430_140_993, 3_530_278_013, 3_858_576_569,
+		2_768_553_721, 996_070_237, 3_694_958_161,
+		695_584_271, 3_348_168_251, 1_346_902_097
 	]
 	
 	#if swift(>=4.2)
