@@ -492,6 +492,11 @@ extension Float3x3 // Geometric Math Operations
 	}
 	
 	
+	@_transparent public func trace() -> Float {
+		return self.m00 + self.m11 + self.m22
+	}
+	
+	
 	@_transparent public func inversed() -> Float3x3 {
 		return Float3x3(simd_inverse(self.simdValue))
 	}
