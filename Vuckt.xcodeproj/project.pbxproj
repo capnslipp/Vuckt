@@ -15,6 +15,10 @@
 		FA32AEAC20BD1C4C008A2111 /* Int2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CD41EAD6053005C5402 /* Int2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA32AEAF20BD1C4C008A2111 /* Int3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.mm */; };
 		FA32AEB020BD1C4C008A2111 /* Int2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.mm */; };
+		FA362E0C245F70DC009D50D4 /* FloatRotor.h in Headers */ = {isa = PBXBuildFile; fileRef = FA362E06245F70DC009D50D4 /* FloatRotor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA362E0D245F70DC009D50D4 /* FloatRotor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA362E07245F70DC009D50D4 /* FloatRotor.swift */; };
+		FA362E0E245F70DC009D50D4 /* FloatRotor+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA362E09245F70DC009D50D4 /* FloatRotor+_ObjectiveCBridgeable.swift */; };
+		FA362E10245F70DC009D50D4 /* FloatRotor.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA362E0B245F70DC009D50D4 /* FloatRotor.mm */; };
 		FA3E5E4921B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4B21B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4721B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4C21B7C3870073FA6D /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0620CFBC2200261EE4 /* Int2.swift */; };
@@ -97,6 +101,12 @@
 		FA35362823F50789000B5EC9 /* Float2_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float2_NoObjCBridge.swift; sourceTree = "<group>"; };
 		FA35362923F50792000B5EC9 /* Float3_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float3_NoObjCBridge.swift; sourceTree = "<group>"; };
 		FA35362A23F5079A000B5EC9 /* Float4_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float4_NoObjCBridge.swift; sourceTree = "<group>"; };
+		FA362E06245F70DC009D50D4 /* FloatRotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatRotor.h; sourceTree = "<group>"; };
+		FA362E07245F70DC009D50D4 /* FloatRotor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRotor.swift; sourceTree = "<group>"; };
+		FA362E08245F70DC009D50D4 /* FloatRotor+_ObjectiveCBridgeable.swift.gyb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "FloatRotor+_ObjectiveCBridgeable.swift.gyb"; sourceTree = "<group>"; };
+		FA362E09245F70DC009D50D4 /* FloatRotor+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FloatRotor+_ObjectiveCBridgeable.swift"; path = "FloatRotor/FloatRotor+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
+		FA362E0A245F70DC009D50D4 /* FloatRotor_NoObjCBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRotor_NoObjCBridge.swift; sourceTree = "<group>"; };
+		FA362E0B245F70DC009D50D4 /* FloatRotor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FloatRotor.mm; sourceTree = "<group>"; };
 		FA3E5E4421B7C2170073FA6D /* Int2+_ObjectiveCBridgeable.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Int2+_ObjectiveCBridgeable.swift.gyb"; sourceTree = "<group>"; };
 		FA3E5E4521B7C2980073FA6D /* Int3+_ObjectiveCBridgeable.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Int3+_ObjectiveCBridgeable.swift.gyb"; sourceTree = "<group>"; };
 		FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int3+_ObjectiveCBridgeable.swift"; path = "Int3/Int3+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
@@ -184,6 +194,18 @@
 				FA0ED7E3243438DF00BADA04 /* FloatQuaternion_NoObjCBridge.swift */,
 			);
 			path = FloatQuaternion;
+			sourceTree = "<group>";
+		};
+		FA362E05245F70DC009D50D4 /* FloatRotor */ = {
+			isa = PBXGroup;
+			children = (
+				FA362E06245F70DC009D50D4 /* FloatRotor.h */,
+				FA362E0B245F70DC009D50D4 /* FloatRotor.mm */,
+				FA362E07245F70DC009D50D4 /* FloatRotor.swift */,
+				FA362E08245F70DC009D50D4 /* FloatRotor+_ObjectiveCBridgeable.swift.gyb */,
+				FA362E0A245F70DC009D50D4 /* FloatRotor_NoObjCBridge.swift */,
+			);
+			path = FloatRotor;
 			sourceTree = "<group>";
 		};
 		FA3E5E5021B88B550073FA6D /* Int2 */ = {
@@ -299,6 +321,7 @@
 				FA3E5E8421B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift */,
 				FA3E5E8221B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift */,
 				FA18D93823FA82E200F5CF37 /* FloatQuaternion+_ObjectiveCBridgeable.swift */,
+				FA362E09245F70DC009D50D4 /* FloatRotor+_ObjectiveCBridgeable.swift */,
 				FA4F6C4724371D0A009A8579 /* Float3x3+_ObjectiveCBridgeable.swift */,
 				FAEEBB212445AF5A009DE4BB /* Float4x4+_ObjectiveCBridgeable.swift */,
 			);
@@ -346,6 +369,7 @@
 				FA3E5E6221B89E820073FA6D /* Float3 */,
 				FA3E5E6321B89E870073FA6D /* Float4 */,
 				FA18D93723FA82E200F5CF37 /* FloatQuaternion */,
+				FA362E05245F70DC009D50D4 /* FloatRotor */,
 				FA4F6C3D2437055D009A8579 /* Float2x2 */,
 				FA4F6C3E2437057B009A8579 /* Float3x3 */,
 				FA4F6C3F24370581009A8579 /* Float4x4 */,
@@ -363,6 +387,7 @@
 			files = (
 				FA18D93E23FA82E200F5CF37 /* FloatQuaternion.h in Headers */,
 				FA3E5E6C21B89EDF0073FA6D /* Float4.h in Headers */,
+				FA362E0C245F70DC009D50D4 /* FloatRotor.h in Headers */,
 				FA3E5E5621B88F990073FA6D /* Int4.h in Headers */,
 				FA7C2F8120CA1557001A44CF /* Vuckt.h in Headers */,
 				FA32AEAB20BD1C4C008A2111 /* Int3.h in Headers */,
@@ -497,6 +522,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				FA362E0D245F70DC009D50D4 /* FloatRotor.swift in Sources */,
+				FA362E10245F70DC009D50D4 /* FloatRotor.mm in Sources */,
 				FA3E5E8621B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift in Sources */,
 				FA3E5E8821B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift in Sources */,
 				FA4F6C4224370683009A8579 /* Float3x3.mm in Sources */,
@@ -518,6 +545,7 @@
 				FAEEBB1F2445AE98009DE4BB /* Float4x4.mm in Sources */,
 				FA18D93F23FA82E200F5CF37 /* FloatQuaternion.mm in Sources */,
 				FA3E5E5C21B8900B0073FA6D /* Int4.swift in Sources */,
+				FA362E0E245F70DC009D50D4 /* FloatRotor+_ObjectiveCBridgeable.swift in Sources */,
 				FA3E5E4921B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */,
 				FA3E5E6F21B89F030073FA6D /* Float2.mm in Sources */,
 				FAEEBB1C2445AE47009DE4BB /* Float4x4.swift in Sources */,

@@ -1,0 +1,17 @@
+// Vuckt
+// @author: Slipp Douglas Thompson
+// @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
+
+#if _runtime(_ObjC)
+
+fileprivate let FloatRotorInNSValueObjCType = NSValue(floatRotor: FloatRotor()).objCType
+
+%{ from gyb_foundation_support import ObjectiveCBridgeableImplementationForNSValueWithCategoryMethods }%
+${ ObjectiveCBridgeableImplementationForNSValueWithCategoryMethods(
+  Type="FloatRotor",
+  initializer="{ NSValue(floatRotor: $0) }",
+  getter="{ $0.floatRotorValue }",
+  objCType="{ _ in FloatRotorInNSValueObjCType }",
+) }
+
+#endif // _runtime(_ObjC)

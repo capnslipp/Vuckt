@@ -6,6 +6,10 @@ import Foundation
 
 
 
+internal let SquareRootOfOneHalf = Float(0.5).squareRoot()
+
+
+
 #if !swift(>=4.2)
 	internal extension Float
 	{

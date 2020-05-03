@@ -542,6 +542,7 @@ class VucktTests : XCTestCase
 		for (rotationIndex, (angle_rad, axis)) in Self._angleAxisRotationSimpleTestValues.enumerated() {
 			let simdQuaternion = simd_quaternion(angle_rad, axis.simdValue)
 			let vucktQuaternion = FloatQuaternion(angle: angle_rad, axis: axis)
+			let vucktRotor = FloatRotor(angle: angle_rad, axis: axis)
 			let vucktMatrix3 = Float3x3(rotationAngle: angle_rad, axis: axis)
 			
 			for (valueIndex, vector) in Self._float3SimpleTestValues.enumerated() {
@@ -551,6 +552,7 @@ class VucktTests : XCTestCase
 				
 				let simdQuaternionRotatedVector = Float3(simd_act(simdQuaternion, vector.simdValue))
 				let vucktQuaternionRotatedVector = vucktQuaternion * vector
+				let vucktRotorRotatedVector = vucktRotor * vector
 				let vucktMatrixRotatedVector = vucktMatrix3 * vector
 				
 				assertAlmostEqual(simdQuaternionRotatedVector, expectedRotatedValue,
@@ -558,6 +560,9 @@ class VucktTests : XCTestCase
 				)
 				assertAlmostEqual(vucktQuaternionRotatedVector, expectedRotatedValue,
 					"\"\(vucktQuaternionRotatedVector)\" is not almost equal to (\"\(expectedRotatedValue)\")"
+				)
+				assertAlmostEqual(vucktRotorRotatedVector, expectedRotatedValue,
+					"\"\(vucktRotorRotatedVector)\" is not almost equal to (\"\(expectedRotatedValue)\")"
 				)
 				assertAlmostEqual(vucktMatrixRotatedVector, expectedRotatedValue,
 					"\"\(vucktMatrixRotatedVector)\" is not almost equal to (\"\(expectedRotatedValue)\")"
@@ -574,6 +579,7 @@ class VucktTests : XCTestCase
 			
 			let simdQuaternion = simd_quaternion(angle_rad, axis.simdValue)
 			let vucktQuaternion = FloatQuaternion(angle: angle_rad, axis: axis)
+			let vucktRotor = FloatRotor(angle: angle_rad, axis: axis)
 			let vucktMatrix3 = Float3x3(rotationAngle: angle_rad, axis: axis)
 			
 			for (valueIndex, vector) in Self._float3RegularTestValues.enumerated() {
@@ -583,6 +589,7 @@ class VucktTests : XCTestCase
 				let glmMatrixRotatedVector = Float3(glmMatrix * vector.simdValue)
 				let glmQuaternionRotatedVector = Float3(simd_act(glmQuaternion, vector.simdValue))
 				let vucktQuaternionRotatedVector = vucktQuaternion * vector
+				let vucktRotorRotatedVector = vucktRotor * vector
 				let vucktMatrixRotatedVector = vucktMatrix3 * vector
 				
 				assertAlmostEqual(glmMatrixRotatedVector, simdQuaternionRotatedVector,
@@ -593,6 +600,9 @@ class VucktTests : XCTestCase
 				)
 				assertAlmostEqual(vucktQuaternionRotatedVector, simdQuaternionRotatedVector,
 					"\"\(vucktQuaternionRotatedVector)\" is not almost equal to (\"\(simdQuaternionRotatedVector)\")"
+				)
+				assertAlmostEqual(vucktRotorRotatedVector, simdQuaternionRotatedVector,
+					"\"\(vucktRotorRotatedVector)\" is not almost equal to (\"\(simdQuaternionRotatedVector)\")"
 				)
 				assertAlmostEqual(vucktMatrixRotatedVector, simdQuaternionRotatedVector,
 					"\"\(vucktMatrixRotatedVector)\" is not almost equal to (\"\(simdQuaternionRotatedVector)\")"
@@ -611,6 +621,7 @@ class VucktTests : XCTestCase
 				return zRotation * yRotation * xRotation
 			}()
 			let vucktQuaternion = FloatQuaternion(eulerAngles: eulerAngles_rad, order: .xyz)
+			let vucktRotor = FloatRotor(eulerAngles: eulerAngles_rad, order: .xyz)
 			let vucktMatrix3 = Float3x3(rotationEulerAngles: eulerAngles_rad, order: .xyz)
 			
 			for (valueIndex, vector) in Self._float3SimpleTestValues.enumerated() {
@@ -620,6 +631,7 @@ class VucktTests : XCTestCase
 				
 				let simdQuaternionRotatedVector = Float3(simd_act(simdQuaternion, vector.simdValue))
 				let vucktQuaternionRotatedVector = vucktQuaternion * vector
+				let vucktRotorRotatedVector = vucktRotor * vector
 				let vucktMatrixRotatedVector = vucktMatrix3 * vector
 				
 				assertAlmostEqual(simdQuaternionRotatedVector, expectedRotatedValue,
@@ -627,6 +639,9 @@ class VucktTests : XCTestCase
 				)
 				assertAlmostEqual(vucktQuaternionRotatedVector, expectedRotatedValue,
 					"\"\(vucktQuaternionRotatedVector)\" is not almost equal to (\"\(expectedRotatedValue)\")"
+				)
+				assertAlmostEqual(vucktRotorRotatedVector, expectedRotatedValue,
+					"\"\(vucktRotorRotatedVector)\" is not almost equal to (\"\(expectedRotatedValue)\")"
 				)
 				assertAlmostEqual(vucktMatrixRotatedVector, expectedRotatedValue,
 					"\"\(vucktMatrixRotatedVector)\" is not almost equal to (\"\(expectedRotatedValue)\")"
@@ -648,6 +663,7 @@ class VucktTests : XCTestCase
 				return zRotation * yRotation * xRotation
 			}()
 			let vucktQuaternion = FloatQuaternion(eulerAngles: eulerAngles_rad, order: .xyz)
+			let vucktRotor = FloatRotor(eulerAngles: eulerAngles_rad, order: .xyz)
 			let vucktMatrix3 = Float3x3(rotationEulerAngles: eulerAngles_rad, order: .xyz)
 			
 			for (valueIndex, vector) in Self._float3RegularTestValues.enumerated() {
@@ -657,6 +673,7 @@ class VucktTests : XCTestCase
 				let glmMatrixRotatedVector = Float3(glmMatrix * vector.simdValue)
 				let glmQuaternionRotatedVector = Float3(simd_act(glmQuaternion, vector.simdValue))
 				let vucktQuaternionRotatedVector = vucktQuaternion * vector
+				let vucktRotorRotatedVector = vucktRotor * vector
 				let vucktMatrixRotatedVector = vucktMatrix3 * vector
 				
 				assertAlmostEqual(glmMatrixRotatedVector, simdQuaternionRotatedVector,
@@ -667,6 +684,9 @@ class VucktTests : XCTestCase
 				)
 				assertAlmostEqual(vucktQuaternionRotatedVector, simdQuaternionRotatedVector,
 					"\"\(vucktQuaternionRotatedVector)\" is not almost equal to (\"\(simdQuaternionRotatedVector)\")"
+				)
+				assertAlmostEqual(vucktRotorRotatedVector, simdQuaternionRotatedVector,
+					"\"\(vucktRotorRotatedVector)\" is not almost equal to (\"\(simdQuaternionRotatedVector)\")"
 				)
 				assertAlmostEqual(vucktMatrixRotatedVector, simdQuaternionRotatedVector,
 					"\"\(vucktMatrixRotatedVector)\" is not almost equal to (\"\(simdQuaternionRotatedVector)\")"

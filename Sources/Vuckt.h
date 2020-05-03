@@ -22,6 +22,7 @@ FOUNDATION_EXPORT const unsigned char VucktVersionString[];
 #import <Vuckt/Float3.h>
 #import <Vuckt/Float4.h>
 #import <Vuckt/FloatQuaternion.h>
+#import <Vuckt/FloatRotor.h>
 //#import <Vuckt/Float2x2.h>
 #import <Vuckt/Float3x3.h>
 #import <Vuckt/Float4x4.h>

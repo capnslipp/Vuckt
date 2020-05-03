@@ -15,10 +15,6 @@ import SceneKit.SceneKitTypes
 
 
 
-fileprivate let SquareRootOfOneHalf = Float(0.5).squareRoot()
-
-
-
 public typealias Quaternion = FloatQuaternion
 
 extension FloatQuaternion
@@ -50,7 +46,7 @@ extension FloatQuaternion
 	
 	/// Initialize using an `Float3` as the `ix`, `iy`, `iz` values.
 	public init(xyz:Float3, r:Float?=nil) {
-		self.init(xyz[0], xyz[1], xyz[2], r ?? 0)
+		self.init(xyz[0], xyz[1], xyz[2], r ?? 1.0)
 	}
 	
 	
