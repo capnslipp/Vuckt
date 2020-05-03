@@ -56,6 +56,10 @@ public struct Float3x3
 	}
 }
 
+
+
+// MARK: SIMD Conversion
+
 /// Converts a `Float3x3` struct to `simd_float3x3` vector using passing-individual-members initialization.
 @_transparent public func Float3x3ToSimd(_ structValue:Float3x3) -> simd_float3x3 {
 	return simd_float3x3(
