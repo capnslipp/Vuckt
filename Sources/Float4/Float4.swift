@@ -25,6 +25,8 @@ extension Float4
 	@_transparent public init(scalar:Float) {
 		self.init(scalar, scalar, scalar, scalar)
 	}
+	/// Alias of: `init(scalar:)`
+	@_transparent public init(_ scalar:Float) { self.init(scalar: scalar) }
 	
 	/// Initialize a vector with the specified elements.
 	@_transparent public init(x:Float) {
