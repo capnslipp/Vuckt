@@ -117,10 +117,14 @@ extension FloatQuaternion
 	}
 	
 	
-	// MARK: `asTuple` Functionality
+	// MARK: `as…` Functionality
 	
 	public var asTuple:(ix:Float,iy:Float,iz:Float,r:Float) {
 		return ( self.ix, self.iy, self.iz, self.r )
+	}
+	
+	@_transparent public var asArray:[Float] {
+		return [ self.ix, self.iy, self.iz, self.r ]
 	}
 	
 	
@@ -514,11 +518,11 @@ extension FloatQuaternion : Hashable
 	
 	#if swift(>=4.2)
 		public func hash(into hasher:inout Hasher) {
-			[ self.ix, self.iy, self.iz, self.r ].forEach{ hasher.combine($0) }
+			self.asArray.forEach{ hasher.combine($0) }
 		}
 	#else
 		public var hashValue:Int {
-			let uintHashValue = [ self.ix, self.iy, self.iz, self.r ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Float)) in
+			let uintHashValue = self.asArray.enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Float)) in
 				let elementHash = UInt(element.value.bitPattern) &* FloatQuaternion._hashingLargePrimes[element.index]
 				return hashValue &+ elementHash
 			}

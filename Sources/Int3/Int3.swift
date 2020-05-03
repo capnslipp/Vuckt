@@ -177,10 +177,14 @@ extension Int3
 	}
 	
 	
-	// MARK: `asTuple` Functionality
+	// MARK: `as…` Functionality
 	
 	@_transparent public var asTuple:(x:Int32,y:Int32,z:Int32) {
 		return ( self.x, self.y, self.z )
+	}
+	
+	@_transparent public var asArray:[Int32] {
+		return [ self.x, self.y, self.z ]
 	}
 	
 	
@@ -492,11 +496,11 @@ extension Int3 : Hashable
 	
 	#if swift(>=4.2)
 		public func hash(into hasher:inout Hasher) {
-			[ self.x, self.y, self.z ].forEach{ hasher.combine($0) }
+			self.asArray.forEach{ hasher.combine($0) }
 		}
 	#else
 		public var hashValue:Int {
-			let uintHashValue = [ self.x, self.y, self.z ].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Int32)) in
+			let uintHashValue = self.asArray.enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Int32)) in
 				let elementHash = UInt(bitPattern: Int(element.value)) &* Int3._hashingLargePrimes[element.index]
 				return hashValue &+ elementHash
 			}

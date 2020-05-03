@@ -271,10 +271,14 @@ extension Float3x3
 	}
 	
 	
-	// MARK: `asTuple` Functionality
+	// MARK: `as…` Functionality
 	
 	@_transparent public var asTuple:(m00:Float,m01:Float,m02:Float,m10:Float,m11:Float,m12:Float,m20:Float,m21:Float,m22:Float) {
 		return ( self.m00, self.m01, self.m02, self.m10, self.m11, self.m12, self.m20, self.m21, self.m22 )
+	}
+	
+	@_transparent public var asArray:[Float] {
+		return [ self.m00, self.m01, self.m02, self.m10, self.m11, self.m12, self.m20, self.m21, self.m22 ]
 	}
 	
 	
@@ -580,15 +584,11 @@ extension Float3x3 : Hashable
 	
 	#if swift(>=4.2)
 		public func hash(into hasher:inout Hasher) {
-			[
-				self.m00, self.m01, self.m02, self.m10, self.m11, self.m12, self.m20, self.m21, self.m22
-			].forEach{ hasher.combine($0) }
+			self.asArray.forEach{ hasher.combine($0) }
 		}
 	#else
 		public var hashValue:Int {
-			let uintHashValue = [
-				self.m00, self.m01, self.m02, self.m10, self.m11, self.m12, self.m20, self.m21, self.m22
-			].enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Float)) in
+			let uintHashValue = self.asArray.enumerated().reduce(UInt(0)){ (hashValue, element:(index:Int,value:Float)) in
 				let elementHash = UInt(element.value.bitPattern) &* Float3x3._hashingLargePrimes[element.index]
 				return hashValue &+ elementHash
 			}
