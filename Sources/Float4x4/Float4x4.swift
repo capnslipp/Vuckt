@@ -284,8 +284,9 @@ extension Float4x4
 	
 	// MARK: `asTuple` Functionality
 	
-	@_transparent public var asTuple:(m00:Float,m01:Float,m02:Float,m10:Float,m11:Float,m12:Float,m20:Float,m21:Float,m22:Float) {
-		return ( self.m00, self.m01, self.m02, self.m10, self.m11, self.m12, self.m20, self.m21, self.m22 )
+	@_transparent public var asTuple:(m00:Float,m01:Float,m02:Float,m03:Float,m10:Float,m11:Float,m12:Float,m13:Float,m20:Float,m21:Float,m22:Float,m23:Float,m30:Float,m31:Float,m32:Float,m33:Float) {
+		return ( self.m00, self.m01, self.m02, self.m03, self.m10, self.m11, self.m12, self.m13, self.m20, self.m21, self.m22, self.m23, self.m30, self.m31, self.m32, self.m33 )
+	}
 	}
 	
 	
