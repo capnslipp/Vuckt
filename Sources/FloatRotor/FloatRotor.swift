@@ -14,8 +14,8 @@ extension FloatRotor
 	// MARK: `init`s
 	
 	/// Initialize a vector with the specified elements.
-	public init(_ b01:Float, _ b02:Float, _ b12:Float, _ s:Float) {
-		self.init(b01: b01, b02: b02, b12: b12, s: s)
+	public init(_ bYZ:Float, _ bZX:Float, _ bXY:Float, _ s:Float) {
+		self.init(bYZ: bYZ, bZX: bZX, bXY: bXY, s: s)
 	}
 	
 	/// Initialize to a SIMD vector.
@@ -32,11 +32,11 @@ extension FloatRotor
 	}
 	
 	/// Initialize using the given 4-element tuple.
-	public init(tuple:(b01:Float,b02:Float,b12:Float,s:Float)) {
-		self.init(tuple.b01, tuple.b02, tuple.b12, tuple.s)
+	public init(tuple:(bYZ:Float,bZX:Float,bXY:Float,s:Float)) {
+		self.init(tuple.bYZ, tuple.bZX, tuple.bXY, tuple.s)
 	}
 	
-	/// Initialize using an `Float3` as the `b01`, `b02`, `b12` values.
+	/// Initialize using an `Float3` as the `bXY`, `bZX`, `bYZ` values.
 	public init(b:Float3, s:Float?=nil) {
 		self.init(b[0], b[1], b[2], s ?? 1.0)
 	}
@@ -46,17 +46,17 @@ extension FloatRotor
 	
 	public static let identity = FloatRotor(0, 0, 0, 1)
 	
-	public static let rotation90AroundX = FloatRotor(0, 0, -SquareRootOfOneHalf, SquareRootOfOneHalf)
-	public static let rotation90AroundY = FloatRotor(0, SquareRootOfOneHalf, 0, SquareRootOfOneHalf)
-	public static let rotation90AroundZ = FloatRotor(-SquareRootOfOneHalf, 0, 0, SquareRootOfOneHalf)
+	public static let rotation90AroundX = FloatRotor(-SquareRootOfOneHalf, 0, 0, SquareRootOfOneHalf)
+	public static let rotation90AroundY = FloatRotor(0, -SquareRootOfOneHalf, 0, SquareRootOfOneHalf)
+	public static let rotation90AroundZ = FloatRotor(0, 0, -SquareRootOfOneHalf, SquareRootOfOneHalf)
 	
-	public static let rotation180AroundX = FloatRotor(0, 0, -1, 0)
-	public static let rotation180AroundY = FloatRotor(0, 1, 0, 0)
-	public static let rotation180AroundZ = FloatRotor(-1, 0, 0, 0)
+	public static let rotation180AroundX = FloatRotor(-1, 0, 0, 0)
+	public static let rotation180AroundY = FloatRotor(0, -1, 0, 0)
+	public static let rotation180AroundZ = FloatRotor(0, 0, -1, 0)
 	
-	public static let rotation270AroundX = FloatRotor(0, 0, -SquareRootOfOneHalf, -SquareRootOfOneHalf)
-	public static let rotation270AroundY = FloatRotor(0, SquareRootOfOneHalf, 0, -SquareRootOfOneHalf)
-	public static let rotation270AroundZ = FloatRotor(-SquareRootOfOneHalf, 0, 0, -SquareRootOfOneHalf)
+	public static let rotation270AroundX = FloatRotor(-SquareRootOfOneHalf, 0, 0, -SquareRootOfOneHalf)
+	public static let rotation270AroundY = FloatRotor(0, -SquareRootOfOneHalf, 0, -SquareRootOfOneHalf)
+	public static let rotation270AroundZ = FloatRotor(0, 0, -SquareRootOfOneHalf, -SquareRootOfOneHalf)
 	
 	
 	
@@ -66,9 +66,9 @@ extension FloatRotor
 	public subscript(index:Float) -> Float {
 		get {
 			switch index {
-				case 0: return self.b01
-				case 1: return self.b02
-				case 2: return self.b12
+				case 0: return self.bYZ
+				case 1: return self.bZX
+				case 2: return self.bXY
 				case 3: return self.s
 				
 				default: return Float.nan // TODO: Instead, do whatever simd_quatf does.
@@ -76,9 +76,9 @@ extension FloatRotor
 		}
 		set {
 			switch index {
-				case 0: self.b01 = newValue
-				case 1: self.b02 = newValue
-				case 2: self.b12 = newValue
+				case 0: self.bYZ = newValue
+				case 1: self.bZX = newValue
+				case 2: self.bXY = newValue
 				case 3: self.s = newValue
 				
 				default: break // TODO: Instead, do whatever simd_quatf does.
@@ -89,17 +89,17 @@ extension FloatRotor
 	
 	// MARK: `replace` Functionality
 	
-	public mutating func replace(b01:Float?=nil, b02:Float?=nil, b12:Float?=nil, s:Float?=nil) {
-		if let b01Value = b01 { self.b01 = b01Value }
-		if let b02Value = b02 { self.b02 = b02Value }
-		if let b12Value = b12 { self.b12 = b12Value }
+	public mutating func replace(bYZ:Float?=nil, bZX:Float?=nil, bXY:Float?=nil, s:Float?=nil) {
+		if let bYZValue = bYZ { self.bYZ = bYZValue }
+		if let bZXValue = bZX { self.bZX = bZXValue }
+		if let bXYValue = bXY { self.bXY = bXYValue }
 		if let sValue = s { self.s = sValue }
 	}
-	public func replacing(b01:Float?=nil, b02:Float?=nil, b12:Float?=nil, s:Float?=nil) -> FloatRotor {
+	public func replacing(bYZ:Float?=nil, bZX:Float?=nil, bXY:Float?=nil, s:Float?=nil) -> FloatRotor {
 		return FloatRotor(
-			b01 ?? self.b01,
-			b02 ?? self.b02,
-			b12 ?? self.b12,
+			bYZ ?? self.bYZ,
+			bZX ?? self.bZX,
+			bXY ?? self.bXY,
 			s ?? self.s
 		)
 	}
@@ -107,19 +107,19 @@ extension FloatRotor
 	
 	// MARK: `as…` Functionality
 	
-	public var asTuple:(b01:Float,b02:Float,b12:Float,s:Float) {
-		return ( self.b01, self.b02, self.b12, self.s )
+	public var asTuple:(bYZ:Float,bZX:Float,bXY:Float,s:Float) {
+		return ( self.bYZ, self.bZX, self.bXY, self.s )
 	}
 	
 	@_transparent public var asArray:[Float] {
-		return [ self.b01, self.b02, self.b12, self.s ]
+		return [ self.bYZ, self.bZX, self.bXY, self.s ]
 	}
 	
 	
 	// MARK: Matrix Conversion
 	
 	//@_transparent public init(rotation rotationMatrix:Float3x3) {
-	//	self.init(simd_quaternion(rotationMatrb01.simdValue))
+	//	self.init(simd_quaternion(rotationMatrbXY.simdValue))
 	//}
 	
 	@_transparent public var toRotationMatrix:Float3x3 {
@@ -135,7 +135,7 @@ extension FloatRotor
 	// MARK: Angle/Axis Initializer & Accessors
 	
 	public init(angle angle_radians:Float, axis:Float3) {
-		self.init(angle: angle_radians, plane: Float3(axis.z, -axis.y, axis.x))
+		self.init(angle: angle_radians, plane: axis)
 	}
 	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
 	public init(angle angleMeasurement:Measurement<UnitAngle>, axis:Float3) {
@@ -193,9 +193,9 @@ extension FloatRotor
 		let sinOfHalfAngles = __tg_sin(eulerAngles_radians.simdValue * 0.5)
 		let cosOfHalfAngles = __tg_cos(eulerAngles_radians.simdValue * 0.5)
 		
-		let xRotation = Self(0, 0, -sinOfHalfAngles.x, cosOfHalfAngles.x)
-		let yRotation = Self(0, sinOfHalfAngles.y, 0, cosOfHalfAngles.y)
-		let zRotation = Self(-sinOfHalfAngles.z, 0, 0, cosOfHalfAngles.z)
+		let xRotation = Self(-sinOfHalfAngles.x, 0, 0, cosOfHalfAngles.x)
+		let yRotation = Self(0, -sinOfHalfAngles.y, 0, cosOfHalfAngles.y)
+		let zRotation = Self(0, 0, -sinOfHalfAngles.z, cosOfHalfAngles.z)
 		let rotationsInOrder:[Self] = {
 			switch order {
 				case .xyz: return [ xRotation, yRotation, zRotation ]
@@ -258,7 +258,7 @@ extension FloatRotor
 	}
 	
 	public var bivectorPartValue:Float3 {
-		get { return Float3(self.b01, self.b02, self.b12) }
+		get { return Float3(self.bYZ, self.bZX, self.bXY) }
 		set { self = FloatRotor(b: newValue, s: self.scalarPartValue) }
 	}
 	
@@ -274,7 +274,7 @@ extension FloatRotor
 extension FloatRotor : CustomStringConvertible
 {
 	public var description:String {
-		return "(\(self.b01), \(self.b02), \(self.b12), \(self.s))"
+		return "(\(self.bYZ), \(self.bZX), \(self.bXY), \(self.s))"
 	}
 }
 
@@ -320,21 +320,14 @@ extension FloatRotor // Rotor Math Operations
 	
 	
 	@_transparent public static func * (r:FloatRotor, vector:Float3) -> Float3 { return r.rotate(vector) }
-	@_transparent public func rotate(_ vector:Float3) -> Float3 {
-		let q = Float3(
-			(self.s * vector.x) + (vector.y * self.b01) + (vector.z * self.b02),
-			(self.s * vector.y) - (vector.x * self.b01) + (vector.z * self.b12),
-			(self.s * vector.z) - (vector.x * self.b02) - (vector.y * self.b12)
-		)
-		
-		let trivector = -(vector.x * self.b12) + (vector.y * self.b02) - (vector.z * self.b01)
-		
+	public func rotate(_ vector:Float3) -> Float3 {
+		let bivector = self.bivectorPartValue
+		// q = P x (where P is `self`)
+		let q:Float3 = (self.s * vector) + wedgeProductOf(vector, bivector)
+		let trivector:Float = -dotProductOf(vector, bivector)
 		// r = q P*
-		return Float3(
-			x: (self.s * q.x) + (q.y * self.b01) + (q.z * self.b02) - (trivector * self.b12),
-			y: (self.s * q.y) - (q.x * self.b01) + (trivector * self.b02) + (q.z * self.b12),
-			z: (self.s * q.z) - (trivector * self.b01) - (q.x * self.b02) - (q.y * self.b12)
-		)
+		let r:Float3 = (self.s * q) + wedgeProductOf(q, bivector) - (trivector * bivector)
+		return r
 	}
 	//@_transparent public func unrotate(_ vector:Float3) -> Float3 {
 	//	return self.inversed().rotate(vector)
@@ -396,26 +389,15 @@ extension FloatRotor // Rotor Math Operations
 public func productOf(_ a:FloatRotor, _ b:FloatRotor) -> FloatRotor {
 	let aBivector = a.bivectorPartValue
 	let bBivector = b.bivectorPartValue
-	let bivector_arr:[Float3] = [
-		(aBivector * b.s),
-		(a.s * bBivector),
-		(aBivector.zxy * bBivector.yzx),
-		-(aBivector.yzx * bBivector.zxy)
-	]
-	let bivector = bivector_arr[0] + bivector_arr[1] + bivector_arr[2] + bivector_arr[3]
 	return FloatRotor(
-		b: bivector,
-		s: (a.s * b.s) - (a.b01 * b.b01) - (a.b02 * b.b02) - (a.b12 * b.b12)
+		b: (aBivector * b.s) + (a.s * bBivector) + wedgeProductOf(bBivector, aBivector),
+		s: (a.s * b.s) - dotProductOf(aBivector, bBivector)
 	)
 }
 
+/// Geometric product (for reference), produces twice the angle, negative direction.
 public func geometricProductOf(_ a:Float3, _ b:Float3) -> FloatRotor {
-	return FloatRotor(
-		b01: (a.x * b.y) - (a.y * b.x), // wedge product
-		b02: (a.x * b.z) - (a.z * b.x),
-		b12: (a.y * b.z) - (a.z * b.y),
-		s: (a.x * b.x) + (a.y * b.y) + (a.z * b.z) // dot product
-	)
+	return FloatRotor(b: wedgeProductOf(a, b), s: dotProductOf(a, b))
 }
 
 

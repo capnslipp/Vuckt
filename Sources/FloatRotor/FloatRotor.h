@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Struct Definition
 
 struct FloatRotor {
-	float b01, b02, b12, s;
+	float bYZ, bZX, bXY, s;
 } __attribute__((aligned(__alignof__(simd_float4))));
 typedef struct FloatRotor FloatRotor;
 

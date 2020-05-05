@@ -8,11 +8,11 @@
 
 #pragma mark Struct↔SIMD Data Size/Alignment Sanity Checks
 
-static_assert(sizeof_member(FloatRotor, b01) == sizeof(simd_float1),
+static_assert(sizeof_member(FloatRotor, bYZ) == sizeof(simd_float1),
 	"FloatRotor's first member's size does not match simd_float1's on this platform.");
 static_assert(sizeof(FloatRotor) == sizeof(simd_float4),
 	"FloatRotor's size does not match simd_float4's on this platform.");
-static_assert(sizeof_member(FloatRotor, b01) == sizeof_member(simd_float4, x),
+static_assert(sizeof_member(FloatRotor, bYZ) == sizeof_member(simd_float4, x),
 	"FloatRotor's first member's size does not match simd_float4's first member's on this platform.");
 static_assert(alignof(FloatRotor) == alignof(simd_float4),
 	"FloatRotor's alignment requirements does not match simd_float4's on this platform.");
