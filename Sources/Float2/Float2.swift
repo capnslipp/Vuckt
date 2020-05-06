@@ -176,6 +176,18 @@ extension Float2
 	}
 	
 	
+	// MARK: 2-component (`Float2`) Accessors
+	
+	@_transparent public var xy:Float2 {
+		get { return self }
+		set { self = newValue }
+	}
+	@_transparent public var yx:Float2 {
+		get { return Float2(y, x) }
+		set { ( y, x ) = newValue.asTuple }
+	}
+	
+	
 	// MARK: `simdValue` Functionality
 	
 	@_transparent public var simdValue:simd_float2 {

@@ -172,6 +172,18 @@ extension Int2
 	}
 	
 	
+	// MARK: 2-component (`Int2`) Accessors
+	
+	@_transparent public var xy:Int2 {
+		get { return self }
+		set { self = newValue }
+	}
+	@_transparent public var yx:Int2 {
+		get { return Int2(y, x) }
+		set { ( y, x ) = newValue.asTuple }
+	}
+	
+	
 	// MARK: `simdValue` Functionality
 	
 	@_transparent public var simdValue:simd_int2 {

@@ -240,48 +240,252 @@ extension Float4
 	// MARK: 2-component (`Float2`) Accessors
 	
 	@_transparent public var xy:Float2 {
-		get { return Float2(xy: self) }
-		set { ( self.x, self.y ) = ( newValue[0], newValue[1] ) }
+		get { return Float2(x, y) }
+		set { ( x, y ) = newValue.asTuple }
 	}
 	@_transparent public var xz:Float2 {
-		get { return Float2(xz: self) }
-		set { ( self.x, self.z ) = ( newValue[0], newValue[1] ) }
+		get { return Float2(x, z) }
+		set { ( x, z ) = newValue.asTuple }
 	}
 	@_transparent public var xw:Float2 {
-		get { return Float2(xw: self) }
-		set { ( self.x, self.w ) = ( newValue[0], newValue[1] ) }
+		get { return Float2(x, w) }
+		set { ( x, w ) = newValue.asTuple }
+	}
+	@_transparent public var yx:Float2 {
+		get { return Float2(y, x) }
+		set { ( y, x ) = newValue.asTuple }
 	}
 	@_transparent public var yz:Float2 {
-		get { return Float2(yz: self) }
-		set { ( self.y, self.z ) = ( newValue[0], newValue[1] ) }
+		get { return Float2(y, z) }
+		set { ( y, z ) = newValue.asTuple }
 	}
 	@_transparent public var yw:Float2 {
-		get { return Float2(yw: self) }
-		set { ( self.y, self.w ) = ( newValue[0], newValue[1] ) }
+		get { return Float2(y, w) }
+		set { ( y, w ) = newValue.asTuple }
+	}
+	@_transparent public var zx:Float2 {
+		get { return Float2(z, x) }
+		set { ( z, x ) = newValue.asTuple }
+	}
+	@_transparent public var zy:Float2 {
+		get { return Float2(z, y) }
+		set { ( z, y ) = newValue.asTuple }
 	}
 	@_transparent public var zw:Float2 {
-		get { return Float2(zw: self) }
-		set { ( self.z, self.w ) = ( newValue[0], newValue[1] ) }
+		get { return Float2(z, w) }
+		set { ( z, w ) = newValue.asTuple }
+	}
+	@_transparent public var wx:Float2 {
+		get { return Float2(w, x) }
+		set { ( w, x ) = newValue.asTuple }
+	}
+	@_transparent public var wy:Float2 {
+		get { return Float2(w, y) }
+		set { ( w, y ) = newValue.asTuple }
+	}
+	@_transparent public var wz:Float2 {
+		get { return Float2(w, z) }
+		set { ( w, z ) = newValue.asTuple }
 	}
 	
 	
 	// MARK: 3-component (`Float3`) Accessors
 	
 	@_transparent public var xyz:Float3 {
-		get { return Float3(xyz: self) }
-		set { ( self.x, self.y, self.z ) = ( newValue[0], newValue[1], newValue[2] ) }
+		get { return Float3(x, y, z) }
+		set { ( x, y, z ) = newValue.asTuple }
 	}
 	@_transparent public var xyw:Float3 {
-		get { return Float3(xyw: self) }
-		set { ( self.x, self.y, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
+		get { return Float3(x, y, w) }
+		set { ( x, y, w ) = newValue.asTuple }
+	}
+	@_transparent public var xzy:Float3 {
+		get { return Float3(x, z, y) }
+		set { ( x, z, y ) = newValue.asTuple }
 	}
 	@_transparent public var xzw:Float3 {
-		get { return Float3(xzw: self) }
-		set { ( self.x, self.z, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
+		get { return Float3(x, z, w) }
+		set { ( x, z, w ) = newValue.asTuple }
+	}
+	@_transparent public var xwy:Float3 {
+		get { return Float3(x, w, y) }
+		set { ( x, w, y ) = newValue.asTuple }
+	}
+	@_transparent public var xwz:Float3 {
+		get { return Float3(x, w, z) }
+		set { ( x, w, z ) = newValue.asTuple }
+	}
+	@_transparent public var yxz:Float3 {
+		get { return Float3(y, x, z) }
+		set { ( y, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var yxw:Float3 {
+		get { return Float3(y, x, w) }
+		set { ( y, x, w ) = newValue.asTuple }
+	}
+	@_transparent public var yzx:Float3 {
+		get { return Float3(y, z, x) }
+		set { ( y, z, x ) = newValue.asTuple }
 	}
 	@_transparent public var yzw:Float3 {
-		get { return Float3(yzw: self) }
-		set { ( self.y, self.z, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
+		get { return Float3(y, z, w) }
+		set { ( y, z, w ) = newValue.asTuple }
+	}
+	@_transparent public var ywx:Float3 {
+		get { return Float3(y, w, x) }
+		set { ( y, w, x ) = newValue.asTuple }
+	}
+	@_transparent public var ywz:Float3 {
+		get { return Float3(y, w, z) }
+		set { ( y, w, z ) = newValue.asTuple }
+	}
+	@_transparent public var zxy:Float3 {
+		get { return Float3(z, x, y) }
+		set { ( z, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var zxw:Float3 {
+		get { return Float3(z, x, w) }
+		set { ( z, x, w ) = newValue.asTuple }
+	}
+	@_transparent public var zyx:Float3 {
+		get { return Float3(z, y, x) }
+		set { ( z, y, x ) = newValue.asTuple }
+	}
+	@_transparent public var zyw:Float3 {
+		get { return Float3(z, y, w) }
+		set { ( z, y, w ) = newValue.asTuple }
+	}
+	@_transparent public var zwx:Float3 {
+		get { return Float3(z, w, x) }
+		set { ( z, w, x ) = newValue.asTuple }
+	}
+	@_transparent public var zwy:Float3 {
+		get { return Float3(z, w, y) }
+		set { ( z, w, y ) = newValue.asTuple }
+	}
+	@_transparent public var wxy:Float3 {
+		get { return Float3(w, x, y) }
+		set { ( w, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var wxz:Float3 {
+		get { return Float3(w, x, z) }
+		set { ( w, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var wyx:Float3 {
+		get { return Float3(w, y, x) }
+		set { ( w, y, x ) = newValue.asTuple }
+	}
+	@_transparent public var wyz:Float3 {
+		get { return Float3(w, y, z) }
+		set { ( w, y, z ) = newValue.asTuple }
+	}
+	@_transparent public var wzx:Float3 {
+		get { return Float3(w, z, x) }
+		set { ( w, z, x ) = newValue.asTuple }
+	}
+	@_transparent public var wzy:Float3 {
+		get { return Float3(w, z, y) }
+		set { ( w, z, y ) = newValue.asTuple }
+	}
+	
+	
+	// MARK: 4-component (`Float4`) Accessors
+	
+	@_transparent public var xyzw:Float4 {
+		get { return self }
+		set { self = newValue }
+	}
+	@_transparent public var xywz:Float4 {
+		get { return Float4(x, y, w, z) }
+		set { ( x, y, w, z ) = newValue.asTuple }
+	}
+	@_transparent public var xzyw:Float4 {
+		get { return Float4(x, z, y, w) }
+		set { ( x, z, y, w ) = newValue.asTuple }
+	}
+	@_transparent public var xzwy:Float4 {
+		get { return Float4(x, z, w, y) }
+		set { ( x, z, w, y ) = newValue.asTuple }
+	}
+	@_transparent public var xwyz:Float4 {
+		get { return Float4(x, w, y, z) }
+		set { ( x, w, y, z ) = newValue.asTuple }
+	}
+	@_transparent public var xwzy:Float4 {
+		get { return Float4(x, w, z, y) }
+		set { ( x, w, z, y ) = newValue.asTuple }
+	}
+	@_transparent public var yxzw:Float4 {
+		get { return Float4(y, x, z, w) }
+		set { ( y, x, z, w ) = newValue.asTuple }
+	}
+	@_transparent public var yxwz:Float4 {
+		get { return Float4(y, x, w, z) }
+		set { ( y, x, w, z ) = newValue.asTuple }
+	}
+	@_transparent public var yzxw:Float4 {
+		get { return Float4(y, z, x, w) }
+		set { ( y, z, x, w ) = newValue.asTuple }
+	}
+	@_transparent public var yzwx:Float4 {
+		get { return Float4(y, z, w, x) }
+		set { ( y, z, w, x ) = newValue.asTuple }
+	}
+	@_transparent public var ywxz:Float4 {
+		get { return Float4(y, w, x, z) }
+		set { ( y, w, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var ywzx:Float4 {
+		get { return Float4(y, w, z, x) }
+		set { ( y, w, z, x ) = newValue.asTuple }
+	}
+	@_transparent public var zxyw:Float4 {
+		get { return Float4(z, x, y, w) }
+		set { ( z, x, y, w ) = newValue.asTuple }
+	}
+	@_transparent public var zxwy:Float4 {
+		get { return Float4(z, x, w, y) }
+		set { ( z, x, w, y ) = newValue.asTuple }
+	}
+	@_transparent public var zyxw:Float4 {
+		get { return Float4(z, y, x, w) }
+		set { ( z, y, x, w ) = newValue.asTuple }
+	}
+	@_transparent public var zywx:Float4 {
+		get { return Float4(z, y, w, x) }
+		set { ( z, y, w, x ) = newValue.asTuple }
+	}
+	@_transparent public var zwxy:Float4 {
+		get { return Float4(z, w, x, y) }
+		set { ( z, w, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var zwyx:Float4 {
+		get { return Float4(z, w, y, x) }
+		set { ( z, w, y, x ) = newValue.asTuple }
+	}
+	@_transparent public var wxyz:Float4 {
+		get { return Float4(w, x, y, z) }
+		set { ( w, x, y, z ) = newValue.asTuple }
+	}
+	@_transparent public var wxzy:Float4 {
+		get { return Float4(w, x, z, y) }
+		set { ( w, x, z, y ) = newValue.asTuple }
+	}
+	@_transparent public var wyxz:Float4 {
+		get { return Float4(w, y, x, z) }
+		set { ( w, y, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var wyzx:Float4 {
+		get { return Float4(w, y, z, x) }
+		set { ( w, y, z, x ) = newValue.asTuple }
+	}
+	@_transparent public var wzxy:Float4 {
+		get { return Float4(w, z, x, y) }
+		set { ( w, z, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var wzyx:Float4 {
+		get { return Float4(w, z, y, x) }
+		set { ( w, z, y, x ) = newValue.asTuple }
 	}
 	
 	

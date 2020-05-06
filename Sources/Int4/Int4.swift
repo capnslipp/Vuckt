@@ -235,48 +235,252 @@ extension Int4
 	// MARK: 2-component (`Int2`) Accessors
 	
 	@_transparent public var xy:Int2 {
-		get { return Int2(xy: self) }
-		set { ( self.x, self.y ) = ( newValue[0], newValue[1] ) }
+		get { return Int2(x, y) }
+		set { ( x, y ) = newValue.asTuple }
 	}
 	@_transparent public var xz:Int2 {
-		get { return Int2(xz: self) }
-		set { ( self.x, self.z ) = ( newValue[0], newValue[1] ) }
+		get { return Int2(x, z) }
+		set { ( x, z ) = newValue.asTuple }
 	}
 	@_transparent public var xw:Int2 {
-		get { return Int2(xw: self) }
-		set { ( self.x, self.w ) = ( newValue[0], newValue[1] ) }
+		get { return Int2(x, w) }
+		set { ( x, w ) = newValue.asTuple }
+	}
+	@_transparent public var yx:Int2 {
+		get { return Int2(y, x) }
+		set { ( y, x ) = newValue.asTuple }
 	}
 	@_transparent public var yz:Int2 {
-		get { return Int2(yz: self) }
-		set { ( self.y, self.z ) = ( newValue[0], newValue[1] ) }
+		get { return Int2(y, z) }
+		set { ( y, z ) = newValue.asTuple }
 	}
 	@_transparent public var yw:Int2 {
-		get { return Int2(yw: self) }
-		set { ( self.y, self.w ) = ( newValue[0], newValue[1] ) }
+		get { return Int2(y, w) }
+		set { ( y, w ) = newValue.asTuple }
+	}
+	@_transparent public var zx:Int2 {
+		get { return Int2(z, x) }
+		set { ( z, x ) = newValue.asTuple }
+	}
+	@_transparent public var zy:Int2 {
+		get { return Int2(z, y) }
+		set { ( z, y ) = newValue.asTuple }
 	}
 	@_transparent public var zw:Int2 {
-		get { return Int2(zw: self) }
-		set { ( self.z, self.w ) = ( newValue[0], newValue[1] ) }
+		get { return Int2(z, w) }
+		set { ( z, w ) = newValue.asTuple }
+	}
+	@_transparent public var wx:Int2 {
+		get { return Int2(w, x) }
+		set { ( w, x ) = newValue.asTuple }
+	}
+	@_transparent public var wy:Int2 {
+		get { return Int2(w, y) }
+		set { ( w, y ) = newValue.asTuple }
+	}
+	@_transparent public var wz:Int2 {
+		get { return Int2(w, z) }
+		set { ( w, z ) = newValue.asTuple }
 	}
 	
 	
 	// MARK: 3-component (`Int3`) Accessors
 	
 	@_transparent public var xyz:Int3 {
-		get { return Int3(xyz: self) }
-		set { ( self.x, self.y, self.z ) = ( newValue[0], newValue[1], newValue[2] ) }
+		get { return Int3(x, y, z) }
+		set { ( x, y, z ) = newValue.asTuple }
 	}
 	@_transparent public var xyw:Int3 {
-		get { return Int3(xyw: self) }
-		set { ( self.x, self.y, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
+		get { return Int3(x, y, w) }
+		set { ( x, y, w ) = newValue.asTuple }
+	}
+	@_transparent public var xzy:Int3 {
+		get { return Int3(x, z, y) }
+		set { ( x, z, y ) = newValue.asTuple }
 	}
 	@_transparent public var xzw:Int3 {
-		get { return Int3(xzw: self) }
-		set { ( self.x, self.z, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
+		get { return Int3(x, z, w) }
+		set { ( x, z, w ) = newValue.asTuple }
+	}
+	@_transparent public var xwy:Int3 {
+		get { return Int3(x, w, y) }
+		set { ( x, w, y ) = newValue.asTuple }
+	}
+	@_transparent public var xwz:Int3 {
+		get { return Int3(x, w, z) }
+		set { ( x, w, z ) = newValue.asTuple }
+	}
+	@_transparent public var yxz:Int3 {
+		get { return Int3(y, x, z) }
+		set { ( y, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var yxw:Int3 {
+		get { return Int3(y, x, w) }
+		set { ( y, x, w ) = newValue.asTuple }
+	}
+	@_transparent public var yzx:Int3 {
+		get { return Int3(y, z, x) }
+		set { ( y, z, x ) = newValue.asTuple }
 	}
 	@_transparent public var yzw:Int3 {
-		get { return Int3(yzw: self) }
-		set { ( self.y, self.z, self.w ) = ( newValue[0], newValue[1], newValue[2] ) }
+		get { return Int3(y, z, w) }
+		set { ( y, z, w ) = newValue.asTuple }
+	}
+	@_transparent public var ywx:Int3 {
+		get { return Int3(y, w, x) }
+		set { ( y, w, x ) = newValue.asTuple }
+	}
+	@_transparent public var ywz:Int3 {
+		get { return Int3(y, w, z) }
+		set { ( y, w, z ) = newValue.asTuple }
+	}
+	@_transparent public var zxy:Int3 {
+		get { return Int3(z, x, y) }
+		set { ( z, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var zxw:Int3 {
+		get { return Int3(z, x, w) }
+		set { ( z, x, w ) = newValue.asTuple }
+	}
+	@_transparent public var zyx:Int3 {
+		get { return Int3(z, y, x) }
+		set { ( z, y, x ) = newValue.asTuple }
+	}
+	@_transparent public var zyw:Int3 {
+		get { return Int3(z, y, w) }
+		set { ( z, y, w ) = newValue.asTuple }
+	}
+	@_transparent public var zwx:Int3 {
+		get { return Int3(z, w, x) }
+		set { ( z, w, x ) = newValue.asTuple }
+	}
+	@_transparent public var zwy:Int3 {
+		get { return Int3(z, w, y) }
+		set { ( z, w, y ) = newValue.asTuple }
+	}
+	@_transparent public var wxy:Int3 {
+		get { return Int3(w, x, y) }
+		set { ( w, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var wxz:Int3 {
+		get { return Int3(w, x, z) }
+		set { ( w, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var wyx:Int3 {
+		get { return Int3(w, y, x) }
+		set { ( w, y, x ) = newValue.asTuple }
+	}
+	@_transparent public var wyz:Int3 {
+		get { return Int3(w, y, z) }
+		set { ( w, y, z ) = newValue.asTuple }
+	}
+	@_transparent public var wzx:Int3 {
+		get { return Int3(w, z, x) }
+		set { ( w, z, x ) = newValue.asTuple }
+	}
+	@_transparent public var wzy:Int3 {
+		get { return Int3(w, z, y) }
+		set { ( w, z, y ) = newValue.asTuple }
+	}
+	
+	
+	// MARK: 4-component (`Int4`) Accessors
+	
+	@_transparent public var xyzw:Int4 {
+		get { return self }
+		set { self = newValue }
+	}
+	@_transparent public var xywz:Int4 {
+		get { return Int4(x, y, w, z) }
+		set { ( x, y, w, z ) = newValue.asTuple }
+	}
+	@_transparent public var xzyw:Int4 {
+		get { return Int4(x, z, y, w) }
+		set { ( x, z, y, w ) = newValue.asTuple }
+	}
+	@_transparent public var xzwy:Int4 {
+		get { return Int4(x, z, w, y) }
+		set { ( x, z, w, y ) = newValue.asTuple }
+	}
+	@_transparent public var xwyz:Int4 {
+		get { return Int4(x, w, y, z) }
+		set { ( x, w, y, z ) = newValue.asTuple }
+	}
+	@_transparent public var xwzy:Int4 {
+		get { return Int4(x, w, z, y) }
+		set { ( x, w, z, y ) = newValue.asTuple }
+	}
+	@_transparent public var yxzw:Int4 {
+		get { return Int4(y, x, z, w) }
+		set { ( y, x, z, w ) = newValue.asTuple }
+	}
+	@_transparent public var yxwz:Int4 {
+		get { return Int4(y, x, w, z) }
+		set { ( y, x, w, z ) = newValue.asTuple }
+	}
+	@_transparent public var yzxw:Int4 {
+		get { return Int4(y, z, x, w) }
+		set { ( y, z, x, w ) = newValue.asTuple }
+	}
+	@_transparent public var yzwx:Int4 {
+		get { return Int4(y, z, w, x) }
+		set { ( y, z, w, x ) = newValue.asTuple }
+	}
+	@_transparent public var ywxz:Int4 {
+		get { return Int4(y, w, x, z) }
+		set { ( y, w, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var ywzx:Int4 {
+		get { return Int4(y, w, z, x) }
+		set { ( y, w, z, x ) = newValue.asTuple }
+	}
+	@_transparent public var zxyw:Int4 {
+		get { return Int4(z, x, y, w) }
+		set { ( z, x, y, w ) = newValue.asTuple }
+	}
+	@_transparent public var zxwy:Int4 {
+		get { return Int4(z, x, w, y) }
+		set { ( z, x, w, y ) = newValue.asTuple }
+	}
+	@_transparent public var zyxw:Int4 {
+		get { return Int4(z, y, x, w) }
+		set { ( z, y, x, w ) = newValue.asTuple }
+	}
+	@_transparent public var zywx:Int4 {
+		get { return Int4(z, y, w, x) }
+		set { ( z, y, w, x ) = newValue.asTuple }
+	}
+	@_transparent public var zwxy:Int4 {
+		get { return Int4(z, w, x, y) }
+		set { ( z, w, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var zwyx:Int4 {
+		get { return Int4(z, w, y, x) }
+		set { ( z, w, y, x ) = newValue.asTuple }
+	}
+	@_transparent public var wxyz:Int4 {
+		get { return Int4(w, x, y, z) }
+		set { ( w, x, y, z ) = newValue.asTuple }
+	}
+	@_transparent public var wxzy:Int4 {
+		get { return Int4(w, x, z, y) }
+		set { ( w, x, z, y ) = newValue.asTuple }
+	}
+	@_transparent public var wyxz:Int4 {
+		get { return Int4(w, y, x, z) }
+		set { ( w, y, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var wyzx:Int4 {
+		get { return Int4(w, y, z, x) }
+		set { ( w, y, z, x ) = newValue.asTuple }
+	}
+	@_transparent public var wzxy:Int4 {
+		get { return Int4(w, z, x, y) }
+		set { ( w, z, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var wzyx:Int4 {
+		get { return Int4(w, z, y, x) }
+		set { ( w, z, y, x ) = newValue.asTuple }
 	}
 	
 	

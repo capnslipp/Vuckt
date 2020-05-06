@@ -192,15 +192,55 @@ extension Int3
 	
 	@_transparent public var xy:Int2 {
 		get { return Int2(xy: self) }
-		set { ( self.x, self.y ) = ( newValue[0], newValue[1] ) }
+		set { ( x, y ) = newValue.asTuple }
 	}
 	@_transparent public var xz:Int2 {
 		get { return Int2(xz: self) }
-		set { ( self.x, self.z ) = ( newValue[0], newValue[1] ) }
+		set { ( x, z ) = newValue.asTuple }
+	}
+	@_transparent public var yx:Int2 {
+		get { return Int2(y, x) }
+		set { ( y, x ) = newValue.asTuple }
 	}
 	@_transparent public var yz:Int2 {
 		get { return Int2(yz: self) }
-		set { ( self.y, self.z ) = ( newValue[0], newValue[1] ) }
+		set { ( y, z ) = newValue.asTuple }
+	}
+	@_transparent public var zx:Int2 {
+		get { return Int2(z, x) }
+		set { ( z, x ) = newValue.asTuple }
+	}
+	@_transparent public var zy:Int2 {
+		get { return Int2(z, y) }
+		set { ( z, y ) = newValue.asTuple }
+	}
+	
+	
+	// MARK: 3-component (`Int3`) Accessors
+	
+	@_transparent public var xyz:Int3 {
+		get { return self }
+		set { self = newValue }
+	}
+	@_transparent public var xzy:Int3 {
+		get { return Int3(x, z, y) }
+		set { ( x, z, y ) = newValue.asTuple }
+	}
+	@_transparent public var yxz:Int3 {
+		get { return Int3(y, x, z) }
+		set { ( y, x, z ) = newValue.asTuple }
+	}
+	@_transparent public var yzx:Int3 {
+		get { return Int3(y, z, x) }
+		set { ( y, z, x ) = newValue.asTuple }
+	}
+	@_transparent public var zxy:Int3 {
+		get { return Int3(z, x, y) }
+		set { ( z, x, y ) = newValue.asTuple }
+	}
+	@_transparent public var zyx:Int3 {
+		get { return Int3(z, y, x) }
+		set { ( z, y, x ) = newValue.asTuple }
 	}
 	
 	
