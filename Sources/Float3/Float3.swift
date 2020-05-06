@@ -197,15 +197,55 @@ extension Float3
 	
 	@_transparent public var xy:Float2 {
 		get { return Float2(xy: self) }
-		set { ( self.x, self.y ) = ( newValue[0], newValue[1] ) }
+		set { ( self.x, self.y ) = newValue.asTuple }
 	}
 	@_transparent public var xz:Float2 {
 		get { return Float2(xz: self) }
-		set { ( self.x, self.z ) = ( newValue[0], newValue[1] ) }
+		set { ( self.x, self.z ) = newValue.asTuple }
+	}
+	@_transparent public var yx:Float2 {
+		get { return Float2(self.y, self.x) }
+		set { ( self.y, self.x ) = newValue.asTuple }
 	}
 	@_transparent public var yz:Float2 {
 		get { return Float2(yz: self) }
-		set { ( self.y, self.z ) = ( newValue[0], newValue[1] ) }
+		set { ( self.y, self.z ) = newValue.asTuple }
+	}
+	@_transparent public var zx:Float2 {
+		get { return Float2(self.z, self.x) }
+		set { ( self.z, self.x ) = newValue.asTuple }
+	}
+	@_transparent public var zy:Float2 {
+		get { return Float2(self.z, self.y) }
+		set { ( self.z, self.y ) = newValue.asTuple }
+	}
+	
+	
+	// MARK: 3-component (`Float3`) Accessors
+	
+	@_transparent public var xyz:Float3 {
+		get { return self }
+		set { self = newValue }
+	}
+	@_transparent public var xzy:Float3 {
+		get { return Float3(self.x, self.z, self.y) }
+		set { ( self.x, self.z, self.y ) = newValue.asTuple }
+	}
+	@_transparent public var yxz:Float3 {
+		get { return Float3(self.y, self.x, self.z) }
+		set { ( self.y, self.x, self.z ) = newValue.asTuple }
+	}
+	@_transparent public var yzx:Float3 {
+		get { return Float3(self.y, self.z, self.x) }
+		set { ( self.y, self.z, self.x ) = newValue.asTuple }
+	}
+	@_transparent public var zxy:Float3 {
+		get { return Float3(self.z, self.x, self.y) }
+		set { ( self.z, self.x, self.y ) = newValue.asTuple }
+	}
+	@_transparent public var zyx:Float3 {
+		get { return Float3(self.z, self.y, self.x) }
+		set { ( self.z, self.y, self.x ) = newValue.asTuple }
 	}
 	
 	
