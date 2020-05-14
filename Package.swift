@@ -33,6 +33,7 @@ let package = Package(
 			swiftSettings: [ .define("NO_OBJC_BRIDGE") ]
 		),
 		.testTarget(name: "VucktTests", dependencies: ["Vuckt"], path: "Tests/",
+			sources: [ "VucktTests.swift", "VucktPerformanceTests.swift" ],
 			swiftSettings: [ .define("NO_OBJC_BRIDGE") ]
 		),
 	],

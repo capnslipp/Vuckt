@@ -15,6 +15,8 @@
 		FA32AEAC20BD1C4C008A2111 /* Int2.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CD41EAD6053005C5402 /* Int2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA32AEAF20BD1C4C008A2111 /* Int3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.mm */; };
 		FA32AEB020BD1C4C008A2111 /* Int2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.mm */; };
+		FA38107F246CF763005FAC15 /* VucktCPerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA38107E246CF763005FAC15 /* VucktCPerformanceTests.m */; };
+		FA381080246CF763005FAC15 /* VucktCPerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA38107E246CF763005FAC15 /* VucktCPerformanceTests.m */; };
 		FA3E5E4921B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4B21B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4721B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4C21B7C3870073FA6D /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0620CFBC2200261EE4 /* Int2.swift */; };
@@ -35,6 +37,8 @@
 		FA3E5E8621B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8221B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift */; };
 		FA3E5E8821B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8321B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift */; };
 		FA3E5E8A21B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8421B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift */; };
+		FA499D22295C880D007FD580 /* VucktPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA499D21295C8804007FD580 /* VucktPerformanceTests.swift */; };
+		FA499D23295C880D007FD580 /* VucktPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA499D21295C8804007FD580 /* VucktPerformanceTests.swift */; };
 		FA4F6C4224370683009A8579 /* Float3x3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA4F6C4124370683009A8579 /* Float3x3.mm */; };
 		FA4F6C4424371B29009A8579 /* Float3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F6C4324371B29009A8579 /* Float3x3.swift */; };
 		FA4F6C4824371D0A009A8579 /* Float3x3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F6C4724371D0A009A8579 /* Float3x3+_ObjectiveCBridgeable.swift */; };
@@ -97,6 +101,7 @@
 		FA35362823F50789000B5EC9 /* Float2_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float2_NoObjCBridge.swift; sourceTree = "<group>"; };
 		FA35362923F50792000B5EC9 /* Float3_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float3_NoObjCBridge.swift; sourceTree = "<group>"; };
 		FA35362A23F5079A000B5EC9 /* Float4_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float4_NoObjCBridge.swift; sourceTree = "<group>"; };
+		FA38107E246CF763005FAC15 /* VucktCPerformanceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VucktCPerformanceTests.m; sourceTree = "<group>"; };
 		FA3E5E4421B7C2170073FA6D /* Int2+_ObjectiveCBridgeable.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Int2+_ObjectiveCBridgeable.swift.gyb"; sourceTree = "<group>"; };
 		FA3E5E4521B7C2980073FA6D /* Int3+_ObjectiveCBridgeable.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Int3+_ObjectiveCBridgeable.swift.gyb"; sourceTree = "<group>"; };
 		FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int3+_ObjectiveCBridgeable.swift"; path = "Int3/Int3+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		FA3E5E8221B8A0180073FA6D /* Float4+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float4+_ObjectiveCBridgeable.swift"; path = "Float4/Float4+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
 		FA3E5E8321B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float2+_ObjectiveCBridgeable.swift"; path = "Float2/Float2+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
 		FA3E5E8421B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float3+_ObjectiveCBridgeable.swift"; path = "Float3/Float3+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
+		FA499D21295C8804007FD580 /* VucktPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VucktPerformanceTests.swift; sourceTree = "<group>"; };
 		FA4F6C402437066F009A8579 /* Float3x3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Float3x3.h; sourceTree = "<group>"; };
 		FA4F6C4124370683009A8579 /* Float3x3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Float3x3.mm; sourceTree = "<group>"; };
 		FA4F6C4324371B29009A8579 /* Float3x3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float3x3.swift; sourceTree = "<group>"; };
@@ -308,8 +314,10 @@
 		FAED6C2C21B32E370083A2B5 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				FAED6C2D21B32E370083A2B5 /* VucktTests.swift */,
 				FAED6C2F21B32E370083A2B5 /* Info.plist */,
+				FAED6C2D21B32E370083A2B5 /* VucktTests.swift */,
+				FA499D21295C8804007FD580 /* VucktPerformanceTests.swift */,
+				FA38107E246CF763005FAC15 /* VucktCPerformanceTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -446,11 +454,13 @@
 					};
 					FAED6C2A21B32E370083A2B5 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
 					FAFB401621B34F2700D4A8B5 = {
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = UQQE2H6P34;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -533,6 +543,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAED6C2E21B32E370083A2B5 /* VucktTests.swift in Sources */,
+				FA38107F246CF763005FAC15 /* VucktCPerformanceTests.m in Sources */,
+				FA499D22295C880D007FD580 /* VucktPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +553,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFB401F21B34F4A00D4A8B5 /* VucktTests.swift in Sources */,
+				FA381080246CF763005FAC15 /* VucktCPerformanceTests.m in Sources */,
+				FA499D23295C880D007FD580 /* VucktPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +665,8 @@
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = VucktTests;
 			};
 			name = Debug;
@@ -687,6 +703,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = VucktTests;
 			};
 			name = Release;
@@ -727,6 +744,8 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TARGET_NAME = VucktTests;
 			};
@@ -764,6 +783,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TARGET_NAME = VucktTests;
 				VALIDATE_PRODUCT = YES;
