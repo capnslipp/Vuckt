@@ -79,7 +79,7 @@ extension Int4
 	
 	/// Initialize to a vector with elements taken from `array`.
 	///
-	/// - Precondition: `array` must have exactly three elements.
+	/// - Precondition: `array` must have exactly 4 elements.
 	@_transparent public init(array:[Int32]) {
 		precondition(array.count == 4)
 		self.init(array[0], array[1], array[2], array[3])
