@@ -63,7 +63,7 @@ public struct FloatQuaternion
 
 
 
-#if !TARGET_OS_WATCH
+#if !os(watchOS)
 	// MARK: GLKit Conversion
 
 	/// Converts a `FloatQuaternion` struct to `GLKQuaternion` struct using passing-individual-members initialization.
@@ -74,11 +74,11 @@ public struct FloatQuaternion
 	@_transparent public func FloatQuaternionFromGLK(_ glkValue:GLKQuaternion) -> FloatQuaternion {
 		return FloatQuaternion(ix: glkValue.x, iy: glkValue.y, iz: glkValue.z, r: glkValue.w)
 	}
-#endif // !TARGET_OS_WATCH
+#endif // !watchOS
 
 
 
-#if !TARGET_OS_TV
+#if !os(tvOS)
 	// MARK: CoreMotion Conversion
 
 	/// Converts a `FloatQuaternion` struct to `CMQuaternion` struct using passing-individual-members initialization.
@@ -89,11 +89,11 @@ public struct FloatQuaternion
 	@_transparent public func FloatQuaternionFromCM(_ cmValue:CMQuaternion) -> FloatQuaternion {
 		return FloatQuaternion(ix: Float(cmValue.x), iy: Float(cmValue.y), iz: Float(cmValue.z), r: Float(cmValue.w))
 	}
-#endif // !TARGET_OS_TV
+#endif // !tvOS
 
 
 
-#if !TARGET_OS_WATCH
+#if !os(watchOS)
 	// MARK: GameController Conversion
 
 	/// Converts a `FloatQuaternion` struct to `GCQuaternion` struct using passing-individual-members initialization.
@@ -104,4 +104,4 @@ public struct FloatQuaternion
 	@_transparent public func FloatQuaternionFromGC(_ gcValue:GCQuaternion) -> FloatQuaternion {
 		return FloatQuaternion(ix: Float(gcValue.x), iy: Float(gcValue.y), iz: Float(gcValue.z), r: Float(gcValue.w))
 	}
-#endif // !TARGET_OS_WATCH
+#endif // !watchOS

@@ -211,7 +211,7 @@ public struct Float4x4
 
 
 
-#if !TARGET_OS_WATCH
+#if !os(watchOS)
 	// MARK: CATransform3D Conversion
 
 	/// Converts a `Float4x4` struct to `CATransform3D` struct using passing-individual-members initialization.
@@ -232,7 +232,7 @@ public struct Float4x4
 			Float(caValue.m41), Float(caValue.m42), Float(caValue.m43), Float(caValue.m44)
 		)
 	}
-#endif // !TARGET_OS_WATCH
+#endif // !watchOS
 
 
 
