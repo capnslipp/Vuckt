@@ -3,7 +3,9 @@
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
 import simd.vector_types
-import CoreImage.CIVector
+#if !os(watchOS)
+	import CoreImage.CIVector
+#endif
 import CoreGraphics.CGGeometry
 
 
@@ -95,18 +97,19 @@ public struct Float2
 
 
 
+#if !os(watchOS)
+	// MARK: CoreImage Conversion
 
-// MARK: CoreImage Conversion
-
-/// Converts an `Float2` struct to `CIVector` class using passing-individual-members initialization.
-@_transparent public func Float2ToCI(_ structValue:Float2) -> CIVector {
-	return CIVector(x: CGFloat(structValue.x), y: CGFloat(structValue.y))
-}
-/// Converts an `Float2` struct from `CIVector` class using passing-individual-members initialization.
-@_transparent public func Float2FromCI(_ ciVector:CIVector) -> Float2 {
-	assert(ciVector.count == 2)
-	return Float2(x: Float(ciVector.x), y: Float(ciVector.y))
-}
+	/// Converts an `Float2` struct to `CIVector` class using passing-individual-members initialization.
+	@_transparent public func Float2ToCI(_ structValue:Float2) -> CIVector {
+		return CIVector(x: CGFloat(structValue.x), y: CGFloat(structValue.y))
+	}
+	/// Converts an `Float2` struct from `CIVector` class using passing-individual-members initialization.
+	@_transparent public func Float2FromCI(_ ciVector:CIVector) -> Float2 {
+		assert(ciVector.count == 2)
+		return Float2(x: Float(ciVector.x), y: Float(ciVector.y))
+	}
+#endif // !watchOS
 
 
 

@@ -4,8 +4,10 @@
 
 import simd.vector_types
 import SceneKit.SceneKitTypes
-import GLKit.GLKVector3
-import CoreImage.CIVector
+#if !os(watchOS)
+	import GLKit.GLKVector3
+	import CoreImage.CIVector
+#endif
 
 
 
@@ -117,26 +119,30 @@ public struct Float3
 
 
 
-// MARK: GLKit Conversion
+#if !os(watchOS)
+	// MARK: GLKit Conversion
 
-/// Converts an `Float3` struct to `GLKVector3` struct using passing-individual-members initialization.
-@_transparent public func Float3ToGLK(_ structValue:Float3) -> GLKVector3 {
-	return GLKVector3Make(structValue.x, structValue.y, structValue.z)
-}
-/// Converts an `Float3` struct from `GLKVector3` struct using passing-individual-members initialization.
-@_transparent public func Float3FromGLK(_ glkValue:GLKVector3) -> Float3 {
-	return Float3(x: glkValue.x, y: glkValue.y, z: glkValue.z)
-}
+	/// Converts an `Float3` struct to `GLKVector3` struct using passing-individual-members initialization.
+	@_transparent public func Float3ToGLK(_ structValue:Float3) -> GLKVector3 {
+		return GLKVector3Make(structValue.x, structValue.y, structValue.z)
+	}
+	/// Converts an `Float3` struct from `GLKVector3` struct using passing-individual-members initialization.
+	@_transparent public func Float3FromGLK(_ glkValue:GLKVector3) -> Float3 {
+		return Float3(x: glkValue.x, y: glkValue.y, z: glkValue.z)
+	}
+#endif // !watchOS
 
 
 
-// MARK: CoreImage Conversion
+#if !os(watchOS)
+	// MARK: CoreImage Conversion
 
-/// Converts an `Float3` struct to `CIVector` class using passing-individual-members initialization.
-@_transparent public func Float3ToCI(_ structValue:Float3) -> CIVector {
-	return CIVector(x: CGFloat(structValue.x), y: CGFloat(structValue.y), z: CGFloat(structValue.z))
-}
-/// Converts an `Float3` struct from `CIVector` class using passing-individual-members initialization.
-@_transparent public func Float3FromCI(_ ciVector:CIVector) -> Float3 {
-	return Float3(x: Float(ciVector.x), y: Float(ciVector.y), z: Float(ciVector.z))
-}
+	/// Converts an `Float3` struct to `CIVector` class using passing-individual-members initialization.
+	@_transparent public func Float3ToCI(_ structValue:Float3) -> CIVector {
+		return CIVector(x: CGFloat(structValue.x), y: CGFloat(structValue.y), z: CGFloat(structValue.z))
+	}
+	/// Converts an `Float3` struct from `CIVector` class using passing-individual-members initialization.
+	@_transparent public func Float3FromCI(_ ciVector:CIVector) -> Float3 {
+		return Float3(x: Float(ciVector.x), y: Float(ciVector.y), z: Float(ciVector.z))
+	}
+#endif // !watchOS

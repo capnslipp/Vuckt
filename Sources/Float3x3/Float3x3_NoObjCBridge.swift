@@ -6,7 +6,9 @@ import Foundation.NSValue
 import Darwin.C.tgmath
 import simd
 import SceneKit.SceneKitTypes
-import GLKit.GLKMatrix3
+#if !os(watchOS)
+	import GLKit.GLKMatrix3
+#endif
 //import CoreGraphics.CGAffineTransform
 //#if os(macOS) || targetEnvironment(macCatalyst)
 //	import Foundation.NSAffineTransform

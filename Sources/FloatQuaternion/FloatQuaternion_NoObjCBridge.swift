@@ -4,9 +4,13 @@
 
 import simd.vector_types
 import SceneKit.SceneKitTypes
-import GLKit.GLKQuaternion
-import CoreMotion.CMAttitude
-import GameController.GCMotion
+#if !os(watchOS)
+	import GLKit.GLKQuaternion
+	import GameController.GCMotion
+#endif
+#if !os(tvOS)
+	import CoreMotion.CMAttitude
+#endif
 
 
 
@@ -59,39 +63,45 @@ public struct FloatQuaternion
 
 
 
-// MARK: GLKit Conversion
+#if !TARGET_OS_WATCH
+	// MARK: GLKit Conversion
 
-/// Converts a `FloatQuaternion` struct to `GLKQuaternion` struct using passing-individual-members initialization.
-@_transparent public func FloatQuaternionToGLK(_ structValue:FloatQuaternion) -> GLKQuaternion {
-	return GLKQuaternionMake(structValue.ix, structValue.iy, structValue.iz, structValue.r)
-}
-/// Converts a `FloatQuaternion` struct from `GLKQuaternion` struct using passing-individual-members initialization.
-@_transparent public func FloatQuaternionFromGLK(_ glkValue:GLKQuaternion) -> FloatQuaternion {
-	return FloatQuaternion(ix: glkValue.x, iy: glkValue.y, iz: glkValue.z, r: glkValue.w)
-}
-
-
-
-// MARK: CoreMotion Conversion
-
-/// Converts a `FloatQuaternion` struct to `CMQuaternion` struct using passing-individual-members initialization.
-@_transparent public func FloatQuaternionToCM(_ structValue:FloatQuaternion) -> CMQuaternion {
-	return CMQuaternion(x: Double(structValue.ix), y: Double(structValue.iy), z: Double(structValue.iz), w: Double(structValue.r))
-}
-/// Converts a `FloatQuaternion` struct from `CMQuaternion` struct using passing-individual-members initialization.
-@_transparent public func FloatQuaternionFromCM(_ cmValue:CMQuaternion) -> FloatQuaternion {
-	return FloatQuaternion(ix: Float(cmValue.x), iy: Float(cmValue.y), iz: Float(cmValue.z), r: Float(cmValue.w))
-}
+	/// Converts a `FloatQuaternion` struct to `GLKQuaternion` struct using passing-individual-members initialization.
+	@_transparent public func FloatQuaternionToGLK(_ structValue:FloatQuaternion) -> GLKQuaternion {
+		return GLKQuaternionMake(structValue.ix, structValue.iy, structValue.iz, structValue.r)
+	}
+	/// Converts a `FloatQuaternion` struct from `GLKQuaternion` struct using passing-individual-members initialization.
+	@_transparent public func FloatQuaternionFromGLK(_ glkValue:GLKQuaternion) -> FloatQuaternion {
+		return FloatQuaternion(ix: glkValue.x, iy: glkValue.y, iz: glkValue.z, r: glkValue.w)
+	}
+#endif // !TARGET_OS_WATCH
 
 
 
-// MARK: GameController Conversion
+#if !TARGET_OS_TV
+	// MARK: CoreMotion Conversion
 
-/// Converts a `FloatQuaternion` struct to `GCQuaternion` struct using passing-individual-members initialization.
-@_transparent public func FloatQuaternionToGC(_ structValue:FloatQuaternion) -> GCQuaternion {
-	return GCQuaternion(x: Double(structValue.ix), y: Double(structValue.iy), z: Double(structValue.iz), w: Double(structValue.r))
-}
-/// Converts a `FloatQuaternion` struct from `GCQuaternion` struct using passing-individual-members initialization.
-@_transparent public func FloatQuaternionFromGC(_ gcValue:GCQuaternion) -> FloatQuaternion {
-	return FloatQuaternion(ix: Float(gcValue.x), iy: Float(gcValue.y), iz: Float(gcValue.z), r: Float(gcValue.w))
-}
+	/// Converts a `FloatQuaternion` struct to `CMQuaternion` struct using passing-individual-members initialization.
+	@_transparent public func FloatQuaternionToCM(_ structValue:FloatQuaternion) -> CMQuaternion {
+		return CMQuaternion(x: Double(structValue.ix), y: Double(structValue.iy), z: Double(structValue.iz), w: Double(structValue.r))
+	}
+	/// Converts a `FloatQuaternion` struct from `CMQuaternion` struct using passing-individual-members initialization.
+	@_transparent public func FloatQuaternionFromCM(_ cmValue:CMQuaternion) -> FloatQuaternion {
+		return FloatQuaternion(ix: Float(cmValue.x), iy: Float(cmValue.y), iz: Float(cmValue.z), r: Float(cmValue.w))
+	}
+#endif // !TARGET_OS_TV
+
+
+
+#if !TARGET_OS_WATCH
+	// MARK: GameController Conversion
+
+	/// Converts a `FloatQuaternion` struct to `GCQuaternion` struct using passing-individual-members initialization.
+	@_transparent public func FloatQuaternionToGC(_ structValue:FloatQuaternion) -> GCQuaternion {
+		return GCQuaternion(x: Double(structValue.ix), y: Double(structValue.iy), z: Double(structValue.iz), w: Double(structValue.r))
+	}
+	/// Converts a `FloatQuaternion` struct from `GCQuaternion` struct using passing-individual-members initialization.
+	@_transparent public func FloatQuaternionFromGC(_ gcValue:GCQuaternion) -> FloatQuaternion {
+		return FloatQuaternion(ix: Float(gcValue.x), iy: Float(gcValue.y), iz: Float(gcValue.z), r: Float(gcValue.w))
+	}
+#endif // !TARGET_OS_WATCH

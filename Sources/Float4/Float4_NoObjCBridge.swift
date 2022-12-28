@@ -4,8 +4,10 @@
 
 import simd.vector_types
 import SceneKit.SceneKitTypes
-import GLKit.GLKVector4
-import CoreImage.CIVector
+#if !os(watchOS)
+	import GLKit.GLKVector4
+	import CoreImage.CIVector
+#endif
 
 
 
@@ -114,26 +116,30 @@ public struct Float4
 
 
 
-// MARK: GLKit Conversion
+#if !os(watchOS)
+	// MARK: GLKit Conversion
 
-/// Converts an `Float4` struct to `GLKVector4` struct using passing-individual-members initialization.
-@_transparent public func Float4ToGLK(_ structValue:Float4) -> GLKVector4 {
-	return GLKVector4Make(structValue.x, structValue.y, structValue.z, structValue.w)
-}
-/// Converts an `Float4` struct from `GLKVector4` struct using passing-individual-members initialization.
-@_transparent public func Float4FromGLK(_ glkValue:GLKVector4) -> Float4 {
-	return Float4(x: glkValue.x, y: glkValue.y, z: glkValue.z, w: glkValue.w)
-}
+	/// Converts an `Float4` struct to `GLKVector4` struct using passing-individual-members initialization.
+	@_transparent public func Float4ToGLK(_ structValue:Float4) -> GLKVector4 {
+		return GLKVector4Make(structValue.x, structValue.y, structValue.z, structValue.w)
+	}
+	/// Converts an `Float4` struct from `GLKVector4` struct using passing-individual-members initialization.
+	@_transparent public func Float4FromGLK(_ glkValue:GLKVector4) -> Float4 {
+		return Float4(x: glkValue.x, y: glkValue.y, z: glkValue.z, w: glkValue.w)
+	}
+#endif // !watchOS
 
 
 
-// MARK: CoreImage Conversion
+#if !os(watchOS)
+	// MARK: CoreImage Conversion
 
-/// Converts an `Float4` struct to `CIVector` class using passing-individual-members initialization.
-@_transparent public func Float4ToCI(_ structValue:Float4) -> CIVector {
-	return CIVector(x: CGFloat(structValue.x), y: CGFloat(structValue.y), z: CGFloat(structValue.z), w: CGFloat(structValue.w))
-}
-/// Converts an `Float4` struct from `CIVector` class using passing-individual-members initialization.
-@_transparent public func Float4FromCI(_ ciVector:CIVector) -> Float4 {
-	return Float4(x: Float(ciVector.x), y: Float(ciVector.y), z: Float(ciVector.z), w: Float(ciVector.w))
-}
+	/// Converts an `Float4` struct to `CIVector` class using passing-individual-members initialization.
+	@_transparent public func Float4ToCI(_ structValue:Float4) -> CIVector {
+		return CIVector(x: CGFloat(structValue.x), y: CGFloat(structValue.y), z: CGFloat(structValue.z), w: CGFloat(structValue.w))
+	}
+	/// Converts an `Float4` struct from `CIVector` class using passing-individual-members initialization.
+	@_transparent public func Float4FromCI(_ ciVector:CIVector) -> Float4 {
+		return Float4(x: Float(ciVector.x), y: Float(ciVector.y), z: Float(ciVector.z), w: Float(ciVector.w))
+	}
+#endif // !watchOS

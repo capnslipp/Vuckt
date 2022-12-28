@@ -6,12 +6,14 @@ import Foundation.NSValue
 import Darwin.C.tgmath
 import simd
 import SceneKit.SceneKitTypes
-import GLKit.GLKMatrix3
+#if !os(watchOS)
+	import GLKit.GLKMatrix4
+	import QuartzCore.CATransform3D
+#endif
 //import CoreGraphics.CGAffineTransform
 //#if os(macOS) || targetEnvironment(macCatalyst)
 //	import Foundation.NSAffineTransform
 //#endif
-//import QuartzCore.CATransform3D
 //import CoreImage.CIVector
 //import Accelerate // vImage_AffineTransform ?
 
@@ -130,7 +132,7 @@ public struct Float4x4
 #if !os(watchOS)
 	// MARK: GLKit Conversion
 	
-	/// Converts a `Float4x4` struct to `GLKMatrix3` struct using passing-individual-members initialization.
+	/// Converts a `Float4x4` struct to `GLKMatrix4` struct using passing-individual-members initialization.
 	@_transparent public func Float4x4ToGLK(_ structValue: Float4x4) -> GLKMatrix4 {
 		return GLKMatrix4Make(
 			structValue.m00, structValue.m01, structValue.m02, structValue.m03,
@@ -139,7 +141,7 @@ public struct Float4x4
 			structValue.m30, structValue.m31, structValue.m32, structValue.m33
 		)
 	}
-	/// Converts a `Float4x4` struct from `GLKMatrix3` struct using passing-individual-members initialization.
+	/// Converts a `Float4x4` struct from `GLKMatrix4` struct using passing-individual-members initialization.
 	@_transparent public func Float4x4FromGLK(_ glkValue: GLKMatrix4) -> Float4x4 {
 		return Float4x4(
 			m00: glkValue.m00, m01: glkValue.m01, m02: glkValue.m02, m03: glkValue.m03,

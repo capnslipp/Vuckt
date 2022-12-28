@@ -102,7 +102,7 @@ NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
 			structValue.m30, structValue.m31, structValue.m32, structValue.m33
 		);
 	}
-	/// Converts a `Float4x4` struct from `GLKMatrix3` struct using passing-individual-members initialization.
+	/// Converts a `Float4x4` struct from `GLKMatrix4` struct using passing-individual-members initialization.
 	NS_INLINE Float4x4 Float4x4FromGLK(GLKMatrix4 glkValue) {
 		return (Float4x4){
 			glkValue.m00, glkValue.m01, glkValue.m02, glkValue.m03,
