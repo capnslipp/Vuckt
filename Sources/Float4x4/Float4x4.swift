@@ -119,7 +119,7 @@ extension Float4x4
 	public init(rotationAngle angle_radians:Float, axis:Float3) {
 		self.init(Float3x3(rotationAngle: angle_radians, axis: axis))
 	}
-	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, watchOS 3.0, *)
 	@_transparent public init(rotationAngle angleMeasurement:Measurement<UnitAngle>, axis:Float3) {
 		self.init(Float3x3(rotationAngle: angleMeasurement, axis: axis))
 	}
@@ -127,7 +127,7 @@ extension Float4x4
 	public init(rotationEulerAngles eulerAngles_radians:Float3, order:RotationOrder = .zyx) {
 		self.init(Float3x3(rotationEulerAngles: eulerAngles_radians, order: order))
 	}
-	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, watchOS 3.0, *)
 	@_transparent public init(rotationEulerAngles eulerAnglesMeasurements:(x:Measurement<UnitAngle>,y:Measurement<UnitAngle>,z:Measurement<UnitAngle>), order:RotationOrder = .zyx) {
 		self.init(Float3x3(rotationEulerAngles: eulerAnglesMeasurements, order: order))
 	}

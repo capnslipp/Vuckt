@@ -107,7 +107,7 @@ extension Float3x3
 			Float3(0, 0, cosOfAngle) + ((1 - cosOfAngle) * axis.z * axis) + (sinOfAngle * Float3(axis.y, -axis.x, 0))
 		)
 	}
-	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, watchOS 3.0, *)
 	@_transparent public init(rotationAngle angleMeasurement:Measurement<UnitAngle>, axis:Float3) {
 		let angleMeasurement_radians = angleMeasurement.converted(to: .radians)
 		self.init(rotationAngle: Float(angleMeasurement_radians.value), axis: axis)
@@ -145,7 +145,7 @@ extension Float3x3
 		
 		self = rotationsInOrder[2] * rotationsInOrder[1] * rotationsInOrder[0]
 	}
-	@available(macOS 10.12, iOS 10.10, tvOS 10.10, *)
+	@available(macOS 10.12, iOS 10.10, tvOS 10.10, watchOS 3.0, *)
 	@_transparent public init(rotationEulerAngles eulerAnglesMeasurements:(x:Measurement<UnitAngle>,y:Measurement<UnitAngle>,z:Measurement<UnitAngle>), order:RotationOrder = .zxy) {
 		let eulerAnglesMeasurements_radians = (
 			x: eulerAnglesMeasurements.x.converted(to: .radians),
