@@ -1,6 +1,8 @@
 # Vuckt _(formerly IntN)_
 
 [![Swift Build & Test](https://github.com/capnslipp/Vuckt/actions/workflows/swift-build-test.yml/badge.svg)](https://github.com/capnslipp/Vuckt/actions/workflows/swift-build-test.yml)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fcapnslipp%2FVuckt%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/capnslipp/Vuckt)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fcapnslipp%2FVuckt%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/capnslipp/Vuckt)
 
 Vuckt is Swift library providing Obj-C-compatible integral & floating vector struct types with zero-cost SIMD vector bridging, and convenience methods to bridge to/from other vector-ish types throughout Cocoa.
 
