@@ -42,3 +42,21 @@ public enum RotationOrder : UInt {
 	case zxy = 5
 	case zyx = 6
 }
+
+
+
+// As close to https://en.wikipedia.org/wiki/List_of_mathematical_symbols as we can get:
+
+// Dot/Interior Product:
+infix operator • // U+2022 BULLET
+infix operator ⋅ // U+22C5 DOT OPERATOR
+
+// Cross Product:
+infix operator × // U+00D7 MULTIPLICATION SIGN
+infix operator ⨯ // U+2A2F VECTOR OR CROSS PRODUCT
+
+// Wedge/Exterior Product:
+infix operator ∧ // U+2227 LOGICAL AND∨
+
+// Outer/Tensor(?) Product:
+infix operator ⊗ // U+2297 CIRCLED TIMES
