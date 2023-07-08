@@ -81,7 +81,7 @@ extension Float4x4
 		)
 	}
 	
-	/// Initialize using the given 9-element tuple.
+	/// Initialize using the given 16-element tuple.
 	@_transparent public init(tuple:(m00:Float,m01:Float,m02:Float,m03:Float,m10:Float,m11:Float,m12:Float,m13:Float,m20:Float,m21:Float,m22:Float,m23:Float,m30:Float,m31:Float,m32:Float,m33:Float)) {
 		self.init(tuple.m00, tuple.m01, tuple.m02, tuple.m03, tuple.m10, tuple.m11, tuple.m12, tuple.m13, tuple.m20, tuple.m21, tuple.m22, tuple.m23, tuple.m30, tuple.m31, tuple.m32, tuple.m33)
 	}
