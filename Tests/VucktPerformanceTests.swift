@@ -94,6 +94,7 @@ class VucktPerformanceTests : XCTestCase
 		}
 	}
 	
+#if !os(watchOS)
 	func testGLKVector3Performance()
 	{
 		var testSetA:[GLKVector3] = []
@@ -125,5 +126,6 @@ class VucktPerformanceTests : XCTestCase
 			}
 		}
 	}
+#endif // !watchOS
 
 }

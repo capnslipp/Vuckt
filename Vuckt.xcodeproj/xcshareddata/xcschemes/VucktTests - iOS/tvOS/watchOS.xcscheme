@@ -18,7 +18,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FAFB401621B34F2700D4A8B5"
                BuildableName = "VucktTests.xctest"
-               BlueprintName = "VucktTests - iOS"
+               BlueprintName = "VucktTests - iOS/tvOS/watchOS"
                ReferencedContainer = "container:Vuckt.xcodeproj">
             </BuildableReference>
          </TestableReference>
