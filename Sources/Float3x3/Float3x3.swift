@@ -383,11 +383,22 @@ extension Float3x3
 extension Float3x3 : CustomStringConvertible
 {
 	public var description:String {
-		return "(\n" +
-			"\t\(self.m00), \(self.m01), \(self.m02)\n" +
-			"\t\(self.m10), \(self.m11), \(self.m12)\n" +
-			"\t\(self.m20), \(self.m21), \(self.m22)\n" +
-			")"
+		var strings:[[String]] = [ self.c0, self.c1, self.c2 ].map{ c in
+			c.asArray.map(String.init(describing:))
+		}
+		let stringsLengths:[[Int]] = strings.map{ c in
+			c.map { $0.count }
+		}
+		let columnMaxLengths:[Int] = stringsLengths.map{ c in
+			c.max()!
+		}
+		strings = zip(strings, columnMaxLengths).map{ c, maxLength in
+			c.map{ $0.padding(toLength: maxLength, withPad:" ", startingAt: 0) }
+		}
+		return
+			"⎡\(strings[0][0])  \(strings[1][0])  \(strings[2][0])⎤\n" +
+			"⎢\(strings[0][1])  \(strings[1][1])  \(strings[2][1])⎥\n" +
+			"⎣\(strings[0][2])  \(strings[1][2])  \(strings[2][2])⎦\n"
 	}
 }
 

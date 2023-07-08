@@ -416,12 +416,23 @@ extension Float4x4 // SceneKit Conversion
 extension Float4x4 : CustomStringConvertible
 {
 	public var description:String {
-		return "(\n" +
-			"\t\(self.m00), \(self.m01), \(self.m02), \(self.m03)\n" +
-			"\t\(self.m10), \(self.m11), \(self.m12), \(self.m13)\n" +
-			"\t\(self.m20), \(self.m21), \(self.m22), \(self.m23)\n" +
-			"\t\(self.m30), \(self.m31), \(self.m32), \(self.m33)\n" +
-			")"
+		var strings:[[String]] = [ self.c0, self.c1, self.c2, self.c3 ].map{ c in
+			c.asArray.map(String.init(describing:))
+		}
+		let stringsLengths:[[Int]] = strings.map{ c in
+			c.map { $0.count }
+		}
+		let columnMaxLengths:[Int] = stringsLengths.map{ c in
+			c.max()!
+		}
+		strings = zip(strings, columnMaxLengths).map{ c, maxLength in
+			c.map{ $0.padding(toLength: maxLength, withPad:" ", startingAt: 0) }
+		}
+		return
+			"⎡\(strings[0][0])  \(strings[1][0])  \(strings[2][0])  \(strings[3][0])⎤\n" +
+			"⎢\(strings[0][1])  \(strings[1][1])  \(strings[2][1])  \(strings[3][1])⎥\n" +
+			"⎢\(strings[0][2])  \(strings[1][2])  \(strings[2][2])  \(strings[3][2])⎥\n" +
+			"⎣\(strings[0][3])  \(strings[1][3])  \(strings[2][3])  \(strings[3][3])⎦\n"
 	}
 }
 
