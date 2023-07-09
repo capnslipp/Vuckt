@@ -6,8 +6,10 @@
 #import <Foundation/NSValue.h>
 #import <simd/simd.h>
 #import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_XR
 	#import <GLKit/GLKVector3.h>
+#endif
+#if !TARGET_OS_WATCH
 	#import <CoreImage/CIVector.h>
 #endif
 
@@ -116,7 +118,7 @@ NS_INLINE Float3 Float3FromSCN(SCNVector3 scnValue) {
 
 
 
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_XR
 	#pragma mark GLKit Conversion
 
 	/// Converts an `Float3` struct to `GLKVector3` struct using passing-individual-members initialization.

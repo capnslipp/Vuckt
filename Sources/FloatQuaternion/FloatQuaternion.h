@@ -6,8 +6,10 @@
 #import <Foundation/NSValue.h>
 #import <simd/vector_types.h>
 #import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_XR
 	#import <GLKit/GLKQuaternion.h>
+#endif
+#if !TARGET_OS_WATCH
 	#import <GameController/GCMotion.h>
 #endif
 #if !TARGET_OS_TV
@@ -57,7 +59,7 @@ NS_INLINE FloatQuaternion FloatQuaternionFromSCN(SCNQuaternion scnValue) {
 
 
 
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_XR
 	#pragma mark GLKit Conversion
 
 	/// Converts a `FloatQuaternion` struct to `GLKQuaternion` struct using passing-individual-members initialization.

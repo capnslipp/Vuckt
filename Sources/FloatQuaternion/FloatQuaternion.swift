@@ -5,8 +5,10 @@
 import Foundation
 import simd
 import SceneKit.SceneKitTypes
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	import GLKit.GLKQuaternion
+#endif
+#if !os(watchOS)
 	import GameController.GCMotion
 #endif
 #if !os(tvOS)
@@ -285,7 +287,7 @@ extension FloatQuaternion // SceneKit Conversion
 	}
 }
 
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	extension FloatQuaternion // GLKit Conversion
 	{
 		/// Initialize to a GLKit quaternion.
@@ -297,7 +299,7 @@ extension FloatQuaternion // SceneKit Conversion
 			return FloatQuaternionToGLK(self)
 		}
 	}
-#endif // !watchOS
+#endif // !watchOS && !xrOS
 
 #if !os(tvOS)
 	extension FloatQuaternion // CoreMotion Conversion

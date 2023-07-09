@@ -5,8 +5,10 @@
 import Foundation
 import simd
 import SceneKit.SceneKitTypes
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	import GLKit.GLKVector3
+#endif
+#if !os(watchOS)
 	import CoreImage.CIVector
 #endif
 
@@ -285,7 +287,7 @@ extension Float3 // SceneKit Conversion
 	}
 }
 
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	extension Float3 // GLKit Conversion
 	{
 		/// Initialize to a GLKit vector.
@@ -297,7 +299,7 @@ extension Float3 // SceneKit Conversion
 			return Float3ToGLK(self)
 		}
 	}
-#endif // !watchOS
+#endif // !watchOS && !xrOS
 
 #if !os(watchOS)
 	extension Float3 // CoreImage Conversion
