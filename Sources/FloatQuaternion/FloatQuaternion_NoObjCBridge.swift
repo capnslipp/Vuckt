@@ -4,8 +4,10 @@
 
 import simd.vector_types
 import SceneKit.SceneKitTypes
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	import GLKit.GLKQuaternion
+#endif
+#if !os(watchOS)
 	import GameController.GCMotion
 #endif
 #if !os(tvOS)

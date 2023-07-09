@@ -6,8 +6,10 @@ import Foundation.NSValue
 import Darwin.C.tgmath
 import simd
 import SceneKit.SceneKitTypes
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	import GLKit.GLKMatrix4
+#endif
+#if !os(watchOS)
 	import QuartzCore.CATransform3D
 #endif
 //import CoreGraphics.CGAffineTransform

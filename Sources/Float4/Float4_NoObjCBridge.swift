@@ -4,8 +4,10 @@
 
 import simd.vector_types
 import SceneKit.SceneKitTypes
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	import GLKit.GLKVector4
+#endif
+#if !os(watchOS)
 	import CoreImage.CIVector
 #endif
 

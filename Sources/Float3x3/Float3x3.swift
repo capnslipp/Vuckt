@@ -6,10 +6,7 @@ import Foundation
 import simd
 import SceneKit.SceneKitTypes
 #if !os(watchOS) && !os(xrOS)
-	import GLKit.GLKVector3
-#endif
-#if !os(watchOS)
-	import CoreImage.CIVector
+	import GLKit.GLKMatrix3
 #endif
 
 
