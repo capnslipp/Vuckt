@@ -131,7 +131,7 @@ public struct Float4x4
 
 
 
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	// MARK: GLKit Conversion
 	
 	/// Converts a `Float4x4` struct to `GLKMatrix4` struct using passing-individual-members initialization.
@@ -152,7 +152,7 @@ public struct Float4x4
 			m30: glkValue.m30, m31: glkValue.m31, m32: glkValue.m32, m33: glkValue.m33
 		)
 	}
-#endif // !watchOS
+#endif // !watchOS && !xrOS
 
 
 

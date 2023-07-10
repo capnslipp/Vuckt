@@ -106,7 +106,7 @@ public struct Float3x3
 
 
 
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	// MARK: GLKit Conversion
 	
 	/// Converts a `Float3x3` struct to `GLKMatrix3` struct using passing-individual-members initialization.
@@ -125,7 +125,7 @@ public struct Float3x3
 			m20: glkValue.m20, m21: glkValue.m21, m22: glkValue.m22
 		)
 	}
-#endif // !watchOS
+#endif // !watchOS && !xrOS
 
 
 

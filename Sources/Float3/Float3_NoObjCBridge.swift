@@ -121,7 +121,7 @@ public struct Float3
 
 
 
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	// MARK: GLKit Conversion
 
 	/// Converts an `Float3` struct to `GLKVector3` struct using passing-individual-members initialization.
@@ -132,7 +132,7 @@ public struct Float3
 	@_transparent public func Float3FromGLK(_ glkValue:GLKVector3) -> Float3 {
 		return Float3(x: glkValue.x, y: glkValue.y, z: glkValue.z)
 	}
-#endif // !watchOS
+#endif // !watchOS && !xrOS
 
 
 

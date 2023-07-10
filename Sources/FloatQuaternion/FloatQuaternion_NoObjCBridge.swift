@@ -65,7 +65,7 @@ public struct FloatQuaternion
 
 
 
-#if !os(watchOS)
+#if !os(watchOS) && !os(xrOS)
 	// MARK: GLKit Conversion
 
 	/// Converts a `FloatQuaternion` struct to `GLKQuaternion` struct using passing-individual-members initialization.
@@ -76,7 +76,7 @@ public struct FloatQuaternion
 	@_transparent public func FloatQuaternionFromGLK(_ glkValue:GLKQuaternion) -> FloatQuaternion {
 		return FloatQuaternion(ix: glkValue.x, iy: glkValue.y, iz: glkValue.z, r: glkValue.w)
 	}
-#endif // !watchOS
+#endif // !watchOS && !xrOS
 
 
 
