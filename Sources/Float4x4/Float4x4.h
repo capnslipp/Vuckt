@@ -9,7 +9,7 @@
 #import <tgmath.h>
 #import <simd/simd.h>
 #import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH && !TARGET_OS_XR
+#if !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#import <GLKit/GLKMatrix4.h>
 #endif
 #if !TARGET_OS_WATCH
@@ -92,7 +92,7 @@ NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
 
 
 
-#if !TARGET_OS_WATCH && !TARGET_OS_XR
+#if !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#pragma mark GLKit Conversion
 
 	/// Converts a `Float4x4` struct to `GLKMatrix4` struct using passing-individual-members initialization.

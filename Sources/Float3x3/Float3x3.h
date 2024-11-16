@@ -9,7 +9,7 @@
 #import <tgmath.h>
 #import <simd/simd.h>
 #import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH && !TARGET_OS_XR
+#if !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#import <GLKit/GLKMatrix3.h>
 #endif
 //#import <CoreGraphics/CGAffineTransform.h>
@@ -83,7 +83,7 @@ NS_INLINE Float3x3 Float3x3OuterProduct(Float3 a, Float3 b) {
 
 
 
-#if !TARGET_OS_WATCH && !TARGET_OS_XR
+#if !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#pragma mark GLKit Conversion
 
 	/// Converts a `Float3x3` struct to `GLKMatrix3` struct using passing-individual-members initialization.
