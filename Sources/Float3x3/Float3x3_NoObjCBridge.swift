@@ -3,7 +3,7 @@
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
 import Foundation.NSValue
-import Darwin.C.tgmath
+import Darwin.C
 import simd
 import SceneKit.SceneKitTypes
 #if !os(watchOS) && !os(xrOS)
