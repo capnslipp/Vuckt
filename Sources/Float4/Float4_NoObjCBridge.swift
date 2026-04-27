@@ -2,12 +2,14 @@
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
-import simd.vector_types
-import SceneKit.SceneKitTypes
-#if !os(watchOS) && !os(xrOS)
+import simd
+#if canImport(SceneKit)
+	import SceneKit.SceneKitTypes
+#endif
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	import GLKit.GLKVector4
 #endif
-#if !os(watchOS)
+#if canImport(CoreImage)
 	import CoreImage.CIVector
 #endif
 
@@ -105,20 +107,22 @@ public struct Float4
 
 
 
-// MARK: SceneKit Conversion
+#if canImport(SceneKit)
+	// MARK: SceneKit Conversion
 
-/// Converts an `Float4` struct to `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
-@_transparent public func Float4ToSCN(_ structValue:Float4) -> SCNVector4 {
-	return SCNVector4(Float4ToSimd(structValue))
-}
-/// Converts an `Float4` struct from `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
-@_transparent public func Float4FromSCN(_ scnValue:SCNVector4) -> Float4 {
-	return Float4FromSimd(simd_float4(scnValue))
-}
+	/// Converts an `Float4` struct to `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+	@_transparent public func Float4ToSCN(_ structValue:Float4) -> SCNVector4 {
+		return SCNVector4(Float4ToSimd(structValue))
+	}
+	/// Converts an `Float4` struct from `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+	@_transparent public func Float4FromSCN(_ scnValue:SCNVector4) -> Float4 {
+		return Float4FromSimd(simd_float4(scnValue))
+	}
+#endif // SceneKit
 
 
 
-#if !os(watchOS) && !os(xrOS)
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	// MARK: GLKit Conversion
 
 	/// Converts an `Float4` struct to `GLKVector4` struct using passing-individual-members initialization.
@@ -129,11 +133,11 @@ public struct Float4
 	@_transparent public func Float4FromGLK(_ glkValue:GLKVector4) -> Float4 {
 		return Float4(x: glkValue.x, y: glkValue.y, z: glkValue.z, w: glkValue.w)
 	}
-#endif // !watchOS && !xrOS
+#endif // GLKit
 
 
 
-#if !os(watchOS)
+#if canImport(CoreImage)
 	// MARK: CoreImage Conversion
 
 	/// Converts an `Float4` struct to `CIVector` class using passing-individual-members initialization.
@@ -144,4 +148,4 @@ public struct Float4
 	@_transparent public func Float4FromCI(_ ciVector:CIVector) -> Float4 {
 		return Float4(x: Float(ciVector.x), y: Float(ciVector.y), z: Float(ciVector.z), w: Float(ciVector.w))
 	}
-#endif // !watchOS
+#endif // !CoreImage

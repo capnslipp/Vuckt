@@ -5,10 +5,12 @@
 
 #import <Foundation/NSValue.h>
 #import <simd/simd.h>
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#import <CoreImage/CIVector.h>
 #endif
-#import <CoreGraphics/CGGeometry.h>
+#if TARGET_OS_MAC
+	#import <CoreGraphics/CGGeometry.h>
+#endif
 
 
 
@@ -98,7 +100,7 @@ NS_INLINE BOOL Float2GreaterThanOrEqual(Float2 a, Float2 b) {
 
 
 
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#pragma mark CoreImage Conversion
 
 	/// Converts an `Float2` struct to `CIVector` class using passing-individual-members initialization.
@@ -110,38 +112,40 @@ NS_INLINE BOOL Float2GreaterThanOrEqual(Float2 a, Float2 b) {
 		assert(ciVector.count == 2);
 		return (Float2){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y };
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH
 
 
 
-#pragma mark CoreGraphics Conversion
+#if TARGET_OS_MAC
+	#pragma mark CoreGraphics Conversion
 
-/// Converts an `Float2` struct to `CGVector` struct using passing-individual-members initialization.
-NS_INLINE CGVector Float2ToCGVector(Float2 structValue) {
-	return CGVectorMake((CGFloat)structValue.x, (CGFloat)structValue.y);
-}
-/// Converts an `Float2` struct from `CGVector` struct using passing-individual-members initialization.
-NS_INLINE Float2 Float2FromCGVector(CGVector cgVectorValue) {
-	return (Float2){ (simd_float1)cgVectorValue.dx, (simd_float1)cgVectorValue.dy };
-}
+	/// Converts an `Float2` struct to `CGVector` struct using passing-individual-members initialization.
+	NS_INLINE CGVector Float2ToCGVector(Float2 structValue) {
+		return CGVectorMake((CGFloat)structValue.x, (CGFloat)structValue.y);
+	}
+	/// Converts an `Float2` struct from `CGVector` struct using passing-individual-members initialization.
+	NS_INLINE Float2 Float2FromCGVector(CGVector cgVectorValue) {
+		return (Float2){ (simd_float1)cgVectorValue.dx, (simd_float1)cgVectorValue.dy };
+	}
 
-/// Converts an `Float2` struct to `CGPoint` struct using passing-individual-members initialization.
-NS_INLINE CGPoint Float2ToCGPoint(Float2 structValue) {
-	return CGPointMake((CGFloat)structValue.x, (CGFloat)structValue.y);
-}
-/// Converts an `Float2` struct from `CGPoint` struct using passing-individual-members initialization.
-NS_INLINE Float2 Float2FromCGPoint(CGPoint cgPointValue) {
-	return (Float2){ (simd_float1)cgPointValue.x, (simd_float1)cgPointValue.y };
-}
+	/// Converts an `Float2` struct to `CGPoint` struct using passing-individual-members initialization.
+	NS_INLINE CGPoint Float2ToCGPoint(Float2 structValue) {
+		return CGPointMake((CGFloat)structValue.x, (CGFloat)structValue.y);
+	}
+	/// Converts an `Float2` struct from `CGPoint` struct using passing-individual-members initialization.
+	NS_INLINE Float2 Float2FromCGPoint(CGPoint cgPointValue) {
+		return (Float2){ (simd_float1)cgPointValue.x, (simd_float1)cgPointValue.y };
+	}
 
-/// Converts an `Float2` struct to `CGSize` struct using passing-individual-members initialization.
-NS_INLINE CGSize Float2ToCGSize(Float2 structValue) {
-	return CGSizeMake((CGFloat)structValue.x, (CGFloat)structValue.y);
-}
-/// Converts an `Float2` struct from `CGSize` struct using passing-individual-members initialization.
-NS_INLINE Float2 Float2FromCGSize(CGSize cgSizeValue) {
-	return (Float2){ (simd_float1)cgSizeValue.width, (simd_float1)cgSizeValue.height };
-}
+	/// Converts an `Float2` struct to `CGSize` struct using passing-individual-members initialization.
+	NS_INLINE CGSize Float2ToCGSize(Float2 structValue) {
+		return CGSizeMake((CGFloat)structValue.x, (CGFloat)structValue.y);
+	}
+	/// Converts an `Float2` struct from `CGSize` struct using passing-individual-members initialization.
+	NS_INLINE Float2 Float2FromCGSize(CGSize cgSizeValue) {
+		return (Float2){ (simd_float1)cgSizeValue.width, (simd_float1)cgSizeValue.height };
+	}
+#endif // TARGET_OS_MAC
 
 
 

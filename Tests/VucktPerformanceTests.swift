@@ -5,7 +5,9 @@
 import XCTest
 import Vuckt
 import simd
-import SceneKit
+#if canImport(SceneKit)
+	import SceneKit
+#endif
 
 
 
@@ -94,7 +96,7 @@ class VucktPerformanceTests : XCTestCase
 		}
 	}
 	
-#if !os(watchOS) && !os(xrOS)
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	func testGLKVector3Performance()
 	{
 		var testSetA:[GLKVector3] = []
@@ -126,6 +128,6 @@ class VucktPerformanceTests : XCTestCase
 			}
 		}
 	}
-#endif // !watchOS && !xrOS
+#endif // GLKit
 
 }

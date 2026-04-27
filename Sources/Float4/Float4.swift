@@ -4,11 +4,13 @@
 
 import Foundation
 import simd
-import SceneKit.SceneKitTypes
-#if !os(watchOS) && !os(xrOS)
+#if canImport(SceneKit)
+	import SceneKit.SceneKitTypes
+#endif
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	import GLKit.GLKVector4
 #endif
-#if !os(watchOS)
+#if canImport(CoreImage)
 	import CoreImage.CIVector
 #endif
 
@@ -515,19 +517,21 @@ extension Float4
 }
 
 
-extension Float4 // SceneKit Conversion
-{
-	/// Initialize to a SceneKit vector.
-	@_transparent public init(scnVector value:SCNVector4) {
-		self = Float4FromSCN(value)
-	}
-	
-	@_transparent public var toSCNVector:SCNVector4 {
-		return Float4ToSCN(self)
-	}
-}
+//#if canImport(SceneKit)
+//extension Float4 // SceneKit Conversion
+//{
+//	/// Initialize to a SceneKit vector.
+//	@_transparent public init(scnVector value:SCNVector4) {
+//		self = Float4FromSCN(value)
+//	}
+//	
+//	@_transparent public var toSCNVector:SCNVector4 {
+//		return Float4ToSCN(self)
+//	}
+//}
+//#endif // SceneKit
 
-#if !os(watchOS) && !os(xrOS)
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	extension Float4 // GLKit Conversion
 	{
 		/// Initialize to a GLKit vector.
@@ -539,9 +543,9 @@ extension Float4 // SceneKit Conversion
 			return Float4ToGLK(self)
 		}
 	}
-#endif // !watchOS && !xrOS
+#endif // GLKit
 
-#if !os(watchOS)
+#if canImport(CoreImage)
 	extension Float4 // CoreImage Conversion
 	{
 		/// Initialize to a CoreImage vector.
@@ -553,7 +557,7 @@ extension Float4 // SceneKit Conversion
 			return Float4ToCI(self)
 		}
 	}
-#endif // !watchOS
+#endif // !CoreImage
 
 
 extension Float4 : CustomStringConvertible

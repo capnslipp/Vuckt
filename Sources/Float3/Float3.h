@@ -5,11 +5,13 @@
 
 #import <Foundation/NSValue.h>
 #import <simd/simd.h>
-#import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC
+	#import <SceneKit/SceneKitTypes.h>
+#endif
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#import <GLKit/GLKVector3.h>
 #endif
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#import <CoreImage/CIVector.h>
 #endif
 
@@ -105,20 +107,22 @@ NS_INLINE Float3 Float3WedgeProduct(Float3 a, Float3 b) {
 
 
 
-#pragma mark SceneKit Conversion
+#if TARGET_OS_MAC
+	#pragma mark SceneKit Conversion
 
-/// Converts an `Float3` struct to `SCNVector3` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
-NS_INLINE SCNVector3 Float3ToSCN(Float3 structValue) {
-	return SCNVector3FromFloat3(Float3ToSimd(structValue));
-}
-/// Converts an `Float3` struct from `SCNVector3` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
-NS_INLINE Float3 Float3FromSCN(SCNVector3 scnValue) {
-	return Float3FromSimd(SCNVector3ToFloat3(scnValue));
-}
+	/// Converts an `Float3` struct to `SCNVector3` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+	NS_INLINE SCNVector3 Float3ToSCN(Float3 structValue) {
+		return SCNVector3FromFloat3(Float3ToSimd(structValue));
+	}
+	/// Converts an `Float3` struct from `SCNVector3` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+	NS_INLINE Float3 Float3FromSCN(SCNVector3 scnValue) {
+		return Float3FromSimd(SCNVector3ToFloat3(scnValue));
+	}
+#endif // TARGET_OS_MAC
 
 
 
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#pragma mark GLKit Conversion
 
 	/// Converts an `Float3` struct to `GLKVector3` struct using passing-individual-members initialization.
@@ -129,11 +133,11 @@ NS_INLINE Float3 Float3FromSCN(SCNVector3 scnValue) {
 	NS_INLINE Float3 Float3FromGLK(GLKVector3 glkValue) {
 		return (Float3){ glkValue.v[0], glkValue.v[1], glkValue.v[2] };
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 
 
 
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#pragma mark CoreImage Conversion
 
 	/// Converts an `Float3` struct to `CIVector` class using passing-individual-members initialization.
@@ -145,7 +149,7 @@ NS_INLINE Float3 Float3FromSCN(SCNVector3 scnValue) {
 		assert(ciVector.count == 3);
 		return (Float3){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y, (simd_float1)ciVector.Z };
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH
 
 
 

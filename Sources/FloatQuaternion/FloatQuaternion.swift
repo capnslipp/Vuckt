@@ -4,20 +4,40 @@
 
 import Foundation
 import simd
-import SceneKit.SceneKitTypes
-#if !os(watchOS) && !os(xrOS)
+#if canImport(SceneKit)
+	import SceneKit.SceneKitTypes
+#endif
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	import GLKit.GLKQuaternion
 #endif
-#if !os(watchOS)
+#if canImport(GameController)
 	import GameController.GCMotion
 #endif
-#if !os(tvOS)
+#if canImport(CoreMotion)
 	import CoreMotion.CMAttitude
 #endif
 
 
 
 fileprivate let SquareRootOfOneHalf = Float(0.5).squareRoot()
+
+fileprivate func simdSinAndCosFuncs() -> (sin: (_: simd_float3) -> simd_float3, cos: (_: simd_float3) -> simd_float3) {
+	let sin: (_: simd_float3) -> simd_float3
+	let cos: (_: simd_float3) -> simd_float3
+	#if canImport(Darwin)
+		if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *) {
+			sin = simd.sin
+			cos = simd.cos
+		} else {
+			sin = __tg_sin
+			cos = __tg_cos
+		}
+	#else
+		sin = simd.sin
+		cos = simd.cos
+	#endif
+	return (sin, cos)
+}
 
 
 
@@ -188,8 +208,10 @@ extension FloatQuaternion
 	}
 	
 	public init(eulerAngles eulerAngles_radians:Float3, order:RotationOrder = .zxy) {
-		let sinOfHalfAngles = __tg_sin(eulerAngles_radians.simdValue * 0.5)
-		let cosOfHalfAngles = __tg_cos(eulerAngles_radians.simdValue * 0.5)
+		let (sin, cos) = simdSinAndCosFuncs()
+		
+		let sinOfHalfAngles: simd_float3 = sin(eulerAngles_radians.simdValue * 0.5)
+		let cosOfHalfAngles: simd_float3 = cos(eulerAngles_radians.simdValue * 0.5)
 		
 		let xRotation = Self(sinOfHalfAngles.x, 0, 0, cosOfHalfAngles.x)
 		let yRotation = Self(0, sinOfHalfAngles.y, 0, cosOfHalfAngles.y)
@@ -275,19 +297,21 @@ extension FloatQuaternion
 }
 
 
-extension FloatQuaternion // SceneKit Conversion
-{
-	/// Initialize to a SceneKit quaternion.
-	public init(scnQuaternion value:SCNQuaternion) {
-		self = FloatQuaternionFromSCN(value)
+#if canImport(SceneKit)
+	extension FloatQuaternion // SceneKit Conversion
+	{
+		/// Initialize to a SceneKit quaternion.
+		public init(scnQuaternion value:SCNQuaternion) {
+			self = FloatQuaternionFromSCN(value)
+		}
+		
+		public var toSCNQuaternion:SCNQuaternion {
+			return FloatQuaternionToSCN(self)
+		}
 	}
-	
-	public var toSCNQuaternion:SCNQuaternion {
-		return FloatQuaternionToSCN(self)
-	}
-}
+#endif // SceneKit
 
-#if !os(watchOS) && !os(xrOS)
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	extension FloatQuaternion // GLKit Conversion
 	{
 		/// Initialize to a GLKit quaternion.
@@ -299,9 +323,9 @@ extension FloatQuaternion // SceneKit Conversion
 			return FloatQuaternionToGLK(self)
 		}
 	}
-#endif // !watchOS && !xrOS
+#endif // GLKit
 
-#if !os(tvOS)
+#if canImport(CoreMotion)
 	extension FloatQuaternion // CoreMotion Conversion
 	{
 		/// Initialize to a CoreMotion quaternion.
@@ -313,9 +337,9 @@ extension FloatQuaternion // SceneKit Conversion
 			return FloatQuaternionToCM(self)
 		}
 	}
-#endif // !tvOS
+#endif // CoreMotion
 
-#if !os(watchOS)
+#if canImport(GameController)
 	extension FloatQuaternion // GameController Conversion
 	{
 		/// Initialize to a GameController quaternion.
@@ -327,7 +351,7 @@ extension FloatQuaternion // SceneKit Conversion
 			return FloatQuaternionToGC(self)
 		}
 	}
-#endif // !watchOS
+#endif // GameController
 
 
 extension FloatQuaternion : CustomStringConvertible

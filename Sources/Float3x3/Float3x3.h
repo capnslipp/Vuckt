@@ -8,11 +8,15 @@
 #import <Foundation/NSValue.h>
 #import <tgmath.h>
 #import <simd/simd.h>
-#import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC
+	#import <SceneKit/SceneKitTypes.h>
+#endif
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#import <GLKit/GLKMatrix3.h>
 #endif
-//#import <CoreGraphics/CGAffineTransform.h>
+//#if TARGET_OS_MAC
+//	#import <CoreGraphics/CGAffineTransform.h>
+//#endif
 //#if TARGET_OS_OSX || TARGET_OS_MACCATALYST
 //	#import <Foundation/NSAffineTransform.h>
 //#endif
@@ -70,20 +74,22 @@ NS_INLINE Float3x3 Float3x3OuterProduct(Float3 a, Float3 b) {
 
 
 
-//#pragma mark SceneKit Conversion
+//#if TARGET_OS_MAC
+//	#pragma mark SceneKit Conversion
 //
-///// Converts a `Float4x4` struct to `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
-//NS_INLINE SCNMatrix4 Float4x4ToSCN(Float3 structValue) {
-//	return SCNMatrix4FromMat4(Float4x4ToSimd(structValue));
-//}
-///// Converts a `Float4x4` struct from `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
-//NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
-//	return Float4x4FromSimd(SCNMatrix4ToMat4(scnValue));
-//}
+//	/// Converts a `Float4x4` struct to `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
+//	NS_INLINE SCNMatrix4 Float4x4ToSCN(Float3 structValue) {
+//		return SCNMatrix4FromMat4(Float4x4ToSimd(structValue));
+//	}
+//	/// Converts a `Float4x4` struct from `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
+//	NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
+//		return Float4x4FromSimd(SCNMatrix4ToMat4(scnValue));
+//	}
+//#endif // TARGET_OS_MAC
 
 
 
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#pragma mark GLKit Conversion
 
 	/// Converts a `Float3x3` struct to `GLKMatrix3` struct using passing-individual-members initialization.
@@ -102,7 +108,7 @@ NS_INLINE Float3x3 Float3x3OuterProduct(Float3 a, Float3 b) {
 			glkValue.m20, glkValue.m21, glkValue.m22,
 		};
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH
 
 
 

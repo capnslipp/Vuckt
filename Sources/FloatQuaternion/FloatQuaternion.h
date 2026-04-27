@@ -5,14 +5,16 @@
 
 #import <Foundation/NSValue.h>
 #import <simd/vector_types.h>
-#import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC
+	#import <SceneKit/SceneKitTypes.h>
+#endif
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#import <GLKit/GLKQuaternion.h>
 #endif
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#import <GameController/GCMotion.h>
 #endif
-#if !TARGET_OS_TV
+#if TARGET_OS_MAC && !TARGET_OS_TV
 	#import <CoreMotion/CMAttitude.h>
 #endif
 
@@ -46,20 +48,22 @@ NS_INLINE FloatQuaternion FloatQuaternionFromSimd(simd_quatf simdValue) {
 
 
 
-#pragma mark SceneKit Conversion
+#if TARGET_OS_MAC
+	#pragma mark SceneKit Conversion
 
-/// Converts a `FloatQuaternion` struct to `SCNQuaternion` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
-NS_INLINE SCNQuaternion FloatQuaternionToSCN(FloatQuaternion structValue) {
-	return SCNVector4FromFloat4(FloatQuaternionToSimd(structValue).vector);
-}
-/// Converts a `FloatQuaternion` struct from `SCNQuaternion` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
-NS_INLINE FloatQuaternion FloatQuaternionFromSCN(SCNQuaternion scnValue) {
-	return FloatQuaternionFromSimd(simd_quaternion(SCNVector4ToFloat4(scnValue)));
-}
+	/// Converts a `FloatQuaternion` struct to `SCNQuaternion` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+	NS_INLINE SCNQuaternion FloatQuaternionToSCN(FloatQuaternion structValue) {
+		return SCNVector4FromFloat4(FloatQuaternionToSimd(structValue).vector);
+	}
+	/// Converts a `FloatQuaternion` struct from `SCNQuaternion` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+	NS_INLINE FloatQuaternion FloatQuaternionFromSCN(SCNQuaternion scnValue) {
+		return FloatQuaternionFromSimd(simd_quaternion(SCNVector4ToFloat4(scnValue)));
+	}
+#endif
 
 
 
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#pragma mark GLKit Conversion
 
 	/// Converts a `FloatQuaternion` struct to `GLKQuaternion` struct using passing-individual-members initialization.
@@ -70,11 +74,11 @@ NS_INLINE FloatQuaternion FloatQuaternionFromSCN(SCNQuaternion scnValue) {
 	NS_INLINE FloatQuaternion FloatQuaternionFromGLK(GLKQuaternion glkValue) {
 		return (FloatQuaternion){ glkValue.q[0], glkValue.q[1], glkValue.q[2], glkValue.q[3] };
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 
 
 
-#if !TARGET_OS_TV
+#if TARGET_OS_MAC && !TARGET_OS_TV
 	#pragma mark CoreMotion Conversion
 
 	/// Converts a `FloatQuaternion` struct to `CMQuaternion` struct using passing-individual-members initialization.
@@ -85,11 +89,11 @@ NS_INLINE FloatQuaternion FloatQuaternionFromSCN(SCNQuaternion scnValue) {
 	NS_INLINE FloatQuaternion FloatQuaternionFromCM(CMQuaternion cmValue) {
 		return (FloatQuaternion){ (float)cmValue.x, (float)cmValue.y, (float)cmValue.z, (float)cmValue.w };
 	}
-#endif // !TARGET_OS_TV
+#endif // TARGET_OS_MAC && !TARGET_OS_TV
 
 
 
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#pragma mark GameController Conversion
 
 	/// Converts a `FloatQuaternion` struct to `GCQuaternion` struct using passing-individual-members initialization.
@@ -100,7 +104,7 @@ NS_INLINE FloatQuaternion FloatQuaternionFromSCN(SCNQuaternion scnValue) {
 	NS_INLINE FloatQuaternion FloatQuaternionFromGC(GCQuaternion gcValue) {
 		return (FloatQuaternion){ (float)gcValue.x, (float)gcValue.y, (float)gcValue.z, (float)gcValue.w };
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH
 
 
 

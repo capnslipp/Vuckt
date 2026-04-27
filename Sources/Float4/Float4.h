@@ -5,11 +5,13 @@
 
 #import <Foundation/NSValue.h>
 #import <simd/simd.h>
-#import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC
+	#import <SceneKit/SceneKitTypes.h>
+#endif
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#import <GLKit/GLKVector4.h>
 #endif
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#import <CoreImage/CIVector.h>
 #endif
 
@@ -101,20 +103,22 @@ NS_INLINE BOOL Float4GreaterThanOrEqual(Float4 a, Float4 b) {
 
 
 
-#pragma mark SceneKit Conversion
+#if TARGET_OS_MAC
+	#pragma mark SceneKit Conversion
 
-/// Converts an `Float4` struct to `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
-NS_INLINE SCNVector4 Float4ToSCN(Float4 structValue) {
-	return SCNVector4FromFloat4(Float4ToSimd(structValue));
-}
-/// Converts an `Float4` struct from `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
-NS_INLINE Float4 Float4FromSCN(SCNVector4 scnValue) {
-	return Float4FromSimd(SCNVector4ToFloat4(scnValue));
-}
+	/// Converts an `Float4` struct to `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+	NS_INLINE SCNVector4 Float4ToSCN(Float4 structValue) {
+		return SCNVector4FromFloat4(Float4ToSimd(structValue));
+	}
+	/// Converts an `Float4` struct from `SCNVector4` struct using SceneKit-provided SIMD↔SCNVector conversion helper function.
+	NS_INLINE Float4 Float4FromSCN(SCNVector4 scnValue) {
+		return Float4FromSimd(SCNVector4ToFloat4(scnValue));
+	}
+#endif // TARGET_OS_MAC
 
 
 
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#pragma mark GLKit Conversion
 
 	/// Converts an `Float4` struct to `GLKVector4` struct using passing-individual-members initialization.
@@ -125,11 +129,11 @@ NS_INLINE Float4 Float4FromSCN(SCNVector4 scnValue) {
 	NS_INLINE Float4 Float4FromGLK(GLKVector4 glkValue) {
 		return (Float4){ glkValue.v[0], glkValue.v[1], glkValue.v[2], glkValue.v[3] };
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 
 
 
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#pragma mark CoreImage Conversion
 
 	/// Converts an `Float4` struct to `CIVector` class using passing-individual-members initialization.
@@ -141,7 +145,7 @@ NS_INLINE Float4 Float4FromSCN(SCNVector4 scnValue) {
 		assert(ciVector.count == 4);
 		return (Float4){ (simd_float1)ciVector.X, (simd_float1)ciVector.Y, (simd_float1)ciVector.Z, (simd_float1)ciVector.W };
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH
 
 
 

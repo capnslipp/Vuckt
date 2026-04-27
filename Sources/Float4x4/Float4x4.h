@@ -8,14 +8,18 @@
 #import <Foundation/NSValue.h>
 #import <tgmath.h>
 #import <simd/simd.h>
-#import <SceneKit/SceneKitTypes.h>
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC
+	#import <SceneKit/SceneKitTypes.h>
+#endif
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#import <GLKit/GLKMatrix4.h>
 #endif
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#import <QuartzCore/CATransform3D.h>
 #endif
-//#import <CoreGraphics/CGAffineTransform.h>
+//#if TARGET_OS_MAC
+//	#import <CoreGraphics/CGAffineTransform.h>
+//#endif
 //#if TARGET_OS_OSX || TARGET_OS_MACCATALYST
 //	#import <Foundation/NSAffineTransform.h>
 //#endif
@@ -79,20 +83,22 @@ NS_INLINE Float4x4 Float4x4OuterProduct(Float4 a, Float4 b) {
 
 
 
-#pragma mark SceneKit Conversion
+#if TARGET_OS_MAC
+	#pragma mark SceneKit Conversion
 
-/// Converts a `Float4x4` struct to `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
-NS_INLINE SCNMatrix4 Float4x4ToSCN(Float4x4 structValue) {
-	return SCNMatrix4FromMat4(Float4x4ToSimd(structValue));
-}
-/// Converts a `Float4x4` struct from `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
-NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
-	return Float4x4FromSimd(SCNMatrix4ToMat4(scnValue));
-}
+	/// Converts a `Float4x4` struct to `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
+	NS_INLINE SCNMatrix4 Float4x4ToSCN(Float4x4 structValue) {
+		return SCNMatrix4FromMat4(Float4x4ToSimd(structValue));
+	}
+	/// Converts a `Float4x4` struct from `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
+	NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
+		return Float4x4FromSimd(SCNMatrix4ToMat4(scnValue));
+	}
+#endif
 
 
 
-#if !TARGET_OS_WATCH && !TARGET_OS_VISION
+#if TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 	#pragma mark GLKit Conversion
 
 	/// Converts a `Float4x4` struct to `GLKMatrix4` struct using passing-individual-members initialization.
@@ -113,7 +119,7 @@ NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
 			glkValue.m30, glkValue.m31, glkValue.m32, glkValue.m33,
 		};
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH && !TARGET_OS_VISION
 
 
 
@@ -174,7 +180,7 @@ NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
 
 
 
-#if !TARGET_OS_WATCH
+#if TARGET_OS_MAC && !TARGET_OS_WATCH
 	#pragma mark CATransform3D Conversion
 
 	/// Converts a `Float4x4` struct to `CATransform3D` struct using passing-individual-members initialization.
@@ -195,7 +201,7 @@ NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
 			(float)caValue.m41, (float)caValue.m42, (float)caValue.m43, (float)caValue.m44,
 		};
 	}
-#endif // !TARGET_OS_WATCH
+#endif // TARGET_OS_MAC && !TARGET_OS_WATCH
 
 
 

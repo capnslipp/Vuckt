@@ -4,10 +4,12 @@
 
 import Foundation
 import simd
-#if !os(watchOS)
+#if canImport(CoreImage)
 	import CoreImage.CIVector
 #endif
-import CoreGraphics.CGGeometry
+#if canImport(CoreGraphics)
+	import CoreGraphics.CGGeometry
+#endif
 
 
 
@@ -212,7 +214,7 @@ extension Float2
 }
 
 
-#if !os(watchOS)
+#if canImport(CoreImage)
 	extension Float2 // CoreImage Conversion
 	{
 		/// Initialize to a CoreImage vector.
@@ -224,33 +226,35 @@ extension Float2
 			return Float2ToCI(self)
 		}
 	}
-#endif // !watchOS
+#endif // !CoreImage
 
-extension Float2 // CoreGraphics Conversion
-{
-	/// Initialize to a CGVector.
-	@_transparent public init(cgVector value:CGVector) {
-		self = Float2FromCGVector(value)
+#if canImport(CoreGraphics)
+	extension Float2 // CoreGraphics Conversion
+	{
+		/// Initialize to a CGVector.
+		@_transparent public init(cgVector value:CGVector) {
+			self = Float2FromCGVector(value)
+		}
+		/// Initialize to a CGPoint.
+		@_transparent public init(cgPoint value:CGPoint) {
+			self = Float2FromCGPoint(value)
+		}
+		/// Initialize to a CGSize.
+		@_transparent public init(cgSize value:CGSize) {
+			self = Float2FromCGSize(value)
+		}
+		
+		@_transparent public var toCGVector:CGVector {
+			return Float2ToCGVector(self)
+		}
+		@_transparent public var toCGPoint:CGPoint {
+			return Float2ToCGPoint(self)
+		}
+		@_transparent public var toCGSize:CGSize {
+			return Float2ToCGSize(self)
+		}
 	}
-	/// Initialize to a CGPoint.
-	@_transparent public init(cgPoint value:CGPoint) {
-		self = Float2FromCGPoint(value)
-	}
-	/// Initialize to a CGSize.
-	@_transparent public init(cgSize value:CGSize) {
-		self = Float2FromCGSize(value)
-	}
-	
-	@_transparent public var toCGVector:CGVector {
-		return Float2ToCGVector(self)
-	}
-	@_transparent public var toCGPoint:CGPoint {
-		return Float2ToCGPoint(self)
-	}
-	@_transparent public var toCGSize:CGSize {
-		return Float2ToCGSize(self)
-	}
-}
+#endif // CoreGraphics
 
 
 extension Float2 : CustomStringConvertible

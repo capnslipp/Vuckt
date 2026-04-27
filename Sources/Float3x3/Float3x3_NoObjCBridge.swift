@@ -2,18 +2,22 @@
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
-import Foundation.NSValue
-import Darwin.C
 import simd
-import SceneKit.SceneKitTypes
-#if !os(watchOS) && !os(xrOS)
+#if canImport(SceneKit)
+	import SceneKit.SceneKitTypes
+#endif
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	import GLKit.GLKMatrix3
 #endif
-//import CoreGraphics.CGAffineTransform
+//#if canImport(CoreGraphics)
+//	import CoreGraphics.CGAffineTransform
+//#endif
 //#if os(macOS) || targetEnvironment(macCatalyst)
 //	import Foundation.NSAffineTransform
 //#endif
-//import QuartzCore.CATransform3D
+//#if canImport(QuartzCore)
+//	import QuartzCore.CATransform3D
+//#endif
 //import CoreImage.CIVector
 //import Accelerate // vImage_AffineTransform ?
 
@@ -93,20 +97,22 @@ public struct Float3x3
 
 
 
-//// MARK: SceneKit Conversion
-//	
-///// Converts a `Float4x4` struct to `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
-//NS_INLINE SCNMatrix4 Float4x4ToSCN(Float3 structValue) {
-//	return SCNMatrix4FromMat4(Float4x4ToSimd(structValue));
-//}
-///// Converts a `Float4x4` struct from `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
-//NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
-//	return Float4x4FromSimd(SCNMatrix4ToMat4(scnValue));
-//}
+//#if canImport(SceneKit)
+//	// MARK: SceneKit Conversion
+//		
+//	/// Converts a `Float4x4` struct to `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
+//	NS_INLINE SCNMatrix4 Float4x4ToSCN(Float3 structValue) {
+//		return SCNMatrix4FromMat4(Float4x4ToSimd(structValue));
+//	}
+//	/// Converts a `Float4x4` struct from `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
+//	NS_INLINE Float4x4 Float4x4FromSCN(SCNMatrix4 scnValue) {
+//		return Float4x4FromSimd(SCNMatrix4ToMat4(scnValue));
+//	}
+//#endif // SceneKit
 
 
 
-#if !os(watchOS) && !os(xrOS)
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	// MARK: GLKit Conversion
 	
 	/// Converts a `Float3x3` struct to `GLKMatrix3` struct using passing-individual-members initialization.
@@ -125,7 +131,7 @@ public struct Float3x3
 			m20: glkValue.m20, m21: glkValue.m21, m22: glkValue.m22
 		)
 	}
-#endif // !watchOS && !xrOS
+#endif // GLKit
 
 
 
@@ -208,14 +214,16 @@ public struct Float3x3
 
 
 
-//// MARK: CoreImage Conversion
-//	
-///// Converts a `Float3x3` struct to `CIVector` class using passing-individual-members initialization.
-//NS_INLINE CIVector *Float3x3ToCI(Float3x3 structValue) {
-//	return [CIVector vectorWithCGAffineTransform:Float3x3ToCGAffine(structValue)];
-//}
-///// Converts a `Float3x3` struct from `CIVector` class using passing-individual-members initialization.
-//NS_INLINE Float3x3 Float3x3FromCI(CIVector *ciVector) {
-//	assert(ciVector.count == 6);
-//	return Float3x3FromCGAffine(ciVector.CGAffineTransformValue);
-//}
+//#if canImport(CoreImage)
+//	// MARK: CoreImage Conversion
+//		
+//	/// Converts a `Float3x3` struct to `CIVector` class using passing-individual-members initialization.
+//	NS_INLINE CIVector *Float3x3ToCI(Float3x3 structValue) {
+//		return [CIVector vectorWithCGAffineTransform:Float3x3ToCGAffine(structValue)];
+//	}
+//	/// Converts a `Float3x3` struct from `CIVector` class using passing-individual-members initialization.
+//	NS_INLINE Float3x3 Float3x3FromCI(CIVector *ciVector) {
+//		assert(ciVector.count == 6);
+//		return Float3x3FromCGAffine(ciVector.CGAffineTransformValue);
+//	}
+//#endif // !CoreImage

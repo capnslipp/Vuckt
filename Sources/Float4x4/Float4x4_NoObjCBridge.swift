@@ -2,21 +2,25 @@
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
-import Foundation.NSValue
-import Darwin.C
 import simd
-import SceneKit.SceneKitTypes
-#if !os(watchOS) && !os(xrOS)
+#if canImport(SceneKit)
+	import SceneKit.SceneKitTypes
+#endif
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	import GLKit.GLKMatrix4
 #endif
-#if !os(watchOS)
+#if canImport(QuartzCore)
 	import QuartzCore.CATransform3D
 #endif
-//import CoreGraphics.CGAffineTransform
+//#if canImport(CoreGraphics)
+//	import CoreGraphics.CGAffineTransform
+//#endif
 //#if os(macOS) || targetEnvironment(macCatalyst)
 //	import Foundation.NSAffineTransform
 //#endif
-//import CoreImage.CIVector
+//#if canImport(CoreImage)
+//	import CoreImage.CIVector
+//#endif
 //import Accelerate // vImage_AffineTransform ?
 
 
@@ -118,20 +122,22 @@ public struct Float4x4
 
 
 
-// MARK: SceneKit Conversion
-	
-/// Converts a `Float4x4` struct to `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
-@_transparent public func Float4x4ToSCN(_ structValue:Float4x4) -> SCNMatrix4 {
-	return SCNMatrix4(Float4x4ToSimd(structValue));
-}
-/// Converts a `Float4x4` struct from `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
-@_transparent public func Float4x4FromSCN(_ scnValue:SCNMatrix4) -> Float4x4 {
-	return Float4x4FromSimd(simd_float4x4(scnValue));
-}
+#if canImport(SceneKit)
+	// MARK: SceneKit Conversion
+		
+	/// Converts a `Float4x4` struct to `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
+	@_transparent public func Float4x4ToSCN(_ structValue:Float4x4) -> SCNMatrix4 {
+		return SCNMatrix4(Float4x4ToSimd(structValue));
+	}
+	/// Converts a `Float4x4` struct from `SCNMatrix4` struct using SceneKit-provided SIMD↔SCNMatrix conversion helper function.
+	@_transparent public func Float4x4FromSCN(_ scnValue:SCNMatrix4) -> Float4x4 {
+		return Float4x4FromSimd(simd_float4x4(scnValue));
+	}
+#endif // SceneKit
 
 
 
-#if !os(watchOS) && !os(xrOS)
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	// MARK: GLKit Conversion
 	
 	/// Converts a `Float4x4` struct to `GLKMatrix4` struct using passing-individual-members initialization.
@@ -152,7 +158,7 @@ public struct Float4x4
 			m30: glkValue.m30, m31: glkValue.m31, m32: glkValue.m32, m33: glkValue.m33
 		)
 	}
-#endif // !watchOS && !xrOS
+#endif // GLKit
 
 
 
@@ -213,7 +219,7 @@ public struct Float4x4
 
 
 
-#if !os(watchOS)
+#if canImport(QuartzCore)
 	// MARK: CATransform3D Conversion
 
 	/// Converts a `Float4x4` struct to `CATransform3D` struct using passing-individual-members initialization.
@@ -234,18 +240,20 @@ public struct Float4x4
 			Float(caValue.m41), Float(caValue.m42), Float(caValue.m43), Float(caValue.m44)
 		)
 	}
-#endif // !watchOS
+#endif // QuartzCore
 
 
 
-//// MARK: CoreImage Conversion
-//	
-///// Converts a `Float4x4` struct to `CIVector` class using passing-individual-members initialization.
-//NS_INLINE CIVector *Float4x4ToCI(Float4x4 structValue) {
-//	return [CIVector vectorWithCGAffineTransform:Float4x4ToCGAffine(structValue)];
-//}
-///// Converts a `Float4x4` struct from `CIVector` class using passing-individual-members initialization.
-//NS_INLINE Float4x4 Float4x4FromCI(CIVector *ciVector) {
-//	assert(ciVector.count == 6);
-//	return Float4x4FromCGAffine(ciVector.CGAffineTransformValue);
-//}
+//#if canImport(CoreImage)
+//	// MARK: CoreImage Conversion
+//		
+//	/// Converts a `Float4x4` struct to `CIVector` class using passing-individual-members initialization.
+//	NS_INLINE CIVector *Float4x4ToCI(Float4x4 structValue) {
+//		return [CIVector vectorWithCGAffineTransform:Float4x4ToCGAffine(structValue)];
+//	}
+//	/// Converts a `Float4x4` struct from `CIVector` class using passing-individual-members initialization.
+//	NS_INLINE Float4x4 Float4x4FromCI(CIVector *ciVector) {
+//		assert(ciVector.count == 6);
+//		return Float4x4FromCGAffine(ciVector.CGAffineTransformValue);
+//	}
+//#endif // CoreImage

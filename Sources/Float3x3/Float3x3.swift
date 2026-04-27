@@ -4,10 +4,32 @@
 
 import Foundation
 import simd
-import SceneKit.SceneKitTypes
-#if !os(watchOS) && !os(xrOS)
+#if canImport(SceneKit)
+	import SceneKit.SceneKitTypes
+#endif
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	import GLKit.GLKMatrix3
 #endif
+
+
+
+fileprivate func simdSinAndCosFuncs() -> (sin: (_: simd_float3) -> simd_float3, cos: (_: simd_float3) -> simd_float3) {
+	let sin: (_: simd_float3) -> simd_float3
+	let cos: (_: simd_float3) -> simd_float3
+	#if canImport(Darwin)
+		if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *) {
+			sin = simd.sin
+			cos = simd.cos
+		} else {
+			sin = __tg_sin
+			cos = __tg_cos
+		}
+	#else
+		sin = simd.sin
+		cos = simd.cos
+	#endif
+	return (sin, cos)
+}
 
 
 
@@ -113,8 +135,10 @@ extension Float3x3
 	}
 	
 	public init(rotationEulerAngles eulerAngles_radians:Float3, order:RotationOrder = .zxy) {
-		let sinOfAngles = __tg_sin(eulerAngles_radians.simdValue)
-		let cosOfAngles = __tg_cos(eulerAngles_radians.simdValue)
+		let (sin, cos) = simdSinAndCosFuncs()
+		
+		let sinOfAngles = sin(eulerAngles_radians.simdValue)
+		let cosOfAngles = cos(eulerAngles_radians.simdValue)
 		
 		let xRotation = Self(columns:
 			Float3(1, 0, 0),
@@ -340,19 +364,21 @@ extension Float3x3
 }
 
 
-//extension Float3x3 // SceneKit Conversion
-//{
-//	/// Initialize to a SceneKit vector.
-//	@_transparent public init(scnVector value:SCNVector3) {
-//		self = Float3x3FromSCN(value)
+//#if canImport(SceneKit)
+//	extension Float3x3 // SceneKit Conversion
+//	{
+//		/// Initialize to a SceneKit vector.
+//		@_transparent public init(scnVector value:SCNVector3) {
+//			self = Float3x3FromSCN(value)
+//		}
+//		
+//		public var toSCNVector:SCNVector3 {
+//			return Float3x3ToSCN(self)
+//		}
 //	}
-//	
-//	public var toSCNVector:SCNVector3 {
-//		return Float3x3ToSCN(self)
-//	}
-//}
+//#endif // SceneKit
 
-#if !os(watchOS) && !os(xrOS)
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	extension Float3x3 // GLKit Conversion
 	{
 		/// Initialize to a GLKit vector.
@@ -364,19 +390,21 @@ extension Float3x3
 			return Float3x3ToGLK(self)
 		}
 	}
-#endif // !watchOS && !xrOS
+#endif // GLKit
 
-//extension Float3x3 // CoreImage Conversion
-//{
-//	/// Initialize to a CoreImage vector.
-//	@_transparent public init(ciVector:CIVector) {
-//		self = Float3x3FromCI(ciVector)
+//#if canImport(CoreImage)
+//	extension Float3x3 // CoreImage Conversion
+//	{
+//		/// Initialize to a CoreImage vector.
+//		@_transparent public init(ciVector:CIVector) {
+//			self = Float3x3FromCI(ciVector)
+//		}
+//
+//		@_transparent public var toCIVector:CIVector {
+//			return Float3x3ToCI(self)
+//		}
 //	}
-//	
-//	@_transparent public var toCIVector:CIVector {
-//		return Float3x3ToCI(self)
-//	}
-//}
+//#endif // !CoreImage
 
 
 extension Float3x3 : CustomStringConvertible

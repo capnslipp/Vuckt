@@ -2,11 +2,13 @@
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
-import simd.vector_types
-#if !os(watchOS)
+import simd
+#if canImport(CoreImage)
 	import CoreImage.CIVector
 #endif
-import CoreGraphics.CGGeometry
+#if canImport(CoreGraphics)
+	import CoreGraphics.CGGeometry
+#endif
 
 
 
@@ -97,7 +99,7 @@ public struct Float2
 
 
 
-#if !os(watchOS)
+#if canImport(CoreImage)
 	// MARK: CoreImage Conversion
 
 	/// Converts an `Float2` struct to `CIVector` class using passing-individual-members initialization.
@@ -109,35 +111,37 @@ public struct Float2
 		assert(ciVector.count == 2)
 		return Float2(x: Float(ciVector.x), y: Float(ciVector.y))
 	}
-#endif // !watchOS
+#endif // !CoreImage
 
 
 
-// MARK: CoreGraphics Conversion
+#if canImport(CoreGraphics)
+	// MARK: CoreGraphics Conversion
 
-/// Converts an `Float2` struct to `CGVector` struct using passing-individual-members initialization.
-@_transparent public func Float2ToCGVector(_ structValue:Float2) -> CGVector {
-	return CGVector(dx: CGFloat(structValue.x), dy: CGFloat(structValue.y))
-}
-/// Converts an `Float2` struct from `CGVector` struct using passing-individual-members initialization.
-@_transparent public func Float2FromCGVector(_ cgVectorValue:CGVector) -> Float2 {
-	return Float2(x: Float(cgVectorValue.dx), y: Float(cgVectorValue.dy))
-}
+	/// Converts an `Float2` struct to `CGVector` struct using passing-individual-members initialization.
+	@_transparent public func Float2ToCGVector(_ structValue:Float2) -> CGVector {
+		return CGVector(dx: CGFloat(structValue.x), dy: CGFloat(structValue.y))
+	}
+	/// Converts an `Float2` struct from `CGVector` struct using passing-individual-members initialization.
+	@_transparent public func Float2FromCGVector(_ cgVectorValue:CGVector) -> Float2 {
+		return Float2(x: Float(cgVectorValue.dx), y: Float(cgVectorValue.dy))
+	}
 
-/// Converts an `Float2` struct to `CGPoint` struct using passing-individual-members initialization.
-@_transparent public func Float2ToCGPoint(_ structValue:Float2) -> CGPoint {
-	return CGPoint(x: CGFloat(structValue.x), y: CGFloat(structValue.y))
-}
-/// Converts an `Float2` struct from `CGPoint` struct using passing-individual-members initialization.
-@_transparent public func Float2FromCGPoint(_ cgPointValue:CGPoint) -> Float2 {
-	return Float2(x: Float(cgPointValue.x), y: Float(cgPointValue.y))
-}
+	/// Converts an `Float2` struct to `CGPoint` struct using passing-individual-members initialization.
+	@_transparent public func Float2ToCGPoint(_ structValue:Float2) -> CGPoint {
+		return CGPoint(x: CGFloat(structValue.x), y: CGFloat(structValue.y))
+	}
+	/// Converts an `Float2` struct from `CGPoint` struct using passing-individual-members initialization.
+	@_transparent public func Float2FromCGPoint(_ cgPointValue:CGPoint) -> Float2 {
+		return Float2(x: Float(cgPointValue.x), y: Float(cgPointValue.y))
+	}
 
-/// Converts an `Float2` struct to `CGSize` struct using passing-individual-members initialization.
-@_transparent public func Float2ToCGSize(_ structValue:Float2) -> CGSize {
-	return CGSize(width: CGFloat(structValue.x), height: CGFloat(structValue.y))
-}
-/// Converts an `Float2` struct from `CGSize` struct using passing-individual-members initialization.
-@_transparent public func Float2FromCGSize(_ cgSizeValue:CGSize) -> Float2 {
-	return Float2(x: Float(cgSizeValue.width), y: Float(cgSizeValue.height))
-}
+	/// Converts an `Float2` struct to `CGSize` struct using passing-individual-members initialization.
+	@_transparent public func Float2ToCGSize(_ structValue:Float2) -> CGSize {
+		return CGSize(width: CGFloat(structValue.x), height: CGFloat(structValue.y))
+	}
+	/// Converts an `Float2` struct from `CGSize` struct using passing-individual-members initialization.
+	@_transparent public func Float2FromCGSize(_ cgSizeValue:CGSize) -> Float2 {
+		return Float2(x: Float(cgSizeValue.width), y: Float(cgSizeValue.height))
+	}
+#endif // CoreGraphics

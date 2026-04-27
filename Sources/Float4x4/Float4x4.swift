@@ -4,11 +4,13 @@
 
 import Foundation
 import simd
-import SceneKit.SceneKitTypes
-#if !os(watchOS) && !os(xrOS)
+#if canImport(SceneKit)
+	import SceneKit.SceneKitTypes
+#endif
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	import GLKit.GLKMatrix4
 #endif
-#if !os(watchOS)
+#if canImport(QuartzCore)
 	import QuartzCore.CATransform3D
 #endif
 
@@ -362,19 +364,21 @@ extension Float4x4
 }
 
 
-extension Float4x4 // SceneKit Conversion
-{
-	/// Initialize to a SceneKit matrix.
-	@_transparent public init(scnMatrix value:SCNMatrix4) {
-		self = Float4x4FromSCN(value)
+#if canImport(SceneKit)
+	extension Float4x4 // SceneKit Conversion
+	{
+		/// Initialize to a SceneKit matrix.
+		@_transparent public init(scnMatrix value:SCNMatrix4) {
+			self = Float4x4FromSCN(value)
+		}
+		
+		public var toSCNMatrix:SCNMatrix4 {
+			return Float4x4ToSCN(self)
+		}
 	}
-	
-	public var toSCNMatrix:SCNMatrix4 {
-		return Float4x4ToSCN(self)
-	}
-}
+#endif
 
-#if !os(watchOS) && !os(xrOS)
+#if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	extension Float4x4 // GLKit Conversion
 	{
 		/// Initialize to a GLKit matrix.
@@ -386,9 +390,9 @@ extension Float4x4 // SceneKit Conversion
 			return Float4x4ToGLK(self)
 		}
 	}
-#endif // !watchOS && !xrOS
+#endif // GLKit
 
-#if !os(watchOS)
+#if canImport(QuartzCore)
 	extension Float4x4 // CoreAnimation Conversion
 	{
 		/// Initialize to a CoreAnimation transform.
@@ -400,19 +404,21 @@ extension Float4x4 // SceneKit Conversion
 			return Float4x4ToCA(self)
 		}
 	}
-#endif // !watchOS
+#endif // QuartzCore
 
-//extension Float4x4 // CoreImage Conversion
-//{
-//	/// Initialize to a CoreImage vector.
-//	@_transparent public init(ciVector:CIVector) {
-//		self = Float4x4FromCI(ciVector)
+//#if canImport(CoreImage)
+//	extension Float4x4 // CoreImage Conversion
+//	{
+//		/// Initialize to a CoreImage vector.
+//		@_transparent public init(ciVector:CIVector) {
+//			self = Float4x4FromCI(ciVector)
+//		}
+//		
+//		@_transparent public var toCIVector:CIVector {
+//			return Float4x4ToCI(self)
+//		}
 //	}
-//	
-//	@_transparent public var toCIVector:CIVector {
-//		return Float4x4ToCI(self)
-//	}
-//}
+//#endif // !CoreImage
 
 
 extension Float4x4 : CustomStringConvertible
