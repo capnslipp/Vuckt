@@ -15,7 +15,7 @@ import SceneKit.SceneKitTypes
 
 // MARK: Struct Definition
 
-@objc public struct Float3
+public struct Float3
 {
 	public var x:Float
 	public var y:Float
