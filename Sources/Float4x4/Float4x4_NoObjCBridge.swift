@@ -23,7 +23,7 @@ import SceneKit.SceneKitTypes
 
 // MARK: Struct Definition
 
-public struct Float4x4
+@objc public struct Float4x4
 {
 	public var m00: Float
 	public var m01: Float

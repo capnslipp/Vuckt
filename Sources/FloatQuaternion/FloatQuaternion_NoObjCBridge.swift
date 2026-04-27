@@ -18,7 +18,7 @@ import SceneKit.SceneKitTypes
 
 // MARK: Struct Definition
 
-public struct FloatQuaternion
+@objc public struct FloatQuaternion
 {
 	public var ix:Float, iy:Float, iz:Float, r:Float
 	

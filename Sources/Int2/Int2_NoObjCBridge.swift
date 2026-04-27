@@ -8,7 +8,7 @@ import simd.vector_types
 
 // MARK: Struct Definition
 
-public struct Int2
+@objc public struct Int2
 {
 	public var x:Int32
 	public var y:Int32

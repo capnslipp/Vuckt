@@ -12,7 +12,7 @@ import CoreGraphics.CGGeometry
 
 // MARK: Struct Definition
 
-public struct Float2
+@objc public struct Float2
 {
 	public var x:Float
 	public var y:Float
