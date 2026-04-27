@@ -1,14 +1,44 @@
 // swift-tools-version:5.0
 import PackageDescription
 
+
+
+let isSimdAvailable: Bool
+#if canImport(simd)
+	isSimdAvailable = true
+#else // !canImport(simd)
+	isSimdAvailable = false
+#endif // !canImport(simd)
+
+extension Array
+{
+	func appendingOnlyIfSimdUnavailable(_ element: Element) -> Self {
+		if !isSimdAvailable {
+			return self + [ element ]
+		} else {
+			return self
+		}
+	}
+}
+
+
+
 let package = Package(
 	name: "Vuckt",
 	products: [
 		.library(name: "Vuckt", targets: ["Vuckt"]),
 	],
-	dependencies: [],
+	dependencies: []
+		.appendingOnlyIfSimdUnavailable(
+			.package(url: "https://github.com/keyvariable/kvSIMD.swift.git", from: "1.1.0")
+		),
 	targets: [
-		.target(name: "Vuckt", dependencies: [], path: "Sources/",
+		.target(name: "Vuckt",
+			dependencies: []
+				.appendingOnlyIfSimdUnavailable(
+					.product(name: "kvSIMD", package: "kvSIMD.swift")
+				),
+			path: "Sources/",
 			sources: [
 				"Vuckt.swift",
 				"Float2/Float2_NoObjCBridge.swift",
