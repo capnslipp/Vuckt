@@ -2,39 +2,41 @@
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
-import XCTest
+import Testing
 import Vuckt
 import simd
+import Numerics
 
 
 
-@_transparent func assertAlmostEqual<T>(
+func assertAlmostEqual<T>(
 	_ expression1: @autoclosure () throws -> T,
 	_ expression2: @autoclosure () throws -> T,
 	_ message: @autoclosure () -> String = "",
-	file: StaticString = #file,
-	line: UInt = #line
+	sourceLocation: SourceLocation = #_sourceLocation
 ) rethrows where T : FloatingPoint {
 	let almostEqualTolerance = T.ulpOfOne.squareRoot() // from: https://github.com/apple/swift-evolution/blob/master/proposals/0259-approximately-equal.md
-	try XCTAssertEqual(expression1(), expression2(), accuracy: almostEqualTolerance, message(), file: file, line: line)
+	try #expect(
+		expression1().isApproximatelyEqual(to: expression2(), absoluteTolerance: almostEqualTolerance),
+		.init(rawValue: message()), sourceLocation: sourceLocation
+	)
 }
 
-@_transparent func assertAlmostEqual(
+func assertAlmostEqual(
 	_ expression1: @autoclosure () throws -> Float3,
 	_ expression2: @autoclosure () throws -> Float3,
 	_ message: @autoclosure () -> String = "",
-	file: StaticString = #file,
-	line: UInt = #line
+	sourceLocation: SourceLocation = #_sourceLocation
 ) rethrows {
 	let ( value1, value2 ) = try ( expression1(), expression2() )
-	assertAlmostEqual(value1.x, value2.x, message(), file: file, line: line)
-	assertAlmostEqual(value1.y, value2.y, message(), file: file, line: line)
-	assertAlmostEqual(value1.z, value2.z, message(), file: file, line: line)
+	assertAlmostEqual(value1.x, value2.x, message(), sourceLocation: sourceLocation)
+	assertAlmostEqual(value1.y, value2.y, message(), sourceLocation: sourceLocation)
+	assertAlmostEqual(value1.z, value2.z, message(), sourceLocation: sourceLocation)
 }
 
 
 
-class VucktTests : XCTestCase
+struct VucktTests
 {
 	static let _int2TestValues:[[Int32]] = [
 		[ 0, 0 ],
@@ -231,313 +233,305 @@ class VucktTests : XCTestCase
 	]
 	
 	
-	override func setUp()
-	{
-		// Put setup code here. This method is called before the invocation of each test method in the class.
-	}
-	
-	override func tearDown()
-	{
-		// Put teardown code here. This method is called after the invocation of each test method in the class.
-	}
+	init() async throws {}
 	
 	
 	#if !NO_OBJC_BRIDGE
-	func testNSValueRoundtripping()
+	@Test func nsValueRoundtripping()
 	{
 		Self._int2TestValues.map(Int2.init).forEach{
 			let nsValue = NSValue(int2: $0)
 			let value = nsValue.int2Value
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._int3TestValues.map(Int3.init).forEach{
 			let nsValue = NSValue(int3: $0)
 			let value = nsValue.int3Value
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._int4TestValues.map(Int4.init).forEach{
 			let nsValue = NSValue(int4: $0)
 			let value = nsValue.int4Value
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._float2TestValues.map(Float2.init).forEach{
 			let nsValue = NSValue(float2: $0)
 			let value = nsValue.float2Value
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._float3TestValues.map(Float3.init).forEach{
 			let nsValue = NSValue(float3: $0)
 			let value = nsValue.float3Value
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._float4TestValues.map(Float4.init).forEach{
 			let nsValue = NSValue(float4: $0)
 			let value = nsValue.float4Value
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 	}
 	#endif
 	
-	func testSIMDRoundtripping()
+	@Test func simdRoundtripping()
 	{
 		Self._int2TestValues.map(Int2.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Int2(simdValue)
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._int3TestValues.map(Int3.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Int3(simdValue)
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._int4TestValues.map(Int4.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Int4(simdValue)
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._float2TestValues.map(Float2.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Float2(simdValue)
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._float3TestValues.map(Float3.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Float3(simdValue)
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 		
 		Self._float4TestValues.map(Float4.init).forEach{
 			let simdValue = $0.simdValue
 			let value = Float4(simdValue)
-			XCTAssertEqual($0, value)
+			#expect($0 == value)
 		}
 	}
 	
-	func testEquality()
+	@Test func equality()
 	{
-		XCTAssertTrue(
+		#expect(
 			Int2(1, 2) == Int2(1, 2)
 		)
-		XCTAssertTrue(
+		#expect(
 			Int3(1, 2, 3) == Int3(1, 2, 3)
 		)
-		XCTAssertTrue(
+		#expect(
 			Int4(1, 2, 3, 4) == Int4(1, 2, 3, 4)
 		)
-		XCTAssertTrue(
+		#expect(
 			Float2(1, 2) == Float2(1, 2)
 		)
-		XCTAssertTrue(
+		#expect(
 			Float3(1, 2, 3) == Float3(1, 2, 3)
 		)
-		XCTAssertTrue(
+		#expect(
 			Float4(1, 2, 3, 4) == Float4(1, 2, 3, 4)
 		)
 		
-		XCTAssertTrue(
+		#expect(
 			Int2(1, 2) != Int2(10, 20)
 		)
-		XCTAssertTrue(
+		#expect(
 			Int3(1, 2, 3) != Int3(10, 20, 30)
 		)
-		XCTAssertTrue(
+		#expect(
 			Int4(1, 2, 3, 4) != Int4(10, 20, 30, 40)
 		)
-		XCTAssertTrue(
+		#expect(
 			Float2(1, 2) != Float2(10, 20)
 		)
-		XCTAssertTrue(
+		#expect(
 			Float3(1, 2, 3) != Float3(10, 20, 30)
 		)
-		XCTAssertTrue(
+		#expect(
 			Float4(1, 2, 3, 4) != Float4(10, 20, 30, 40)
 		)
 	}
 	
-	func testAddMath()
+	@Test func addMath()
 	{
-		XCTAssertEqual(
-			Int2(1, 2) + Int2(-10, -20),
+		#expect(
+			Int2(1, 2) + Int2(-10, -20) ==
 			Int2(simd_int2(1, 2) &+ simd_int2(-10, -20))
 		)
-		XCTAssertEqual(
-			Int3(1, 2, 3) + Int3(-10, -20, -30),
+		#expect(
+			Int3(1, 2, 3) + Int3(-10, -20, -30) ==
 			Int3(simd_int3(1, 2, 3) &+ simd_int3(-10, -20, -30))
 		)
-		XCTAssertEqual(
-			Int4(1, 2, 3, 4) + Int4(-10, -20, -30, -40),
+		#expect(
+			Int4(1, 2, 3, 4) + Int4(-10, -20, -30, -40) ==
 			Int4(simd_int4(1, 2, 3, 4) &+ simd_int4(-10, -20, -30, -40))
 		)
 		
-		XCTAssertEqual(
-			Float2(1, 2) + Float2(-10, -20),
+		#expect(
+			Float2(1, 2) + Float2(-10, -20) ==
 			Float2(simd_float2(1, 2) + simd_float2(-10, -20))
 		)
-		XCTAssertEqual(
-			Float3(1, 2, 3) + Float3(-10, -20, -30),
+		#expect(
+			Float3(1, 2, 3) + Float3(-10, -20, -30) ==
 			Float3(simd_float3(1, 2, 3) + simd_float3(-10, -20, -30))
 		)
-		XCTAssertEqual(
-			Float4(1, 2, 3, 4) + Float4(-10, -20, -30, -40),
+		#expect(
+			Float4(1, 2, 3, 4) + Float4(-10, -20, -30, -40) ==
 			Float4(simd_float4(1, 2, 3, 4) + simd_float4(-10, -20, -30, -40))
 		)
 	}
 	
-	func testSubtractMath()
+	@Test func subtractMath()
 	{
-		XCTAssertEqual(
-			Int2(1, 2) - Int2(-10, -20),
+		#expect(
+			Int2(1, 2) - Int2(-10, -20) ==
 			Int2(simd_int2(1, 2) &- simd_int2(-10, -20))
 		)
-		XCTAssertEqual(
-			Int3(1, 2, 3) - Int3(-10, -20, -30),
+		#expect(
+			Int3(1, 2, 3) - Int3(-10, -20, -30) ==
 			Int3(simd_int3(1, 2, 3) &- simd_int3(-10, -20, -30))
 		)
-		XCTAssertEqual(
-			Int4(1, 2, 3, 4) - Int4(-10, -20, -30, -40),
+		#expect(
+			Int4(1, 2, 3, 4) - Int4(-10, -20, -30, -40) ==
 			Int4(simd_int4(1, 2, 3, 4) &- simd_int4(-10, -20, -30, -40))
 		)
 		
-		XCTAssertEqual(
-			Float2(1, 2) - Float2(-10, -20),
+		#expect(
+			Float2(1, 2) - Float2(-10, -20) ==
 			Float2(simd_float2(1, 2) - simd_float2(-10, -20))
 		)
-		XCTAssertEqual(
-			Float3(1, 2, 3) - Float3(-10, -20, -30),
+		#expect(
+			Float3(1, 2, 3) - Float3(-10, -20, -30) ==
 			Float3(simd_float3(1, 2, 3) - simd_float3(-10, -20, -30))
 		)
-		XCTAssertEqual(
-			Float4(1, 2, 3, 4) - Float4(-10, -20, -30, -40),
+		#expect(
+			Float4(1, 2, 3, 4) - Float4(-10, -20, -30, -40) ==
 			Float4(simd_float4(1, 2, 3, 4) - simd_float4(-10, -20, -30, -40))
 		)
 	}
 	
-	func testMultiplyMath()
+	@Test func multiplyMath()
 	{
-		XCTAssertEqual(
-			Int2(1, 2) * Int2(-10, -20),
+		#expect(
+			Int2(1, 2) * Int2(-10, -20) ==
 			Int2(simd_int2(1, 2) &* simd_int2(-10, -20))
 		)
-		XCTAssertEqual(
-			Int3(1, 2, 3) * Int3(-10, -20, -30),
+		#expect(
+			Int3(1, 2, 3) * Int3(-10, -20, -30) ==
 			Int3(simd_int3(1, 2, 3) &* simd_int3(-10, -20, -30))
 		)
-		XCTAssertEqual(
-			Int4(1, 2, 3, 4) * Int4(-10, -20, -30, -40),
+		#expect(
+			Int4(1, 2, 3, 4) * Int4(-10, -20, -30, -40) ==
 			Int4(simd_int4(1, 2, 3, 4) &* simd_int4(-10, -20, -30, -40))
 		)
 		
-		XCTAssertEqual(
-			Float2(1, 2) * Float2(-10, -20),
+		#expect(
+			Float2(1, 2) * Float2(-10, -20) ==
 			Float2(simd_float2(1, 2) * simd_float2(-10, -20))
 		)
-		XCTAssertEqual(
-			Float3(1, 2, 3) * Float3(-10, -20, -30),
+		#expect(
+			Float3(1, 2, 3) * Float3(-10, -20, -30) ==
 			Float3(simd_float3(1, 2, 3) * simd_float3(-10, -20, -30))
 		)
-		XCTAssertEqual(
-			Float4(1, 2, 3, 4) * Float4(-10, -20, -30, -40),
+		#expect(
+			Float4(1, 2, 3, 4) * Float4(-10, -20, -30, -40) ==
 			Float4(simd_float4(1, 2, 3, 4) * simd_float4(-10, -20, -30, -40))
 		)
 	}
 	
-	func testDivideMath()
+	@Test func divideMath()
 	{
-		XCTAssertEqual(
-			Int2(-10, -20) / Int2(2, 3),
+		#expect(
+			Int2(-10, -20) / Int2(2, 3) ==
 			Int2(simd_int2(-10, -20) / simd_int2(2, 3))
 		)
-		XCTAssertEqual(
-			Int3(-10, -20, -30) / Int3(2, 3, 4),
+		#expect(
+			Int3(-10, -20, -30) / Int3(2, 3, 4) ==
 			Int3(simd_int3(-10, -20, -30) / simd_int3(2, 3, 4))
 		)
-		XCTAssertEqual(
-			Int4(-10, -20, -30, -40) / Int4(2, 3, 4, 5),
+		#expect(
+			Int4(-10, -20, -30, -40) / Int4(2, 3, 4, 5) ==
 			Int4(simd_int4(-10, -20, -30, -40) / simd_int4(2, 3, 4, 5))
 		)
 		
-		XCTAssertEqual(
-			Float2(-10, -20) / Float2(2, 3),
+		#expect(
+			Float2(-10, -20) / Float2(2, 3) ==
 			Float2(simd_float2(-10, -20) / simd_float2(2, 3))
 		)
-		XCTAssertEqual(
-			Float3(-10, -20, -30) / Float3(2, 3, 4),
+		#expect(
+			Float3(-10, -20, -30) / Float3(2, 3, 4) ==
 			Float3(simd_float3(-10, -20, -30) / simd_float3(2, 3, 4))
 		)
-		XCTAssertEqual(
-			Float4(-10, -20, -30, -40) / Float4(2, 3, 4, 5),
+		#expect(
+			Float4(-10, -20, -30, -40) / Float4(2, 3, 4, 5) ==
 			Float4(simd_float4(-10, -20, -30, -40) / simd_float4(2, 3, 4, 5))
 		)
 	}
 	
-	func testModulusMath()
+	@Test func modulusMath()
 	{
-		XCTAssertEqual(
-			Int2(-10, -20) % Int2(2, 3),
+		#expect(
+			Int2(-10, -20) % Int2(2, 3) ==
 			Int2(simd_int2(-10, -20) % simd_int2(2, 3))
 		)
-		XCTAssertEqual(
-			Int3(-10, -20, -30) % Int3(2, 3, 4),
+		#expect(
+			Int3(-10, -20, -30) % Int3(2, 3, 4) ==
 			Int3(simd_int3(-10, -20, -30) % simd_int3(2, 3, 4))
 		)
-		XCTAssertEqual(
-			Int4(-10, -20, -30, -40) % Int4(2, 3, 4, 5),
+		#expect(
+			Int4(-10, -20, -30, -40) % Int4(2, 3, 4, 5) ==
 			Int4(simd_int4(-10, -20, -30, -40) % simd_int4(2, 3, 4, 5))
 		)
 		
-		XCTAssertEqual(
-			Float2(-10, -20) % Float2(2, 3),
+		#expect(
+			Float2(-10, -20) % Float2(2, 3) ==
 			Float2(0, -2)
 		)
-		XCTAssertEqual(
-			Float3(-10, -20, -30) % Float3(2, 3, 4),
+		#expect(
+			Float3(-10, -20, -30) % Float3(2, 3, 4) ==
 			Float3(0, -2, -2)
 		)
-		XCTAssertEqual(
-			Float4(-10, -20, -30, -40) % Float4(2, 3, 4, 5),
+		#expect(
+			Float4(-10, -20, -30, -40) % Float4(2, 3, 4, 5) ==
 			Float4(0, -2, -2, 0)
 		)
 	}
 	
-	func testNegationMath()
+	@Test func negationMath()
 	{
-		XCTAssertEqual(
-			-Int2(1, 2),
+		#expect(
+			-Int2(1, 2) ==
 			Int2(0 &- simd_int2(1, 2))
 		)
-		XCTAssertEqual(
-			-Int3(1, 2, 3),
+		#expect(
+			-Int3(1, 2, 3) ==
 			Int3(0 &- simd_int3(1, 2, 3))
 		)
-		XCTAssertEqual(
-			-Int4(1, 2, 3, 4),
+		#expect(
+			-Int4(1, 2, 3, 4) ==
 			Int4(0 &- simd_int4(1, 2, 3, 4))
 		)
 		
-		XCTAssertEqual(
-			-Float2(1, 2),
+		#expect(
+			-Float2(1, 2) ==
 			Float2(-simd_float2(1, 2))
 		)
-		XCTAssertEqual(
-			-Float3(1, 2, 3),
+		#expect(
+			-Float3(1, 2, 3) ==
 			Float3(-simd_float3(1, 2, 3))
 		)
-		XCTAssertEqual(
-			-Float4(1, 2, 3, 4),
+		#expect(
+			-Float4(1, 2, 3, 4) ==
 			Float4(-simd_float4(1, 2, 3, 4))
 		)
 	}
 	
-	func testSimpleAngleAxisConstructors()
+	@Test func simpleAngleAxisConstructors()
 	{
 		for (rotationIndex, (angle_rad, axis)) in Self._angleAxisRotationSimpleTestValues.enumerated() {
 			let simdQuaternion = simd_quaternion(angle_rad, axis.simdValue)
@@ -566,7 +560,7 @@ class VucktTests : XCTestCase
 		}
 	}
 	
-	func testAngleAxisConstructors()
+	@Test func angleAxisConstructors()
 	{
 		for (rotationIndex, (angle_rad, axis)) in Self._angleAxisRotationTestValues.enumerated() {
 			let glmQuaternion = Self._angleAxisRotationGLMComputedQuaternions[rotationIndex]
@@ -601,7 +595,7 @@ class VucktTests : XCTestCase
 		}
 	}
 	
-	func testSimpleEulerAnglesXYZConstructors()
+	@Test func simpleEulerAnglesXYZConstructors()
 	{
 		for (rotationIndex, eulerAngles_rad) in Self._eulerAnglesRotationSimpleTestValues.enumerated() {
 			let simdQuaternion:simd_quatf = {
@@ -635,7 +629,7 @@ class VucktTests : XCTestCase
 		}
 	}
 	
-	func testEulerAnglesXYZConstructors()
+	@Test func eulerAnglesXYZConstructors()
 	{
 		for (rotationIndex, eulerAngles_rad) in Self._eulerAnglesRotationTestValues.enumerated() {
 			let glmQuaternion = Self._eulerAnglesRotationGLMComputedXYZQuaternions[rotationIndex]

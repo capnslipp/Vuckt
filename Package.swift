@@ -28,10 +28,11 @@ let package = Package(
 	products: [
 		.library(name: "Vuckt", targets: ["Vuckt"]),
 	],
-	dependencies: []
-		.appendingOnlyIfSimdUnavailable(
-			.package(url: "https://github.com/keyvariable/kvSIMD.swift.git", from: "1.1.0")
-		),
+	dependencies: [
+		.package(url: "https://github.com/apple/swift-numerics", from: "1.1.1"),
+	].appendingOnlyIfSimdUnavailable(
+		.package(url: "https://github.com/keyvariable/kvSIMD.swift.git", from: "1.1.0")
+	),
 	targets: [
 		.target(name: "Vuckt",
 			dependencies: []
@@ -62,7 +63,12 @@ let package = Package(
 			],
 			swiftSettings: [ .define("NO_OBJC_BRIDGE") ]
 		),
-		.testTarget(name: "VucktTests", dependencies: ["Vuckt"], path: "Tests/",
+		.testTarget(name: "VucktTests",
+			dependencies: [
+				"Vuckt",
+				.product(name: "Numerics", package: "swift-numerics"),
+			],
+			path: "Tests/",
 			sources: [ "VucktTests.swift", "VucktPerformanceTests.swift" ],
 			swiftSettings: [ .define("NO_OBJC_BRIDGE") ]
 		),

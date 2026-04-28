@@ -2,6 +2,10 @@
 // @author: Slipp Douglas Thompson
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 
+#if Xcode // performance tests only work with Xcode
+
+
+
 import XCTest
 import Vuckt
 import simd
@@ -131,3 +135,7 @@ class VucktPerformanceTests : XCTestCase
 #endif // GLKit
 
 }
+
+
+
+#endif // Xcode

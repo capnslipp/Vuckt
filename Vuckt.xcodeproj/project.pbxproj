@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,10 @@
 		FA4F6C4924371D54009A8579 /* Float3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4F6C402437066F009A8579 /* Float3x3.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA59C00B21B3529200799899 /* Vuckt.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA59C00C21B353EA00799899 /* Vuckt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; };
+		FA6E5D552FA166B000CA1283 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = FA6E5D542FA166B000CA1283 /* Numerics */; };
+		FA6E5D582FA166C500CA1283 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = FA6E5D572FA166C500CA1283 /* Numerics */; };
+		FA6E5D592FA166D000CA1283 /* Vuckt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; };
+		FA6E5D5A2FA166D000CA1283 /* Vuckt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA7C2F8120CA1557001A44CF /* Vuckt.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* Vuckt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA7F35C623F682F100D89025 /* Vuckt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F35C523F682F100D89025 /* Vuckt.swift */; };
 		FAED6C2E21B32E370083A2B5 /* VucktTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED6C2D21B32E370083A2B5 /* VucktTests.swift */; };
@@ -71,6 +75,13 @@
 			remoteGlobalIDString = FA32AEA920BD1C4C008A2111;
 			remoteInfo = Vuckt;
 		};
+		FA6E5D5B2FA166D000CA1283 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA32AEA920BD1C4C008A2111;
+			remoteInfo = Vuckt;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +94,17 @@
 				FA59C00B21B3529200799899 /* Vuckt.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA6E5D5D2FA166D000CA1283 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FA6E5D5A2FA166D000CA1283 /* Vuckt.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -166,6 +188,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6E5D592FA166D000CA1283 /* Vuckt.framework in Frameworks */,
+				FA6E5D552FA166B000CA1283 /* Numerics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6E5D582FA166C500CA1283 /* Numerics in Frameworks */,
 				FA59C00C21B353EA00799899 /* Vuckt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +320,13 @@
 			path = Float4x4;
 			sourceTree = "<group>";
 		};
+		FA6E5D562FA166C500CA1283 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FAD0BF0820CFBD0200261EE4 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +369,7 @@
 			children = (
 				OBJ_7 /* Sources */,
 				FAED6C2C21B32E370083A2B5 /* Tests */,
+				FA6E5D562FA166C500CA1283 /* Frameworks */,
 				OBJ_11 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -410,11 +443,13 @@
 				FAED6C2721B32E370083A2B5 /* Sources */,
 				FAED6C2821B32E370083A2B5 /* Frameworks */,
 				FAED6C2921B32E370083A2B5 /* Resources */,
+				FA6E5D5D2FA166D000CA1283 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				FA18D92E23FA5EBB00F5CF37 /* PBXTargetDependency */,
+				FA6E5D5C2FA166D000CA1283 /* PBXTargetDependency */,
 			);
 			name = "VucktTests - macOS";
 			productName = Tests;
@@ -474,6 +509,9 @@
 				en,
 			);
 			mainGroup = OBJ_5;
+			packageReferences = (
+				FA6E5D532FA166B000CA1283 /* XCRemoteSwiftPackageReference "swift-numerics" */,
+			);
 			productRefGroup = OBJ_11 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -571,6 +609,11 @@
 			target = FA32AEA920BD1C4C008A2111 /* Vuckt */;
 			targetProxy = FA18D92F23FA5EC900F5CF37 /* PBXContainerItemProxy */;
 		};
+		FA6E5D5C2FA166D000CA1283 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA32AEA920BD1C4C008A2111 /* Vuckt */;
+			targetProxy = FA6E5D5B2FA166D000CA1283 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -657,7 +700,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
@@ -668,6 +717,8 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = VucktTests;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -696,7 +747,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
@@ -705,6 +762,8 @@
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = VucktTests;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -737,7 +796,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
@@ -750,6 +815,8 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TARGET_NAME = VucktTests;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -779,7 +846,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
@@ -790,7 +863,9 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TARGET_NAME = VucktTests;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -898,7 +973,8 @@
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				USE_HEADERMAP = NO;
@@ -947,6 +1023,30 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA6E5D532FA166B000CA1283 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA6E5D542FA166B000CA1283 /* Numerics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA6E5D532FA166B000CA1283 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = Numerics;
+		};
+		FA6E5D572FA166C500CA1283 /* Numerics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA6E5D532FA166B000CA1283 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = Numerics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = OBJ_1 /* Project object */;
 }
