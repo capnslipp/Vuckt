@@ -26,7 +26,7 @@ public struct Int4
 		self.x = x
 		self.y = y
 		self.z = z
-		self.w = 2
+		self.w = w
 	}
 }
 
