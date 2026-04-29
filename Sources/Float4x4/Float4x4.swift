@@ -10,7 +10,7 @@ import simd
 #if canImport(GLKit) && !targetEnvironment(macCatalyst)
 	import GLKit.GLKMatrix4
 #endif
-#if canImport(QuartzCore)
+#if canImport(QuartzCore.CATransform3D)
 	import QuartzCore.CATransform3D
 #endif
 
@@ -392,7 +392,7 @@ extension Float4x4
 	}
 #endif // GLKit
 
-#if canImport(QuartzCore)
+#if canImport(QuartzCore.CATransform3D)
 	extension Float4x4 // CoreAnimation Conversion
 	{
 		/// Initialize to a CoreAnimation transform.
@@ -404,7 +404,7 @@ extension Float4x4
 			return Float4x4ToCA(self)
 		}
 	}
-#endif // QuartzCore
+#endif // QuartzCore.CATransform3D
 
 //#if canImport(CoreImage)
 //	extension Float4x4 // CoreImage Conversion
