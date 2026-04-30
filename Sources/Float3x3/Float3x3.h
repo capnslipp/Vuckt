@@ -3,7 +3,7 @@
 // @license: Public Domain per The Unlicense.  See accompanying LICENSE file or <http://unlicense.org/>.
 #pragma once
 
-#import "Vuckt/Float3.h"
+#import <Vuckt/Float3.h>
 
 #import <Foundation/NSValue.h>
 #import <tgmath.h>
