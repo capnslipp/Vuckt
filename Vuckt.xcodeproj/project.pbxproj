@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -61,6 +61,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = FA32AEA920BD1C4C008A2111;
 			remoteInfo = Vuckt;
+		};
+		FA54979A2FA408FE00E61D57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA54978E2FA408E800E61D57;
+			remoteInfo = VucktTestsTarget;
 		};
 		FA6E5D5B2FA166D000CA1283 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -131,6 +138,7 @@
 		FA4F6C4524371B49009A8579 /* Float3x3+_ObjectiveCBridgeable.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Float3x3+_ObjectiveCBridgeable.swift.gyb"; sourceTree = "<group>"; };
 		FA4F6C4624371B66009A8579 /* Float3x3_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float3x3_NoObjCBridge.swift; sourceTree = "<group>"; };
 		FA4F6C4724371D0A009A8579 /* Float3x3+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float3x3+_ObjectiveCBridgeable.swift"; path = "Float3x3/Float3x3+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
+		FA54978F2FA408E800E61D57 /* VucktTestsTarget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VucktTestsTarget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7F35C523F682F100D89025 /* Vuckt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vuckt.swift; sourceTree = "<group>"; };
 		FA9E2CBA1EAD5D3E005C5402 /* Vuckt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vuckt.h; sourceTree = "<group>"; };
 		FA9E2CD41EAD6053005C5402 /* Int2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Int2.h; sourceTree = "<group>"; };
@@ -151,10 +159,21 @@
 		FAF2645F21ADE8B00061D666 /* Vuckt.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vuckt.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		FA5497902FA408E800E61D57 /* VucktTestsTarget */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VucktTestsTarget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		FA32AEB220BD1C4C008A2111 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA54978C2FA408E800E61D57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +344,7 @@
 			children = (
 				FA32AEB620BD1C4C008A2111 /* Vuckt.framework */,
 				FAED6C2B21B32E370083A2B5 /* VucktTests.xctest */,
+				FA54978F2FA408E800E61D57 /* VucktTestsTarget.app */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -334,6 +354,7 @@
 			children = (
 				OBJ_7 /* Sources */,
 				FAED6C2C21B32E370083A2B5 /* Tests */,
+				FA5497902FA408E800E61D57 /* VucktTestsTarget */,
 				FA6E5D562FA166C500CA1283 /* Frameworks */,
 				OBJ_11 /* Products */,
 			);
@@ -401,6 +422,28 @@
 			productReference = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		FA54978E2FA408E800E61D57 /* VucktTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA5497972FA408E900E61D57 /* Build configuration list for PBXNativeTarget "VucktTestsTarget" */;
+			buildPhases = (
+				FA54978B2FA408E800E61D57 /* Sources */,
+				FA54978C2FA408E800E61D57 /* Frameworks */,
+				FA54978D2FA408E800E61D57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FA5497902FA408E800E61D57 /* VucktTestsTarget */,
+			);
+			name = VucktTestsTarget;
+			packageProductDependencies = (
+			);
+			productName = VucktTestsTarget;
+			productReference = FA54978F2FA408E800E61D57 /* VucktTestsTarget.app */;
+			productType = "com.apple.product-type.application";
+		};
 		FAED6C2A21B32E370083A2B5 /* VucktTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "VucktTests" */;
@@ -415,6 +458,7 @@
 			dependencies = (
 				FA18D92E23FA5EBB00F5CF37 /* PBXTargetDependency */,
 				FA6E5D5C2FA166D000CA1283 /* PBXTargetDependency */,
+				FA54979B2FA408FE00E61D57 /* PBXTargetDependency */,
 			);
 			name = VucktTests;
 			productName = Tests;
@@ -428,16 +472,20 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					FA32AEA920BD1C4C008A2111 = {
 						LastSwiftMigration = 1130;
 					};
+					FA54978E2FA408E800E61D57 = {
+						CreatedOnToolsVersion = 26.4.1;
+					};
 					FAED6C2A21B32E370083A2B5 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
+						TestTargetID = FA54978E2FA408E800E61D57;
 					};
 				};
 			};
@@ -459,11 +507,19 @@
 			targets = (
 				FA32AEA920BD1C4C008A2111 /* Vuckt */,
 				FAED6C2A21B32E370083A2B5 /* VucktTests */,
+				FA54978E2FA408E800E61D57 /* VucktTestsTarget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA54978D2FA408E800E61D57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAED6C2921B32E370083A2B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,6 +565,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA54978B2FA408E800E61D57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAED6C2721B32E370083A2B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -526,6 +589,11 @@
 			isa = PBXTargetDependency;
 			target = FA32AEA920BD1C4C008A2111 /* Vuckt */;
 			targetProxy = FA18D92D23FA5EBB00F5CF37 /* PBXContainerItemProxy */;
+		};
+		FA54979B2FA408FE00E61D57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA54978E2FA408E800E61D57 /* VucktTestsTarget */;
+			targetProxy = FA54979A2FA408FE00E61D57 /* PBXContainerItemProxy */;
 		};
 		FA6E5D5C2FA166D000CA1283 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -596,6 +664,136 @@
 			};
 			name = Release;
 		};
+		FA5497982FA408E900E61D57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UQQE2H6P34;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.capnslipp.VucktTestsTarget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Debug;
+		};
+		FA5497992FA408E900E61D57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UQQE2H6P34;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.capnslipp.VucktTestsTarget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Release;
+		};
 		FAED6C3321B32E370083A2B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -611,7 +809,6 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
@@ -644,6 +841,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 				TARGET_NAME = VucktTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VucktTestsTarget.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VucktTestsTarget";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
@@ -664,7 +862,6 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -692,6 +889,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 				TARGET_NAME = VucktTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VucktTestsTarget.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VucktTestsTarget";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
@@ -831,6 +1029,15 @@
 			buildConfigurations = (
 				FA32AEB420BD1C4C008A2111 /* Debug */,
 				FA32AEB520BD1C4C008A2111 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA5497972FA408E900E61D57 /* Build configuration list for PBXNativeTarget "VucktTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA5497982FA408E900E61D57 /* Debug */,
+				FA5497992FA408E900E61D57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
