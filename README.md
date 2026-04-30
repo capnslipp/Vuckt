@@ -25,10 +25,10 @@ and **Debug** builds:
 
 |                     | iPhone 13 Pro<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2364</sub>_ | iPad Pro M4 11"<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 3744</sub>_ | Mac Studio M2 Max<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2727</sub>_ |
 |-------------------------|----------|----------|----------|
-| **Vuckt Float3**    |  **3.323 s**      |  **2.176 s**      |  **0.244 s**      |
-| Swift SIMD Float3   | 18.005 s _(542%)_ |  9.556 s _(439%)_ |  1.320 s _(541%)_ |
-| C/Obj-C GLKVector3  |  2.712 s _(82%)_  |  1.858 s _(85%)_  |  0.191 s _(78%)_  |
-| C/Obj-C SIMD Float3 |  1.615 s _(49%)_  |  1.108 s _(51%)_  |  0.071 s _(29%)_  |
+| **Vuckt Float3**    |  **3.323 s**      |  **2.176 s**      |  **2.979 s**      |
+| Swift SIMD Float3   | 18.005 s _(542%)_ |  9.556 s _(439%)_ |  14.038 s _(471%)_ |
+| C/Obj-C GLKVector3  |  2.712 s _(82%)_  |  1.858 s _(85%)_  |  2.319 s _(78%)_  |
+| C/Obj-C SIMD Float3 |  1.615 s _(49%)_  |  1.108 s _(51%)_  |  1.287 s _(43%)_  |
 
 <sub>_(Lower seconds and percentages are better.  Tests performed with `VucktPerformanceTests.swift` and `VucktCPerformanceTests.m` using Xcode 26.4.1 and Swift 6.3.1.)_</sub>
 
