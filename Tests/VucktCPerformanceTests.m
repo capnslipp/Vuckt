@@ -10,7 +10,7 @@
 
 
 
-float randomFloatFromNegOneToPosOne() {
+float randomFloatFromNegOneToPosOne(void) {
 	float randomFloat = (float)(arc4random() % ((uint32_t)RAND_MAX + 1)) / RAND_MAX;
 	return randomFloat * 2.0 - 1.0;
 }
