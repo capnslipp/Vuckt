@@ -14,11 +14,11 @@ I might add more documentation here, but I don't really expect anyone else to fi
 
 To my testing, Vuckt performs significantly faster than Swift-native SIMD (and similarly to the C API of GLKVector3), both in **Debug** builds:
 
-![VucktPerformanceTests - Debug - iPhone 13 Pro](README Assets/VucktPerformanceTests - Debug - iPhone 13 Pro.png)
+![VucktPerformanceTests - Debug - iPhone 13 Pro](README%20Assets/VucktPerformanceTests%20-%20Debug%20-%20iPhone%2013%20Pro.png)
 
 and **Release** builds:
 
-![VucktPerformanceTests - Release - iPhone 13 Pro](README Assets/VucktPerformanceTests - Release - iPhone 13 Pro.png)
+![VucktPerformanceTests - Release - iPhone 13 Pro](README%20Assets/VucktPerformanceTests%20-%20Release%20-%20iPhone%2013%20Pro.png)
 
 <sub>_(Test results shown performed on an iPhone 13 Pro.)_</sub>
 
