@@ -70,16 +70,16 @@ class VucktPerformanceTests : XCTestCase
 	
 	func testSIMDFloat3Performance()
 	{
-		var testSetA:[simd.float3] = []
-		var testSetB:[simd.float3] = []
+		var testSetA:[SIMD3<Float>] = []
+		var testSetB:[SIMD3<Float>] = []
 		(0..<Self.iterationCount).forEach{ i in
 			let value = Float(i)
-			testSetA.append(simd.float3(
+			testSetA.append(SIMD3<Float>(
 				x: value + (0 + randomFloatFromNegOneToPosOne()),
 				y: value - (500 + randomFloatFromNegOneToPosOne()),
 				z: value * (2.5 + randomFloatFromNegOneToPosOne())
 			))
-			testSetB.append(simd.float3(
+			testSetB.append(SIMD3<Float>(
 				x: value + (500 + randomFloatFromNegOneToPosOne()),
 				y: -value * (10.0 + randomFloatFromNegOneToPosOne()),
 				z: value / (2.0 + randomFloatFromNegOneToPosOne())
