@@ -112,7 +112,7 @@ extension Float3
 	
 	public static let one = Self.positiveOne
 	public static let positiveOne = Float3(scalar: 1)
-	public static let negativeOne = Float3(scalar: -1) // TODO: Rename; not a unit vector
+	public static let negativeOne = Float3(scalar: -1)
 	
 	public static let unitX = Self.unitXPositive
 	public static let unitXPositive = Float3(x: 1)
