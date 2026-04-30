@@ -16,7 +16,6 @@
 		FA32AEAF20BD1C4C008A2111 /* Int3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAC5EDCB1E550B1900E116B3 /* Int3.mm */; };
 		FA32AEB020BD1C4C008A2111 /* Int2.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA9E2CD51EAD608C005C5402 /* Int2.mm */; };
 		FA38107F246CF763005FAC15 /* VucktCPerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA38107E246CF763005FAC15 /* VucktCPerformanceTests.m */; };
-		FA381080246CF763005FAC15 /* VucktCPerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA38107E246CF763005FAC15 /* VucktCPerformanceTests.m */; };
 		FA3E5E4921B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4621B7C33C0073FA6D /* Int3+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4B21B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E4721B7C33C0073FA6D /* Int2+_ObjectiveCBridgeable.swift */; };
 		FA3E5E4C21B7C3870073FA6D /* Int2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BF0620CFBC2200261EE4 /* Int2.swift */; };
@@ -38,15 +37,11 @@
 		FA3E5E8821B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8321B8A0180073FA6D /* Float2+_ObjectiveCBridgeable.swift */; };
 		FA3E5E8A21B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E5E8421B8A0180073FA6D /* Float3+_ObjectiveCBridgeable.swift */; };
 		FA499D22295C880D007FD580 /* VucktPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA499D21295C8804007FD580 /* VucktPerformanceTests.swift */; };
-		FA499D23295C880D007FD580 /* VucktPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA499D21295C8804007FD580 /* VucktPerformanceTests.swift */; };
 		FA4F6C4224370683009A8579 /* Float3x3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA4F6C4124370683009A8579 /* Float3x3.mm */; };
 		FA4F6C4424371B29009A8579 /* Float3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F6C4324371B29009A8579 /* Float3x3.swift */; };
 		FA4F6C4824371D0A009A8579 /* Float3x3+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F6C4724371D0A009A8579 /* Float3x3+_ObjectiveCBridgeable.swift */; };
 		FA4F6C4924371D54009A8579 /* Float3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4F6C402437066F009A8579 /* Float3x3.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA59C00B21B3529200799899 /* Vuckt.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FA59C00C21B353EA00799899 /* Vuckt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; };
 		FA6E5D552FA166B000CA1283 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = FA6E5D542FA166B000CA1283 /* Numerics */; };
-		FA6E5D582FA166C500CA1283 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = FA6E5D572FA166C500CA1283 /* Numerics */; };
 		FA6E5D592FA166D000CA1283 /* Vuckt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; };
 		FA6E5D5A2FA166D000CA1283 /* Vuckt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA7C2F8120CA1557001A44CF /* Vuckt.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E2CBA1EAD5D3E005C5402 /* Vuckt.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,18 +52,10 @@
 		FAEEBB222445AF5A009DE4BB /* Float4x4+_ObjectiveCBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEBB212445AF5A009DE4BB /* Float4x4+_ObjectiveCBridgeable.swift */; };
 		FAEEBB242445B0D8009DE4BB /* Float4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = FAEEBB1D2445AE63009DE4BB /* Float4x4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAF2646121ADE8B00061D666 /* Vuckt.pch in Headers */ = {isa = PBXBuildFile; fileRef = FAF2645F21ADE8B00061D666 /* Vuckt.pch */; };
-		FAFB401F21B34F4A00D4A8B5 /* VucktTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED6C2D21B32E370083A2B5 /* VucktTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		FA18D92D23FA5EBB00F5CF37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FA32AEA920BD1C4C008A2111;
-			remoteInfo = Vuckt;
-		};
-		FA18D92F23FA5EC900F5CF37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -85,17 +72,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FA59C00A21B3527200799899 /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				FA59C00B21B3529200799899 /* Vuckt.framework in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FA6E5D5D2FA166D000CA1283 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -173,7 +149,6 @@
 		FAEEBB212445AF5A009DE4BB /* Float4x4+_ObjectiveCBridgeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float4x4+_ObjectiveCBridgeable.swift"; path = "Float4x4/Float4x4+_ObjectiveCBridgeable.swift"; sourceTree = "<group>"; };
 		FAEEBB232445B0BD009DE4BB /* Float4x4_NoObjCBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float4x4_NoObjCBridge.swift; sourceTree = "<group>"; };
 		FAF2645F21ADE8B00061D666 /* Vuckt.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vuckt.pch; sourceTree = "<group>"; };
-		FAFB401721B34F2700D4A8B5 /* VucktTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VucktTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,15 +165,6 @@
 			files = (
 				FA6E5D592FA166D000CA1283 /* Vuckt.framework in Frameworks */,
 				FA6E5D552FA166B000CA1283 /* Numerics in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FAFB401421B34F2700D4A8B5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA6E5D582FA166C500CA1283 /* Numerics in Frameworks */,
-				FA59C00C21B353EA00799899 /* Vuckt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +325,6 @@
 			children = (
 				FA32AEB620BD1C4C008A2111 /* Vuckt.framework */,
 				FAED6C2B21B32E370083A2B5 /* VucktTests.xctest */,
-				FAFB401721B34F2700D4A8B5 /* VucktTests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -436,9 +401,9 @@
 			productReference = FA32AEB620BD1C4C008A2111 /* Vuckt.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FAED6C2A21B32E370083A2B5 /* VucktTests - macOS */ = {
+		FAED6C2A21B32E370083A2B5 /* VucktTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "VucktTests - macOS" */;
+			buildConfigurationList = FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "VucktTests" */;
 			buildPhases = (
 				FAED6C2721B32E370083A2B5 /* Sources */,
 				FAED6C2821B32E370083A2B5 /* Frameworks */,
@@ -451,29 +416,10 @@
 				FA18D92E23FA5EBB00F5CF37 /* PBXTargetDependency */,
 				FA6E5D5C2FA166D000CA1283 /* PBXTargetDependency */,
 			);
-			name = "VucktTests - macOS";
+			name = VucktTests;
 			productName = Tests;
 			productReference = FAED6C2B21B32E370083A2B5 /* VucktTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		FAFB401621B34F2700D4A8B5 /* VucktTests - iOS/tvOS/watchOS/visionOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FAFB401E21B34F2700D4A8B5 /* Build configuration list for PBXNativeTarget "VucktTests - iOS/tvOS/watchOS/visionOS" */;
-			buildPhases = (
-				FAFB401321B34F2700D4A8B5 /* Sources */,
-				FAFB401421B34F2700D4A8B5 /* Frameworks */,
-				FAFB401521B34F2700D4A8B5 /* Resources */,
-				FA59C00A21B3527200799899 /* Copy Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FA18D93023FA5EC900F5CF37 /* PBXTargetDependency */,
-			);
-			name = "VucktTests - iOS/tvOS/watchOS/visionOS";
-			productName = IntNTests;
-			productReference = FAFB401721B34F2700D4A8B5 /* VucktTests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -489,12 +435,6 @@
 					};
 					FAED6C2A21B32E370083A2B5 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1140;
-						ProvisioningStyle = Automatic;
-					};
-					FAFB401621B34F2700D4A8B5 = {
-						CreatedOnToolsVersion = 10.1;
-						DevelopmentTeam = UQQE2H6P34;
 						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
@@ -517,21 +457,13 @@
 			projectRoot = "";
 			targets = (
 				FA32AEA920BD1C4C008A2111 /* Vuckt */,
-				FAED6C2A21B32E370083A2B5 /* VucktTests - macOS */,
-				FAFB401621B34F2700D4A8B5 /* VucktTests - iOS/tvOS/watchOS/visionOS */,
+				FAED6C2A21B32E370083A2B5 /* VucktTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FAED6C2921B32E370083A2B5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FAFB401521B34F2700D4A8B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -586,16 +518,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FAFB401321B34F2700D4A8B5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FAFB401F21B34F4A00D4A8B5 /* VucktTests.swift in Sources */,
-				FA381080246CF763005FAC15 /* VucktCPerformanceTests.m in Sources */,
-				FA499D23295C880D007FD580 /* VucktPerformanceTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -603,11 +525,6 @@
 			isa = PBXTargetDependency;
 			target = FA32AEA920BD1C4C008A2111 /* Vuckt */;
 			targetProxy = FA18D92D23FA5EBB00F5CF37 /* PBXContainerItemProxy */;
-		};
-		FA18D93023FA5EC900F5CF37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FA32AEA920BD1C4C008A2111 /* Vuckt */;
-			targetProxy = FA18D92F23FA5EC900F5CF37 /* PBXContainerItemProxy */;
 		};
 		FA6E5D5C2FA166D000CA1283 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -687,10 +604,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UQQE2H6P34;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -711,11 +628,13 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 				TARGET_NAME = VucktTests;
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
@@ -737,11 +656,11 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UQQE2H6P34;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -758,113 +677,13 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = VucktTests;
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
-			};
-			name = Release;
-		};
-		FAFB401C21B34F2700D4A8B5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UQQE2H6P34;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 				TARGET_NAME = VucktTests;
 				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
-			};
-			name = Debug;
-		};
-		FAFB401D21B34F2700D4A8B5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = UQQE2H6P34;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.capnslipp.$(PRODUCT_NAME)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
-				TARGET_NAME = VucktTests;
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
@@ -872,6 +691,7 @@
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -916,7 +736,8 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator";
+				SUPPORTED_PLATFORMS = "xrsimulator xros watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -930,6 +751,7 @@
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -971,7 +793,8 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator";
+				SUPPORTED_PLATFORMS = "xrsimulator xros watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -995,20 +818,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "VucktTests - macOS" */ = {
+		FAED6C3521B32E370083A2B5 /* Build configuration list for PBXNativeTarget "VucktTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAED6C3321B32E370083A2B5 /* Debug */,
 				FAED6C3421B32E370083A2B5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		FAFB401E21B34F2700D4A8B5 /* Build configuration list for PBXNativeTarget "VucktTests - iOS/tvOS/watchOS/visionOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FAFB401C21B34F2700D4A8B5 /* Debug */,
-				FAFB401D21B34F2700D4A8B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -1037,11 +851,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		FA6E5D542FA166B000CA1283 /* Numerics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FA6E5D532FA166B000CA1283 /* XCRemoteSwiftPackageReference "swift-numerics" */;
-			productName = Numerics;
-		};
-		FA6E5D572FA166C500CA1283 /* Numerics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FA6E5D532FA166B000CA1283 /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = Numerics;
