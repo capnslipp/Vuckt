@@ -6,21 +6,31 @@
 
 Vuckt is Swift library providing Obj-C-compatible integral & floating vector struct types with zero-cost SIMD vector bridging, and convenience methods to bridge to/from other vector-ish types throughout Cocoa.
 
-It was born out of frustration with Swift/Cocoa's built-in SIMD types not being fully Objective-C compatible _(particularly, they cause major problems when used with KVC, `NSInvocation`, or any other situation requiring `NSValue`-boxing)_, and has grown to try to cover as much of what native-SIMD can do, and to be easily convertable to/from any other vector type you might be using in Swift _(e.g. `SCNVector3`, `CGVector`, etc.)_.
+It was born out of frustration with Swift/Cocoa's built-in SIMD types not being fully Objective-C compatible _(particularly, they cause major problems when used with KVC, `NSInvocation`, or any other situation requiring `NSValue`-boxing)_, and has grown to try to cover as much of what native-SIMD can do, and to be easily convertable to/from any other vector type you might be using in Swift _(e.g. `SCNVector3`, `CGVector`, etc.)_.  Additionally, Vuckt is significantly faster than Swift's native SIMD library.
 
-I might add more documentation here, but I don't really expect anyone else to find/use this lib— _I built it for my own use when Swift/Foundation's native SIMD library wasn't meeting my needs, so I said **f*ck it; I'll write my own library**_.  If there are SIMD types or operations that you need that haven't been implemented in Vuckt yet, I'm happy to add them for you— just create an issue on [GitHub](https://github.com/capnslipp/Vuckt/issues), [GitLab](https://gitlab.com/capnslipp/IntN/issues), or [BitBucket](https://bitbucket.org/capnslipp/vuckt/issues) and if it's plausible _(packed types are a notable exception)_ and mirrors what SIMD does, I'll do it.  There's a good chance I already need the same feature you'd request, I just haven't added it yet.
+I might add more documentation here, but I don't really expect anyone else to find/use this lib— _I built it for my own use when Swift's native SIMD library wasn't meeting my needs, so I said “**f*ck it**; I'll write my own library“_.  If there are SIMD types or operations that you need that haven't been implemented in Vuckt yet, I'm happy to add them for you— just create an issue on [GitHub](https://github.com/capnslipp/Vuckt/issues), [GitLab](https://gitlab.com/capnslipp/IntN/issues), or [BitBucket](https://bitbucket.org/capnslipp/vuckt/issues) and if it's plausible _(packed types are a notable exception)_ and mirrors what SIMD does, I'll do it.  There's a good chance I already need the same feature you'd request, I just haven't added it yet.
 
 ## Performance
 
-To my testing, Vuckt performs significantly faster than Swift-native SIMD (and similarly to the C API of GLKVector3), both in **Debug** builds:
+**Vuckt is _fast_**.  Vuckt performs significantly faster than Swift-native SIMD (and similarly to the C APIs of SIMD & GLKVector3), both in **Release** builds:
 
-![VucktPerformanceTests - Debug - iPhone 13 Pro](README%20Assets/VucktPerformanceTests%20-%20Debug%20-%20iPhone%2013%20Pro.png)
+|                     | iPhone 13 Pro<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2364</sub>_ | iPad Pro M4 11"<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 3744</sub>_ | Mac Studio M2 Max<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2727</sub>_ |
+|---------------------|-------------------|-------------------|-------------------|
+| **Vuckt Float3**    |  **0.277 s**      |  **0.265 s**      |  **0.286 s**      |
+| Swift SIMD Float3   |  0.803 s _(290%)_ |  0.465 s _(175%)_ |  0.497 s _(174%)_ |
+| C/Obj-C GLKVector3  |  0.275 s _(99%)_  |  0.271 s _(102%)_ |  0.273 s _(95%)_  |
+| C/Obj-C SIMD Float3 |  0.927 s _(335%)_ |  0.540 s _(204%)_ |  0.581 s _(203%)_ |
 
-and **Release** builds:
+and **Debug** builds:
 
-![VucktPerformanceTests - Release - iPhone 13 Pro](README%20Assets/VucktPerformanceTests%20-%20Release%20-%20iPhone%2013%20Pro.png)
+|                     | iPhone 13 Pro<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2364</sub>_ | iPad Pro M4 11"<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 3744</sub>_ | Mac Studio M2 Max<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2727</sub>_ |
+|-------------------------|----------|----------|----------|
+| **Vuckt Float3**    |  **3.323 s**      |  **2.176 s**      |  **0.244 s**      |
+| Swift SIMD Float3   | 18.005 s _(542%)_ |  9.556 s _(439%)_ |  1.320 s _(541%)_ |
+| C/Obj-C GLKVector3  |  2.712 s _(82%)_  |  1.858 s _(85%)_  |  0.191 s _(78%)_  |
+| C/Obj-C SIMD Float3 |  1.615 s _(49%)_  |  1.108 s _(51%)_  |  0.071 s _(29%)_  |
 
-<sub>_(Test results shown performed on an iPhone 13 Pro.)_</sub>
+<sub>_(Lower seconds and percentages are better.  Tests performed with `VucktPerformanceTests.swift` and `VucktCPerformanceTests.m` using Xcode 26.4.1 and Swift 6.3.1.)_</sub>
 
 ## License
 
