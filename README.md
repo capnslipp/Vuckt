@@ -10,6 +10,18 @@ It was born out of frustration with Swift/Cocoa's built-in SIMD types not being 
 
 I might add more documentation here, but I don't really expect anyone else to find/use this lib— _I built it for my own use when Swift's native SIMD library wasn't meeting my needs, so I said “**f*ck it**; I'll write my own library“_.  If there are SIMD types or operations that you need that haven't been implemented in Vuckt yet, I'm happy to add them for you— just create an issue on [GitHub](https://github.com/capnslipp/Vuckt/issues), [GitLab](https://gitlab.com/capnslipp/IntN/issues), or [BitBucket](https://bitbucket.org/capnslipp/vuckt/issues) and if it's plausible _(packed types are a notable exception)_ and mirrors what SIMD does, I'll do it.  There's a good chance I already need the same feature you'd request, I just haven't added it yet.
 
+Vuckt currently offers the following types:
+
+* [Int2](Sources/Int2/Int2.swift)
+* [Int3](Sources/Int3/Int3.swift)
+* [Int4](Sources/Int4/Int4.swift)
+* [Float2](Sources/Float2/Float2.swift)
+* [Float3](Sources/Float3/Float3.swift)
+* [Float4](Sources/Float4/Float4.swift)
+* [FloatQuaternion](Sources/FloatQuaternion/FloatQuaternion.swift)
+* [Float3x3](Sources/Float3/Float3x3.swift)
+* [Float4x4](Sources/Float4/Float4x4.swift)
+
 ## Performance
 
 **Vuckt is _fast_**.  Vuckt performs significantly faster than Swift-native SIMD (and similarly to the C APIs of SIMD & GLKVector3), both in **Release** builds:
