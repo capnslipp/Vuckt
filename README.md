@@ -27,7 +27,7 @@ Vuckt currently offers the following types:
 **Vuckt is _fast_**.  Vuckt performs significantly faster than Swift-native SIMD (and similarly to the C APIs of SIMD & GLKVector3), both in **Release** builds:
 
 |                     | iPhone 13 Pro<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2364</sub>_ | iPad Pro M4 11"<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 3744</sub>_ | Mac Studio M2 Max<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2727</sub>_ |
-|-------------#---------|--------------------|--------------------|--------------------|
+|-----------------------|--------------------|--------------------|--------------------|
 | **Vuckt `Float3`**    |  **0.277 s**       |  **0.265 s**       |  **0.286 s**       |
 | Swift `SIMD3<Float>`  |  0.803 s _(+190%)_ |  0.465 s _(+75%)_  |  0.497 s _(+74%)_  |
 | C/Obj-C `GLKVector3`  |  0.275 s _(-1%)_   |  0.271 s _(+2%)_   |  0.273 s _(-5%)_   |
