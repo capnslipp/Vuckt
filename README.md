@@ -61,3 +61,4 @@ Vuckt is provided with a fully-permissive Public Domain license, because it real
 * [ ] Char, UChar, Short, UShort, UInt, Long, & ULong integer vectors
 * [ ] Add conversions to/from Spatial types
 	* [ ] Add performance tests for Spatial Vector3D operations, and add perf results to README
+* [ ] Implement [Penner easing](https://robertpenner.com/easing/) functions for each type?
