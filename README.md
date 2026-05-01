@@ -39,9 +39,11 @@ Vuckt is provided with a fully-permissive Public Domain license, because it real
 ## To Do List
 
 * [ ] Implement `Float2x2`
-* [ ] Make the `Package.swift` use the C backend (which is significantly faster), eliminating the `…_NoObjCBridge.swift` variants.  
-	‣ Perhaps still offer “…_NoObjCBridge” as an alternate target, for cases/platforms where Obj-C isn't available
+* [ ] Make the `Package.swift` use the C backend (which is significantly faster), eliminating the `…_NoObjCBridge.swift` variants  
+	‣ Perhaps still offer “…_NoObjCBridge” as an alternate target, for cases/platforms where Obj-C isn't available.
 * [ ] More unit test coverage
 * [ ] More thorough performance tests
 * [ ] Double & Half floating vectors
 * [ ] Char, UChar, Short, UShort, UInt, Long, & ULong integer vectors
+* [ ] Add conversions to/from Spatial types
+	* [ ] Add performance tests for Spatial Vector3D operations, and add perf results to README
