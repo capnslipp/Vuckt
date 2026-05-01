@@ -22,6 +22,8 @@ Vuckt currently offers the following types:
 * [Float3x3](Sources/Float3/Float3x3.swift)
 * [Float4x4](Sources/Float4/Float4x4.swift)
 
+See also: [Vuckt's full documentation](https://swiftpackageindex.com/capnslipp/Vuckt/master/documentation/vuckt)
+
 ## Performance
 
 **Vuckt is _fast_**.  Vuckt performs significantly faster than Swift-native SIMD (and similarly to the C APIs of SIMD & GLKVector3), both in **Release** builds:
