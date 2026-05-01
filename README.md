@@ -15,20 +15,20 @@ I might add more documentation here, but I don't really expect anyone else to fi
 **Vuckt is _fast_**.  Vuckt performs significantly faster than Swift-native SIMD (and similarly to the C APIs of SIMD & GLKVector3), both in **Release** builds:
 
 |                     | iPhone 13 Pro<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2364</sub>_ | iPad Pro M4 11"<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 3744</sub>_ | Mac Studio M2 Max<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2727</sub>_ |
-|---------------------|-------------------|-------------------|-------------------|
-| **Vuckt Float3**    |  **0.277 s**      |  **0.265 s**      |  **0.286 s**      |
-| Swift SIMD Float3   |  0.803 s _(290%)_ |  0.465 s _(175%)_ |  0.497 s _(174%)_ |
-| C/Obj-C GLKVector3  |  0.275 s _(99%)_  |  0.271 s _(102%)_ |  0.273 s _(95%)_  |
-| C/Obj-C SIMD Float3 |  0.927 s _(335%)_ |  0.540 s _(204%)_ |  0.581 s _(203%)_ |
+|---------------------|--------------------|--------------------|--------------------|
+| **Vuckt Float3**    |  **0.277 s**       |  **0.265 s**       |  **0.286 s**       |
+| Swift SIMD Float3   |  0.803 s _(+190%)_ |  0.465 s _(+75%)_  |  0.497 s _(+74%)_  |
+| C/Obj-C GLKVector3  |  0.275 s _(-1%)_   |  0.271 s _(+2%)_   |  0.273 s _(-5%)_   |
+| C/Obj-C SIMD Float3 |  0.927 s _(+235%)_ |  0.540 s _(+104%)_ |  0.581 s _(+103%)_ |
 
 and **Debug** builds:
 
 |                     | iPhone 13 Pro<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2364</sub>_ | iPad Pro M4 11"<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 3744</sub>_ | Mac Studio M2 Max<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2727</sub>_ |
-|-------------------------|----------|----------|----------|
-| **Vuckt Float3**    |  **3.323 s**      |  **2.176 s**      |  **2.979 s**      |
-| Swift SIMD Float3   | 18.005 s _(542%)_ |  9.556 s _(439%)_ |  14.038 s _(471%)_ |
-| C/Obj-C GLKVector3  |  2.712 s _(82%)_  |  1.858 s _(85%)_  |  2.319 s _(78%)_  |
-| C/Obj-C SIMD Float3 |  1.615 s _(49%)_  |  1.108 s _(51%)_  |  1.287 s _(43%)_  |
+|---------------------|--------------------|--------------------|---------------------|
+| **Vuckt Float3**    |  **3.323 s**       |  **2.176 s**       |  **2.979 s**        |
+| Swift SIMD Float3   | 18.005 s _(+442%)_ |  9.556 s _(+339%)_ |  14.038 s _(+371%)_ |
+| C/Obj-C GLKVector3  |  2.712 s _(-18%)_  |  1.858 s _(-15%)_  |  2.319 s _(-22%)_   |
+| C/Obj-C SIMD Float3 |  1.615 s _(-51%)_  |  1.108 s _(-49%)_  |  1.287 s _(-57%)_   |
 
 <sub>_(Lower seconds and percentages are better.  Tests performed with `VucktPerformanceTests.swift` and `VucktCPerformanceTests.m` using Xcode 26.4.1 and Swift 6.3.1.)_</sub>
 
