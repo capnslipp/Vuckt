@@ -54,6 +54,7 @@ Vuckt is provided with a fully-permissive Public Domain license, because it real
 ## To Do List
 
 * [ ] Implement `Float2x2`
+* [ ] Finish implementing `FloatRotor` (feature/float-rotor branch)
 * [ ] Make the `Package.swift` use the C backend (which is significantly faster), eliminating the `…_NoObjCBridge.swift` variants  
 	‣ Perhaps still offer “…_NoObjCBridge” as an alternate target, for cases/platforms where Obj-C isn't available.
 * [ ] More unit test coverage
@@ -63,3 +64,5 @@ Vuckt is provided with a fully-permissive Public Domain license, because it real
 * [ ] Add conversions to/from Spatial types
 	* [ ] Add performance tests for Spatial Vector3D operations, and add perf results to README
 * [ ] Implement [Penner easing](https://robertpenner.com/easing/) functions for each type?
+	* [ ] Especially for rotations (which is a rarity for vector math libs)
+
