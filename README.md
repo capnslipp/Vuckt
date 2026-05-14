@@ -27,7 +27,7 @@ See also: [Vuckt's full documentation](https://swiftpackageindex.com/capnslipp/V
 
 ## Performance
 
-**Vuckt is _fast_**.  Vuckt performs significantly faster than Swift-native SIMD, both in **Release** builds:
+**Vuckt is _fast_**.  Vuckt achieves its swiftness by backing every possible calculation with a C-side call into a simd method (which compiles down to little more than just a SIMD CPU instruction in optimized/release builds), and a few tricks like using `@_transparent` in Swift (which seems to encourage the Swift compiler to `inline` the method, eliminating function overhead), and building on a C struct that matches the memory layout of native SIMD types for zero-cost casts (reinforced by C++ `static_assert`s ensuring everything lines up at c9mpile-time.  Vuckt performs significantly faster than Swift-native SIMD, both in **Release** builds:
 
 |                     | iPhone 13 Pro<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2364</sub>_ | iPad Pro M4 11"<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 3744</sub>_ | Mac Studio M2 Max<br/>_<sub>Geekbench 6 CPU<br/>single-core score: 2727</sub>_ |
 |-----------------------|--------------------|--------------------|--------------------|
